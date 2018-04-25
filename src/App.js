@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import TaskAddButton from "./components/TaskAddButton/TaskAddButton";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
         <h1>TaskDueDay</h1>
         <h1>TaskDescription</h1>
         <h1>TaskAddButton</h1>
+        <TaskAddButton />
         <h1>TaskClosePopup</h1>
         <h1>EditTaskPopup</h1>
         <h1>TaskPostpone</h1>
