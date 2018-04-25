@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>TaskBanner</h1>
-        <h1>TaskTilteText</h1>
+        <h1>TaskTitleText</h1>
         <h1>TaskTile</h1>
         <h1>TaskName</h1>
         <h1>TaskDone</h1>
