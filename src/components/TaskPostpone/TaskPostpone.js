@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './TaskPostpone.css';
 
 class TaskPostpone extends Component {
+
+
   render() {
     return (
 
-      <button>Postpone</button>
+      <button onClick={this.props.postpone}>Postpone</button>
 
     );
   }

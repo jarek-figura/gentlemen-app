@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TaskPostpone from "./components/TaskPostpone/TaskPostpone";
 
 class App extends Component {
   render() {
@@ -23,6 +24,8 @@ class App extends Component {
         <h1>TaskClosePopup</h1>
         <h1>EditTaskPopup</h1>
         <h1>TaskPostpone</h1>
+        <TaskPostpone postpone={() => alert('Test')} />
+
       </div>
     );
   }
