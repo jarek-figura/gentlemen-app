@@ -7,7 +7,7 @@ class TaskDone extends Component {
   render() {
     return (
 
-      <button onClick={this.props.postpone}>Done</button>
+      <button onClick={this.props.done}>Done</button>
 
     );
   }
