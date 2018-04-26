@@ -1,1 +1,22 @@
- 
+button{
+    width: 30vw;
+
+}
+
+.activeButtonMedium{
+     background-color: #ffcf00;
+    width: 30vw;
+
+ }
+
+ .activeButtonLow{
+     background-color: #4fff16;
+     width: 30vw;
+
+ }
+
+ .activeButtonHigh{
+     background-color: #ff0302;
+     width: 30vw;
+
+ }
