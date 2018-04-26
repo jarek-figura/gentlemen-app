@@ -5,15 +5,20 @@ import moment from 'moment'
 import 'react-datepicker/dist/react-datepicker.css'
 
 class TaskDueDay extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      startDate: moment()
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
 
-  handleChange(date) {
+ state = {
+   startDate: moment()
+ }
+
+ // constructor(props) {
+ //   super(props)
+ //   this.state = {
+ //     startDate: moment()
+ //   };
+ //   this.handleChange = this.handleChange.bind(this);
+ // }
+
+  handleChange = date => {
     this.setState({
       startDate: date
     });
