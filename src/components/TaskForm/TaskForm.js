@@ -8,26 +8,28 @@ class TaskForm extends Component {
     tasks: [ ]
   };
 
-  removeTask = taskId => {
-    this.setState(
-      ({ tasks }) => ({
-        tasks: tasks.filter(
-          ({ id }) => id !== taskId
-        )
-      })
-    )
-  };
+  // removeTask = taskId => {
+  //   this.setState(
+  //     ({ tasks }) => ({
+  //       tasks: tasks.filter(
+  //         ({ id }) => id !== taskId
+  //       )
+  //     })
+  //   )
+  // };
 
   handleSubmit = event => {
     event.preventDefault();
 
+    if (this.state.taskTitleText === '') return;
+
     this.setState(
-      ({ tasks, taskName, taskDescription }) => ({
+      ({ tasks, taskTitleText, taskDescription }) => ({
         taskTitleText: '',
         taskDescription: '',
         tasks: tasks.concat({
           id: tasks.length === 0 ? 1 : Math.max(...tasks.map(task => task.id)) + 1,
-          name: taskName,
+          name: taskTitleText,
           description: taskDescription
         })
       })
@@ -37,26 +39,26 @@ class TaskForm extends Component {
   handleChange = event => {
     // event.target - it's our input; input has an attribute named 'value'
     this.setState({
-      // dynamic attribute name
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value  // dynamic attribute name
     })
   };
 
   render() {
     return (
       <div>
-        <h1>Tasks</h1>
         <form onSubmit={this.handleSubmit}>
           <input
-            name="taskName"
+            name="taskTitleText"
             value={this.state.taskTitleText}
             onChange={this.handleChange}
           />
+          <br/>
           <input
             name="taskDescription"
             value={this.state.taskDescription}
             onChange={this.handleChange}
           />
+          <br/>
           <button>Add</button>
         </form>
 
@@ -66,11 +68,9 @@ class TaskForm extends Component {
               task => (
                 <li key={task.id}>
                   {task.name} : {task.description}
-                  <button
-                    onClick={() => this.removeTask(task.id)}
-                  >
-                    delete
-                  </button>
+                  {/*<button onClick={() => this.removeTask(task.id)} >*/}
+                    {/*delete*/}
+                  {/*</button>*/}
                 </li>
               )
             )
