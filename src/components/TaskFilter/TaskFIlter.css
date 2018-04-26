@@ -1,3 +1,10 @@
 .filterBtn{
-    font-size: .8em;
+    font-size: 1em;
+    width: 75vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    margin: 20px;
+
 }
