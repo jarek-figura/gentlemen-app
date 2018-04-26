@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import TaskForm from "./components/TaskForm/TaskForm";
 
 class App extends Component {
   render() {
@@ -15,6 +16,8 @@ class App extends Component {
         <h1>TaskSort</h1>
         <h1>TaskFilter</h1>
         <h1>AddTaskPopup</h1>
+        <h1>TaskForm</h1>
+        <TaskForm/>
         <h1>TaskPriority</h1>
         <h1>TaskDueDay</h1>
         <h1>TaskDescription</h1>
