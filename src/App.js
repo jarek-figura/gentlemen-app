@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import AddTask from "./components/AddTask/AddTask";
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <h1>TaskDone</h1>
         <h1>TaskFilters</h1>
         <h1>AddTask</h1>
+        <AddTask addtask={() => alert('Add new Task !!!')} />
         <h1>TaskSort</h1>
         <h1>TaskFilter</h1>
         <h1>AddTaskPopup</h1>
