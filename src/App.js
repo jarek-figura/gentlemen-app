@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import TaskDueDay from './components/TaskDueDay/TaskDueDay.js'
 import TaskDone from "./components/TaskDone/TaskDone";
+import TaskForm from "./components/TaskForm/TaskForm";
+import TaskAddButton from "./components/TaskAddButton/TaskAddButton";
 
 class App extends Component {
   render() {
@@ -18,11 +20,14 @@ class App extends Component {
         <h1>TaskSort</h1>
         <h1>TaskFilter</h1>
         <h1>AddTaskPopup</h1>
+        <h1>TaskForm</h1>
+        <TaskForm/>
         <h1>TaskPriority</h1>
         <h1>TaskDueDay</h1>
         <TaskDueDay/>
         <h1>TaskDescription</h1>
         <h1>TaskAddButton</h1>
+        <TaskAddButton />
         <h1>TaskClosePopup</h1>
         <h1>EditTaskPopup</h1>
         <h1>TaskPostpone</h1>
