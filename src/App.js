@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import TaskDueDay from './components/TaskDueDay/TaskDueDay.js'
+import TaskDueDay from './components/TaskDueDay/TaskDueDay'
 import TaskDone from "./components/TaskDone/TaskDone";
 import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
 
@@ -23,7 +23,6 @@ class App extends Component {
         <h1>TaskPriority</h1>
         <h1>TaskDueDay</h1>
         <TaskDueDay/>
-        <h1>TaskDescription</h1>
         <h1>TaskClosePopup</h1>
         <h1>EditTaskPopup</h1>
         <h1>TaskPostpone</h1>

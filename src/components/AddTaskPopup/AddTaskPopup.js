@@ -10,6 +10,17 @@ class AddTaskPopup extends Component {
     tasks: [ ]
   };
 
+  // this should be moved to parent if applicable
+  removeTask = taskId => {
+    this.setState(
+      ({ tasks }) => ({
+        tasks: tasks.filter(
+          ({ id }) => id !== taskId
+        )
+      })
+    )
+  };
+
   handleSubmit = event => {
     event.preventDefault();
 
@@ -39,43 +50,37 @@ class AddTaskPopup extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit} id="form1">
-          <input
-              maxLength="50"
+          <input maxLength="50"
               name="taskTitleText"
               placeholder="Tytuł zadania"
               value={this.state.taskTitleText}
               onChange={this.handleChange}
           />
-          <br/>
-          <textarea
-              rows="4"
-              cols="20"
+          <br/><br/>
+          <textarea rows="4"
+              cols="19"
               name="taskDescription"
               placeholder="Opis zadania"
               value={this.state.taskDescription}
               onChange={this.handleChange}
           />
-          <br/>
         </form>
 
-        <ul>
-          {
-            this.state.tasks.map(
-                task => (
-                    <li key={task.id}>
-                      {task.name} : {task.description}
-                      {/*<button onClick={() => this.removeTask(task.id)} >*/}
-                      {/*delete*/}
-                      {/*</button>*/}
-                    </li>
-                )
+        {/*this should be moved to parent*/}
+        <ul>{
+          this.state.tasks.map(
+            task => (
+              <li key={task.id}>
+                {task.name} : {task.description} <button onClick={() => this.removeTask(task.id)}>&times;</button>
+              </li>
             )
-          }
-        </ul>
+          )
+        }</ul>
 
-        {/*<TaskPriority />*/}
+        {/*<TaskPriority /> <TaskPriority /> <TaskPriority />*/}
+
         <TaskDueDay/>
-        <br />
+        <br/>
         <button form="form1">Dodaj zadanie</button>
       </div>
     )
