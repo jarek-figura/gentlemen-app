@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import TaskDueDay from './components/TaskDueDay/TaskDueDay.js'
+import TaskDone from "./components/TaskDone/TaskDone";
 import TaskPostpone from "./components/TaskPostpone/TaskPostpone";
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
         <h1>TaskTile</h1>
         <h1>TaskName</h1>
         <h1>TaskDone</h1>
+        <TaskDone done={() => alert('It is Done')} />
         <h1>TaskFilters</h1>
         <h1>AddTask</h1>
         <h1>TaskSort</h1>
