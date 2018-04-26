@@ -1,1 +1,22 @@
- 
+button{
+    height: 2em;
+    width: 4.3em;
+}
+
+.activeButtonMedium{
+     background-color: #ffcf00;
+     height: 2em;
+     width: 4.3em;
+ }
+
+ .activeButtonLow{
+     background-color: #4fff16;
+     height: 2em;
+     width: 4.3em;
+ }
+
+ .activeButtonHigh{
+     background-color: #ff0302;
+     height: 2em;
+     width: 4.3em;
+ }
