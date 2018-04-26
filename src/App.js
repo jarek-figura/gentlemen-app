@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import AddTask from "./components/AddTask/AddTask";
 import TaskDueDay from './components/TaskDueDay/TaskDueDay.js'
 import TaskDone from "./components/TaskDone/TaskDone";
 import TaskPostpone from "./components/TaskPostpone/TaskPostpone";
@@ -18,6 +19,7 @@ class App extends Component {
         <TaskDone done={() => alert('It is Done')} />
         <h1>TaskFilters</h1>
         <h1>AddTask</h1>
+        <AddTask addtask={() => alert('Add new Task !!!')} />
         <h1>TaskSort</h1>
         <h1>TaskFilter</h1>
         <h1>AddTaskPopup</h1>
