@@ -15,7 +15,7 @@ class App extends Component {
         <h1>TaskTitleText</h1>
         <h1>TaskTile</h1>
         <h1>TaskName</h1>
-          <TaskName/>
+        <TaskName/>
         <h1>TaskDone</h1>
         <TaskDone done={() => alert('It is Done')} />
         <h1>TaskFilters</h1>
