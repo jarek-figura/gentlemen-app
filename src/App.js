@@ -5,6 +5,7 @@ import TaskDone from "./components/TaskDone/TaskDone";
 import TaskPostpone from "./components/TaskPostpone/TaskPostpone";
 import TaskPriority from "./components/TaskPriority/TaskPriority";
 import TaskFilter from "./components/TaskFilter/TaskFilter";
+import TaskName from "./components/TaskName/TaskName";
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         <h1>TaskTitleText</h1>
         <h1>TaskTile</h1>
         <h1>TaskName</h1>
+          <TaskName/>
         <h1>TaskDone</h1>
         <TaskDone done={() => alert('It is Done')} />
         <h1>TaskFilters</h1>
