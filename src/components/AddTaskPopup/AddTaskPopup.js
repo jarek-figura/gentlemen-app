@@ -11,15 +11,15 @@ class AddTaskPopup extends Component {
   };
 
   // this should be moved to parent if applicable
-  removeTask = taskId => {
-    this.setState(
-      ({ tasks }) => ({
-        tasks: tasks.filter(
-          ({ id }) => id !== taskId
-        )
-      })
-    )
-  };
+  // removeTask = taskId => {
+  //   this.setState(
+  //     ({ tasks }) => ({
+  //       tasks: tasks.filter(
+  //         ({ id }) => id !== taskId
+  //       )
+  //     })
+  //   )
+  // };
 
   handleSubmit = event => {
     event.preventDefault();
@@ -67,15 +67,15 @@ class AddTaskPopup extends Component {
         </form>
 
         {/*this should be moved to parent*/}
-        <ul>{
-          this.state.tasks.map(
-            task => (
-              <li key={task.id}>
-                {task.name} : {task.description} <button onClick={() => this.removeTask(task.id)}>&times;</button>
-              </li>
-            )
-          )
-        }</ul>
+        {/*<ul>{*/}
+          {/*this.state.tasks.map(*/}
+            {/*task => (*/}
+              {/*<li key={task.id}>*/}
+                {/*{task.name} : {task.description} <button onClick={() => this.removeTask(task.id)}>&times;</button>*/}
+              {/*</li>*/}
+            {/*)*/}
+          {/*)*/}
+        {/*}</ul>*/}
 
         {/*<TaskPriority /> <TaskPriority /> <TaskPriority />*/}
 

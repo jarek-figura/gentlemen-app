@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
+
 import TaskDueDay from './components/TaskDueDay/TaskDueDay'
 import TaskDone from "./components/TaskDone/TaskDone";
+import TaskList from "./components/TaskList/TaskList";
 import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
 
 class App extends Component {
   state = {
     tasks: [],
+    isFormVisible: false,
     showOnlyNotDoneEnabled: false,
     showOnlyDoneEnabled: false
   };
@@ -58,6 +61,10 @@ class App extends Component {
     })
   };
 
+  toggleShowForm = () => {
+
+  };
+
   toggleTaskDone = this.toggleTaskAttribute('isDone');
 
   toggleTaskImportant = this.toggleTaskAttribute('isImportant');
@@ -72,52 +79,61 @@ class App extends Component {
         <h1>TaskDone</h1>
         <TaskDone done={() => alert('It is Done')} />
         <h1>TaskFilters</h1>
-        <h1>AddTask</h1>
         <h1>TaskSort</h1>
-        <h1>TaskFilter</h1>
         <h1>TaskPriority</h1>
         <h1>TaskDueDay</h1>
         <TaskDueDay/>
         <h1>TaskClosePopup</h1>
         <h1>EditTaskPopup</h1>
         <h1>TaskPostpone</h1>
-        {' '}
-        {' '}
-        <h1>AddTaskPopup</h1>
-        <AddTaskPopup addTask={this.addTask}/>
-        <button
-          onClick={() => this.setState({ showOnlyNotDoneEnabled: true })}
-        >Show only not done
-        </button>
+        <hr/>
 
-        <button
-          onClick={() => this.setState({
-            showOnlyNotDoneEnabled: false,
-            showOnlyDoneEnabled: false
-          })}
-        >Show all
-        </button>
-
-        <button
-          onClick={() => this.setState({ showOnlyDoneEnabled: true })}
-        >Show only done
-        </button>
-
-        <TaskList
+        {this.state.isFormVisible ?
+          <h1>AddTaskPopup</h1>
+          :
+          <div>
+          <h1>TaskList</h1>
+          < TaskList
           tasks={this.state.tasks.filter(
-            task => this.state.showOnlyNotDoneEnabled === false
-              ? true
-              : task.isDone === false
+          task => this.state.showOnlyNotDoneEnabled === false
+          ? true
+          : task.isDone === false
           ).filter(
-            task => this.state.showOnlyDoneEnabled === false
-              ? true
-              : task.isDone === true
+          task => this.state.showOnlyDoneEnabled === false
+          ? true
+          : task.isDone === true
           )}
           removeTask={this.removeTask}
           updateTask={this.updateTask}
           toggleTaskDone={this.toggleTaskDone}
           toggleTaskImportant={this.toggleTaskImportant}
-        />
+          />
+          <h1>TaskFilter</h1>
+          <button
+          onClick={() => this.setState({showOnlyNotDoneEnabled: true})}
+          >Show only not done
+          </button>
+          <button
+          onClick={() => this.setState({
+          showOnlyNotDoneEnabled: false,
+          showOnlyDoneEnabled: false
+        })}
+          >Show all
+          </button>
+          <button
+          onClick={() => this.setState({showOnlyDoneEnabled: true})}
+          >Show only done
+          </button>
+          </div>
+        }
+
+
+        <h1>AddTask</h1>
+        <button
+          onClick={this.toggleShowForm}
+        >
+        Dodaj zadanie
+        </button>
       </div>
     );
   }
