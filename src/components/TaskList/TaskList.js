@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-// import TaskContent from './TaskContent';
+import './TaskList.css'
+import TaskContent from "../TaskContent/TaskContent";
+
 // import TaskEditForm from './TaskEditForm';
 
 class TaskList extends Component {
@@ -8,14 +10,10 @@ class TaskList extends Component {
   };
 
   enterEditMode = taskId => {
-    this.setState({
-      editTaskId: taskId
-    })
+    this.setState({ editTaskId: taskId })
   };
   exitEditMode = () => {
-    this.setState({
-      editTaskId: null
-    })
+    this.setState({ editTaskId: null })
   };
 
   render() {
@@ -37,13 +35,13 @@ class TaskList extends Component {
                       {/*/>*/}
                     {/*)*/}
                     {/*: (*/}
-                      {/*<TaskContent*/}
-                        {/*task={task}*/}
-                        {/*enterEditMode={this.enterEditMode}*/}
-                        {/*removeTask={this.props.removeTask}*/}
-                        {/*toggleTaskDone={this.props.toggleTaskDone}*/}
-                        {/*toggleTaskImportant={this.props.toggleTaskImportant}*/}
-                      {/*/>*/}
+                      <TaskContent
+                        task={task}
+                        enterEditMode={this.enterEditMode}
+                        removeTask={this.props.removeTask}
+                        toggleTaskDone={this.props.toggleTaskDone}
+                        toggleTaskImportant={this.props.toggleTaskImportant}
+                      />
                     {/*)*/}
                 {/*}*/}
               </li>
