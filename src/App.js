@@ -58,7 +58,7 @@ class App extends Component {
     })
   };
 
-  toggleShowForm = () => {
+  toggleShowAddTaskPopup = () => {
     this.setState({
       isFormVisible: !this.isFormVisible
     })
@@ -110,6 +110,7 @@ class App extends Component {
               updateTask={this.updateTask}
               toggleTaskDone={this.toggleTaskDone}
               toggleTaskImportant={this.toggleTaskImportant}
+              toggleShowAddTaskPopup={this.toggleShowAddTaskPopup}
             />
 
             {/* filters - bottom left */}
@@ -123,7 +124,7 @@ class App extends Component {
 
             {/* button - bottom right */}
             <h1>AddTask</h1>
-            <button onClick={this.toggleShowForm}>Dodaj zadanie</button>
+            <button onClick={this.toggleShowAddTaskPopup}>Dodaj zadanie</button>
           </div>
         }
       </div>

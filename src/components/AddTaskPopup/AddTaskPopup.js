@@ -20,9 +20,7 @@ class AddTaskPopup extends Component {
       });
       return;
     }
-
     this.props.addTask(this.state.taskTitleText, this.state.taskDescription);
-
     this.setState({
       taskTitleText: '',
       taskDescription: ''
@@ -36,7 +34,9 @@ class AddTaskPopup extends Component {
       //     description: taskDescription
       //   })
       // })
-    )
+    );
+    debugger;
+    this.props.toggleShowAddTaskPopup();
   };
 
   handleChange = event => {
@@ -50,7 +50,7 @@ class AddTaskPopup extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit} id="form1">
-          { this.state.formError && <p>{this.state.formError.message}</p> }
+          {this.state.formError && <p>{this.state.formError.message}</p>}
           <input maxLength="50"
             name="taskTitleText"
             placeholder="Tytuł zadania"
@@ -69,7 +69,7 @@ class AddTaskPopup extends Component {
 
         {/*<TaskPriority /> <TaskPriority /> <TaskPriority />*/}
 
-        <TaskDueDay/>
+        <TaskDueDay />
         <br/>
         <button form="form1">Dodaj zadanie</button>
       </div>
