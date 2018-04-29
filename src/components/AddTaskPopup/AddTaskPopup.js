@@ -35,7 +35,6 @@ class AddTaskPopup extends Component {
       //   })
       // })
     );
-    debugger;
     this.props.toggleShowAddTaskPopup();
   };
 
@@ -71,7 +70,7 @@ class AddTaskPopup extends Component {
 
         <TaskDueDay />
         <br/>
-        <button form="form1">Dodaj zadanie</button>
+        <button form="form1">Dodaj</button>
       </div>
     )
   }
