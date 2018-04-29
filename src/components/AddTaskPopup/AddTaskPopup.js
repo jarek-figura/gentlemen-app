@@ -48,6 +48,7 @@ class AddTaskPopup extends Component {
   render() {
     return (
       <div>
+        <button onClick={this.props.toggleShowAddTaskPopup}>&times;</button>
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
           <input maxLength="50"

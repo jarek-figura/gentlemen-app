@@ -18,37 +18,40 @@ class TaskList extends Component {
 
   render() {
     return (
-      <ul>
-        {
-          this.props.tasks.map(
-            task => (
-              <li key={task.id}>
-                {/*{*/}
-                  {/*this.state.editTaskId === task.id*/}
-                    {/*? (*/}
-                      {/*<TaskEditForm*/}
-                        {/*taskId={task.id}*/}
-                        {/*taskName={task.name}*/}
-                        {/*taskDescription={task.description}*/}
-                        {/*updateTask={this.props.updateTask}*/}
-                        {/*exitEditMode={this.exitEditMode}*/}
-                      {/*/>*/}
-                    {/*)*/}
-                    {/*: (*/}
-                      <TaskContent
-                        task={task}
-                        enterEditMode={this.enterEditMode}
-                        removeTask={this.props.removeTask}
-                        toggleTaskDone={this.props.toggleTaskDone}
-                        toggleTaskImportant={this.props.toggleTaskImportant}
-                      />
-                    {/*)*/}
-                {/*}*/}
-              </li>
+      <div>
+        <p>!!! OK</p>
+        <ul>
+          {
+            this.props.tasks.map(
+              task => (
+                <li key={task.id}>
+                  {/*{*/}
+                    {/*this.state.editTaskId === task.id*/}
+                      {/*? (*/}
+                        {/*<TaskEditForm*/}
+                          {/*taskId={task.id}*/}
+                          {/*taskName={task.name}*/}
+                          {/*taskDescription={task.description}*/}
+                          {/*updateTask={this.props.updateTask}*/}
+                          {/*exitEditMode={this.exitEditMode}*/}
+                        {/*/>*/}
+                      {/*)*/}
+                      {/*: (*/}
+                        <TaskContent
+                          task={task}
+                          enterEditMode={this.enterEditMode}
+                          removeTask={this.props.removeTask}
+                          toggleTaskDone={this.props.toggleTaskDone}
+                          toggleTaskImportant={this.props.toggleTaskImportant}
+                        />
+                      {/*)*/}
+                  {/*}*/}
+                </li>
+              )
             )
-          )
-        }
-      </ul>
+          }
+        </ul>
+      </div>
     )
   }
 }

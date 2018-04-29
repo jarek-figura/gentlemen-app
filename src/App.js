@@ -90,7 +90,7 @@ class App extends Component {
         {this.state.isFormVisible
           ?
           <div>
-            <h1>AddTaskPopup</h1>
+            <h2>AddTaskPopup</h2>
             <AddTaskPopup
                 addTask={this.addTask}
                 toggleShowAddTaskPopup={this.toggleShowAddTaskPopup}
@@ -98,7 +98,7 @@ class App extends Component {
           </div>
           :
           <div>
-            <h1>TaskList</h1>
+            <h2>TaskList</h2>
             < TaskList
               tasks={this.state.tasks.filter(
                 task => this.state.showOnlyNotDoneEnabled === false
@@ -116,7 +116,7 @@ class App extends Component {
             />
 
             {/* filters - bottom left */}
-            <h1>TaskFilter</h1>
+            <h2>TaskFilter</h2>
             <button onClick={() => this.setState({showOnlyNotDoneEnabled: true})}>Pokaż niezrobione</button>
             <button onClick={() => this.setState({
               showOnlyNotDoneEnabled: false,
@@ -125,12 +125,25 @@ class App extends Component {
             <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż zrobione</button>
 
             {/* button - bottom right */}
-            <h1>AddTask</h1>
+            <h2>AddTask</h2>
             <button onClick={this.toggleShowAddTaskPopup}>Dodaj zadanie</button>
           </div>
         }
       </div>
     );
+  }
+
+  componentDidMount() {
+    const tasksAsText = localStorage.getItem('storedTasks');
+    const tasksFromLocalStorage = JSON.parse(tasksAsText);
+    this.setState({
+      tasks: tasksFromLocalStorage || []
+    })
+  }
+
+  componentDidUpdate() {
+    const tasks = this.state.tasks;
+    localStorage.setItem('storedTasks', JSON.stringify(tasks));
   }
 }
 
