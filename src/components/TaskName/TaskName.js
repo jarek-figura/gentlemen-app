@@ -5,18 +5,20 @@ import EditPopup from "../EditPopup/EditPopup";
 
 
 class TaskName extends Component {
-  render () {
+    render() {
 
-    return(
-        <BrowserRouter>
-        <div className="TaskName-border">
-            <Link to="/editpopup"><h1>Jakiś tam Task Title</h1></Link>
-          <Route path="/editpopup" component={EditPopup}/>
-        </div>
-        </BrowserRouter>
-    )
+        return (
+            <BrowserRouter>
+                <Link to="/editpopup">
+                    <div className="TaskName-border">
+                        <h1>Jakiś tam Task Title</h1>
+                        <Route path="/editpopup" component={EditPopup}/>
+                    </div>
+                </Link>
+            </BrowserRouter>
+        )
 
-  }
+    }
 }
 
 export default TaskName

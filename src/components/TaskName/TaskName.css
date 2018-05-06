@@ -1,4 +1,6 @@
 .TaskName-border {
+    width: 300px;
+    margin: 0 auto;
       border: #4fff16 2px solid;
     color: red;
     font-size: 5px;
