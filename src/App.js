@@ -6,6 +6,8 @@ import TaskPostpone from "./components/TaskPostpone/TaskPostpone";
 import TaskPriority from "./components/TaskPriority/TaskPriority";
 import TaskFilter from "./components/TaskFilter/TaskFilter";
 import TaskName from "./components/TaskName/TaskName";
+import {BrowserRouter, Route, Link} from 'react-router-dom'
+
 
 class App extends Component {
   render() {
@@ -36,6 +38,7 @@ class App extends Component {
         <h1>TaskFilter</h1>
         <TaskFilter/>
       </div>
+
     );
   }
 }
