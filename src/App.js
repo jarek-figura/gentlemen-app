@@ -118,11 +118,11 @@ class App extends Component {
             {/* filters - bottom left */}
             <h2>TaskFilter</h2>
             <button onClick={() => this.setState({showOnlyNotDoneEnabled: true})}>Pokaż niezrobione</button>
-            <button onClick={() => this.setState({
+            <span>&nbsp;</span><button onClick={() => this.setState({
               showOnlyNotDoneEnabled: false,
               showOnlyDoneEnabled: false
             })}>Pokaż wszystkie</button>
-            <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż zrobione</button>
+            <span>&nbsp;</span><button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż zrobione</button>
 
             {/* button - bottom right */}
             <h2>AddTask</h2>

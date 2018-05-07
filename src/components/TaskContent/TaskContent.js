@@ -21,8 +21,8 @@ class TaskContent extends Component {
           : (`${task.name} : ${task.description}`)
         }
 
-        <button onClick={() => this.props.enterEditMode(task.id)}>edit</button>
-        <button onClick={() => this.props.removeTask(task.id)}>delete</button>
+        <span>&nbsp;</span><button onClick={() => this.props.enterEditMode(task.id)}>edit</button>
+        <span>&nbsp;</span><button onClick={() => this.props.removeTask(task.id)}>delete</button>
       </div>
     )
   }
