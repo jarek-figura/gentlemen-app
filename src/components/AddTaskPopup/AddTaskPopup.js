@@ -9,7 +9,7 @@ class AddTaskPopup extends Component {
     taskTitleText: '',
     taskDescription: '',
     formError: null,
-    tasks: [ ]
+    // tasks: [ ]
   };
 
   handleSubmit = event => {
@@ -22,6 +22,7 @@ class AddTaskPopup extends Component {
       return;
     }
     this.props.addTask(this.state.taskTitleText, this.state.taskDescription);
+
     this.setState({
       taskTitleText: '',
       taskDescription: ''
@@ -55,7 +56,7 @@ class AddTaskPopup extends Component {
           <input maxLength="50"
             name="taskTitleText"
             placeholder="Tytuł zadania"
-            value={this.state.taskTitleText}
+            value={this.props.taskTitleText}
             onChange={this.handleChange}
           />
           <br/><br/>
@@ -63,14 +64,14 @@ class AddTaskPopup extends Component {
             cols="19"
             name="taskDescription"
             placeholder="Opis zadania"
-            value={this.state.taskDescription}
+            value={this.props.taskDescription}
             onChange={this.handleChange}
           />
         </form>
 
         <TaskDueDay /><br />
 
-        <TaskPriority/><br/>
+        <TaskPriority /><br/>
 
         <button form="form1">Dodaj</button>
       </div>
