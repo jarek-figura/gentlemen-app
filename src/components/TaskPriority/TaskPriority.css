@@ -1,1 +1,16 @@
- 
+.activeButtonMedium{
+     background-color: #ffcf00;
+
+
+ }
+
+ .activeButtonLow{
+     background-color: #4fff16;
+
+
+ }
+
+ .activeButtonHigh{
+     background-color: #ff0302;
+
+ }
