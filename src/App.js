@@ -11,7 +11,7 @@ class App extends Component {
     showOnlyDoneEnabled: false
   };
 
-  addTask = (taskName, taskDescription) => {
+   addTask = (taskName, taskDescription) => {
     this.setState(
       ({ tasks }) => ({
         tasks: tasks.concat({

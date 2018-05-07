@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './TaskList.css'
 import TaskContent from "../TaskContent/TaskContent";
+import TaskSearch from "../TaskSearch/TaskSearch";
 
 // import TaskEditForm from './TaskEditForm';
 
@@ -20,6 +21,7 @@ class TaskList extends Component {
     return (
       <div>
         <p>!!! OK</p>
+        <TaskSearch tasks={this.state.tasks}/>
         <ul>
           {
             this.props.tasks.map(
