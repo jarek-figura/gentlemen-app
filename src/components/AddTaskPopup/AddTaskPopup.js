@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './AddTaskPopup.css'
 // import TaskPriority from "../TaskPriority/TaskPriority";
 import TaskDueDay from "../TaskDueDay/TaskDueDay";
+import TaskPriority from "../TaskPriority/TaskPriority";
 
 class AddTaskPopup extends Component {
   state = {
@@ -67,10 +68,10 @@ class AddTaskPopup extends Component {
           />
         </form>
 
-        {/*<TaskPriority /> <TaskPriority /> <TaskPriority />*/}
+        <TaskDueDay /><br />
 
-        <TaskDueDay />
-        <br/>
+        <TaskPriority/><br/>
+
         <button form="form1">Dodaj</button>
       </div>
     )
