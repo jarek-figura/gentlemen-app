@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './TaskList.css'
-import TaskContent from "../TaskContent/TaskContent";
+import TaskContent from '../TaskContent/TaskContent';
 
 // import TaskEditForm from './TaskEditForm';
 
@@ -43,6 +43,7 @@ class TaskList extends Component {
                           removeTask={this.props.removeTask}
                           toggleTaskDone={this.props.toggleTaskDone}
                           toggleTaskImportant={this.props.toggleTaskImportant}
+                          toggleShowEditTaskPopup={this.props.toggleShowEditTaskPopup}
                         />
                       {/*)*/}
                   {/*}*/}
