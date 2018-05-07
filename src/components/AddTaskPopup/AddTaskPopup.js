@@ -8,13 +8,11 @@ class AddTaskPopup extends Component {
   state = {
     taskTitleText: '',
     taskDescription: '',
-    formError: null,
-    // tasks: [ ]
+    formError: null
   };
 
   handleSubmit = event => {
     event.preventDefault();
-
     if (this.state.taskTitleText.trim() === '') {
       this.setState({
         formError: new Error('Musisz podać tytuł zadania')
@@ -22,21 +20,10 @@ class AddTaskPopup extends Component {
       return;
     }
     this.props.addTask(this.state.taskTitleText, this.state.taskDescription);
-
     this.setState({
       taskTitleText: '',
       taskDescription: ''
-    }
-      // ({ tasks, taskTitleText, taskDescription }) => ({
-      //   taskTitleText: '',
-      //   taskDescription: '',
-      //   tasks: tasks.concat({
-      //     id: tasks.length === 0 ? 1 : Math.max(...tasks.map(task => task.id)) + 1,
-      //     name: taskTitleText,
-      //     description: taskDescription
-      //   })
-      // })
-    );
+    });
     this.props.toggleShowAddTaskPopup();
   };
 
@@ -69,7 +56,7 @@ class AddTaskPopup extends Component {
           />
         </form>
 
-        <TaskDueDay /><br />
+        <TaskDueDay /><br/>
 
         <TaskPriority /><br/>
 

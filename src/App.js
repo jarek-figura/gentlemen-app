@@ -6,8 +6,6 @@ import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
 class App extends Component {
   state = {
     tasks: [],
-    taskTitleText: '',
-    taskDescription: '',
     isFormVisible: false,
     currentForm: null, // 'add', 'edit'
     currentEditTask: null,
@@ -90,7 +88,8 @@ class App extends Component {
           />
         </div>
       ),
-      edit: () => (<div>
+      edit: () => (
+        <div>
           <h2>EditTaskPopup {this.state.currentEditTask}</h2>
           <AddTaskPopup
             addTask={this.addTask}
@@ -98,70 +97,52 @@ class App extends Component {
           />
         </div>
       )
-    }
-
+    };
     return options[formType]()
-  }
+  };
 
   render() {
     return (
       <div className="App">
-        {/*<h1>TaskBanner</h1>*/}
-        {/*<h1>TaskTitleText</h1>*/}
-        {/*<h1>TaskTile</h1>*/}
-        {/*<h1>TaskName</h1>*/}
-        {/*<h1>TaskDone</h1>*/}
-        {/*<TaskDone done={() => alert('It is Done')} />*/}
-        {/*<h1>TaskFilters</h1>*/}
-        {/*<h1>TaskSort</h1>*/}
-        {/*<h1>TaskPriority</h1>*/}
-        {/*<h1>TaskDueDay</h1>*/}
-        {/*<TaskDueDay/>*/}
-        {/*<h1>TaskClosePopup</h1>*/}
-        {/*<h1>EditTaskPopup</h1>*/}
-        {/*<h1>TaskPostpone</h1>*/}
-        {/*<hr/>*/}
-
         {this.state.currentForm === null
-          ?
-          <div>
-            <h2>TaskList</h2>
-            < TaskList
-              tasks={this.state.tasks.filter(
-                task => this.state.showOnlyNotDoneEnabled === false
-                  ? true
-                  : task.isDone === false
-              ).filter(
-                task => this.state.showOnlyDoneEnabled === false
-                  ? true
-                  : task.isDone === true
-              )}
-              removeTask={this.removeTask}
-              updateTask={this.updateTask}
-              toggleTaskDone={this.toggleTaskDone}
-              toggleTaskImportant={this.toggleTaskImportant}
-              toggleShowEditTaskPopup={this.toggleShowEditTaskPopup}
-            />
 
-            {/* filters - bottom left */}
-            <h2>TaskFilter</h2>
-            <button onClick={() => this.setState({showOnlyNotDoneEnabled: true})}>Pokaż niezrobione</button>
-            <span>&nbsp;</span>
-            <button onClick={() => this.setState({
-              showOnlyNotDoneEnabled: false,
-              showOnlyDoneEnabled: false
-            })}>Pokaż wszystkie
-            </button>
-            <span>&nbsp;</span>
-            <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż zrobione</button>
+          ? <div>
+              <h2>TaskList</h2>
+              < TaskList
+                tasks={this.state.tasks.filter(
+                  task => this.state.showOnlyNotDoneEnabled === false
+                    ? true
+                    : task.isDone === false
+                ).filter(
+                  task => this.state.showOnlyDoneEnabled === false
+                    ? true
+                    : task.isDone === true
+                )}
+                removeTask={this.removeTask}
+                updateTask={this.updateTask}
+                toggleTaskDone={this.toggleTaskDone}
+                toggleTaskImportant={this.toggleTaskImportant}
+                toggleShowEditTaskPopup={this.toggleShowEditTaskPopup}
+              />
 
-            {/* button - bottom right */}
-            <h2>AddTask</h2>
-            <button onClick={this.toggleShowAddTaskPopup}>Dodaj zadanie</button>
-          </div> :
+              {/* filters - bottom left */}
+              <h2>TaskFilter</h2>
+              <button onClick={() => this.setState({showOnlyNotDoneEnabled: true})}>Pokaż<br/>niezrobione</button>
+              <span>&nbsp;</span>
+              <button onClick={() => this.setState({
+                  showOnlyNotDoneEnabled: false,
+                  showOnlyDoneEnabled: false
+                })}>Pokaż<br/>wszystkie
+              </button>
+              <span>&nbsp;</span>
+              <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż<br/>zrobione</button>
 
-          this.displayForm(this.state.currentForm)
+              {/* button - bottom right */}
+              <h2>AddTask</h2>
+              <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
+            </div>
 
+          : this.displayForm(this.state.currentForm)
         }
       </div>
     );
