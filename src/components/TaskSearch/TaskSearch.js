@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import TaskContent from '../TaskContent/TaskContent';
 
 class TaskSearch extends Component {
-  constructor(){
+  constructor() {
     super();
+  }
 
-  render() {
+  render(){
     return (
       <div>
         <input type="search"></input>
