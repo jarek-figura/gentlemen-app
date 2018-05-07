@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import TaskList from "./components/TaskList/TaskList";
 import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
+import TaskSearch from "./components/TaskSearch/TaskSearch";
 
 class App extends Component {
   state = {
