@@ -5,7 +5,6 @@ class TaskContent extends Component {
     const task = this.props.task;
     return (
       <div>
-        {task.isImportant && '*'}
         <input
           type="checkbox"
           checked={task.isImportant}
@@ -22,7 +21,7 @@ class TaskContent extends Component {
         }
 
         <span>&nbsp;</span><button onClick={() => this.props.enterEditMode(task.id)}>edit</button>
-        <span>&nbsp;</span><button onClick={() => this.props.removeTask(task.id)}>delete</button>
+        <span>&nbsp;</span><button alt="Skasuj zadanie" onClick={() => this.props.removeTask(task.id)}>&times;</button>
       </div>
     )
   }
