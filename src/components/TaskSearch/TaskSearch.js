@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 
 class TaskSearch extends Component {
+  state = {
+    filterTasks: []
+  }
 
   filterTasks(e){
     const text = e.currentTarget.value;
@@ -14,8 +17,9 @@ class TaskSearch extends Component {
     return this.props.tasks.filter(task => task.toLowerCase().includes(text.toLowerCase()))
   }
 
+
   render(){
-    const TaskList = ({ tasks }) => {
+   const TaskList = ({ tasks }) => {
       if(this.props.tasks.length > 0) {
         return (
           <ul>
