@@ -44,6 +44,7 @@ class TaskList extends Component {
                         removeTask={this.props.removeTask}
                         toggleTaskDone={this.props.toggleTaskDone}
                         toggleTaskImportant={this.props.toggleTaskImportant}
+                        toggleShowEditTaskPopup={this.props.toggleShowEditTaskPopup}
                         />
                     </li>
                   )
