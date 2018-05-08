@@ -18,12 +18,15 @@ class TaskList extends Component {
     return (
       <div>
         {tasksFromProps.length !== 0 &&
-          <TaskSearch
-            updateSearchPhrase={this.updateSearchPhrase}
-          />
+          <span>
+            <h2>TaskList</h2>
+            <TaskSearch
+              updateSearchPhrase={this.updateSearchPhrase}
+            />
+          </span>
         }
         {tasksFromProps.length !== 0 ?
-
+          // show TaskList and search
           tasks.length === 0 ?
           <p>Brak wyników</p> :
           <ul>
@@ -42,7 +45,7 @@ class TaskList extends Component {
               )
             }
           </ul> :
-
+          // show banner
           <div className='banner'>Taskmen baner</div>
         }
       </div>

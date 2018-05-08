@@ -109,7 +109,6 @@ class App extends Component {
         {this.state.currentForm === null
           ?
           <div>
-            <h2>TaskList</h2>
             <TaskList
               tasks={this.state.tasks.filter(
                 task => this.state.showOnlyNotDoneEnabled === false
