@@ -17,31 +17,33 @@ class TaskList extends Component {
     );
     return (
       <div>
-        {
-          tasksFromProps.length !== 0 &&
-            <TaskSearch
-              updateSearchPhrase={this.updateSearchPhrase}
-            />
+        {tasksFromProps.length !== 0 &&
+          <TaskSearch
+            updateSearchPhrase={this.updateSearchPhrase}
+          />
         }
-        {
-          tasksFromProps.length !== 0 && tasks.length === 0 ?
+        {tasksFromProps.length !== 0 ?
+
+          tasks.length === 0 ?
           <p>Brak wyników</p> :
           <ul>
-          {
-            tasks.map(
-              task => (
-                <li key={task.id}>
-                  <TaskContent
-                    task={task}
-                    removeTask={this.props.removeTask}
-                    toggleTaskDone={this.props.toggleTaskDone}
-                    toggleShowEditTaskPopup={this.props.toggleShowEditTaskPopup}
-                  />
-                </li>
+            {
+              tasks.map(
+                task => (
+                  <li key={task.id}>
+                    <TaskContent
+                      task={task}
+                      removeTask={this.props.removeTask}
+                      toggleTaskDone={this.props.toggleTaskDone}
+                      toggleShowEditTaskPopup={this.props.toggleShowEditTaskPopup}
+                    />
+                  </li>
+                )
               )
-            )
-          }
-          </ul>
+            }
+          </ul> :
+
+          <div className='banner'>Taskmen baner</div>
         }
       </div>
     )
