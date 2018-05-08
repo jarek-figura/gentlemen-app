@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './AddTaskPopup.css'
-// import TaskPriority from "../TaskPriority/TaskPriority";
-import TaskDueDay from "../TaskDueDay/TaskDueDay";
+//import TaskDueDay from "../TaskDueDay/TaskDueDay";
 import TaskPriority from "../TaskPriority/TaskPriority";
+import moment from 'moment';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 class AddTaskPopup extends Component {
   state = {
+    isOpen: false,
+    startDate: moment(),
     taskTitleText: '',
     taskDescription: '',
     formError: null
@@ -19,11 +23,14 @@ class AddTaskPopup extends Component {
       });
       return;
     }
-    this.props.addTask(this.state.taskTitleText, this.state.taskDescription);
+
+    this.props.addTask(this.state.taskTitleText, this.state.taskDescription, this.state.startDate);
+
     this.setState({
       taskTitleText: '',
       taskDescription: ''
     });
+
     this.props.toggleShowAddTaskPopup();
   };
 
@@ -34,10 +41,17 @@ class AddTaskPopup extends Component {
     })
   };
 
+  handleDate = date => {
+    this.setState({
+      startDate: date
+    });
+  };
+
   render() {
     return (
       <div>
         <button onClick={this.props.toggleShowAddTaskPopup}>&times;</button>
+        <br/><br/>
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
           <input maxLength="50"
@@ -54,9 +68,13 @@ class AddTaskPopup extends Component {
             value={this.props.taskDescription}
             onChange={this.handleChange}
           />
-        </form>
+        </form><br/>
 
-        <TaskDueDay /><br/>
+        <DatePicker
+          selected={this.state.startDate}
+          onChange={this.handleDate}
+          withPortal
+        /><br/>
 
         <TaskPriority /><br/>
 

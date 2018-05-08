@@ -13,13 +13,14 @@ class App extends Component {
     showOnlyDoneEnabled: false
   };
 
-  addTask = (taskName, taskDescription) => {
+  addTask = (taskName, taskDescription, taskDueDate) => {
     this.setState(
       ({tasks}) => ({
         tasks: tasks.concat({
           id: tasks.length === 0 ? 1 : Math.max(...tasks.map(task => task.id)) + 1,
           name: taskName,
           description: taskDescription,
+          dueDate: taskDueDate,
           isDone: false,
           isImportant: false
         })
@@ -105,44 +106,44 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.currentForm === null
+          ?
+          <div>
+            <h2>TaskList</h2>
+            < TaskList
+              tasks={this.state.tasks.filter(
+                task => this.state.showOnlyNotDoneEnabled === false
+                  ? true
+                  : task.isDone === false
+              ).filter(
+                task => this.state.showOnlyDoneEnabled === false
+                  ? true
+                  : task.isDone === true
+              )}
+              removeTask={this.removeTask}
+              updateTask={this.updateTask}
+              toggleTaskDone={this.toggleTaskDone}
+              toggleTaskImportant={this.toggleTaskImportant}
+              toggleShowEditTaskPopup={this.toggleShowEditTaskPopup}
+            />
 
-          ? <div>
-              <h2>TaskList</h2>
-              < TaskList
-                tasks={this.state.tasks.filter(
-                  task => this.state.showOnlyNotDoneEnabled === false
-                    ? true
-                    : task.isDone === false
-                ).filter(
-                  task => this.state.showOnlyDoneEnabled === false
-                    ? true
-                    : task.isDone === true
-                )}
-                removeTask={this.removeTask}
-                updateTask={this.updateTask}
-                toggleTaskDone={this.toggleTaskDone}
-                toggleTaskImportant={this.toggleTaskImportant}
-                toggleShowEditTaskPopup={this.toggleShowEditTaskPopup}
-              />
+            {/* filters - bottom left */}
+            <h2>TaskFilter</h2>
+            <button onClick={() => this.setState({showOnlyNotDoneEnabled: true})}>Pokaż<br/>niezrobione</button>
+            <span>&nbsp;</span>
+            <button onClick={() => this.setState({
+              showOnlyNotDoneEnabled: false,
+              showOnlyDoneEnabled: false
+            })}>Pokaż<br/>wszystkie
+            </button>
+            <span>&nbsp;</span>
+            <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż<br/>zrobione</button>
 
-              {/* filters - bottom left */}
-              <h2>TaskFilter</h2>
-              <button onClick={() => this.setState({showOnlyNotDoneEnabled: true})}>Pokaż<br/>niezrobione</button>
-              <span>&nbsp;</span>
-              <button onClick={() => this.setState({
-                  showOnlyNotDoneEnabled: false,
-                  showOnlyDoneEnabled: false
-                })}>Pokaż<br/>wszystkie
-              </button>
-              <span>&nbsp;</span>
-              <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż<br/>zrobione</button>
-
-              {/* button - bottom right */}
-              <h2>AddTask</h2>
-              <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
-            </div>
-
-          : this.displayForm(this.state.currentForm)
+            {/* button - bottom right */}
+            <h2>AddTask</h2>
+            <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
+          </div>
+          :
+          this.displayForm(this.state.currentForm)
         }
       </div>
     );

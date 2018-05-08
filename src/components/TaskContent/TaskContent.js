@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class TaskContent extends Component {
   render() {
@@ -16,8 +16,8 @@ class TaskContent extends Component {
           onChange={() => this.props.toggleTaskDone(task.id)}
         />
         {task.isDone
-          ? (<del>{task.name} : {task.description}</del>)
-          : (`${task.name} : ${task.description}`)
+          ? (<del>{task.name} : {task.dueDate}</del>)
+          : (`${task.name} : ${task.dueDate}`)
         }
 
         <span>&nbsp;</span><button onClick={() => this.props.toggleShowEditTaskPopup(task.id)}>edit</button>
