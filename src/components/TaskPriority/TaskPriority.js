@@ -2,17 +2,16 @@ import React, {Component} from 'react';
 import './TaskPriority.css';
 
 class TaskPriority extends Component {
-
   state = {
-    activeButton: "medium",
-
+    activeButton: "medium"
   };
 
   handleClick = (event) => {
     const activeButtonName = event.currentTarget.name;
     this.setState({
       activeButton: activeButtonName
-    })
+    });
+    this.props.handlePriority(activeButtonName);
   };
 
   render(){

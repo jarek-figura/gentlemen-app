@@ -1,42 +1,36 @@
 import React, { Component } from 'react';
 import './AddTaskPopup.css'
-// import TaskPriority from "../TaskPriority/TaskPriority";
-import TaskDueDay from "../TaskDueDay/TaskDueDay";
 import TaskPriority from "../TaskPriority/TaskPriority";
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
+import TaskDueDay from "../TaskDueDay/TaskDueDay";
 
 class AddTaskPopup extends Component {
   state = {
+    isOpen: false,
+    startDate: moment(),
+    priority: 'medium',
     taskTitleText: '',
     taskDescription: '',
-    formError: null,
-    // tasks: [ ]
+    formError: null
   };
 
   handleSubmit = event => {
     event.preventDefault();
-
     if (this.state.taskTitleText.trim() === '') {
       this.setState({
         formError: new Error('Musisz podać tytuł zadania')
       });
       return;
     }
-    this.props.addTask(this.state.taskTitleText, this.state.taskDescription);
+
+    this.props.addTask(this.state.taskTitleText, this.state.taskDescription, this.state.startDate, this.state.priority);
 
     this.setState({
       taskTitleText: '',
       taskDescription: ''
-    }
-      // ({ tasks, taskTitleText, taskDescription }) => ({
-      //   taskTitleText: '',
-      //   taskDescription: '',
-      //   tasks: tasks.concat({
-      //     id: tasks.length === 0 ? 1 : Math.max(...tasks.map(task => task.id)) + 1,
-      //     name: taskTitleText,
-      //     description: taskDescription
-      //   })
-      // })
-    );
+    });
+
     this.props.toggleShowAddTaskPopup();
   };
 
@@ -47,10 +41,19 @@ class AddTaskPopup extends Component {
     })
   };
 
+  handleDate = date => {
+    this.setState({startDate: date});
+  };
+
+  handlePriority = imp => {
+    this.setState({priority: imp})
+  };
+
   render() {
     return (
       <div>
         <button onClick={this.props.toggleShowAddTaskPopup}>&times;</button>
+        <br/><br/>
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
           <input maxLength="50"
@@ -67,11 +70,15 @@ class AddTaskPopup extends Component {
             value={this.props.taskDescription}
             onChange={this.handleChange}
           />
-        </form>
+        </form><br/>
 
-        <TaskDueDay /><br />
+        <TaskDueDay
+          handleDate={this.handleDate}
+        />
 
-        <TaskPriority /><br/>
+        <TaskPriority
+          handlePriority={this.handlePriority}
+        /><br/>
 
         <button form="form1">Dodaj</button>
       </div>

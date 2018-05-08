@@ -27,13 +27,12 @@ class TaskList extends Component {
     )
     return (
       <div>
-        <p>!!! OK</p>
         <TaskSearch
           updateSearchPhrase={this.updateSearchPhrase}
         />
         {
           tasks.length === 0 ?
-            <p>No results</p> :
+            <p>Brak wyników</p> :
             <ul>
               {
                 tasks.map(
