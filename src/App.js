@@ -139,6 +139,12 @@ class App extends Component {
             <span>&nbsp;</span>
             <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż<br/>zrobione</button>
 
+            {/*button - task sort by priority */}
+            <br/>
+            <br/>
+
+            <button>Sortuj według <br /> ważności</button>
+
             {/* button - bottom right */}
             <h2>AddTask</h2>
             <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
