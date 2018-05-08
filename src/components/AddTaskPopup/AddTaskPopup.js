@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './AddTaskPopup.css'
-//import TaskDueDay from "../TaskDueDay/TaskDueDay";
 import TaskPriority from "../TaskPriority/TaskPriority";
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
@@ -10,7 +9,7 @@ class AddTaskPopup extends Component {
   state = {
     isOpen: false,
     startDate: moment(),
-    priority: '',
+    priority: 'medium',
     taskTitleText: '',
     taskDescription: '',
     formError: null
