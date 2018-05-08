@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import TaskList from "./components/TaskList/TaskList";
 import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
+import EditTaskPopup from "./components/EditTaskPopup/EditTaskPopup";
 
 class App extends Component {
   state = {
@@ -93,7 +94,7 @@ class App extends Component {
       edit: () => (
         <div>
           <h2>EditTaskPopup {this.state.currentEditTask}</h2>
-          <AddTaskPopup
+          <EditTaskPopup
             addTask={this.addTask}
             toggleShowAddTaskPopup={this.toggleShowEditTaskPopup}
           />
