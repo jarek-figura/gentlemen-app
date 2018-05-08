@@ -28,8 +28,8 @@ class TaskList extends Component {
     return (
       <div>
         <TaskSearch
-          updateSearchPhrase={this.updateSearchPhrase}
-        />
+            updateSearchPhrase={this.updateSearchPhrase}
+          />
         {
           tasks.length === 0 ?
             <p>Brak wyników</p> :

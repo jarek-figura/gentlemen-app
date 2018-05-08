@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 
+const sorta = require('sorta');
+
 class TaskFilter extends Component {
 
   render(){
+    console.log(sorta)
     return (
       <div>
-        <button className="filterBtn" name="byDueDate" onClick={this.handleClick}>DUE DATE</button>
-        <button className="filterBtn" name="byPriorityLevel" onClick={this.handleClick}>PRIORITY LEVEL</button>
+
+        <button  name="byDueDate" onClick={this.handleClick}>DUE DATE</button>
+        <button  name="byPriorityLevel" onClick={this.handleClick}>PRIORITY LEVEL</button>
       </div>
     )
   }
