@@ -8,25 +8,29 @@ class TaskContent extends Component {
     return (
       <div className={task.priority + ' ' + task.isDone + ' task'}>
 
-        {`${task.name} : ${moment(task.dueDate).format('DD-MM-YYYY')}`}
+        <span className="titles">
+          <strong>{task.name}</strong><br/>
+          {moment(task.dueDate).format('DD-MM-YYYY')}
+        </span>
 
-        <span>&nbsp;</span>
-        <button
-          onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
-        >edytuj</button>
+        <span className="buttons">
+          <button
+            onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
+          >edytuj</button>
 
-        <span>&nbsp;</span>
-        <input
-          type="checkbox"
-          checked={task.isDone}
-          onChange={() => this.props.toggleTaskDone(task.id)}
-        />
+          <span>&nbsp;</span>
+          <input
+            type="checkbox"
+            checked={task.isDone}
+            onChange={() => this.props.toggleTaskDone(task.id)}
+          />
 
-        <span>&nbsp;</span>
-        <button
-          title="Skasuj zadanie"
-          onClick={() => this.props.removeTask(task.id)}
-        >&times;</button>
+          <span>&nbsp;</span>
+          <button
+            title="Skasuj zadanie"
+            onClick={() => this.props.removeTask(task.id)}
+          >&times;</button>
+        </span>
       </div>
     )
   }

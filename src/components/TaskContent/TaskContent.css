@@ -15,6 +15,10 @@
 }
 
 .task {
-  display: inline-block;
+  display: flex;
   padding: 15px;
+}
+
+.buttons {
+  margin-left: 50px;
 }
