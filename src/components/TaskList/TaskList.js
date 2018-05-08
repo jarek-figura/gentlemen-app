@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import './TaskList.css'
-import TaskContent from '../TaskContent/TaskContent';
+import TaskContent from "../TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
 
 // import TaskEditForm from './TaskEditForm';
 
 class TaskList extends Component {
   state = {
-    editTaskId: null,
-    searchText: null
+    editTaskId: null
   };
 
   enterEditMode = taskId => {
@@ -22,7 +21,7 @@ class TaskList extends Component {
     return (
       <div>
         <p>!!! OK</p>
-        <TaskSearch/>
+        <TaskSearch tasks={this.state.tasks}/>
         <ul>
           {
             this.props.tasks.map(
@@ -46,7 +45,6 @@ class TaskList extends Component {
                           removeTask={this.props.removeTask}
                           toggleTaskDone={this.props.toggleTaskDone}
                           toggleTaskImportant={this.props.toggleTaskImportant}
-                          toggleShowEditTaskPopup={this.props.toggleShowEditTaskPopup}
                         />
                       {/*)*/}
                   {/*}*/}
