@@ -10,6 +10,7 @@ class AddTaskPopup extends Component {
   state = {
     isOpen: false,
     startDate: moment(),
+    priority: '',
     taskTitleText: '',
     taskDescription: '',
     formError: null
@@ -24,7 +25,7 @@ class AddTaskPopup extends Component {
       return;
     }
 
-    this.props.addTask(this.state.taskTitleText, this.state.taskDescription, this.state.startDate);
+    this.props.addTask(this.state.taskTitleText, this.state.taskDescription, this.state.startDate, this.state.priority);
 
     this.setState({
       taskTitleText: '',
@@ -42,9 +43,11 @@ class AddTaskPopup extends Component {
   };
 
   handleDate = date => {
-    this.setState({
-      startDate: date
-    });
+    this.setState({startDate: date});
+  };
+
+  handlePriority = imp => {
+    this.setState({priority: imp})
   };
 
   render() {
@@ -76,7 +79,9 @@ class AddTaskPopup extends Component {
           withPortal
         /><br/>
 
-        <TaskPriority /><br/>
+        <TaskPriority
+          handlePriority={this.handlePriority}
+        /><br/>
 
         <button form="form1">Dodaj</button>
       </div>

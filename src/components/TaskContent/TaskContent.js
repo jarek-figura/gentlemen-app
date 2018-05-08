@@ -16,12 +16,12 @@ class TaskContent extends Component {
           onChange={() => this.props.toggleTaskDone(task.id)}
         />
         {task.isDone
-          ? (<del>{task.name} : {task.dueDate}</del>)
+          ? (<del>{task.name} : {task.priority}</del>)
           : (`${task.name} : ${task.dueDate}`)
         }
 
         <span>&nbsp;</span><button onClick={() => this.props.toggleShowEditTaskPopup(task.id)}>edit</button>
-        <span>&nbsp;</span><button alt="Skasuj zadanie" onClick={() => this.props.removeTask(task.id)}>&times;</button>
+        <span>&nbsp;</span><button title="Skasuj zadanie" onClick={() => this.props.removeTask(task.id)}>&times;</button>
       </div>
     )
   }

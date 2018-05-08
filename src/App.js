@@ -13,7 +13,7 @@ class App extends Component {
     showOnlyDoneEnabled: false
   };
 
-  addTask = (taskName, taskDescription, taskDueDate) => {
+  addTask = (taskName, taskDescription, taskDueDate, taskPriority) => {
     this.setState(
       ({tasks}) => ({
         tasks: tasks.concat({
@@ -21,6 +21,7 @@ class App extends Component {
           name: taskName,
           description: taskDescription,
           dueDate: taskDueDate,
+          priority: taskPriority,
           isDone: false,
           isImportant: false
         })
