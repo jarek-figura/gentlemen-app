@@ -1,27 +1,36 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import moment from 'moment';
+import './TaskContent.css';
 
 class TaskContent extends Component {
   render() {
     const task = this.props.task;
     return (
-      <div>
-        <input
-          type="checkbox"
-          checked={task.isImportant}
-          onChange={() => this.props.toggleTaskImportant(task.id)}
-        />
-        <input
-          type="checkbox"
-          checked={task.isDone}
-          onChange={() => this.props.toggleTaskDone(task.id)}
-        />
-        {task.isDone
-          ? (<del>{task.name} : {task.description}</del>)
-          : (`${task.name} : ${task.description}`)
-        }
+      <div className={task.priority + ' ' + task.isDone + ' task'}>
 
-        <span>&nbsp;</span><button onClick={() => this.props.toggleShowEditTaskPopup(task.id)}>edit</button>
-        <span>&nbsp;</span><button alt="Skasuj zadanie" onClick={() => this.props.removeTask(task.id)}>&times;</button>
+        <span className="titles">
+          <strong>{task.name}</strong><br/>
+          {moment(task.dueDate).format('DD-MM-YYYY')}
+        </span>
+
+        <span className="buttons">
+          <button
+            onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
+          >edytuj</button>
+
+          <span>&nbsp;</span>
+          <input
+            type="checkbox"
+            checked={task.isDone}
+            onChange={() => this.props.toggleTaskDone(task.id)}
+          />
+
+          <span>&nbsp;</span>
+          <button
+            title="Skasuj zadanie"
+            onClick={() => this.props.removeTask(task.id)}
+          >&times;</button>
+        </span>
       </div>
     )
   }
