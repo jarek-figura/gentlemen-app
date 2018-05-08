@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './AddTaskPopup.css'
 import TaskPriority from "../TaskPriority/TaskPriority";
 import moment from 'moment';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import TaskDueDay from "../TaskDueDay/TaskDueDay";
 
 class AddTaskPopup extends Component {
   state = {
@@ -72,11 +72,9 @@ class AddTaskPopup extends Component {
           />
         </form><br/>
 
-        <DatePicker
-          selected={this.state.startDate}
-          onChange={this.handleDate}
-          withPortal
-        /><br/>
+        <TaskDueDay
+          handleDate={this.handleDate}
+        />
 
         <TaskPriority
           handlePriority={this.handlePriority}

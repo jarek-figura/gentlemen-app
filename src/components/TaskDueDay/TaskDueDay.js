@@ -10,6 +10,7 @@ class TaskDueDay extends Component {
  };
 
   handleChange = date => {
+    this.props.handleDate(date);
     this.setState({
       startDate: date
     });
