@@ -127,7 +127,7 @@ class App extends Component {
           ?
           <div>
             <h2>TaskList</h2>
-            < TaskList
+            <TaskList
               tasks={this.state.tasks.filter(
                 task => this.state.showOnlyNotDoneEnabled === false
                   ? true

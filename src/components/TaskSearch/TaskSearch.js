@@ -1,41 +1,14 @@
 import React, {Component} from 'react';
 
 class TaskSearch extends Component {
-  state = {
-    filterTasks: []
-  }
 
-  filterTasks(e){
-    const text = e.currentTarget.value;
-    const filteredTasks = this.getFilteredTasksForText(text)
-    this.setState({
-      filteredTasks
-    })
-  }
-
-  getFilteredTasksForText(text){
-    return this.props.tasks.filter(task => task.toLowerCase().includes(text.toLowerCase()))
-  }
+  handleChange = event => this.props.updateSearchPhrase(event.target.value)
 
 
   render(){
-   const TaskList = ({ tasks }) => {
-      if(this.props.tasks.length > 0) {
-        return (
-          <ul>
-            {tasks.map(task => <li key={task}>{task}</li>)}
-          </ul>
-        );
-      }
-      return (
-        <p>No result!</p>
-      );
-    };
-
     return(
       <div>
-        <input onInput={this.filterTasks.bind(this)}/>
-        <TaskList tasks={this.state.filteredTasks} />
+        <input value={this.props.searchPhrase} onChange={this.handleChange}/>
       </div>
     );
   }

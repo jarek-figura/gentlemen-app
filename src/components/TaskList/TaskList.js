@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import './TaskList.css'
 import TaskContent from "../TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
@@ -7,54 +7,52 @@ import TaskSearch from "../TaskSearch/TaskSearch";
 
 class TaskList extends Component {
   state = {
-    editTaskId: null
+    editTaskId: null,
+    searchPhrase: ''
   };
 
   enterEditMode = taskId => {
-    this.setState({ editTaskId: taskId })
+    this.setState({editTaskId: taskId})
   };
   exitEditMode = () => {
-    this.setState({ editTaskId: null })
+    this.setState({editTaskId: null})
   };
 
+  updateSearchPhrase = searchPhrase => this.setState({searchPhrase})
+
   render() {
+
+    const tasks = this.props.tasks.filter(
+      task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
+    )
     return (
       <div>
         <p>!!! OK</p>
         <TaskSearch
-          tasks={this.props.tasks}
-          />
-        <ul>
-          {
-            this.props.tasks.map(
-              task => (
-                <li key={task.id}>
-                  {/*{*/}
-                    {/*this.state.editTaskId === task.id*/}
-                      {/*? (*/}
-                        {/*<TaskEditForm*/}
-                          {/*taskId={task.id}*/}
-                          {/*taskName={task.name}*/}
-                          {/*taskDescription={task.description}*/}
-                          {/*updateTask={this.props.updateTask}*/}
-                          {/*exitEditMode={this.exitEditMode}*/}
-                        {/*/>*/}
-                      {/*)*/}
-                      {/*: (*/}
+          updateSearchPhrase={this.updateSearchPhrase}
+        />
+        {
+          tasks.length === 0 ?
+            <p>No results</p> :
+            <ul>
+              {
+                tasks.map(
+                  task => (
+                    <li key={task.id}>
                         <TaskContent
-                          task={task}
-                          enterEditMode={this.enterEditMode}
-                          removeTask={this.props.removeTask}
-                          toggleTaskDone={this.props.toggleTaskDone}
-                          toggleTaskImportant={this.props.toggleTaskImportant}
+                        task={task}
+                        enterEditMode={this.enterEditMode}
+                        removeTask={this.props.removeTask}
+                        toggleTaskDone={this.props.toggleTaskDone}
+                        toggleTaskImportant={this.props.toggleTaskImportant}
                         />
-                      {/*)*/}
-                  {/*}*/}
-                </li>
-              )
-            )
-          }
-        </ul>
+                    </li>
+                  )
+                )
+              }
+            </ul>
+        }
+
       </div>
     )
   }
