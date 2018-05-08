@@ -39,18 +39,6 @@ class App extends Component {
     })
   };
 
-  updateTask = (taskId, taskName, taskDescription) => {
-    this.setState({
-      tasks: this.state.tasks.map(
-        task => task.id !== taskId ? task : {
-          ...task,
-          name: taskName,
-          description: taskDescription
-        }
-      )
-    })
-  };
-
   toggleTaskAttribute = attributeName => taskId => {
     this.setState({
       tasks: this.state.tasks.map(
@@ -76,8 +64,6 @@ class App extends Component {
   };
 
   toggleTaskDone = this.toggleTaskAttribute('isDone');
-
-  toggleTaskImportant = this.toggleTaskAttribute('isImportant');
 
   displayForm = formType => {
     const options = {
@@ -120,9 +106,7 @@ class App extends Component {
                   : task.isDone === true
               )}
               removeTask={this.removeTask}
-              updateTask={this.updateTask}
               toggleTaskDone={this.toggleTaskDone}
-              toggleTaskImportant={this.toggleTaskImportant}
               toggleShowEditTaskPopup={this.toggleShowEditTaskPopup}
             />
 
