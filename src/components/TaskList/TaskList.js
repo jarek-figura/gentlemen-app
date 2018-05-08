@@ -21,7 +21,9 @@ class TaskList extends Component {
     return (
       <div>
         <p>!!! OK</p>
-        <TaskSearch tasks={this.state.tasks}/>
+        <TaskSearch
+          tasks={this.props.tasks}
+          />
         <ul>
           {
             this.props.tasks.map(

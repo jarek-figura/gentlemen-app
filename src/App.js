@@ -24,8 +24,8 @@ class App extends Component {
           name: taskName,
           description: taskDescription,
           isDone: false,
-          isImportant: false
-        })
+          isImportant: false,
+           })
       })
     )
   };

@@ -1,15 +1,6 @@
 import React, {Component} from 'react';
 
 class TaskSearch extends Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
-      filteredTasks: {
-        tasks: <TaskSearch tasks={this.state.tasks}/>
-      }
-    };
-  }
 
   filterTasks(e){
     const text = e.currentTarget.value;
@@ -20,12 +11,12 @@ class TaskSearch extends Component {
   }
 
   getFilteredTasksForText(text){
-    return this.tasks.filter(task => task.toLowerCase().includes(text.toLowerCase()))
+    return this.props.tasks.filter(task => task.toLowerCase().includes(text.toLowerCase()))
   }
 
   render(){
     const TaskList = ({ tasks }) => {
-      if(tasks.length > 0) {
+      if(this.props.tasks.length > 0) {
         return (
           <ul>
             {tasks.map(task => <li key={task}>{task}</li>)}
