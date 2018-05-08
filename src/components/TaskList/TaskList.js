@@ -11,8 +11,8 @@ class TaskList extends Component {
   updateSearchPhrase = searchPhrase => this.setState({searchPhrase});
 
   render() {
-
-    const tasks = this.props.tasks.filter(
+    const tasksFromProps = this.props.tasks;
+    const tasks = tasksFromProps.filter(
       task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
     );
     return (
