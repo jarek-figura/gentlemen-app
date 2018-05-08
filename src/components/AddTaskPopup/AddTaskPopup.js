@@ -15,6 +15,9 @@ class AddTaskPopup extends Component {
     formError: null
   };
 
+
+
+
   handleSubmit = event => {
     event.preventDefault();
     if (this.state.taskTitleText.trim() === '') {

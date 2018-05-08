@@ -40,13 +40,15 @@ class App extends Component {
     })
   };
 
-  updateTask = (taskId, taskName, taskDescription) => {
+  updateTask = (taskId, taskTitleText, taskDescription, taskDueDate, taskPriority) => {
     this.setState({
       tasks: this.state.tasks.map(
         task => task.id !== taskId ? task : {
           ...task,
-          name: taskName,
-          description: taskDescription
+          name: taskTitleText,
+          description: taskDescription,
+          dueDate: taskDueDate,
+          priority: taskPriority,
         }
       )
     })
@@ -95,7 +97,8 @@ class App extends Component {
         <div>
           <h2>EditTaskPopup {this.state.currentEditTask}</h2>
           <EditTaskPopup
-            addTask={this.addTask}
+            task={this.state.tasks.find(task => task.id === this.state.currentEditTask)}
+            updateTask={this.updateTask}
             toggleShowAddTaskPopup={this.toggleShowEditTaskPopup}
           />
         </div>

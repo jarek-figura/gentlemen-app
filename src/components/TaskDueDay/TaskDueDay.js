@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 class TaskDueDay extends Component {
 
  state = {
-   startDate: moment()
+   startDate: this.props.startDate
  };
 
   handleChange = date => {
