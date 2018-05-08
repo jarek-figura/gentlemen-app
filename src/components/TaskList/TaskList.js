@@ -17,11 +17,14 @@ class TaskList extends Component {
     );
     return (
       <div>
-        <TaskSearch
-          updateSearchPhrase={this.updateSearchPhrase}
-        />
         {
-          tasks.length === 0 ?
+          tasksFromProps.length !== 0 &&
+            <TaskSearch
+              updateSearchPhrase={this.updateSearchPhrase}
+            />
+        }
+        {
+          tasksFromProps.length !== 0 && tasks.length === 0 ?
           <p>Brak wyników</p> :
           <ul>
           {
