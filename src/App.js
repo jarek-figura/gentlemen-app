@@ -22,8 +22,7 @@ class App extends Component {
           description: taskDescription,
           dueDate: taskDueDate,
           priority: taskPriority,
-          isDone: false,
-          isImportant: false
+          isDone: false
         })
       })
     )
