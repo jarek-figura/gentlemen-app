@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './App.css';
 import TaskList from "./components/TaskList/TaskList";
 import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
-import TaskFilter from "./components/TaskFilter/TaskFilter";
 import moment from 'moment'
 
 class App extends Component {
@@ -141,10 +140,6 @@ class App extends Component {
             <span>&nbsp;</span>
             <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż<br/>zrobione</button>
 
-            {/*button - task filter by sth */}
-            <br/>
-            <br/>
-            <TaskFilter/>
 
             {/* button - bottom right */}
             <h2>AddTask</h2>

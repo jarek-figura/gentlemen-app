@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './TaskList.css'
 import TaskContent from "../TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
+import TaskFilter from "../TaskFilter/TaskFilter";
 
 // import TaskEditForm from './TaskEditForm';
 
@@ -9,7 +10,7 @@ class TaskList extends Component {
   state = {
     editTaskId: null,
     searchPhrase: '',
-    filterMode: true
+    dueDateSortMode: true
   };
 
   enterEditMode = taskId => {
@@ -19,20 +20,29 @@ class TaskList extends Component {
     this.setState({editTaskId: null})
   };
 
+  enableSortingByDueDate = () => {
+    this.setState({dueDateSortMode: !this.state.dueDateSortMode})
+  };
+
+  enableSortingByPriority= () => {
+    //TUTAJ ZACZNIJ :) tzn DuEDate ma pozaywać od najstarszych a potem na inny klik ma zaczynać od najnowszych
+  };
+
   updateSearchPhrase = searchPhrase => this.setState({searchPhrase})
 
   render() {
 
     const tasks = this.props.tasks.filter(
       task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
-    )
+    );
 
-    // Bartek Magic console.log(tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0))
+    // Bartek console.log(tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0))
 
-    {if(this.state.filterMode===true){
-      tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0)
+    {
+      if(this.state.dueDateSortMode===true){
+        tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0)
+        }
     }
-  }
 
     return (
       <div>
@@ -61,7 +71,12 @@ class TaskList extends Component {
               }
             </ul>
         }
-
+        {/*button - task filter by sth */}
+        <br/>
+        <br/>
+        <TaskFilter
+          enableSortingByDueDate={this.enableSortingByDueDate}
+          enableSortingByPriority={this.enableSortingByPriority}/>
       </div>
     )
   }
