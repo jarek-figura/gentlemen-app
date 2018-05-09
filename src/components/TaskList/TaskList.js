@@ -41,7 +41,10 @@ class TaskList extends Component {
     {
       if(this.state.dueDateSortMode===true){
         tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0)
-        }
+        } else {
+        tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? 1 : a.dueDate.isAfter(b.dueDate) ? -1 : 0)
+
+      }
     }
 
     return (
