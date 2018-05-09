@@ -25,7 +25,7 @@ class TaskList extends Component {
   };
 
   enableSortingByPriority= () => {
-    //TUTAJ ZACZNIJ :) tzn DuEDate ma pozaywać od najstarszych a potem na inny klik ma zaczynać od najnowszych
+    //TUTAJ ZACZNIJ :)
   };
 
   updateSearchPhrase = searchPhrase => this.setState({searchPhrase})
