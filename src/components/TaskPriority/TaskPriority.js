@@ -3,7 +3,7 @@ import './TaskPriority.css';
 
 class TaskPriority extends Component {
   state = {
-    activeButton: "medium"
+    activeButton: this.props.priority
   };
 
   handleClick = (event) => {
