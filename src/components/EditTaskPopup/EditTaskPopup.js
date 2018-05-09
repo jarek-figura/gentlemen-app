@@ -4,7 +4,7 @@ import TaskPriority from "../TaskPriority/TaskPriority";
 import moment from 'moment';
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css';
-import TaskDueDay from "../TaskDueDay/TaskDueDay";
+
 
 class EditTaskPopup extends Component {
   state = {
@@ -76,10 +76,7 @@ class EditTaskPopup extends Component {
         </form>
         <br/>
 
-        {/*<TaskDueDay*/}
-          {/*startDate={this.state.dueDate}*/}
-          {/*handleDate={this.handleDate}*/}
-        {/*/>*/}
+
         <DatePicker
           selected={this.state.dueDate || moment()}
           onChange={this.handleDate}
