@@ -1,38 +1,38 @@
-import React, { Component } from 'react';
-import './AddTaskPopup.css'
+import React, {Component} from 'react';
+import './EditTaskPopup.css'
 import TaskPriority from "../TaskPriority/TaskPriority";
 import moment from 'moment';
+import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css';
-import TaskDueDay from "../TaskDueDay/TaskDueDay";
 
-class AddTaskPopup extends Component {
+
+class EditTaskPopup extends Component {
   state = {
-    isOpen: false,
-    startDate: moment(),
-    priority: 'medium',
-    taskTitleText: '',
-    taskDescription: '',
     formError: null
   };
 
-
-
+  static getDerivedStateFromProps({ task }, prevState) {
+    return {
+      ...task
+    }
+  }
 
   handleSubmit = event => {
     event.preventDefault();
-    if (this.state.taskTitleText.trim() === '') {
+    if (this.state.name.trim() === '') {
       this.setState({
         formError: new Error('Musisz podać tytuł zadania')
       });
       return;
     }
 
-    this.props.addTask(this.state.taskTitleText, this.state.taskDescription, this.state.startDate, this.state.priority);
-
-    this.setState({
-      taskTitleText: '',
-      taskDescription: ''
-    });
+    this.props.updateTask(
+      this.state.id,
+      this.state.name,
+      this.state.description,
+      this.state.dueDate,
+      this.state.priority
+    );
 
     this.props.toggleShowAddTaskPopup();
   };
@@ -45,7 +45,7 @@ class AddTaskPopup extends Component {
   };
 
   handleDate = date => {
-    this.setState({startDate: date});
+    this.setState({dueDate: date});
   };
 
   handlePriority = imp => {
@@ -60,23 +60,26 @@ class AddTaskPopup extends Component {
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
           <input maxLength="50"
-            name="taskTitleText"
-            placeholder="Tytuł zadania"
-            value={this.props.taskTitleText}
-            onChange={this.handleChange}
+                 name="name"
+                 placeholder="Tytuł zadania"
+                 value={this.state.name}
+                 onChange={this.handleChange}
           />
           <br/><br/>
           <textarea rows="4"
-            cols="19"
-            name="taskDescription"
-            placeholder="Opis zadania"
-            value={this.props.taskDescription}
-            onChange={this.handleChange}
+                    cols="19"
+                    name="description"
+                    placeholder="Opis zadania"
+                    value={this.state.description}
+                    onChange={this.handleChange}
           />
-        </form><br/>
+        </form>
+        <br/>
 
-        <TaskDueDay
-          handleDate={this.handleDate}
+
+        <DatePicker
+          selected={this.state.dueDate || moment()}
+          onChange={this.handleDate}
         />
 
         <TaskPriority
@@ -89,4 +92,4 @@ class AddTaskPopup extends Component {
   }
 }
 
-export default AddTaskPopup;
+export default EditTaskPopup;
