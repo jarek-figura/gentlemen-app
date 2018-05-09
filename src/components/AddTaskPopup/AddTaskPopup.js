@@ -15,9 +15,6 @@ class AddTaskPopup extends Component {
     formError: null
   };
 
-
-
-
   handleSubmit = event => {
     event.preventDefault();
     if (this.state.taskTitleText.trim() === '') {
@@ -80,6 +77,7 @@ class AddTaskPopup extends Component {
         />
 
         <TaskPriority
+          priority={this.state.priority}
           handlePriority={this.handlePriority}
         /><br/>
 
