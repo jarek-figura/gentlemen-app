@@ -25,6 +25,7 @@ class TaskList extends Component {
     const tasks = this.props.tasks.filter(
       task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
     )
+    console.log(tasks.slice().sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0))
     return (
       <div>
         <TaskSearch

@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 
-const sorta = require('sorta');
-
 class TaskFilter extends Component {
 
   render(){
-    console.log(sorta)
     return (
       <div>
 

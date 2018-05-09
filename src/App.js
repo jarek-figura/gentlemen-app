@@ -3,6 +3,7 @@ import './App.css';
 import TaskList from "./components/TaskList/TaskList";
 import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
 import TaskFilter from "./components/TaskFilter/TaskFilter";
+import moment from 'moment'
 
 class App extends Component {
   state = {
@@ -160,7 +161,7 @@ class App extends Component {
     const tasksAsText = localStorage.getItem('storedTasks');
     const tasksFromLocalStorage = JSON.parse(tasksAsText);
     this.setState({
-      tasks: tasksFromLocalStorage || []
+      tasks: (tasksFromLocalStorage || []).map(task => ({...task, dueDate: moment(task.dueDate)}))
     })
   }
 
