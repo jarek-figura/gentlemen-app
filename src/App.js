@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import TaskList from "./components/TaskList/TaskList";
 import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
+import EditTaskPopup from "./components/EditTaskPopup/EditTaskPopup";
 
 class App extends Component {
   state = {
@@ -39,13 +40,15 @@ class App extends Component {
     })
   };
 
-  updateTask = (taskId, taskName, taskDescription) => {
+  updateTask = (taskId, taskTitleText, taskDescription, taskDueDate, taskPriority) => {
     this.setState({
       tasks: this.state.tasks.map(
         task => task.id !== taskId ? task : {
           ...task,
-          name: taskName,
-          description: taskDescription
+          name: taskTitleText,
+          description: taskDescription,
+          dueDate: taskDueDate,
+          priority: taskPriority,
         }
       )
     })
@@ -93,8 +96,9 @@ class App extends Component {
       edit: () => (
         <div>
           <h2>EditTaskPopup {this.state.currentEditTask}</h2>
-          <AddTaskPopup
-            addTask={this.addTask}
+          <EditTaskPopup
+            task={this.state.tasks.find(task => task.id === this.state.currentEditTask)}
+            updateTask={this.updateTask}
             toggleShowAddTaskPopup={this.toggleShowEditTaskPopup}
           />
         </div>
