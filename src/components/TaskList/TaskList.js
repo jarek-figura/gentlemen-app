@@ -8,7 +8,8 @@ import TaskSearch from "../TaskSearch/TaskSearch";
 class TaskList extends Component {
   state = {
     editTaskId: null,
-    searchPhrase: ''
+    searchPhrase: '',
+    filterMode: true
   };
 
   enterEditMode = taskId => {
@@ -25,7 +26,14 @@ class TaskList extends Component {
     const tasks = this.props.tasks.filter(
       task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
     )
-    console.log(tasks.slice().sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0))
+
+    // Bartek Magic console.log(tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0))
+
+    {if(this.state.filterMode===true){
+      tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0)
+    }
+  }
+
     return (
       <div>
         <TaskSearch

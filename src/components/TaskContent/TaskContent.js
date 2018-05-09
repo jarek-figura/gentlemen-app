@@ -11,7 +11,6 @@ class TaskContent extends Component {
         <span className="titles">
           <strong>{task.name}</strong><br/>
           {moment(task.dueDate).format('DD-MM-YYYY')}
-          {console.log(task.dueDate)}
         </span>
 
         <span className="buttons">
