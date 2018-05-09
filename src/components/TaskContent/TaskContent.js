@@ -14,19 +14,19 @@ class TaskContent extends Component {
         </div>
 
         <div className="buttons">
-          <button
-            onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
-          >edytuj</button>
-
-          <span>&nbsp;</span>
-          <input
+          <input className='done-checkbox'
             type="checkbox"
             checked={task.isDone}
             onChange={() => this.props.toggleTaskDone(task.id)}
           />
 
           <span>&nbsp;</span>
-          <button
+          <button className='edit-button'
+            onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
+          >edytuj</button>
+
+          <span>&nbsp;</span>
+          <button className='delete-button'
             title="Skasuj zadanie"
             onClick={() => this.props.removeTask(task.id)}
           >&times;</button>
