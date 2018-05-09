@@ -18,8 +18,8 @@ class TaskList extends Component {
     return (
       <div>
         {tasksFromProps.length !== 0 &&
-          <span>
-            <h2>TaskList</h2>
+          <span className='task-list'>
+            <h3>Zadania do zrobienia</h3>
             <TaskSearch
               updateSearchPhrase={this.updateSearchPhrase}
             />
@@ -28,7 +28,7 @@ class TaskList extends Component {
         {tasksFromProps.length !== 0 ?
           // show TaskList and search
           tasks.length === 0 ?
-          <p>Brak wyników</p> :
+          <p className='no-result'>Brak wyników</p> :
           <ul>
             {
               tasks.map(
@@ -46,7 +46,7 @@ class TaskList extends Component {
             }
           </ul> :
           // show banner
-          <div className='banner'>Taskmen baner</div>
+          <h1 className='banner'>Taskmen baner</h1>
         }
       </div>
     )

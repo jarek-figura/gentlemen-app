@@ -8,12 +8,12 @@ class TaskContent extends Component {
     return (
       <div className={task.priority + ' ' + task.isDone + ' task'}>
 
-        <span className="titles">
+        <div className="titles">
           <strong>{task.name}</strong><br/>
           {moment(task.dueDate).format('DD-MM-YYYY')}
-        </span>
+        </div>
 
-        <span className="buttons">
+        <div className="buttons">
           <button
             onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
           >edytuj</button>
@@ -30,7 +30,7 @@ class TaskContent extends Component {
             title="Skasuj zadanie"
             onClick={() => this.props.removeTask(task.id)}
           >&times;</button>
-        </span>
+        </div>
       </div>
     )
   }

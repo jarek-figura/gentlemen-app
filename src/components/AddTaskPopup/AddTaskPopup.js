@@ -56,20 +56,21 @@ class AddTaskPopup extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.props.toggleShowAddTaskPopup}>&times;</button>
+      <div className='add-task'>
+        <h3>Dodaj zadanie</h3>
+        <button title='zaniechaj' onClick={this.props.toggleShowAddTaskPopup}>&times;</button>
         <br/><br/>
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
-          <input maxLength="50"
+          <input className='task-title'
             name="taskTitleText"
             placeholder="Tytuł zadania"
             value={this.props.taskTitleText}
             onChange={this.handleChange}
           />
           <br/><br/>
-          <textarea rows="4"
-            cols="19"
+          <textarea className='task-area'
+            rows='6'
             name="taskDescription"
             placeholder="Opis zadania"
             value={this.props.taskDescription}
@@ -80,7 +81,7 @@ class AddTaskPopup extends Component {
         <TaskDueDay
           startDate={this.state.startDate || moment()}
           handleDate={this.handleDate}
-        />
+        /><br/>
 
         <TaskPriority
           priority={this.state.priority}

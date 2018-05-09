@@ -1,0 +1,16 @@
+.task-title {
+  font-size: 1em;
+  height: 24px;
+  text-align: center;
+}
+
+.task-area {
+  font-size: 1em;
+  text-align: center;
+}
+
+.add-task {
+  max-width: 600px;
+  text-align: center;
+  background-color: aquamarine;
+}

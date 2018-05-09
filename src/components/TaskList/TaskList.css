@@ -9,6 +9,15 @@ li {
 }
 
 .banner {
-  min-height: 300px;
-  border: solid grey 1px;
+  height: calc(100vh - 168px);
+  padding-top: 30px;
+  text-align: center;
+}
+
+.task-list {
+  text-align: center;
+}
+
+.no-result {
+  text-align: center;
 }
