@@ -88,7 +88,7 @@ class AddTaskPopup extends Component {
           handlePriority={this.handlePriority}
         /><br/>
 
-        <button form="form1">Dodaj</button>
+        <button className='add-task-button' form="form1">Dodaj</button>
       </div>
     )
   }

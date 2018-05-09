@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import './TaskDueDay.css';
 
 class TaskDueDay extends Component {
   state = {
@@ -16,7 +17,7 @@ class TaskDueDay extends Component {
 
   render() {
     return (
-      <DatePicker
+      <DatePicker className='date-picker'
         selected={this.state.startDate}
         onChange={this.handleChange}
         withPortal

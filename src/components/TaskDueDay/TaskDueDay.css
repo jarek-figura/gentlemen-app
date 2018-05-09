@@ -1,0 +1,9 @@
+.date-picker {
+  font-size: 1rem;
+  text-align: center;
+  height: 24px;
+}
+
+.date-picker:hover {
+  cursor: pointer;
+}
