@@ -83,7 +83,6 @@ class App extends Component {
     const options = {
       add: () => (
         <div>
-          <h2>AddTaskPopup</h2>
           <AddTaskPopup
             addTask={this.addTask}
             toggleShowAddTaskPopup={this.toggleShowAddTaskPopup}
@@ -125,21 +124,23 @@ class App extends Component {
               toggleShowEditTaskPopup={this.toggleShowEditTaskPopup}
             />
 
-            {/* filters - bottom left */}
-            <h2>TaskFilter</h2>
-            <button onClick={() => this.setState({showOnlyNotDoneEnabled: true})}>Pokaż<br/>niezrobione</button>
-            <span>&nbsp;</span>
-            <button onClick={() => this.setState({
-              showOnlyNotDoneEnabled: false,
-              showOnlyDoneEnabled: false
-            })}>Pokaż<br/>wszystkie
-            </button>
-            <span>&nbsp;</span>
-            <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż<br/>zrobione</button>
+            <nav className='nav-bottom'>
+              {/* filters - bottom left */}
+              <h3>Filtry</h3>
+              <button onClick={() => this.setState({showOnlyNotDoneEnabled: true})}>Pokaż<br/>niezrobione</button>
+              <span>&nbsp;</span>
+              <button onClick={() => this.setState({
+                showOnlyNotDoneEnabled: false,
+                showOnlyDoneEnabled: false
+              })}>Pokaż<br/>wszystkie
+              </button>
+              <span>&nbsp;</span>
+              <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż<br/>zrobione</button>
 
-            {/* button - bottom right */}
-            <h2>AddTask</h2>
-            <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
+              {/* button - bottom right */}
+              <span>&nbsp;</span>
+              <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
+            </nav>
           </div>
           :
           this.displayForm(this.state.currentForm)

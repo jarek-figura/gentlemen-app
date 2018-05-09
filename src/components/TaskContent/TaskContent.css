@@ -15,10 +15,37 @@
 }
 
 .task {
-  display: flex;
   padding: 15px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .buttons {
-  margin-left: 50px;
+  position: relative;
+}
+
+.edit-button {
+  font-size: 1em;
+  height: 30px;
+}
+
+.delete-button {
+  font-size: 1em;
+  height: 30px;
+  width: 30px;
+}
+
+.done-checkbox {
+  position: absolute;
+  margin: 0;
+  left: -30px;
+  height: 31px;
+  width: 31px;
+  background-color: #eee;
+}
+
+.done-checkbox:hover {
+  cursor: pointer;
 }

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './TaskSearch.css'
 
 class TaskSearch extends Component {
 
@@ -6,8 +7,8 @@ class TaskSearch extends Component {
 
   render(){
     return(
-      <div>
-        <input
+      <div className='search-div'>
+        <input className='search-input'
           placeholder='wyszukaj zadania'
           value={this.props.searchPhrase}
           onChange={this.handleChange}
