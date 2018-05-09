@@ -92,7 +92,7 @@ class App extends Component {
       ),
       edit: () => (
         <div>
-          <h2>EditTaskPopup {this.state.currentEditTask}</h2>
+          <h2>EditTaskPopup</h2>
           <EditTaskPopup
             task={this.state.tasks.find(task => task.id === this.state.currentEditTask)}
             updateTask={this.updateTask}

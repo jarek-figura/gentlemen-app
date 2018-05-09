@@ -77,6 +77,8 @@ class EditTaskPopup extends Component {
         <DatePicker
           selected={this.state.dueDate || moment()}
           onChange={this.handleDate}
+          withPortal
+          dateFormat="DD-MM-YYYY"
         />
         <TaskPriority
           priority={this.state.priority}
