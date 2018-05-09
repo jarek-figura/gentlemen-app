@@ -7,3 +7,8 @@ ul {
 li {
   margin: 5px 0;
 }
+
+.banner {
+  min-height: 300px;
+  border: solid grey 1px;
+}

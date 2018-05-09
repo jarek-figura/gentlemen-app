@@ -24,7 +24,12 @@ class AddTaskPopup extends Component {
       return;
     }
 
-    this.props.addTask(this.state.taskTitleText, this.state.taskDescription, this.state.startDate, this.state.priority);
+    this.props.addTask(
+      this.state.taskTitleText,
+      this.state.taskDescription,
+      this.state.startDate,
+      this.state.priority
+    );
 
     this.setState({
       taskTitleText: '',
@@ -73,6 +78,7 @@ class AddTaskPopup extends Component {
         </form><br/>
 
         <TaskDueDay
+          startDate={this.state.startDate || moment()}
           handleDate={this.handleDate}
         />
 

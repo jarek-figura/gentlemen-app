@@ -23,8 +23,7 @@ class App extends Component {
           description: taskDescription,
           dueDate: taskDueDate,
           priority: taskPriority,
-          isDone: false,
-          isImportant: false
+          isDone: false
         })
       })
     )
@@ -80,8 +79,6 @@ class App extends Component {
 
   toggleTaskDone = this.toggleTaskAttribute('isDone');
 
-  toggleTaskImportant = this.toggleTaskAttribute('isImportant');
-
   displayForm = formType => {
     const options = {
       add: () => (
@@ -95,7 +92,7 @@ class App extends Component {
       ),
       edit: () => (
         <div>
-          <h2>EditTaskPopup {this.state.currentEditTask}</h2>
+          <h2>EditTaskPopup</h2>
           <EditTaskPopup
             task={this.state.tasks.find(task => task.id === this.state.currentEditTask)}
             updateTask={this.updateTask}
@@ -113,7 +110,6 @@ class App extends Component {
         {this.state.currentForm === null
           ?
           <div>
-            <h2>TaskList</h2>
             <TaskList
               tasks={this.state.tasks.filter(
                 task => this.state.showOnlyNotDoneEnabled === false
@@ -125,9 +121,7 @@ class App extends Component {
                   : task.isDone === true
               )}
               removeTask={this.removeTask}
-              updateTask={this.updateTask}
               toggleTaskDone={this.toggleTaskDone}
-              toggleTaskImportant={this.toggleTaskImportant}
               toggleShowEditTaskPopup={this.toggleShowEditTaskPopup}
             />
 
