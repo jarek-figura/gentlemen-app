@@ -58,7 +58,7 @@ class AddTaskPopup extends Component {
     return (
       <div className='add-task'>
         <h3>Dodaj zadanie</h3>
-        <button title='zaniechaj' onClick={this.props.toggleShowAddTaskPopup}>&times;</button>
+        <button className='cancel-button' title='zaniechaj' onClick={this.props.toggleShowAddTaskPopup}>&times;</button>
         <br/><br/>
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
