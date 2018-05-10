@@ -58,8 +58,7 @@ class EditTaskPopup extends Component {
         <br/><br/>
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
-          <input maxLength="50"
-                 name="name"
+          <input name="name"
                  placeholder="Tytuł zadania"
                  value={this.state.name}
                  onChange={this.handleChange}
@@ -75,7 +74,7 @@ class EditTaskPopup extends Component {
         </form>
         <br/>
         <DatePicker
-          selected={this.state.dueDate || moment()}
+          selected={moment(this.state.dueDate) || moment()}
           onChange={this.handleDate}
           withPortal
           dateFormat="DD-MM-YYYY"

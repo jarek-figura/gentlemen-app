@@ -146,15 +146,25 @@ class App extends Component {
             <nav className='nav-bottom'>
               {/* filters - bottom left */}
               <h3>Filtry</h3>
-              <button onClick={() => this.setState({showOnlyNotDoneEnabled: true})}>Pokaż<br/>niezrobione</button>
+
+              <span>&nbsp;</span>
+              {this.state.showOnlyDoneEnabled === false ?
+                <button onClick={() => this.setState({
+                  showOnlyDoneEnabled: true,
+                  showOnlyNotDoneEnabled: false
+                })}>Pokaż<br/>zrobione</button> :
+                <button onClick={() => this.setState({
+                  showOnlyNotDoneEnabled: true,
+                  showOnlyDoneEnabled: false
+                })}>Pokaż<br/>niezrobione</button>
+              }
+
               <span>&nbsp;</span>
               <button onClick={() => this.setState({
                 showOnlyNotDoneEnabled: false,
                 showOnlyDoneEnabled: false
               })}>Pokaż<br/>wszystkie
               </button>
-              <span>&nbsp;</span>
-              <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż<br/>zrobione</button>
 
               {/* button - bottom right */}
               <span>&nbsp;</span>
