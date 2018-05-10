@@ -18,6 +18,8 @@ class App extends Component {
     searchPhrase: ''
   };
 
+  updateSearchPhrase = searchPhrase => this.setState({searchPhrase});
+
   addTask = (taskName, taskDescription, taskDueDate, taskPriority) => {
     this.setState(
       ({tasks}) => ({
@@ -111,7 +113,12 @@ class App extends Component {
     return options[formType]()
   };
 
+  tasksBeforeFilter = () => {
+    return this.state.tasks;
+  }
+
   render() {
+
     const tasks = this.state.tasks.filter(
       task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
     );
@@ -141,6 +148,8 @@ class App extends Component {
               updateTask={this.updateTask}
               toggleTaskDone={this.toggleTaskDone}
               toggleShowEditTaskPopup={this.toggleShowEditTaskPopup}
+              updateSearchPhrase={this.updateSearchPhrase}
+              tasksBeforeFilter={this.tasksBeforeFilter}
             />
 
             <nav className='nav-bottom'>

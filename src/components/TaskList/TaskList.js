@@ -9,26 +9,23 @@ class TaskList extends Component {
 
   };
 
-  updateSearchPhrase = searchPhrase => this.setState({searchPhrase});
 
   enableSortingByPriority= () => {
     //TUTAJ ZACZNIJ :)
   };
 
   render() {
-    const tasksFromProps = this.props.tasks;
-
-   return (
+     return (
       <div>
-        {tasksFromProps.length !== 0 &&
+        {this.props.tasksBeforeFilter().length !== 0 &&
         <span className='task-list'>
             <h3>Zadania do zrobienia</h3>
         <TaskSearch
-            updateSearchPhrase={this.updateSearchPhrase}
+            updateSearchPhrase={this.props.updateSearchPhrase}
           />
           </span> }
         {
-          tasksFromProps.length !== 0 ?
+          this.props.tasksBeforeFilter().length !== 0 ?
             // show TaskList and search
             this.props.tasks.length === 0 ?
               <p className='no-result'>Brak wyników</p> :
