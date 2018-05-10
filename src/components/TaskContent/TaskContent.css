@@ -22,8 +22,16 @@
   align-items: center;
 }
 
+.titles {
+  width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .buttons {
   position: relative;
+  white-space: nowrap;
 }
 
 .edit-button {
@@ -48,4 +56,20 @@
 
 .done-checkbox:hover {
   cursor: pointer;
+}
+
+@media (min-width: 375px) {
+  .titles {
+    width: 210px;
+  }
+}
+@media (min-width: 414px) {
+  .titles {
+    width: 250px;
+  }
+}
+@media (min-width: 600px) {
+  .titles {
+    width: 420px;
+  }
 }
