@@ -3,6 +3,7 @@ import './TaskList.css'
 import TaskContent from "../TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
 import TaskFilter from "../TaskFilter/TaskFilter";
+import moment from 'moment'
 
 class TaskList extends Component {
   state = {
@@ -29,11 +30,10 @@ class TaskList extends Component {
     );
 
     {
-      if(this.state.dueDateSortMode===true){
-        tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0)
+      if (this.state.dueDateSortMode === true) {
+        tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? -1 : moment(a.dueDate).isAfter(b.dueDate) ? 1 : 0)
       } else {
-        tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? 1 : a.dueDate.isAfter(b.dueDate) ? -1 : 0)
-
+        tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? 1 : moment(a.dueDate).isAfter(b.dueDate) ? -1 : 0)
       }
     }
 
