@@ -9,14 +9,14 @@ class AddTaskPopup extends Component {
     isOpen: false,
     dueDate: moment(),
     priority: 'medium',
-    taskTitleText: '',
-    taskDescription: '',
+    name: '',
+    description: '',
     formError: null
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    if (this.state.taskTitleText.trim() === '') {
+    if (this.state.name.trim() === '') {
       this.setState({
         formError: new Error('Musisz podać tytuł zadania')
       });
@@ -24,15 +24,15 @@ class AddTaskPopup extends Component {
     }
 
     this.props.addTask(
-      this.state.taskTitleText,
-      this.state.taskDescription,
+      this.state.name,
+      this.state.description,
       this.state.dueDate,
       this.state.priority
     );
 
     this.setState({
-      taskTitleText: '',
-      taskDescription: ''
+      name: '',
+      description: ''
     });
 
     this.props.toggleShowAddTaskPopup();
@@ -62,17 +62,17 @@ class AddTaskPopup extends Component {
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
           <input className='task-title'
-            name="taskTitleText"
+            name="name"
             placeholder="Tytuł zadania"
-            value={this.props.taskTitleText}
+            value={this.props.name}
             onChange={this.handleChange}
           />
           <br/><br/>
           <textarea className='task-area'
             rows='6'
-            name="taskDescription"
+            name="description"
             placeholder="Opis zadania"
-            value={this.props.taskDescription}
+            value={this.props.description}
             onChange={this.handleChange}
           />
         </form><br/>
