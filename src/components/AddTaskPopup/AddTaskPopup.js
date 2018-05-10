@@ -40,8 +40,8 @@ class AddTaskPopup extends Component {
     this.setState({dueDate: date});
   };
 
-  handlePriority = imp => {
-    this.setState({priority: imp})
+  handlePriority = priority => {
+    this.setState({priority: priority})
   };
 
   render() {
