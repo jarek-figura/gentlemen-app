@@ -2,42 +2,23 @@ import React, {Component} from 'react'
 import './TaskList.css'
 import TaskContent from "../TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
-import TaskFilter from "../TaskFilter/TaskFilter";
-import moment from 'moment'
 
 class TaskList extends Component {
   state = {
     editTaskId: null,
-    searchPhrase: '',
-    dueDateSortMode: true
+
   };
 
   updateSearchPhrase = searchPhrase => this.setState({searchPhrase});
-
-  enableSortingByDueDate = () => {
-    this.setState({dueDateSortMode: !this.state.dueDateSortMode})
-  };
 
   enableSortingByPriority= () => {
     //TUTAJ ZACZNIJ :)
   };
 
   render() {
-
     const tasksFromProps = this.props.tasks;
-    const tasks = this.props.tasks.filter(
-      task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
-    );
 
-    {
-      if (this.state.dueDateSortMode === true) {
-        tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? -1 : moment(a.dueDate).isAfter(b.dueDate) ? 1 : 0)
-      } else {
-        tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? 1 : moment(a.dueDate).isAfter(b.dueDate) ? -1 : 0)
-      }
-    }
-
-    return (
+   return (
       <div>
         {tasksFromProps.length !== 0 &&
         <span className='task-list'>
@@ -49,11 +30,11 @@ class TaskList extends Component {
         {
           tasksFromProps.length !== 0 ?
             // show TaskList and search
-            tasks.length === 0 ?
+            this.props.tasks.length === 0 ?
               <p className='no-result'>Brak wyników</p> :
             <ul>
               {
-                tasks.map(
+                this.props.tasks.map(
                   task => (
                     <li key={task.id}>
                         <TaskContent
@@ -73,9 +54,7 @@ class TaskList extends Component {
         {/*button - task filter by sth */}
         <br/>
         <br/>
-        <TaskFilter
-          enableSortingByDueDate={this.enableSortingByDueDate}
-          enableSortingByPriority={this.enableSortingByPriority}/>
+
       </div>
     )
   }

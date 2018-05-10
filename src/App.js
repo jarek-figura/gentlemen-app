@@ -3,6 +3,8 @@ import './App.css';
 import TaskList from "./components/TaskList/TaskList";
 import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
 import EditTaskPopup from "./components/EditTaskPopup/EditTaskPopup";
+import TaskFilter from "./components/TaskFilter/TaskFilter";
+import moment from "moment/moment";
 
 class App extends Component {
   state = {
@@ -11,7 +13,9 @@ class App extends Component {
     currentForm: null, // 'add', 'edit'
     currentEditTask: null,
     showOnlyNotDoneEnabled: false,
-    showOnlyDoneEnabled: false
+    showOnlyDoneEnabled: false,
+    dueDateSortMode: true,
+    searchPhrase: ''
   };
 
   addTask = (taskName, taskDescription, taskDueDate, taskPriority) => {
@@ -79,6 +83,10 @@ class App extends Component {
 
   toggleTaskDone = this.toggleTaskAttribute('isDone');
 
+  enableSortingByDueDate = () => {
+    this.setState({dueDateSortMode: !this.state.dueDateSortMode})
+  };
+
   displayForm = formType => {
     const options = {
       add: () => (
@@ -104,13 +112,23 @@ class App extends Component {
   };
 
   render() {
-    return (
+    const tasks = this.state.tasks.filter(
+      task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
+    );
+
+      if (this.state.dueDateSortMode === true) {
+        tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? -1 : moment(a.dueDate).isAfter(b.dueDate) ? 1 : 0)
+      } else {
+        tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? 1 : moment(a.dueDate).isAfter(b.dueDate) ? -1 : 0)
+      }
+
+     return (
       <div className="App">
         {this.state.currentForm === null
           ?
           <div>
             <TaskList
-              tasks={this.state.tasks.filter(
+              tasks={tasks.filter(
                 task => this.state.showOnlyNotDoneEnabled === false
                   ? true
                   : task.isDone === false
@@ -141,6 +159,9 @@ class App extends Component {
               {/* button - bottom right */}
               <span>&nbsp;</span>
               <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
+              <TaskFilter
+                enableSortingByDueDate={this.enableSortingByDueDate}
+                enableSortingByPriority={this.enableSortingByPriority}/>
             </nav>
           </div>
           :
