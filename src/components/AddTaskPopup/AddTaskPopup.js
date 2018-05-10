@@ -6,6 +6,7 @@ import TaskDueDay from "../TaskDueDay/TaskDueDay";
 
 class AddTaskPopup extends Component {
   state = {
+    name: '',
     formError: null
   };
 
@@ -46,8 +47,13 @@ class AddTaskPopup extends Component {
   render() {
     return (
       <div className='add-task'>
-        <button className='cancel-button' title='zaniechaj' onClick={this.props.toggleShowAddTaskPopup}>&times;</button>
+        <button
+          className='cancel-button'
+          title='zaniechaj'
+          onClick={this.props.toggleShowAddTaskPopup}
+        >&times;</button>
         <br/><br/>
+
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
           <input className='task-title'
@@ -57,6 +63,7 @@ class AddTaskPopup extends Component {
             onChange={this.handleChange}
           />
           <br/><br/>
+
           <textarea className='task-area'
             rows='6'
             name="description"

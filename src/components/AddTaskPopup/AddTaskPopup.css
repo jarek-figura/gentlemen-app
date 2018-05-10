@@ -2,13 +2,13 @@
   font-size: 1em;
   height: 24px;
   width: 300px;
-  text-align: center;
+  text-align: left;
 }
 
 .task-area {
   font-size: 1.1em;
   width: 300px;
-  text-align: center;
+  text-align: left;
 }
 
 .add-task {
