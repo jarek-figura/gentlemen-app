@@ -75,7 +75,7 @@ class EditTaskPopup extends Component {
         </form>
         <br/>
         <DatePicker
-          selected={this.state.dueDate || moment()}
+          selected={moment(this.state.dueDate) || moment()}
           onChange={this.handleDate}
           withPortal
           dateFormat="DD-MM-YYYY"
