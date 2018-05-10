@@ -6,11 +6,6 @@ import TaskDueDay from "../TaskDueDay/TaskDueDay";
 
 class AddTaskPopup extends Component {
   state = {
-    isOpen: false,
-    dueDate: moment(),
-    priority: 'medium',
-    name: '',
-    description: '',
     formError: null
   };
 
@@ -27,13 +22,8 @@ class AddTaskPopup extends Component {
       this.state.name,
       this.state.description,
       this.state.dueDate,
-      this.state.priority
+      this.state.priority || 'medium'
     );
-
-    this.setState({
-      name: '',
-      description: ''
-    });
 
     this.props.toggleShowAddTaskPopup();
   };
@@ -56,7 +46,6 @@ class AddTaskPopup extends Component {
   render() {
     return (
       <div className='add-task'>
-        <h3>Dodaj zadanie</h3>
         <button className='cancel-button' title='zaniechaj' onClick={this.props.toggleShowAddTaskPopup}>&times;</button>
         <br/><br/>
         <form onSubmit={this.handleSubmit} id="form1">
@@ -83,7 +72,7 @@ class AddTaskPopup extends Component {
         /><br/>
 
         <TaskPriority
-          priority={this.state.priority}
+          priority={this.state.priority || 'medium'}
           handlePriority={this.handlePriority}
         /><br/>
 

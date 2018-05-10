@@ -29,7 +29,7 @@ class EditTaskPopup extends Component {
       this.state.name,
       this.state.description,
       this.state.dueDate,
-      this.state.priority
+      this.state.priority || 'medium'
     );
 
     this.props.toggleShowAddTaskPopup();
@@ -52,7 +52,7 @@ class EditTaskPopup extends Component {
 
   render() {
     return (
-      <div>
+      <div className='add-task'>
         <button onClick={this.props.toggleShowAddTaskPopup}>&times;</button>
         <br/><br/>
         <form onSubmit={this.handleSubmit} id="form1">
@@ -78,7 +78,7 @@ class EditTaskPopup extends Component {
         /><br/>
 
         <TaskPriority
-          priority={this.state.priority}
+          priority={this.state.priority || 'medium'}
           handlePriority={this.handlePriority}
         /><br/>
         <button form="form1">Zmień</button>

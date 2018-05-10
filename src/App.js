@@ -93,6 +93,7 @@ class App extends Component {
     const options = {
       add: () => (
         <div>
+          <h3>Dodaj zadanie</h3>
           <AddTaskPopup
             addTask={this.addTask}
             toggleShowAddTaskPopup={this.toggleShowAddTaskPopup}
@@ -101,7 +102,7 @@ class App extends Component {
       ),
       edit: () => (
         <div>
-          <h2>EditTaskPopup</h2>
+          <h3>Edytuj zadanie</h3>
           <EditTaskPopup
             task={this.state.tasks.find(task => task.id === this.state.currentEditTask)}
             updateTask={this.updateTask}
