@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './TaskList.css'
 import TaskContent from "../TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
+import TaskFilter from "../TaskFilter/TaskFilter";
 
 class TaskList extends Component {
   state = {
