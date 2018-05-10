@@ -59,7 +59,7 @@ class AddTaskPopup extends Component {
           <input className='task-title'
             name="name"
             placeholder="Tytuł zadania"
-            value={this.props.name}
+            value={this.state.name}
             onChange={this.handleChange}
           />
           <br/><br/>
@@ -68,7 +68,7 @@ class AddTaskPopup extends Component {
             rows='6'
             name="description"
             placeholder="Opis zadania"
-            value={this.props.description}
+            value={this.state.description}
             onChange={this.handleChange}
           />
         </form><br/>
