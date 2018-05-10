@@ -15,7 +15,7 @@ class EditTaskPopup extends Component {
     }
   }
 
-  handleSubmit = event => {
+  handleSubmitEdit = event => {
     event.preventDefault();
     if (this.state.name.trim() === '') {
       this.setState({
@@ -60,7 +60,7 @@ class EditTaskPopup extends Component {
         >&times;</button>
         <br/><br/>
 
-        <form onSubmit={this.handleSubmit} id="form1">
+        <form onSubmit={this.handleSubmitEdit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
           <input className='task-title'
             name="name"
