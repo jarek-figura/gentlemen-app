@@ -1,12 +1,14 @@
 .App {
-
+  margin-bottom: 110px;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
+.nav-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 10px;
+  background-color: darkgrey;
+  max-width: 600px;
+  text-align: center;
 }
 

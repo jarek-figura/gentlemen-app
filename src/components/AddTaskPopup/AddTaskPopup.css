@@ -1,0 +1,32 @@
+.task-title {
+  font-size: 1em;
+  height: 24px;
+  width: 300px;
+  text-align: center;
+}
+
+.task-area {
+  font-size: 1.1em;
+  width: 300px;
+  text-align: center;
+}
+
+.add-task {
+  max-width: 600px;
+  height: calc(100vh - 168px);
+  text-align: center;
+  background-color: aquamarine;
+  padding: 10px 0 20px 0;
+  margin-top: 20px;
+}
+
+.add-task-button {
+  font-size: 1em;
+  height: 30px;
+}
+
+.cancel-button {
+  font-size: 1em;
+  height: 30px;
+  width: 30px;
+}

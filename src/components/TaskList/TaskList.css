@@ -7,3 +7,18 @@ ul {
 li {
   margin: 5px 0;
 }
+
+.banner {
+  height: calc(100vh - 168px);
+  padding-top: 30px;
+  text-align: center;
+  background-color: #9FFF82;
+}
+
+.task-list {
+  text-align: center;
+}
+
+.no-result {
+  text-align: center;
+}

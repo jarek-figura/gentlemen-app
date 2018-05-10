@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import TaskList from "./components/TaskList/TaskList";
 import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
-import moment from 'moment'
+import EditTaskPopup from "./components/EditTaskPopup/EditTaskPopup";
 
 class App extends Component {
   state = {
@@ -23,8 +23,7 @@ class App extends Component {
           description: taskDescription,
           dueDate: taskDueDate,
           priority: taskPriority,
-          isDone: false,
-          isImportant: false
+          isDone: false
         })
       })
     )
@@ -40,13 +39,15 @@ class App extends Component {
     })
   };
 
-  updateTask = (taskId, taskName, taskDescription) => {
+  updateTask = (taskId, taskTitleText, taskDescription, taskDueDate, taskPriority) => {
     this.setState({
       tasks: this.state.tasks.map(
         task => task.id !== taskId ? task : {
           ...task,
-          name: taskName,
-          description: taskDescription
+          name: taskTitleText,
+          description: taskDescription,
+          dueDate: taskDueDate,
+          priority: taskPriority,
         }
       )
     })
@@ -78,13 +79,10 @@ class App extends Component {
 
   toggleTaskDone = this.toggleTaskAttribute('isDone');
 
-  toggleTaskImportant = this.toggleTaskAttribute('isImportant');
-
   displayForm = formType => {
     const options = {
       add: () => (
         <div>
-          <h2>AddTaskPopup</h2>
           <AddTaskPopup
             addTask={this.addTask}
             toggleShowAddTaskPopup={this.toggleShowAddTaskPopup}
@@ -93,9 +91,10 @@ class App extends Component {
       ),
       edit: () => (
         <div>
-          <h2>EditTaskPopup {this.state.currentEditTask}</h2>
-          <AddTaskPopup
-            addTask={this.addTask}
+          <h2>EditTaskPopup</h2>
+          <EditTaskPopup
+            task={this.state.tasks.find(task => task.id === this.state.currentEditTask)}
+            updateTask={this.updateTask}
             toggleShowAddTaskPopup={this.toggleShowEditTaskPopup}
           />
         </div>
@@ -110,7 +109,6 @@ class App extends Component {
         {this.state.currentForm === null
           ?
           <div>
-            <h2>TaskList</h2>
             <TaskList
               tasks={this.state.tasks.filter(
                 task => this.state.showOnlyNotDoneEnabled === false
@@ -124,26 +122,26 @@ class App extends Component {
               removeTask={this.removeTask}
               updateTask={this.updateTask}
               toggleTaskDone={this.toggleTaskDone}
-              toggleTaskImportant={this.toggleTaskImportant}
               toggleShowEditTaskPopup={this.toggleShowEditTaskPopup}
             />
 
-            {/* filters - bottom left */}
-            <h2>TaskFilter</h2>
-            <button onClick={() => this.setState({showOnlyNotDoneEnabled: true})}>Pokaż<br/>niezrobione</button>
-            <span>&nbsp;</span>
-            <button onClick={() => this.setState({
-              showOnlyNotDoneEnabled: false,
-              showOnlyDoneEnabled: false
-            })}>Pokaż<br/>wszystkie
-            </button>
-            <span>&nbsp;</span>
-            <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż<br/>zrobione</button>
+            <nav className='nav-bottom'>
+              {/* filters - bottom left */}
+              <h3>Filtry</h3>
+              <button onClick={() => this.setState({showOnlyNotDoneEnabled: true})}>Pokaż<br/>niezrobione</button>
+              <span>&nbsp;</span>
+              <button onClick={() => this.setState({
+                showOnlyNotDoneEnabled: false,
+                showOnlyDoneEnabled: false
+              })}>Pokaż<br/>wszystkie
+              </button>
+              <span>&nbsp;</span>
+              <button onClick={() => this.setState({showOnlyDoneEnabled: true})}>Pokaż<br/>zrobione</button>
 
-
-            {/* button - bottom right */}
-            <h2>AddTask</h2>
-            <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
+              {/* button - bottom right */}
+              <span>&nbsp;</span>
+              <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
+            </nav>
           </div>
           :
           this.displayForm(this.state.currentForm)
@@ -156,7 +154,7 @@ class App extends Component {
     const tasksAsText = localStorage.getItem('storedTasks');
     const tasksFromLocalStorage = JSON.parse(tasksAsText);
     this.setState({
-      tasks: (tasksFromLocalStorage || []).map(task => ({...task, dueDate: moment(task.dueDate)}))
+      tasks: tasksFromLocalStorage || []
     })
   }
 

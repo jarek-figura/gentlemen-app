@@ -2,9 +2,6 @@ import React, {Component} from 'react'
 import './TaskList.css'
 import TaskContent from "../TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
-import TaskFilter from "../TaskFilter/TaskFilter";
-
-// import TaskEditForm from './TaskEditForm';
 
 class TaskList extends Component {
   state = {
@@ -13,12 +10,7 @@ class TaskList extends Component {
     dueDateSortMode: true
   };
 
-  enterEditMode = taskId => {
-    this.setState({editTaskId: taskId})
-  };
-  exitEditMode = () => {
-    this.setState({editTaskId: null})
-  };
+  updateSearchPhrase = searchPhrase => this.setState({searchPhrase});
 
   enableSortingByDueDate = () => {
     this.setState({dueDateSortMode: !this.state.dueDateSortMode})
@@ -28,20 +20,17 @@ class TaskList extends Component {
     //TUTAJ ZACZNIJ :)
   };
 
-  updateSearchPhrase = searchPhrase => this.setState({searchPhrase})
-
   render() {
 
+    const tasksFromProps = this.props.tasks;
     const tasks = this.props.tasks.filter(
       task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
     );
 
-    // Bartek console.log(tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0))
-
     {
       if(this.state.dueDateSortMode===true){
         tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? -1 : a.dueDate.isAfter(b.dueDate) ? 1 : 0)
-        } else {
+      } else {
         tasks.sort((a, b) => a.dueDate.isBefore(b.dueDate) ? 1 : a.dueDate.isAfter(b.dueDate) ? -1 : 0)
 
       }
@@ -49,12 +38,18 @@ class TaskList extends Component {
 
     return (
       <div>
+        {tasksFromProps.length !== 0 &&
+        <span className='task-list'>
+            <h3>Zadania do zrobienia</h3>
         <TaskSearch
             updateSearchPhrase={this.updateSearchPhrase}
           />
+          </span> }
         {
-          tasks.length === 0 ?
-            <p>Brak wyników</p> :
+          tasksFromProps.length !== 0 ?
+            // show TaskList and search
+            tasks.length === 0 ?
+              <p className='no-result'>Brak wyników</p> :
             <ul>
               {
                 tasks.map(
@@ -62,17 +57,17 @@ class TaskList extends Component {
                     <li key={task.id}>
                         <TaskContent
                         task={task}
-                        enterEditMode={this.enterEditMode}
                         removeTask={this.props.removeTask}
                         toggleTaskDone={this.props.toggleTaskDone}
-                        toggleTaskImportant={this.props.toggleTaskImportant}
                         toggleShowEditTaskPopup={this.props.toggleShowEditTaskPopup}
                         />
                     </li>
                   )
                 )
               }
-            </ul>
+            </ul> :
+            //show banner
+            <h1 className='banner'>Taskmen baner</h1>
         }
         {/*button - task filter by sth */}
         <br/>
