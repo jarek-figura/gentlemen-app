@@ -5,20 +5,20 @@ import './TaskDueDay.css';
 
 class TaskDueDay extends Component {
   state = {
-    startDate: this.props.startDate
+    dueDate: this.props.dueDate
   };
 
   handleChange = date => {
     this.props.handleDate(date);
     this.setState({
-      startDate: date
+      dueDate: date
     });
   };
 
   render() {
     return (
       <DatePicker className='date-picker'
-        selected={this.state.startDate}
+        selected={this.state.dueDate}
         onChange={this.handleChange}
         withPortal
         dateFormat="DD-MM-YYYY"

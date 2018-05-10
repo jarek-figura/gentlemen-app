@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import './AddTaskPopup.css'
 import TaskPriority from "../TaskPriority/TaskPriority";
 import moment from 'moment';
-import 'react-datepicker/dist/react-datepicker.css';
 import TaskDueDay from "../TaskDueDay/TaskDueDay";
 
 class AddTaskPopup extends Component {
   state = {
     isOpen: false,
-    startDate: moment(),
+    dueDate: moment(),
     priority: 'medium',
     taskTitleText: '',
     taskDescription: '',
@@ -27,7 +26,7 @@ class AddTaskPopup extends Component {
     this.props.addTask(
       this.state.taskTitleText,
       this.state.taskDescription,
-      this.state.startDate,
+      this.state.dueDate,
       this.state.priority
     );
 
@@ -47,7 +46,7 @@ class AddTaskPopup extends Component {
   };
 
   handleDate = date => {
-    this.setState({startDate: date});
+    this.setState({dueDate: date});
   };
 
   handlePriority = imp => {
@@ -79,7 +78,7 @@ class AddTaskPopup extends Component {
         </form><br/>
 
         <TaskDueDay
-          startDate={this.state.startDate || moment()}
+          dueDate={this.state.dueDate || moment()}
           handleDate={this.handleDate}
         /><br/>
 
