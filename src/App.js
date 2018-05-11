@@ -14,8 +14,8 @@ class App extends Component {
     currentEditTask: null,
     showOnlyNotDoneEnabled: false,
     showOnlyDoneEnabled: false,
-    dueDateSortMode: '',
-    prioritySortMode: false,
+    dueDateSortMode: 0, // 0 - no sorting, 1 - ascending, 2 - descending
+    prioritySortMode: 0, // 0 - no sorting, 1 - from higher to lower
     searchPhrase: ''
   };
 
@@ -86,7 +86,7 @@ class App extends Component {
     })
   };
 
-  buttonName = (buttonType) => buttonType;
+  buttonName = (buttonName) => buttonName;
 
   displayForm = formType => {
     const options = {
@@ -120,7 +120,7 @@ class App extends Component {
   };
 
   enableSortingByPriority = () => {
-    this.setState({prioritySortMode: !this.state.prioritySortMode})
+    this.setState(({ prioritySortMode }) => ({ prioritySortMode: (prioritySortMode + 1) % 2 }))
   };
 
   tasksBeforeFilter = () => {
@@ -148,7 +148,7 @@ class App extends Component {
       )
     }
 
-    if (this.state.prioritySortMode) {
+    if (this.state.prioritySortMode === 1) {
       tasks.sort(
         (a, b) => nameToValue(b.priority) - nameToValue(a.priority)
       )
@@ -177,33 +177,33 @@ class App extends Component {
               />
 
               <nav className='nav-bottom'>
-                {/* filters - bottom left */}
-                <span>&nbsp;</span>
-                {this.state.showOnlyDoneEnabled === false ?
-                  <button onClick={() => this.setState({
-                    showOnlyDoneEnabled: true,
-                    showOnlyNotDoneEnabled: false
-                  })}>Pokaż<br/>zrobione</button> :
-                  <button onClick={() => this.setState({
-                    showOnlyNotDoneEnabled: true,
-                    showOnlyDoneEnabled: false
-                  })}>Pokaż<br/>niezrobione</button>
+                {/* add task */}
+                <button onClick={this.toggleShowAddTaskPopup}><strong>Dodaj<br/>zadanie</strong></button>
+
+                {/* filters */}
+                {this.state.showOnlyDoneEnabled === false
+                  ? <button onClick={() => this.setState({
+                     showOnlyDoneEnabled: true,
+                      showOnlyNotDoneEnabled: false
+                    })}>Pokaż<br/>zrobione</button>
+                  : <button onClick={() => this.setState({
+                      showOnlyNotDoneEnabled: true,
+                      showOnlyDoneEnabled: false
+                    })}>Pokaż<br/>niezrobione</button>
                 }
 
-                <span>&nbsp;</span>
                 <button onClick={() => this.setState({
                   showOnlyNotDoneEnabled: false,
                   showOnlyDoneEnabled: false
                 })}>Pokaż<br/>wszystkie
                 </button>
 
-                {/* button - bottom right */}
-                <span>&nbsp;</span>
-                <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
-
                 <TaskFilter
                   enableSortingByDueDate={this.enableSortingByDueDate}
-                  enableSortingByPriority={this.enableSortingByPriority}/>
+                  dueDateSortMode={this.state.dueDateSortMode}
+                  enableSortingByPriority={this.enableSortingByPriority}
+                  prioritySortMode={this.state.prioritySortMode}
+                />
               </nav>
             </div>
           : this.displayForm(this.state.currentForm)

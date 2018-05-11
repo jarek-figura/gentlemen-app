@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
-import './TaskFIlter.css'
+import './TaskFilter.css'
+
+const dateSortMode = ['\u21e7', '\u21e9', '\u21d4'];
+const prioritySortMode = ['\u21e9', '\u21d4'];
 
 class TaskFilter extends Component {
   render(){
     return (
       <div className="task-sorting">
-        <button  name="byDueDate" onClick={this.props.enableSortingByDueDate}>Sortuj po dacie</button><span>&nbsp;</span>
-        <button  name="byPriorityLevel" onClick={this.props.enableSortingByPriority}>Sortuj po priorytecie</button>
+        <button name="byDueDate" onClick={this.props.enableSortingByDueDate}>Data {dateSortMode[this.props.dueDateSortMode]}</button>
+        <button name="byPriorityLevel" onClick={this.props.enableSortingByPriority}>Priotytet {prioritySortMode[this.props.prioritySortMode]}</button>
       </div>
     )
   }
