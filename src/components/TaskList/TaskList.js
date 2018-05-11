@@ -6,12 +6,6 @@ import TaskSearch from "../TaskSearch/TaskSearch";
 class TaskList extends Component {
   state = {
     editTaskId: null,
-
-  };
-
-
-  enableSortingByPriority= () => {
-    //TUTAJ ZACZNIJ :)
   };
 
   render() {
@@ -48,7 +42,6 @@ class TaskList extends Component {
             //show banner
             <h1 className='banner'>Taskmen baner</h1>
         }
-        {/*button - task filter by sth */}
         <br/>
         <br/>
 

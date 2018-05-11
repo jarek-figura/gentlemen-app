@@ -11,8 +11,6 @@ class TaskPriority extends Component {
     this.setState({
       activeButton: activeButtonName
     });
-
-    //this.props.handlePriority(priorities.findIndex(activeButtonName));
     this.props.handlePriority(activeButtonName);
   };
 

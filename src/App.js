@@ -5,6 +5,7 @@ import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
 import EditTaskPopup from "./components/EditTaskPopup/EditTaskPopup";
 import TaskFilter from "./components/TaskFilter/TaskFilter";
 import moment from "moment/moment";
+import {nameToValue} from "./components/_utils/priority";
 
 class App extends Component {
   state = {
@@ -14,7 +15,8 @@ class App extends Component {
     currentEditTask: null,
     showOnlyNotDoneEnabled: false,
     showOnlyDoneEnabled: false,
-    dueDateSortMode: true,
+    dueDateSortMode: '',
+    prioritySortMode: false,
     searchPhrase: ''
   };
 
@@ -86,7 +88,11 @@ class App extends Component {
   toggleTaskDone = this.toggleTaskAttribute('isDone');
 
   enableSortingByDueDate = () => {
-    this.setState({dueDateSortMode: !this.state.dueDateSortMode})
+    this.setState(({ dueDateSortMode }) => ({ dueDateSortMode: (dueDateSortMode + 1) % 3 }))
+  };
+
+  enableSortingByPriority = () => {
+    this.setState({prioritySortMode: !this.state.prioritySortMode})
   };
 
   displayForm = formType => {
@@ -116,21 +122,24 @@ class App extends Component {
 
   tasksBeforeFilter = () => {
     return this.state.tasks;
-  }
+  };
 
   render() {
-
     const tasks = this.state.tasks.filter(
       task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
     );
 
-      if (this.state.dueDateSortMode === true) {
-        tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? -1 : moment(a.dueDate).isAfter(b.dueDate) ? 1 : 0)
-      } else {
-        tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? 1 : moment(a.dueDate).isAfter(b.dueDate) ? -1 : 0)
-      }
+    if (this.state.dueDateSortMode === 1) {
+      tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? -1 : moment(a.dueDate).isAfter(b.dueDate) ? 1 : 0)
+    } else if (this.state.dueDateSortMode === 2){
+      tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? 1 : moment(a.dueDate).isAfter(b.dueDate) ? -1 : 0)
+    }
 
-     return (
+    if (this.state.prioritySortMode) {
+      tasks.sort((a, b) => nameToValue(b.priority) - nameToValue(a.priority))
+    }
+
+    return (
       <div className="App">
         {this.state.currentForm === null
           ?
