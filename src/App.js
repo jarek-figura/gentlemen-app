@@ -15,7 +15,7 @@ class App extends Component {
     currentEditTask: null,
     showOnlyNotDoneEnabled: false,
     showOnlyDoneEnabled: false,
-    dueDateSortMode: false,
+    dueDateSortMode: '',
     prioritySortMode: false,
     searchPhrase: ''
   };
@@ -88,12 +88,12 @@ class App extends Component {
   toggleTaskDone = this.toggleTaskAttribute('isDone');
 
   enableSortingByDueDate = () => {
-    this.setState({dueDateSortMode: !this.state.dueDateSortMode})
+    this.setState(({ dueDateSortMode }) => ({ dueDateSortMode: (dueDateSortMode + 1) % 3 }))
   };
 
   enableSortingByPriority = () => {
     this.setState({prioritySortMode: !this.state.prioritySortMode})
-  }
+  };
 
   displayForm = formType => {
     const options = {
@@ -121,16 +121,16 @@ class App extends Component {
 
   tasksBeforeFilter = () => {
     return this.state.tasks;
-  }
+  };
 
   render() {
     const tasks = this.state.tasks.filter(
       task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
     );
 
-    if (this.state.dueDateSortMode === true) {
+    if (this.state.dueDateSortMode === 1) {
       tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? -1 : moment(a.dueDate).isAfter(b.dueDate) ? 1 : 0)
-    } else {
+    } else if (this.state.dueDateSortMode === 2){
       tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? 1 : moment(a.dueDate).isAfter(b.dueDate) ? -1 : 0)
     }
 

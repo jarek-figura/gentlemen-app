@@ -5,8 +5,8 @@ class TaskFilter extends Component {
     return (
       <div>
 
-        <button  name="byDueDate" onClick={this.props.enableSortingByDueDate}>DUE DATE</button>
-        <button  name="byPriorityLevel" onClick={this.props.enableSortingByPriority}>PRIORITY LEVEL</button>
+        <button  name="byDueDate" onClick={this.props.enableSortingByDueDate}>Sortuj po dacie</button>
+        <button  name="byPriorityLevel" onClick={this.props.enableSortingByPriority}>Sortuj po priorytecie</button>
       </div>
     )
   }

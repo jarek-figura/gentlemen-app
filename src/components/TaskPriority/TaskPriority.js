@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './TaskPriority.css';
-import { nameToValue } from "../_utils/priority";
 
 class TaskPriority extends Component {
   state = {
@@ -12,8 +11,6 @@ class TaskPriority extends Component {
     this.setState({
       activeButton: activeButtonName
     });
-
-    //this.props.handlePriority(priorities.findIndex(activeButtonName));
     this.props.handlePriority(activeButtonName);
   };
 

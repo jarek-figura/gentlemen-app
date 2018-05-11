@@ -6,9 +6,7 @@ import TaskSearch from "../TaskSearch/TaskSearch";
 class TaskList extends Component {
   state = {
     editTaskId: null,
-
   };
-
 
   render() {
      return (
