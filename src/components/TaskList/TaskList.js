@@ -10,10 +10,6 @@ class TaskList extends Component {
   };
 
 
-  enableSortingByPriority= () => {
-    //TUTAJ ZACZNIJ :)
-  };
-
   render() {
      return (
       <div>
@@ -48,7 +44,6 @@ class TaskList extends Component {
             //show banner
             <h1 className='banner'>Taskmen baner</h1>
         }
-        {/*button - task filter by sth */}
         <br/>
         <br/>
 

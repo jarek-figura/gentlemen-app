@@ -5,6 +5,7 @@ import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
 import EditTaskPopup from "./components/EditTaskPopup/EditTaskPopup";
 import TaskFilter from "./components/TaskFilter/TaskFilter";
 import moment from "moment/moment";
+import {nameToValue} from "./components/TaskPriorities/TaskPriorities"
 
 class App extends Component {
   state = {
@@ -14,7 +15,7 @@ class App extends Component {
     currentEditTask: null,
     showOnlyNotDoneEnabled: false,
     showOnlyDoneEnabled: false,
-    dueDateSortMode: true,
+    dueDateSortMode: false,
     searchPhrase: ''
   };
 
@@ -88,6 +89,10 @@ class App extends Component {
   enableSortingByDueDate = () => {
     this.setState({dueDateSortMode: !this.state.dueDateSortMode})
   };
+
+  enableSortingByPriority = () => {
+    this.state.tasks.slice().sort((a, b) => a.priority - b.priority);
+  }
 
   displayForm = formType => {
     const options = {
