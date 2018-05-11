@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import './App.css';
 import TaskList from "./components/TaskList/TaskList";
-import AddTaskPopup from "./components/AddTaskPopup/AddTaskPopup";
-import EditTaskPopup from "./components/EditTaskPopup/EditTaskPopup";
 import TaskFilter from "./components/TaskFilter/TaskFilter";
 import moment from "moment/moment";
 import {nameToValue} from "./components/_utils/priority";
+import InnerTaskPopup from "./components/InnerTaskPopup/InnerTaskPopup";
 
 class App extends Component {
   state = {
@@ -37,16 +36,6 @@ class App extends Component {
     )
   };
 
-  removeTask = taskId => {
-    this.setState(function (oldState) {
-      return {
-        tasks: oldState.tasks.filter(function (task) {
-          return task.id !== taskId
-        })
-      }
-    })
-  };
-
   updateTask = (taskId, taskTitleText, taskDescription, taskDueDate, taskPriority) => {
     this.setState({
       tasks: this.state.tasks.map(
@@ -61,6 +50,16 @@ class App extends Component {
     })
   };
 
+  removeTask = taskId => {
+    this.setState(function (oldState) {
+      return {
+        tasks: oldState.tasks.filter(function (task) {
+          return task.id !== taskId
+        })
+      }
+    })
+  };
+
   toggleTaskAttribute = attributeName => taskId => {
     this.setState({
       tasks: this.state.tasks.map(
@@ -71,6 +70,8 @@ class App extends Component {
       )
     })
   };
+
+  toggleTaskDone = this.toggleTaskAttribute('isDone');
 
   toggleShowAddTaskPopup = () => {
     this.setState({
@@ -85,22 +86,15 @@ class App extends Component {
     })
   };
 
-  toggleTaskDone = this.toggleTaskAttribute('isDone');
-
-  enableSortingByDueDate = () => {
-    this.setState(({ dueDateSortMode }) => ({ dueDateSortMode: (dueDateSortMode + 1) % 3 }))
-  };
-
-  enableSortingByPriority = () => {
-    this.setState({prioritySortMode: !this.state.prioritySortMode})
-  };
+  buttonName = (buttonType) => buttonType;
 
   displayForm = formType => {
     const options = {
       add: () => (
         <div>
           <h3>Dodaj zadanie</h3>
-          <AddTaskPopup
+          <InnerTaskPopup
+            buttonName={this.buttonName('Dodaj')}
             addTask={this.addTask}
             toggleShowAddTaskPopup={this.toggleShowAddTaskPopup}
           />
@@ -109,7 +103,8 @@ class App extends Component {
       edit: () => (
         <div>
           <h3>Edytuj zadanie</h3>
-          <EditTaskPopup
+          <InnerTaskPopup
+            buttonName={this.buttonName('Zmień')}
             task={this.state.tasks.find(task => task.id === this.state.currentEditTask)}
             updateTask={this.updateTask}
             toggleShowAddTaskPopup={this.toggleShowEditTaskPopup}
@@ -120,79 +115,98 @@ class App extends Component {
     return options[formType]()
   };
 
+  enableSortingByDueDate = () => {
+    this.setState(({ dueDateSortMode }) => ({ dueDateSortMode: (dueDateSortMode + 1) % 3 }))
+  };
+
+  enableSortingByPriority = () => {
+    this.setState({prioritySortMode: !this.state.prioritySortMode})
+  };
+
   tasksBeforeFilter = () => {
     return this.state.tasks;
   };
 
   render() {
     const tasks = this.state.tasks.filter(
-      task => task.name.toLowerCase().includes(this.state.searchPhrase.toLowerCase())
+      task => task.name.toLowerCase().includes(
+        this.state.searchPhrase.toLowerCase()
+      )
     );
 
     if (this.state.dueDateSortMode === 1) {
-      tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? -1 : moment(a.dueDate).isAfter(b.dueDate) ? 1 : 0)
-    } else if (this.state.dueDateSortMode === 2){
-      tasks.sort((a, b) => moment(a.dueDate).isBefore(b.dueDate) ? 1 : moment(a.dueDate).isAfter(b.dueDate) ? -1 : 0)
+      tasks.sort(
+        (a, b) => moment(a.dueDate).isBefore(b.dueDate)
+          ? -1
+          : moment(a.dueDate).isAfter(b.dueDate) ? 1 : 0
+      )
+    } else if (this.state.dueDateSortMode === 2) {
+      tasks.sort(
+        (a, b) => moment(a.dueDate).isBefore(b.dueDate)
+          ? 1
+          : moment(a.dueDate).isAfter(b.dueDate) ? -1 : 0
+      )
     }
 
     if (this.state.prioritySortMode) {
-      tasks.sort((a, b) => nameToValue(b.priority) - nameToValue(a.priority))
+      tasks.sort(
+        (a, b) => nameToValue(b.priority) - nameToValue(a.priority)
+      )
     }
 
     return (
       <div className="App">
         {this.state.currentForm === null
-          ?
-          <div>
-            <TaskList
-              tasks={tasks.filter(
-                task => this.state.showOnlyNotDoneEnabled === false
-                  ? true
-                  : task.isDone === false
-              ).filter(
-                task => this.state.showOnlyDoneEnabled === false
-                  ? true
-                  : task.isDone === true
-              )}
-              removeTask={this.removeTask}
-              updateTask={this.updateTask}
-              toggleTaskDone={this.toggleTaskDone}
-              toggleShowEditTaskPopup={this.toggleShowEditTaskPopup}
-              updateSearchPhrase={this.updateSearchPhrase}
-              tasksBeforeFilter={this.tasksBeforeFilter}
-            />
+          ? <div>
+              <TaskList
+                tasks={tasks.filter(
+                  task => this.state.showOnlyNotDoneEnabled === false
+                    ? true
+                    : task.isDone === false
+                ).filter(
+                  task => this.state.showOnlyDoneEnabled === false
+                    ? true
+                    : task.isDone === true
+                )}
+                removeTask={this.removeTask}
+                updateTask={this.updateTask}
+                toggleTaskDone={this.toggleTaskDone}
+                toggleShowEditTaskPopup={this.toggleShowEditTaskPopup}
+                updateSearchPhrase={this.updateSearchPhrase}
+                tasksBeforeFilter={this.tasksBeforeFilter}
+              />
 
-            <nav className='nav-bottom'>
-              {/* filters - bottom left */}
-              <span>&nbsp;</span>
-              {this.state.showOnlyDoneEnabled === false ?
+              <nav className='nav-bottom'>
+                {/* filters - bottom left */}
+                <span>&nbsp;</span>
+                {this.state.showOnlyDoneEnabled === false ?
+                  <button onClick={() => this.setState({
+                    showOnlyDoneEnabled: true,
+                    showOnlyNotDoneEnabled: false
+                  })}>Pokaż<br/>zrobione</button> :
+                  <button onClick={() => this.setState({
+                    showOnlyNotDoneEnabled: true,
+                    showOnlyDoneEnabled: false
+                  })}>Pokaż<br/>niezrobione</button>
+                }
+
+                <span>&nbsp;</span>
                 <button onClick={() => this.setState({
-                  showOnlyDoneEnabled: true,
-                  showOnlyNotDoneEnabled: false
-                })}>Pokaż<br/>zrobione</button> :
-                <button onClick={() => this.setState({
-                  showOnlyNotDoneEnabled: true,
+                  showOnlyNotDoneEnabled: false,
                   showOnlyDoneEnabled: false
-                })}>Pokaż<br/>niezrobione</button>
-              }
+                })}>Pokaż<br/>wszystkie
+                </button>
 
-              <span>&nbsp;</span>
-              <button onClick={() => this.setState({
-                showOnlyNotDoneEnabled: false,
-                showOnlyDoneEnabled: false
-              })}>Pokaż<br/>wszystkie
-              </button>
+                {/* button - bottom right */}
+                <span>&nbsp;</span>
+                <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
 
-              {/* button - bottom right */}
-              <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
-
-              <TaskFilter
-                enableSortingByDueDate={this.enableSortingByDueDate}
-                enableSortingByPriority={this.enableSortingByPriority}/>
-            </nav>
-          </div>
-          :
-          this.displayForm(this.state.currentForm)
+                <TaskFilter
+                  enableSortingByDueDate={this.enableSortingByDueDate}
+                  enableSortingByPriority={this.enableSortingByPriority}/>
+              </nav>
+            </div>
+          : this.displayForm(this.state.currentForm)
         }
       </div>
     );
