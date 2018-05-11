@@ -23,4 +23,5 @@ class TaskPriorities extends Component {
   }
 }
 const priorities = ['low', 'medium', 'high'];
-export const nameToValue = name => priorities.indexOf(name);
+//export const nameToValue = name => priorities.indexOf(name);
+export default TaskPriorities;
