@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './TaskPriority.css';
+import { nameToValue } from "../_utils/priority";
 
 class TaskPriority extends Component {
   state = {
