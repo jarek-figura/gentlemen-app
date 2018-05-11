@@ -10,7 +10,7 @@ class AddTaskPopup extends Component {
     formError: null
   };
 
-  handleSubmitAdd = event => {
+  handleSubmit = event => {
     event.preventDefault();
     if (this.state.name.trim() === '') {
       this.setState({
@@ -54,7 +54,7 @@ class AddTaskPopup extends Component {
         >&times;</button>
         <br/><br/>
 
-        <form onSubmit={this.handleSubmitAdd} id="form1">
+        <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
           <input className='task-title'
             name="name"
