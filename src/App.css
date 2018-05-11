@@ -1,11 +1,12 @@
 .App {
-  margin-bottom: 110px;
+  margin-bottom: 50px;
 }
 
 .nav-bottom {
   position: fixed;
   bottom: 0;
   width: 100%;
+  padding-top: 10px;
   padding-bottom: 10px;
   background-color: darkgrey;
   max-width: 600px;

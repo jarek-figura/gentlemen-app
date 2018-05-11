@@ -164,8 +164,6 @@ class App extends Component {
 
             <nav className='nav-bottom'>
               {/* filters - bottom left */}
-              <h3>Filtry</h3>
-
               <span>&nbsp;</span>
               {this.state.showOnlyDoneEnabled === false ?
                 <button onClick={() => this.setState({
@@ -186,8 +184,8 @@ class App extends Component {
               </button>
 
               {/* button - bottom right */}
-              <span>&nbsp;</span>
               <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
+
               <TaskFilter
                 enableSortingByDueDate={this.enableSortingByDueDate}
                 enableSortingByPriority={this.enableSortingByPriority}/>
