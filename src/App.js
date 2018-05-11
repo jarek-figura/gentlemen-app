@@ -99,6 +99,7 @@ class App extends Component {
     const options = {
       add: () => (
         <div>
+          <h3>Dodaj zadanie</h3>
           <AddTaskPopup
             addTask={this.addTask}
             toggleShowAddTaskPopup={this.toggleShowAddTaskPopup}
@@ -107,7 +108,7 @@ class App extends Component {
       ),
       edit: () => (
         <div>
-          <h2>EditTaskPopup</h2>
+          <h3>Edytuj zadanie</h3>
           <EditTaskPopup
             task={this.state.tasks.find(task => task.id === this.state.currentEditTask)}
             updateTask={this.updateTask}
@@ -163,8 +164,6 @@ class App extends Component {
 
             <nav className='nav-bottom'>
               {/* filters - bottom left */}
-              <h3>Filtry</h3>
-
               <span>&nbsp;</span>
               {this.state.showOnlyDoneEnabled === false ?
                 <button onClick={() => this.setState({
@@ -185,8 +184,8 @@ class App extends Component {
               </button>
 
               {/* button - bottom right */}
-              <span>&nbsp;</span>
               <button onClick={this.toggleShowAddTaskPopup}>Dodaj<br/>zadanie</button>
+
               <TaskFilter
                 enableSortingByDueDate={this.enableSortingByDueDate}
                 enableSortingByPriority={this.enableSortingByPriority}/>

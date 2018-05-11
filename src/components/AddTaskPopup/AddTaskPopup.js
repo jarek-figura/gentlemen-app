@@ -2,22 +2,17 @@ import React, { Component } from 'react';
 import './AddTaskPopup.css'
 import TaskPriority from "../TaskPriority/TaskPriority";
 import moment from 'moment';
-import 'react-datepicker/dist/react-datepicker.css';
 import TaskDueDay from "../TaskDueDay/TaskDueDay";
 
 class AddTaskPopup extends Component {
   state = {
-    isOpen: false,
-    startDate: moment(),
-    priority: 'medium',
-    taskTitleText: '',
-    taskDescription: '',
+    name: '',
     formError: null
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    if (this.state.taskTitleText.trim() === '') {
+    if (this.state.name.trim() === '') {
       this.setState({
         formError: new Error('Musisz podać tytuł zadania')
       });
@@ -25,16 +20,11 @@ class AddTaskPopup extends Component {
     }
 
     this.props.addTask(
-      this.state.taskTitleText,
-      this.state.taskDescription,
-      this.state.startDate,
-      this.state.priority
+      this.state.name,
+      this.state.description,
+      this.state.dueDate,
+      this.state.priority || 'medium'
     );
-
-    this.setState({
-      taskTitleText: '',
-      taskDescription: ''
-    });
 
     this.props.toggleShowAddTaskPopup();
   };
@@ -47,44 +37,49 @@ class AddTaskPopup extends Component {
   };
 
   handleDate = date => {
-    this.setState({startDate: date});
+    this.setState({dueDate: date});
   };
 
-  handlePriority = imp => {
-    this.setState({priority: imp})
+  handlePriority = priority => {
+    this.setState({priority: priority})
   };
 
   render() {
     return (
       <div className='add-task'>
-        <h3>Dodaj zadanie</h3>
-        <button className='cancel-button' title='zaniechaj' onClick={this.props.toggleShowAddTaskPopup}>&times;</button>
+        <button
+          className='cancel-button'
+          title='zaniechaj'
+          onClick={this.props.toggleShowAddTaskPopup}
+        >&times;</button>
         <br/><br/>
+
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
           <input className='task-title'
-            name="taskTitleText"
+            name="name"
             placeholder="Tytuł zadania"
-            value={this.props.taskTitleText}
+            value={this.state.name}
             onChange={this.handleChange}
           />
           <br/><br/>
+
           <textarea className='task-area'
             rows='6'
-            name="taskDescription"
+            name="description"
             placeholder="Opis zadania"
-            value={this.props.taskDescription}
+            value={this.state.description}
             onChange={this.handleChange}
           />
         </form><br/>
 
         <TaskDueDay
-          startDate={this.state.startDate || moment()}
+          dueDate={this.state.dueDate || moment()}
           handleDate={this.handleDate}
         /><br/>
 
         <TaskPriority
-          priority={this.state.priority}
+          priority={this.state.priority || 'medium'}
           handlePriority={this.handlePriority}
         /><br/>
 
