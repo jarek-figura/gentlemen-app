@@ -11,9 +11,7 @@ class TaskList extends Component {
         { this.props.tasksBeforeFilter().length !== 0 &&
           <span className='task-list'>
             <h3>Zadania do zrobienia</h3>
-            <TaskSearch
-              updateSearchPhrase={this.props.updateSearchPhrase}
-            />
+            <TaskSearch/>
           </span>
         }
         {
@@ -26,12 +24,7 @@ class TaskList extends Component {
                 this.props.tasks.map(
                   task => (
                     <li key={task.id}>
-                      <TaskContent
-                        task={task}
-                        removeTask={this.props.removeTask}
-                        toggleTaskDone={this.props.toggleTaskDone}
-                        toggleShowEditTaskPopup={this.props.toggleShowEditTaskPopup}
-                      />
+                      <TaskContent task={task}/>
                     </li>
                   )
                 )

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import './TaskContent.css';
+import {withTasks} from "../contexts/Tasks";
 
 class TaskContent extends Component {
   render() {
@@ -37,4 +38,4 @@ class TaskContent extends Component {
   }
 }
 
-export default TaskContent
+export default withTasks(TaskContent);

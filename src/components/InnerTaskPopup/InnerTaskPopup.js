@@ -102,7 +102,7 @@ class InnerTaskPopup extends Component {
           handlePriority={this.handlePriority}
         /><br/>
 
-        <button className='add-task-button' form="form1">{this.props.buttonName}</button>
+        <button className='add-task-button' form="form1">Dodaj</button>
       </div>
     )
   }
