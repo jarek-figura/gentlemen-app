@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './TaskList.css'
 import TaskContent from "../TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
+import {withTasks} from "../contexts/Tasks";
 
 class TaskList extends Component {
   render() {
@@ -25,12 +26,12 @@ class TaskList extends Component {
                 this.props.tasks.map(
                   task => (
                     <li key={task.id}>
-                        <TaskContent
+                      <TaskContent
                         task={task}
                         removeTask={this.props.removeTask}
                         toggleTaskDone={this.props.toggleTaskDone}
                         toggleShowEditTaskPopup={this.props.toggleShowEditTaskPopup}
-                        />
+                      />
                     </li>
                   )
                 )
@@ -47,4 +48,4 @@ class TaskList extends Component {
   }
 }
 
-export default TaskList
+export default withTasks(TaskList)

@@ -3,6 +3,7 @@ import './InnerTaskPopup.css';
 import moment from 'moment';
 import TaskPriority from "../TaskPriority/TaskPriority";
 import TaskDueDay from "../TaskDueDay/TaskDueDay";
+import {withTasks} from "../contexts/Tasks";
 
 class InnerTaskPopup extends Component {
   state = {
@@ -107,4 +108,4 @@ class InnerTaskPopup extends Component {
   }
 }
 
-export default InnerTaskPopup
+export default withTasks(InnerTaskPopup)
