@@ -32,18 +32,19 @@ class TaskApp extends Component {
                 {/* add task */}
                 <button onClick={this.props.toggleShowAddTaskPopup}><strong>Dodaj<br/>zadanie</strong></button>
 
-                {/* filters */}
+                {/* show done / not done */}
                 {this.state.showOnlyDoneEnabled === false
                   ? <button onClick={() => this.setState({
                     showOnlyDoneEnabled: true,
                     showOnlyNotDoneEnabled: false
                   })}>Pokaż<br/>zrobione</button>
                   : <button onClick={() => this.setState({
-                    showOnlyNotDoneEnabled: true,
-                    showOnlyDoneEnabled: false
+                    showOnlyDoneEnabled: false,
+                    showOnlyNotDoneEnabled: true
                   })}>Pokaż<br/>niezrobione</button>
                 }
 
+                {/* show all */}
                 <button onClick={() => this.setState({
                   showOnlyNotDoneEnabled: false,
                   showOnlyDoneEnabled: false

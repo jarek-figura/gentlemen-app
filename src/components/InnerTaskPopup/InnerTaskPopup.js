@@ -33,6 +33,7 @@ class InnerTaskPopup extends Component {
         this.state.dueDate,
         this.state.priority || 'medium'
       );
+      this.props.toggleShowAddTaskPopup();
     } else if (this.props.buttonName === 'Zmień') {
       this.props.updateTask(
         this.state.id,
@@ -41,9 +42,8 @@ class InnerTaskPopup extends Component {
         this.state.dueDate,
         this.state.priority || 'medium'
       );
+      this.props.toggleShowEditTaskPopup(this.state.id);
     }
-
-    this.props.toggleShowAddTaskPopup();
   };
 
   handleChange = event => {
