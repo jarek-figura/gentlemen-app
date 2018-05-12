@@ -18,11 +18,11 @@ class TaskApp extends Component {
           ? <div>
               <TaskList
                 tasks={this.props.tasks.filter(
-                  task => this.props.showOnlyNotDoneEnabled === false
+                  task => this.state.showOnlyNotDoneEnabled === false
                     ? true
                     : task.isDone === false
                 ).filter(
-                  task => this.props.showOnlyDoneEnabled === false
+                  task => this.state.showOnlyDoneEnabled === false
                     ? true
                     : task.isDone === true
                 )}
@@ -51,6 +51,7 @@ class TaskApp extends Component {
                 })}>Pokaż<br/>wszystkie
                 </button>
 
+                {/* sort by dueDate / sort by priority */}
                 <TaskFilter/>
               </nav>
             </div>

@@ -7,6 +7,7 @@ const TasksContext = React.createContext();
 export const TasksConsumer = TasksContext.Consumer;
 
 export class TasksProvider extends Component {
+
   toggleTaskAttribute = attributeName => taskId => {
     this.setState({
       tasks: this.state.tasks.map(
