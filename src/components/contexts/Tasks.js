@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {nameToValue} from "../_utils/priority";
 import moment from "moment/moment";
+
+import InnerTaskPopup from "../../components/InnerTaskPopup/InnerTaskPopup";
 
 const TasksContext = React.createContext();
 
@@ -29,6 +31,7 @@ export class TasksProvider extends Component {
     dueDateSortMode: 0, // 0 - no sorting, 1 - ascending, 2 - descending
     prioritySortMode: 0, // 0 - no sorting, 1 - from higher to lower
     searchPhrase: '',
+    buttonName: '',
 
     updateSearchPhrase: searchPhrase => this.setState({searchPhrase}),
 
@@ -86,17 +89,12 @@ export class TasksProvider extends Component {
       })
     },
 
-    buttonName: (buttonName) => buttonName,
-
     displayForm: formType => {
       const options = {
         add: () => (
           <div>
             <h3>Dodaj zadanie</h3>
             <InnerTaskPopup
-              buttonName={this.buttonName('Dodaj')}
-              addTask={this.addTask}
-              toggleShowAddTaskPopup={this.toggleShowAddTaskPopup}
             />
           </div>
         ),
@@ -104,10 +102,7 @@ export class TasksProvider extends Component {
           <div>
             <h3>Edytuj zadanie</h3>
             <InnerTaskPopup
-              buttonName={this.buttonName('Zmień')}
               task={this.state.tasks.find(task => task.id === this.state.currentEditTask)}
-              updateTask={this.updateTask}
-              toggleShowAddTaskPopup={this.toggleShowEditTaskPopup}
             />
           </div>
         )
@@ -180,11 +175,7 @@ export function withTasks(Component) {
   function TasksAwareComponent(props) {
     return (
       <TasksConsumer>
-        {
-          propsFromContext => (
-            <Component {...props} {...propsFromContext} />
-          )
-        }
+        { propsFromContext => (<Component {...props} {...propsFromContext} />) }
       </TasksConsumer>
     )
   }
