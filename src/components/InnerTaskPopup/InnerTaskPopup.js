@@ -33,7 +33,7 @@ class InnerTaskPopup extends Component {
         this.state.dueDate,
         this.state.priority || 'medium'
       );
-    } else {
+    } else if (this.props.buttonName === 'Zmień') {
       this.props.updateTask(
         this.state.id,
         this.state.name,
@@ -102,7 +102,7 @@ class InnerTaskPopup extends Component {
           handlePriority={this.handlePriority}
         /><br/>
 
-        <button className='add-task-button' form="form1">Dodaj</button>
+        <button className='add-task-button' form="form1">{this.props.buttonName}</button>
       </div>
     )
   }

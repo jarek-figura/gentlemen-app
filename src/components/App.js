@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import TaskList from "./components/TaskList/TaskList";
-import TaskFilter from "./components/TaskFilter/TaskFilter";
+import TaskList from "./TaskList/TaskList";
+import TaskFilter from "./TaskFilter/TaskFilter";
 import moment from "moment/moment";
-import {nameToValue} from "./components/_utils/priority";
-import InnerTaskPopup from "./components/InnerTaskPopup/InnerTaskPopup";
+import {nameToValue} from "./_utils/priority";
+import InnerTaskPopup from "./InnerTaskPopup/InnerTaskPopup";
 
 class App extends Component {
   state = {

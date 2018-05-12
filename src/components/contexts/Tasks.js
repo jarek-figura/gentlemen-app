@@ -18,6 +18,10 @@ export class TasksProvider extends Component {
     })
   };
 
+  buttonName = buttonName => {
+    return buttonName
+  };
+
   state = {
     tasks: [],
     isFormVisible: false,
@@ -28,7 +32,6 @@ export class TasksProvider extends Component {
     dueDateSortMode: 0, // 0 - no sorting, 1 - ascending, 2 - descending
     prioritySortMode: 0, // 0 - no sorting, 1 - from higher to lower
     searchPhrase: '',
-    buttonName: '',
 
     updateSearchPhrase: searchPhrase => this.setState({searchPhrase}),
 
@@ -92,6 +95,7 @@ export class TasksProvider extends Component {
           <div>
             <h3>Dodaj zadanie</h3>
             <InnerTaskPopup
+              buttonName={this.buttonName('Dodaj')}
             />
           </div>
         ),
@@ -99,6 +103,7 @@ export class TasksProvider extends Component {
           <div>
             <h3>Edytuj zadanie</h3>
             <InnerTaskPopup
+              buttonName={this.buttonName('Zmień')}
               task={this.state.tasks.find(task => task.id === this.state.currentEditTask)}
             />
           </div>
