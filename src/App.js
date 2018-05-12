@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './App.css';
 import TaskList from "./components/TaskList/TaskList";
 import TaskFilter from "./components/TaskFilter/TaskFilter";
 import moment from "moment/moment";

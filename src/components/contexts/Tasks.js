@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import {nameToValue} from "../_utils/priority";
 import moment from "moment/moment";
-
 import InnerTaskPopup from "../../components/InnerTaskPopup/InnerTaskPopup";
 
 const TasksContext = React.createContext();
-
 export const TasksConsumer = TasksContext.Consumer;
 
 export class TasksProvider extends Component {
-
   toggleTaskAttribute = attributeName => taskId => {
     this.setState({
       tasks: this.state.tasks.map(
