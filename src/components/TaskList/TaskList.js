@@ -6,8 +6,16 @@ import {withTasks} from "../contexts/Tasks";
 
 class TaskList extends Component {
   render() {
-    const tasks = this.props.tasks;
-     return (
+    const tasks = this.props.tasks.filter(
+      task => this.props.showOnlyNotDoneEnabled === false
+        ? true
+        : task.isDone === false
+    ).filter(
+      task => this.props.showOnlyDoneEnabled === false
+        ? true
+        : task.isDone === true
+    );
+    return (
       <div>
         { this.props.tasksBeforeFilter().length !== 0 &&
           <span className='task-list'>

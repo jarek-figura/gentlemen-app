@@ -113,6 +113,14 @@ export class TasksProvider extends Component {
       return options[formType]()
     },
 
+    showOnlyDone : (status) => {
+      this.setState({showOnlyDoneEnabled: status})
+    },
+
+    showOnlyNotDone : (status) => {
+      this.setState({showOnlyNotDoneEnabled: status})
+    },
+
     enableSortingByDueDate: () => {
       this.setState(({ dueDateSortMode }) => ({ dueDateSortMode: (dueDateSortMode + 1) % 3 }))
     },
