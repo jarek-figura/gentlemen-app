@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import moment from "moment/moment";
 import InnerTaskPopup from "../../components/InnerTaskPopup/InnerTaskPopup";
 
 const TasksContext = React.createContext();
@@ -134,22 +133,6 @@ export class TasksProvider extends Component {
   };
 
   render() {
-    const tasks = this.state.tasks;
-
-    if (this.state.dueDateSortMode === 1) {
-      tasks.sort(
-        (a, b) => moment(a.dueDate).isBefore(b.dueDate)
-          ? -1
-          : moment(a.dueDate).isAfter(b.dueDate) ? 1 : 0
-      )
-    } else if (this.state.dueDateSortMode === 2) {
-      tasks.sort(
-        (a, b) => moment(a.dueDate).isBefore(b.dueDate)
-          ? 1
-          : moment(a.dueDate).isAfter(b.dueDate) ? -1 : 0
-      )
-    }
-
     return (
       <TasksContext.Provider value={this.state}>
         {this.props.children}
