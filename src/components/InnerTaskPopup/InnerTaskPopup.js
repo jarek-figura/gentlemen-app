@@ -61,13 +61,21 @@ class InnerTaskPopup extends Component {
     this.setState({priority: priority})
   };
 
+  handleCancel = () => {
+    if (this.props.buttonName === 'Dodaj') {
+      this.props.toggleShowAddTaskPopup();
+    } else if (this.props.buttonName === 'Zmień') {
+      this.props.toggleShowEditTaskPopup();
+    }
+  };
+
   render() {
     return (
       <div className='add-task'>
         <button
           className='cancel-button'
           title='zaniechaj'
-          onClick={this.props.toggleShowAddTaskPopup}
+          onClick={this.handleCancel}
         >&times;</button>
         <br/><br/>
 

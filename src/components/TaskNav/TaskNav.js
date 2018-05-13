@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './TaskNav.css';
 import {withTasks} from "../contexts/Tasks";
 import TaskFilter from '../TaskFilter/TaskFilter'
 
