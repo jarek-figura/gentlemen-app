@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import InnerTaskPopup from "../../components/InnerTaskPopup/InnerTaskPopup";
+import './Tasks.css'
+import InnerTaskPopup from "../InnerTaskPopup/InnerTaskPopup";
 
 const TasksContext = React.createContext();
 export const TasksConsumer = TasksContext.Consumer;
@@ -92,7 +93,7 @@ export class TasksProvider extends Component {
       const options = {
         add: () => (
           <div>
-            <h3>Dodaj zadanie</h3>
+            <h3 className="add-edit-title">Dodaj zadanie</h3>
             <InnerTaskPopup
               buttonName={this.buttonName('Dodaj')}
             />
@@ -100,7 +101,7 @@ export class TasksProvider extends Component {
         ),
         edit: () => (
           <div>
-            <h3>Edytuj zadanie</h3>
+            <h3 className="add-edit-title">Edytuj zadanie</h3>
             <InnerTaskPopup
               buttonName={this.buttonName('Zmień')}
               task={this.state.tasks.find(task => task.id === this.state.currentEditTask)}
