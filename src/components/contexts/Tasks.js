@@ -34,7 +34,7 @@ export class TasksProvider extends Component {
     prioritySortMode: 0, // 0 - no sorting, 1 - from higher to lower
     searchPhrase: '',
 
-    updateSearchPhrase: searchPhrase => this.setState({searchPhrase}),
+    updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
 
     addTask: (name, description, dueDate, priority) => {
       this.setState(
@@ -135,11 +135,7 @@ export class TasksProvider extends Component {
   };
 
   render() {
-    const tasks = this.state.tasks.filter(
-      task => task.name.toLowerCase().includes(
-        this.state.searchPhrase.toLowerCase()
-      )
-    );
+    const tasks = this.state.tasks;
 
     if (this.state.dueDateSortMode === 1) {
       tasks.sort(

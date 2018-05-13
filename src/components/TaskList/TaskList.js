@@ -14,7 +14,12 @@ class TaskList extends Component {
       task => this.props.showOnlyDoneEnabled === false
         ? true
         : task.isDone === true
+    ).filter(
+      task => task.name.toLowerCase().includes(
+        this.props.searchPhrase.toLowerCase()
+      )
     );
+
     return (
       <div>
         { this.props.tasksBeforeFilter().length !== 0 &&
