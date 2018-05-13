@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {nameToValue} from "../_utils/priority";
 import moment from "moment/moment";
 import InnerTaskPopup from "../../components/InnerTaskPopup/InnerTaskPopup";
 
@@ -148,12 +147,6 @@ export class TasksProvider extends Component {
         (a, b) => moment(a.dueDate).isBefore(b.dueDate)
           ? 1
           : moment(a.dueDate).isAfter(b.dueDate) ? -1 : 0
-      )
-    }
-
-    if (this.state.prioritySortMode === 1) {
-      tasks.sort(
-        (a, b) => nameToValue(b.priority) - nameToValue(a.priority)
       )
     }
 

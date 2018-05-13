@@ -3,6 +3,7 @@ import './TaskList.css'
 import TaskContent from "../TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
 import {withTasks} from "../contexts/Tasks";
+import {nameToValue} from "../_utils/priority";
 
 class TaskList extends Component {
   render() {
@@ -19,6 +20,11 @@ class TaskList extends Component {
         this.props.searchPhrase.toLowerCase()
       )
     );
+    if (this.props.prioritySortMode === 1) {
+      tasks.sort(
+        (a, b) => nameToValue(b.priority) - nameToValue(a.priority)
+      )
+    }
 
     return (
       <div>
