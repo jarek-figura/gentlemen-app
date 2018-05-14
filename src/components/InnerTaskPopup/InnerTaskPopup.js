@@ -1,11 +1,13 @@
-import React, {Component} from 'react';
-import './EditTaskPopup.css'
-import TaskPriority from "../TaskPriority/TaskPriority";
+import React, { Component } from 'react';
+import './InnerTaskPopup.css';
 import moment from 'moment';
+import TaskPriority from "../TaskPriority/TaskPriority";
 import TaskDueDay from "../TaskDueDay/TaskDueDay";
+import {withTasks} from "../contexts/Tasks";
 
-class EditTaskPopup extends Component {
+class InnerTaskPopup extends Component {
   state = {
+    name: '',
     formError: null
   };
 
@@ -24,15 +26,24 @@ class EditTaskPopup extends Component {
       return;
     }
 
-    this.props.updateTask(
-      this.state.id,
-      this.state.name,
-      this.state.description,
-      this.state.dueDate,
-      this.state.priority || 'medium'
-    );
-
-    this.props.toggleShowAddTaskPopup();
+    if (this.props.buttonName === 'Dodaj') {
+      this.props.addTask(
+        this.state.name,
+        this.state.description,
+        this.state.dueDate,
+        this.state.priority || 'medium'
+      );
+      this.props.toggleShowAddTaskPopup();
+    } else if (this.props.buttonName === 'Zmień') {
+      this.props.updateTask(
+        this.state.id,
+        this.state.name,
+        this.state.description,
+        this.state.dueDate,
+        this.state.priority || 'medium'
+      );
+      this.props.toggleShowEditTaskPopup(this.state.id);
+    }
   };
 
   handleChange = event => {
@@ -50,19 +61,28 @@ class EditTaskPopup extends Component {
     this.setState({priority: priority})
   };
 
+  handleCancel = () => {
+    if (this.props.buttonName === 'Dodaj') {
+      this.props.toggleShowAddTaskPopup();
+    } else if (this.props.buttonName === 'Zmień') {
+      this.props.toggleShowEditTaskPopup();
+    }
+  };
+
   render() {
     return (
       <div className='add-task'>
         <button
           className='cancel-button'
           title='zaniechaj'
-          onClick={this.props.toggleShowAddTaskPopup}
+          onClick={this.handleCancel}
         >&times;</button>
         <br/><br/>
 
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
-          <input className='task-title'
+          <input
+            className='task-title'
             name="name"
             placeholder="Tytuł zadania"
             value={this.state.name}
@@ -70,7 +90,8 @@ class EditTaskPopup extends Component {
           />
           <br/><br/>
 
-          <textarea className='task-area'
+          <textarea
+            className='task-area'
             rows="6"
             name="description"
             placeholder="Opis zadania"
@@ -89,10 +110,10 @@ class EditTaskPopup extends Component {
           handlePriority={this.handlePriority}
         /><br/>
 
-        <button className='add-task-button' form="form1">Zmień</button>
+        <button className='add-task-button' form="form1">{this.props.buttonName}</button>
       </div>
     )
   }
 }
 
-export default EditTaskPopup;
+export default withTasks(InnerTaskPopup)

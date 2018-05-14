@@ -2,52 +2,78 @@ import React, {Component} from 'react'
 import './TaskList.css'
 import TaskContent from "../TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
+import {withTasks} from "../contexts/Tasks";
+import {nameToValue} from "../_utils/priority";
+import moment from "moment/moment";
 
 class TaskList extends Component {
-  state = {
-    editTaskId: null,
-  };
-
   render() {
-     return (
+    const tasks = this.props.tasks.filter(
+      task => this.props.showOnlyNotDoneEnabled === false
+        ? true
+        : task.isDone === false
+    ).filter(
+      task => this.props.showOnlyDoneEnabled === false
+        ? true
+        : task.isDone === true
+    ).filter(
+      task => task.name.toLowerCase().includes(
+        this.props.searchPhrase.toLowerCase()
+      )
+    );
+
+    if (this.props.prioritySortMode === 1) {
+      tasks.sort(
+        (a, b) => nameToValue(b.priority) - nameToValue(a.priority)
+      )
+    }
+
+    if (this.props.dueDateSortMode === 1) {
+      tasks.sort(
+        (a, b) => moment(a.dueDate).isBefore(b.dueDate)
+          ? -1
+          : moment(a.dueDate).isAfter(b.dueDate) ? 1 : 0
+      )
+    } else if (this.props.dueDateSortMode === 2) {
+      tasks.sort(
+        (a, b) => moment(a.dueDate).isBefore(b.dueDate)
+          ? 1
+          : moment(a.dueDate).isAfter(b.dueDate) ? -1 : 0
+      )
+    }
+
+    return (
       <div>
-        {this.props.tasksBeforeFilter().length !== 0 &&
-        <span className='task-list'>
+        { this.props.tasksBeforeFilter().length !== 0 &&
+          <span className='task-list'>
             <h3>Zadania do zrobienia</h3>
-        <TaskSearch
-            updateSearchPhrase={this.props.updateSearchPhrase}
-          />
-          </span> }
+            <TaskSearch/>
+          </span>
+        }
         {
-          this.props.tasksBeforeFilter().length !== 0 ?
-            // show TaskList and search
-            this.props.tasks.length === 0 ?
-              <p className='no-result'>Brak wyników</p> :
-            <ul>
-              {
-                this.props.tasks.map(
-                  task => (
-                    <li key={task.id}>
-                        <TaskContent
-                        task={task}
-                        removeTask={this.props.removeTask}
-                        toggleTaskDone={this.props.toggleTaskDone}
-                        toggleShowEditTaskPopup={this.props.toggleShowEditTaskPopup}
-                        />
-                    </li>
-                  )
-                )
-              }
-            </ul> :
-            //show banner
-            <h1 className='banner'>Taskmen baner</h1>
+          this.props.tasksBeforeFilter().length !== 0
+            ? // show TaskList and search
+              tasks.length === 0
+                ? <p className='no-result'>Brak wyników</p>
+                : <ul>
+                    {
+                      tasks.map(
+                        task => (
+                          <li key={task.id}>
+                            <TaskContent task={task}/>
+                          </li>
+                        )
+                      )
+                    }
+                  </ul>
+            : //show banner
+              <h1 className='banner'>Taskmen banner</h1>
         }
         <br/>
         <br/>
-
       </div>
     )
   }
 }
 
-export default TaskList
+export default withTasks(TaskList)

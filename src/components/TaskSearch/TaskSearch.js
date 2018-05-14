@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './TaskSearch.css'
+import {withTasks} from "../contexts/Tasks";
 
 class TaskSearch extends Component {
 
@@ -18,4 +19,4 @@ class TaskSearch extends Component {
   }
 }
 
-export default TaskSearch
+export default withTasks(TaskSearch);

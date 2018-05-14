@@ -1,4 +1,4 @@
-.App {
+.task-app {
   margin-bottom: 50px;
 }
 
@@ -13,3 +13,7 @@
   text-align: center;
 }
 
+.nav-bottom > button {
+  width: 88px;
+  margin: 0 5px;
+}
