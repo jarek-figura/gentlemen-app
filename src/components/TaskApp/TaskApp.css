@@ -17,3 +17,7 @@
   width: 88px;
   margin: 0 5px;
 }
+
+.nav-bottom > button:hover {
+  cursor: pointer;
+}
