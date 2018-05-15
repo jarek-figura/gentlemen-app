@@ -47,5 +47,5 @@ class TaskFilter extends Component {
     )
   }
 }
-
+// TODO: Priority sorting buttons in `TaskFilter` (line 39) and new logic in `TaskList` (line 39)
 export default withTasks(TaskFilter);
