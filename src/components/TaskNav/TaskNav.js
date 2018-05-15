@@ -1,32 +1,57 @@
 import React, {Component} from 'react';
+import './TaskNav.css'
 import {withTasks} from "../contexts/Tasks";
-import TaskFilter from '../TaskFilter/TaskFilter'
+import TaskFilter from '../TaskFilter/TaskFilter';
 
 class TaskNav extends Component {
+  state = {
+    buttonClicked: 'PW'
+  };
+
+  handleClick = (event) => {
+    this.setState({buttonClicked: event.currentTarget.name})
+  };
+
   render () {
     return (
       <nav className='nav-bottom'>
-        {/* add task */}
-        <button onClick={this.props.toggleShowAddTaskPopup}><strong>Dodaj<br/>zadanie</strong></button>
+        <button
+          className="add"
+          title="Dodaj zadanie"
+          onClick={this.props.toggleShowAddTaskPopup}
+        ><strong>{`Dodaj zadanie`}</strong></button>
 
-        {/* show done / not done */}
-        {this.props.showOnlyDoneEnabled === false
-          ? <button onClick={() => {
+        <button
+          name='PZ'
+          title="Pokaż zrobione"
+          className={this.state.buttonClicked === 'PZ' ? 'clicked' : ''}
+          onClick={(event) => {
             this.props.showOnlyDone(true);
             this.props.showOnlyNotDone(false);
-          }}>Pokaż<br/>zrobione</button>
-          : <button onClick={() => {
-            this.props.showOnlyDone(false);
-            this.props.showOnlyNotDone(true);
-          }}>Pokaż<br/>niezrobione</button>
-        }
+            this.handleClick(event);
+          }}
+          // onClick={this.handleClick}
+        >{`PZ`}</button>
 
-        {/* show all */}
-        <button onClick={() => {
+        <button
+          name='PN'
+          title="Pokaż niezrobione"
+          className={this.state.buttonClicked === 'PN' ? 'clicked' : ''}
+          onClick={(event) => {
+          this.props.showOnlyDone(false);
+          this.props.showOnlyNotDone(true);
+          this.handleClick(event);
+        }}>{`PN`}</button>
+
+        <button
+          name='PW'
+          title="Pokaż wszystkie"
+          className={this.state.buttonClicked === 'PW' ? 'clicked' : ''}
+          onClick={(event) => {
           this.props.showOnlyDone(false);
           this.props.showOnlyNotDone(false);
-        }}>Pokaż<br/>wszystkie
-        </button>
+          this.handleClick(event);
+        }}>{`PW`}</button>
 
         {/* sort by dueDate / sort by priority */}
         <TaskFilter/>

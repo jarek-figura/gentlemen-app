@@ -6,3 +6,7 @@
   width: 137px;
   margin: 0 5px;
 }
+
+.task-sorting > button:hover {
+  cursor: pointer;
+}
