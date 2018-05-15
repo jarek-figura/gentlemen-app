@@ -28,13 +28,13 @@ class TaskList extends Component {
       )
     }
 
-    if (this.props.dueDateSortMode === 1) {
+    if (this.props.dueDateSortMode === '1') {
       tasks.sort(
         (a, b) => moment(a.dueDate).isBefore(b.dueDate)
           ? -1
           : moment(a.dueDate).isAfter(b.dueDate) ? 1 : 0
       )
-    } else if (this.props.dueDateSortMode === 2) {
+    } else if (this.props.dueDateSortMode === '2') {
       tasks.sort(
         (a, b) => moment(a.dueDate).isBefore(b.dueDate)
           ? 1

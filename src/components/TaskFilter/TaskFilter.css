@@ -1,12 +1,21 @@
-.task-sorting {
+.dueday-sorting {
   margin-top: 10px;
 }
 
-.task-sorting > button {
-  width: 137px;
+.priority-sorting {
+  margin-top: 10px;
+}
+
+button {
+  width: 63px;
+  height: 36px;
   margin: 0 5px;
 }
 
-.task-sorting > button:hover {
+button:hover {
   cursor: pointer;
+}
+
+.clicked {
+  background-color: deeppink;
 }

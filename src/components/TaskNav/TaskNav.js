@@ -5,7 +5,7 @@ import TaskFilter from '../TaskFilter/TaskFilter';
 
 class TaskNav extends Component {
   handleClick = (event) => {
-    this.props.updateButtonClicked(event.currentTarget.name)
+    this.props.toggleDoneButtonClicked(event.currentTarget.name)
   };
 
   render () {
@@ -18,9 +18,19 @@ class TaskNav extends Component {
         ><strong>{`Dodaj zadanie`}</strong></button>
 
         <button
-          name='PZ'
+          name="0"
+          title="Pokaż wszystkie"
+          className={this.props.doneButtonClicked === '0' ? 'clicked' : ''}
+          onClick={(event) => {
+            this.props.showOnlyDone(false);
+            this.props.showOnlyNotDone(false);
+            this.handleClick(event);
+        }}>{`PW`}</button>
+
+        <button
+          name="1"
           title="Pokaż zrobione"
-          className={this.props.buttonClicked === 'PZ' ? 'clicked' : ''}
+          className={this.props.doneButtonClicked === '1' ? 'clicked' : ''}
           onClick={(event) => {
             this.props.showOnlyDone(true);
             this.props.showOnlyNotDone(false);
@@ -29,24 +39,14 @@ class TaskNav extends Component {
         >{`PZ`}</button>
 
         <button
-          name='PN'
+          name="2"
           title="Pokaż niezrobione"
-          className={this.props.buttonClicked === 'PN' ? 'clicked' : ''}
+          className={this.props.doneButtonClicked === '2' ? 'clicked' : ''}
           onClick={(event) => {
           this.props.showOnlyDone(false);
           this.props.showOnlyNotDone(true);
           this.handleClick(event);
         }}>{`PN`}</button>
-
-        <button
-          name='PW'
-          title="Pokaż wszystkie"
-          className={this.props.buttonClicked === 'PW' ? 'clicked' : ''}
-          onClick={(event) => {
-          this.props.showOnlyDone(false);
-          this.props.showOnlyNotDone(false);
-          this.handleClick(event);
-        }}>{`PW`}</button>
 
         {/* sort by dueDate / sort by priority */}
         <TaskFilter/>
