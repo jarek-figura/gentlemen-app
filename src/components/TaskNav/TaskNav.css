@@ -17,7 +17,7 @@
 
 .nav-bottom > button:hover {
   cursor: pointer;
-  background-color: #aaaaaa;
+  /*background-color: #aaaaaa;*/
 }
 
 .clicked {

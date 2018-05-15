@@ -32,6 +32,11 @@ export class TasksProvider extends Component {
     dueDateSortMode: 0, // 0 - no sorting, 1 - ascending, 2 - descending
     prioritySortMode: 0, // 0 - no sorting, 1 - from higher to lower
     searchPhrase: '',
+    buttonClicked: 'PW',
+
+    updateButtonClicked: (buttonClicked) => this.setState({
+      buttonClicked: buttonClicked
+    }),
 
     updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
 

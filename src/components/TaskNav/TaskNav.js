@@ -4,12 +4,8 @@ import {withTasks} from "../contexts/Tasks";
 import TaskFilter from '../TaskFilter/TaskFilter';
 
 class TaskNav extends Component {
-  state = {
-    buttonClicked: 'PW'
-  };
-
   handleClick = (event) => {
-    this.setState({buttonClicked: event.currentTarget.name})
+    this.props.updateButtonClicked(event.currentTarget.name)
   };
 
   render () {
@@ -24,19 +20,18 @@ class TaskNav extends Component {
         <button
           name='PZ'
           title="Pokaż zrobione"
-          className={this.state.buttonClicked === 'PZ' ? 'clicked' : ''}
+          className={this.props.buttonClicked === 'PZ' ? 'clicked' : ''}
           onClick={(event) => {
             this.props.showOnlyDone(true);
             this.props.showOnlyNotDone(false);
             this.handleClick(event);
           }}
-          // onClick={this.handleClick}
         >{`PZ`}</button>
 
         <button
           name='PN'
           title="Pokaż niezrobione"
-          className={this.state.buttonClicked === 'PN' ? 'clicked' : ''}
+          className={this.props.buttonClicked === 'PN' ? 'clicked' : ''}
           onClick={(event) => {
           this.props.showOnlyDone(false);
           this.props.showOnlyNotDone(true);
@@ -46,7 +41,7 @@ class TaskNav extends Component {
         <button
           name='PW'
           title="Pokaż wszystkie"
-          className={this.state.buttonClicked === 'PW' ? 'clicked' : ''}
+          className={this.props.buttonClicked === 'PW' ? 'clicked' : ''}
           onClick={(event) => {
           this.props.showOnlyDone(false);
           this.props.showOnlyNotDone(false);
