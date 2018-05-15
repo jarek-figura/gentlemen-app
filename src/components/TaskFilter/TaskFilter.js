@@ -47,5 +47,6 @@ class TaskFilter extends Component {
     )
   }
 }
-// TODO: Priority sorting buttons in `TaskFilter` (line 39) and new logic in `TaskList` (line 39)
+// TODO 1: Priority sorting buttons in `TaskFilter` (line 39) and new logic in `TaskList` (line 39)
+// TODO 2: Hiding bottom nav panel in `TaskApp` or in `TaskNav`
 export default withTasks(TaskFilter);
