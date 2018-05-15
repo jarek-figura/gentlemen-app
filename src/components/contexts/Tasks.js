@@ -27,11 +27,22 @@ export class TasksProvider extends Component {
     isFormVisible: false,
     currentForm: null, // 'add', 'edit'
     currentEditTask: null,
-    showOnlyNotDoneEnabled: false,
-    showOnlyDoneEnabled: false,
-    dueDateSortMode: 0, // 0 - no sorting, 1 - ascending, 2 - descending
-    prioritySortMode: 0, // 0 - no sorting, 1 - from higher to lower
+    isDoneSortMode: '0', // 0 - no filtering, 1 - show done, 2 - show not done
+    dueDateSortMode: '0', // 0 - no sorting,  1 - ascending, 2 - descending
+    prioritySortMode: '0', // 0 - no sorting, 1 - ascending, 2 - descending
     searchPhrase: '',
+
+    sortByIsDone: status => {
+      this.setState({ isDoneSortMode: status})
+    },
+
+    sortByDueDate: status => {
+      this.setState({ dueDateSortMode: status})
+    },
+
+    sortByPriority: () => {
+      this.setState(({ prioritySortMode }) => ({ prioritySortMode: (prioritySortMode + 1) % 3 }))
+    },
 
     updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
 
@@ -110,22 +121,6 @@ export class TasksProvider extends Component {
         )
       };
       return options[formType]()
-    },
-
-    showOnlyDone : (status) => {
-      this.setState({showOnlyDoneEnabled: status})
-    },
-
-    showOnlyNotDone : (status) => {
-      this.setState({showOnlyNotDoneEnabled: status})
-    },
-
-    enableSortingByDueDate: () => {
-      this.setState(({ dueDateSortMode }) => ({ dueDateSortMode: (dueDateSortMode + 1) % 3 }))
-    },
-
-    enableSortingByPriority: () => {
-      this.setState(({ prioritySortMode }) => ({ prioritySortMode: (prioritySortMode + 1) % 2 }))
     },
 
     tasksBeforeFilter: () => {
