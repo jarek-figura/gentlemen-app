@@ -14,10 +14,16 @@
 }
 
 .nav-bottom > button {
-  width: 88px;
+  width: 63px;
+  height: 42px;
   margin: 0 5px;
 }
 
 .nav-bottom > button:hover {
   cursor: pointer;
+  background-color: #aaaaaa;
+}
+
+.clicked {
+  background-color: cornflowerblue;
 }
