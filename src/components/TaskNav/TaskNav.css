@@ -1,0 +1,32 @@
+.nav-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: darkgrey;
+  max-width: 600px;
+  text-align: center;
+}
+
+.nav-bottom > button:not(.add) {
+  width: 63px;
+  height: 42px;
+  margin: 0 5px;
+}
+
+.nav-bottom > button:hover {
+  cursor: pointer;
+  background-color: #aaaaaa;
+}
+
+.clicked {
+  background-color: deeppink;
+}
+
+.add {
+  display: block;
+  margin: 0 auto 10px auto;
+  width: 300px;
+  height: 36px;
+}
