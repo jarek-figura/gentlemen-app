@@ -19,21 +19,21 @@ class TaskFilter extends Component {
             title="Bez sortowania"
             className={this.props.dueDateSortMode === '0' ? 'clicked' : ''}
             onClick={this.handleClick}
-          >Data {'\u21d4'}</button>
+          >Data {"\u21d4"}</button>
 
           <button
             name="1"
             title="Sortuj rosnąco"
             className={this.props.dueDateSortMode === '1' ? 'clicked' : ''}
             onClick={this.handleClick}
-          >Data {'\u21e7'}</button>
+          >Data {"\u21e7"}</button>
 
           <button
             name="2"
             title="Sortuj malejąco"
             className={this.props.dueDateSortMode === '2' ? 'clicked' : ''}
             onClick={this.handleClick}
-          >Data {'\u21e9'}</button>
+          >Data {"\u21e9"}</button>
         </div>
 
         <div className="priority-sorting">

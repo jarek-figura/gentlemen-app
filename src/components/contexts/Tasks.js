@@ -27,23 +27,13 @@ export class TasksProvider extends Component {
     isFormVisible: false,
     currentForm: null, // 'add', 'edit'
     currentEditTask: null,
-    showOnlyNotDoneEnabled: false,
-    showOnlyDoneEnabled: false,
-    dueDateSortMode: '0',  // 0 - no sorting, 1 - ascending, 2 - descending
-    prioritySortMode: '0', // 0 - no sorting, 1 - from higher to lower, 2 - from lower to higher
+    isDoneSortMode: '0', // 0 - no filtering, 1 - show done, 2 - show not done
+    dueDateSortMode: '0', // 0 - no sorting,  1 - ascending, 2 - descending
+    prioritySortMode: '0', // 0 - no sorting, 1 - ascending, 2 - descending
     searchPhrase: '',
-    doneButtonClicked: '0', // 0 - no filtering, 1 - show done, 2 - show not done
 
-    toggleDoneButtonClicked: (buttonClicked) => this.setState({
-      doneButtonClicked: buttonClicked
-    }),
-
-    showOnlyDone : status => {
-      this.setState({showOnlyDoneEnabled: status})
-    },
-
-    showOnlyNotDone : status => {
-      this.setState({showOnlyNotDoneEnabled: status})
+    sortByIsDone: status => {
+      this.setState({ isDoneSortMode: status})
     },
 
     sortByDueDate: status => {
