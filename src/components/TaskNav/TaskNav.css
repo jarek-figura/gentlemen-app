@@ -7,10 +7,12 @@
   background-color: darkgrey;
   max-width: 600px;
   text-align: center;
+  transition: 0.3s;
 }
 
 .hide {
   bottom: -160px;
+  transition: 0.3s;
 }
 
 .add-task-button {

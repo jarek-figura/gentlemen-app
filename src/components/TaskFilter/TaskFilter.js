@@ -85,5 +85,5 @@ class TaskFilter extends Component {
     )
   }
 }
-// TODO: Hiding bottom nav panel in `TaskApp` or in `TaskNav`
+
 export default withTasks(TaskFilter);
