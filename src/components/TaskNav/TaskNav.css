@@ -9,9 +9,18 @@
   text-align: center;
 }
 
-.add {
-  display: block;
+.nav-down {
+  bottom: 100px;
+}
+
+.add-task-button {
   margin: 0 auto 20px auto;
   width: 230px;
   height: 36px;
+}
+
+.show-filters {
+  height: 36px;
+  float: right;
+  margin-right: 10px;
 }

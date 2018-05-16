@@ -4,16 +4,26 @@ import {withTasks} from "../contexts/Tasks";
 import TaskFilter from '../TaskFilter/TaskFilter';
 
 class TaskNav extends Component {
+  state = {
+    hideNavMode: 'hide' // + 'show'
+  };
   render () {
     return (
-      <nav className='nav-bottom'>
+      <nav className='nav-bottom nav-bottom'>
         <button
-          className="add"
+          className="add-task-button"
           title="Dodaj zadanie"
           onClick={this.props.toggleShowAddTaskPopup}
         ><strong>{`Dodaj zadanie`}</strong></button>
 
-        {/* sort by dueDate / sort by priority */}
+        <button
+          className="show-filters"
+          title="Pokaż filtry"
+        >
+          {`Pokaż\nfiltry`}
+        </button>
+
+        {/* filter by isDone & sort by dueDate & sort by priority */}
         <TaskFilter/>
       </nav>
     )
