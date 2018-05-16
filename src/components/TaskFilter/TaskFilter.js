@@ -2,6 +2,24 @@ import React, {Component} from 'react';
 import './TaskFilter.css'
 import {withTasks} from "../contexts/Tasks";
 
+const filters = [
+  { title: 'Pokaż wszystkie',   label: 'PW' },
+  { title: 'Pokaż zrobione',    label: 'PZ' },
+  { title: 'Pokaż niezrobione', label: 'PN' }
+];
+
+const dueSorters = [
+  { title: 'Bez sortowania',  label: `Data ${"\u21d4"}` },
+  { title: 'Sortuj rosnąco',  label: `Data ${"\u21e7"}` },
+  { title: 'Sortuj malejąco', label: `Data ${"\u21e9"}` }
+];
+
+const prioritySorters = [
+  { title: 'Bez sortowania',  label: `Priorytet ${"\u21d4"}` },
+  { title: 'Sortuj rosnąco',  label: `Priorytet ${"\u21e7"}` },
+  { title: 'Sortuj malejąco', label: `Priorytet ${"\u21e9"}` }
+];
+
 class TaskFilter extends Component {
   handleIsDoneClick = event => {
     this.props.sortByIsDone(event.currentTarget.name)
@@ -18,68 +36,56 @@ class TaskFilter extends Component {
       <div className="task-sorting">
         <div className="done-sorting">
           {`Filtruj zrobione`}
-          <button
-            name="0"
-            title="Pokaż wszystkie"
-            className={this.props.isDoneSortMode === '0' ? 'clicked' : ''}
-            onClick={this.handleIsDoneClick}
-          >{`PW`}</button>
-          <button
-            name="1"
-            title="Pokaż zrobione"
-            className={this.props.isDoneSortMode === '1' ? 'clicked' : ''}
-            onClick={this.handleIsDoneClick}
-          >{`PZ`}</button>
-          <button
-            name="2"
-            title="Pokaż niezrobione"
-            className={this.props.isDoneSortMode === '2' ? 'clicked' : ''}
-            onClick={this.handleIsDoneClick}
-          >{`PN`}</button>
+          {
+            filters.map(
+              ({ title, label }, index) => (
+                <button
+                  name={index.toString()}
+                  title={title}
+                  className={this.props.isDoneSortMode === index.toString() ? 'clicked' : ''}
+                  onClick={this.handleIsDoneClick}
+                >
+                  {label}
+                </button>
+              )
+            )
+          }
         </div>
 
         <div className="dueday-sorting">
           {`Sortuj wg dat`}
-          <button
-            name="0"
-            title="Bez sortowania"
-            className={this.props.dueDateSortMode === '0' ? 'clicked' : ''}
-            onClick={this.handleDueDateClick}
-          >Data {"\u21d4"}</button>
-          <button
-            name="1"
-            title="Sortuj rosnąco"
-            className={this.props.dueDateSortMode === '1' ? 'clicked' : ''}
-            onClick={this.handleDueDateClick}
-          >Data {"\u21e7"}</button>
-          <button
-            name="2"
-            title="Sortuj malejąco"
-            className={this.props.dueDateSortMode === '2' ? 'clicked' : ''}
-            onClick={this.handleDueDateClick}
-          >Data {"\u21e9"}</button>
+          {
+            dueSorters.map(
+              ({ title, label }, index) => (
+                <button
+                  name={index.toString()}
+                  title={title}
+                  className={this.props.dueDateSortMode === index.toString() ? 'clicked' : ''}
+                  onClick={this.handleDueDateClick}
+                >
+                  {label}
+                </button>
+              )
+            )
+          }
         </div>
 
         <div className="priority-sorting">
           {`Sortuj wg priorytetów`}
-          <button
-            name="0"
-            title="Bez sortowania"
-            className={this.props.prioritySortMode === '0' ? 'clicked' : ''}
-            onClick={this.handlePriorityClick}
-          >Priorytet {"\u21d4"}</button>
-          <button
-            name="1"
-            title="Sortuj rosnąco"
-            className={this.props.prioritySortMode === '1' ? 'clicked' : ''}
-            onClick={this.handlePriorityClick}
-          >Priorytet {"\u21e7"}</button>
-          <button
-            name="2"
-            title="Sortuj malejąco"
-            className={this.props.prioritySortMode === '2' ? 'clicked' : ''}
-            onClick={this.handlePriorityClick}
-          >Priorytet {"\u21e9"}</button>
+          {
+            prioritySorters.map(
+              ({ title, label }, index) => (
+                <button
+                  name={index.toString()}
+                  title={title}
+                  className={this.props.prioritySortMode === index.toString() ? 'clicked' : ''}
+                  onClick={this.handlePriorityClick}
+                >
+                  {label}
+                </button>
+              )
+            )
+          }
         </div>
       </div>
     )
