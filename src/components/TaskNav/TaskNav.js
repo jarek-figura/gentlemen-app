@@ -18,9 +18,21 @@ class TaskNav extends Component {
     });
   };
 
+  handleClearButton = () => {
+    this.props.clearFilters()
+  };
+
   render () {
     return (
       <nav className={`nav-bottom ${this.state.hideNavMode}`}>
+        <button
+          className="clear-filters-button"
+          title="Wyczyść filtry"
+          onClick={this.handleClearButton}
+        >
+          {`Wyczyść filtry`}
+        </button>
+
         <button
           className="add-task-button"
           title="Dodaj zadanie"

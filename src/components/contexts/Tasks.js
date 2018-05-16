@@ -32,6 +32,14 @@ export class TasksProvider extends Component {
     prioritySortMode: '0', // 0 - no sorting, 1 - ascending, 2 - descending
     searchPhrase: '',
 
+    clearFilters: () => {
+      this.setState({
+        isDoneSortMode: '0',
+        dueDateSortMode: '0',
+        prioritySortMode: '0'
+      })
+    },
+
     sortByIsDone: status => {
       this.setState({ isDoneSortMode: status})
     },

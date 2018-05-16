@@ -26,3 +26,9 @@
   float: right;
   margin-right: 10px;
 }
+
+.clear-filters-button {
+  height: 36px;
+  float: left;
+  margin-left: 10px;
+}

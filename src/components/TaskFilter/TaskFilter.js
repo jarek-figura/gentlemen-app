@@ -40,6 +40,7 @@ class TaskFilter extends Component {
             filters.map(
               ({ title, label }, index) => (
                 <button
+                  key={index}
                   name={index.toString()}
                   title={title}
                   className={this.props.isDoneSortMode === index.toString() ? 'clicked' : ''}
@@ -58,6 +59,7 @@ class TaskFilter extends Component {
             dueSorters.map(
               ({ title, label }, index) => (
                 <button
+                  key={index}
                   name={index.toString()}
                   title={title}
                   className={this.props.dueDateSortMode === index.toString() ? 'clicked' : ''}
@@ -76,6 +78,7 @@ class TaskFilter extends Component {
             prioritySorters.map(
               ({ title, label }, index) => (
                 <button
+                  key={index}
                   name={index.toString()}
                   title={title}
                   className={this.props.prioritySortMode === index.toString() ? 'clicked' : ''}
