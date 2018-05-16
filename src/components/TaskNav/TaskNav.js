@@ -4,6 +4,7 @@ import {withTasks} from "../contexts/Tasks";
 import TaskFilter from '../TaskFilter/TaskFilter';
 
 const navModeTable = ['hide', ''];
+const filtersButtonName = [`Pokaż\nfiltry`, `Ukryj\nfiltry`];
 let counter = 0;
 
 class TaskNav extends Component {
@@ -28,10 +29,10 @@ class TaskNav extends Component {
 
         <button
           className="show-filters"
-          title="Pokaż filtry"
+          title={filtersButtonName[counter]}
           onClick={this.handleClick}
         >
-          {`Pokaż\nfiltry`}
+          {filtersButtonName[counter]}
         </button>
 
         {/* filter by isDone & sort by dueDate & sort by priority */}
