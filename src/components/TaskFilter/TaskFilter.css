@@ -6,8 +6,12 @@
   margin-top: 10px;
 }
 
+.done-sorting {
+  margin-top: 10px;
+}
+
 button {
-  width: 63px;
+  width: 70px;
   height: 36px;
   margin: 0 5px;
 }
