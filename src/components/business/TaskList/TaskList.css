@@ -10,9 +10,13 @@ li {
 
 .banner {
   height: calc(100vh - 160px);
-  padding-top: 30px;
+  margin-top: 20px;
   text-align: center;
   background-color: #9FFF82;
+}
+
+.banner > h1 {
+  padding-top: 20px;
 }
 
 .task-list {
@@ -21,4 +25,9 @@ li {
 
 .no-result {
   text-align: center;
+}
+
+.logged-in {
+  position: fixed;
+  top: 5px;
 }

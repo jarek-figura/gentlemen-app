@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import './TaskContent.css';
-import {withTasks} from "../contexts/Tasks";
+import {withTasks} from "../../contexts/Tasks";
 
 class TaskContent extends Component {
   render() {

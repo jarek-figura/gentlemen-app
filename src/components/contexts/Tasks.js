@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Tasks.css'
-import InnerTaskPopup from "../InnerTaskPopup/InnerTaskPopup";
+import InnerTaskPopup from "../business/InnerTaskPopup/InnerTaskPopup";
 
 const TasksContext = React.createContext();
 export const TasksConsumer = TasksContext.Consumer;
@@ -40,17 +40,11 @@ export class TasksProvider extends Component {
       })
     },
 
-    sortByIsDone: status => {
-      this.setState({ isDoneSortMode: status})
-    },
+    sortByIsDone: status => { this.setState({ isDoneSortMode: status}) },
 
-    sortByDueDate: status => {
-      this.setState({ dueDateSortMode: status})
-    },
+    sortByDueDate: status => { this.setState({ dueDateSortMode: status}) },
 
-    sortByPriority: status => {
-      this.setState({ prioritySortMode: status })
-    },
+    sortByPriority: status => { this.setState({ prioritySortMode: status }) },
 
     updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
 

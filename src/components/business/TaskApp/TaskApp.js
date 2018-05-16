@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './TaskApp.css'
-import {withTasks} from "../contexts/Tasks";
+import {withTasks} from "../../contexts/Tasks";
 import TaskList from "../TaskList/TaskList";
 import TaskNav from '../TaskNav/TaskNav';
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './TaskFilter.css'
-import {withTasks} from "../contexts/Tasks";
+import {withTasks} from "../../contexts/Tasks";
 
 const filters = [
   { title: 'Pokaż wszystkie',   label: 'PW' },

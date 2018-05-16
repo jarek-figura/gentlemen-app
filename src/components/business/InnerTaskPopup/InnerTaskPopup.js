@@ -3,7 +3,7 @@ import './InnerTaskPopup.css';
 import moment from 'moment';
 import TaskPriority from "../TaskPriority/TaskPriority";
 import TaskDueDay from "../TaskDueDay/TaskDueDay";
-import {withTasks} from "../contexts/Tasks";
+import {withTasks} from "../../contexts/Tasks";
 
 class InnerTaskPopup extends Component {
   state = {

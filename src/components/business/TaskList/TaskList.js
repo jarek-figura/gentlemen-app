@@ -1,10 +1,13 @@
 import React, {Component} from 'react'
 import './TaskList.css'
-import TaskContent from "../TaskContent/TaskContent";
+import TaskContent from "../../business/TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
-import {withTasks} from "../contexts/Tasks";
-import {nameToValue} from "../_utils/priority";
+import {nameToValue} from "../../_utils/priority";
+import {withTasks} from "../../contexts/Tasks";
+import {withUser} from "../../contexts/User";
 import moment from "moment/moment";
+import SignInForm from '../../core/auth/SignInForm';
+import SignUpForm from '../../core/auth/SignUpForm';
 
 class TaskList extends Component {
   render() {
@@ -71,7 +74,21 @@ class TaskList extends Component {
                     }
                   </ul>
             : //show banner
-              <h1 className='banner'>Taskmen banner</h1>
+              <div className='banner'>
+                <h1>Witaj w aplikacji Taskmen</h1>
+                {
+                  this.props.user === null ? (
+                  <div>
+                    <SignInForm/>
+                    <SignUpForm/>
+                  </div>
+                  ) : (
+                    <p className="logged-in">
+                      Zalogowany jako: {this.props.user.email} <button onClick={this.props.signOut}>Wyloguj</button>
+                    </p>
+                  )
+                }
+              </div>
         }
         <br/>
         <br/>
@@ -80,4 +97,4 @@ class TaskList extends Component {
   }
 }
 
-export default withTasks(TaskList)
+export default withUser(withTasks(TaskList))
