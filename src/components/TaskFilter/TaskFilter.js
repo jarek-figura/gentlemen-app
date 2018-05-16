@@ -3,6 +3,9 @@ import './TaskFilter.css'
 import {withTasks} from "../contexts/Tasks";
 
 class TaskFilter extends Component {
+  handleIsDoneClick = event => {
+    this.props.sortByIsDone(event.currentTarget.name)
+  };
   handleDueDateClick = event => {
     this.props.sortByDueDate(event.currentTarget.name)
   };
@@ -13,6 +16,28 @@ class TaskFilter extends Component {
   render(){
     return (
       <div className="task-sorting">
+        <div className="done-sorting">
+          {`Filtruj zrobione`}
+          <button
+            name="0"
+            title="Pokaż wszystkie"
+            className={this.props.isDoneSortMode === '0' ? 'clicked' : ''}
+            onClick={this.handleIsDoneClick}
+          >{`PW`}</button>
+          <button
+            name="1"
+            title="Pokaż zrobione"
+            className={this.props.isDoneSortMode === '1' ? 'clicked' : ''}
+            onClick={this.handleIsDoneClick}
+          >{`PZ`}</button>
+          <button
+            name="2"
+            title="Pokaż niezrobione"
+            className={this.props.isDoneSortMode === '2' ? 'clicked' : ''}
+            onClick={this.handleIsDoneClick}
+          >{`PN`}</button>
+        </div>
+
         <div className="dueday-sorting">
           {`Sortuj wg dat`}
           <button
