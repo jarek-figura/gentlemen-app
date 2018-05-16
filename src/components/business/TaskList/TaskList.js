@@ -51,6 +51,13 @@ class TaskList extends Component {
 
     return (
       <div>
+        {
+          this.props.user !== null ?
+          <p className="logged-in">
+            Użytkownik: {this.props.user.email}
+            <button onClick={this.props.signOut}>Wyloguj</button>
+          </p> : ""
+        }
         { this.props.tasksBeforeFilter().length !== 0 &&
           <span className='task-list'>
             <h3>Zadania do zrobienia</h3>
@@ -78,20 +85,14 @@ class TaskList extends Component {
                 <h1>Witaj w aplikacji Taskmen</h1>
                 {
                   this.props.user === null ? (
-                  <div>
-                    <SignInForm/>
-                    <SignUpForm/>
-                  </div>
-                  ) : (
-                    <p className="logged-in">
-                      Zalogowany jako: {this.props.user.email} <button onClick={this.props.signOut}>Wyloguj</button>
-                    </p>
-                  )
+                    <div>
+                      <SignInForm/>
+                      <SignUpForm/>
+                    </div>
+                  ) : ''
                 }
               </div>
         }
-        <br/>
-        <br/>
       </div>
     )
   }

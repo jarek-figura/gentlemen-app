@@ -9,14 +9,14 @@ li {
 }
 
 .banner {
-  height: calc(100vh - 160px);
-  margin-top: 20px;
+  height: calc(100vh - 124px);
+  margin-top: 40px;
   text-align: center;
   background-color: #9FFF82;
 }
 
 .banner > h1 {
-  padding-top: 20px;
+  padding-top: 50px;
 }
 
 .task-list {
@@ -29,5 +29,11 @@ li {
 
 .logged-in {
   position: fixed;
-  top: 5px;
+  top: 8px;
+  left:0;
+  right: 0;
+}
+
+.logged-in > button {
+  height: 24px;
 }
