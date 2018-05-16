@@ -40,8 +40,8 @@ export class TasksProvider extends Component {
       this.setState({ dueDateSortMode: status})
     },
 
-    sortByPriority: () => {
-      this.setState(({ prioritySortMode }) => ({ prioritySortMode: (prioritySortMode + 1) % 3 }))
+    sortByPriority: status => {
+      this.setState({ prioritySortMode: status })
     },
 
     updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
