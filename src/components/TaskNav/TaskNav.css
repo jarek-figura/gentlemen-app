@@ -9,8 +9,8 @@
   text-align: center;
 }
 
-.nav-down {
-  bottom: 100px;
+.hide {
+  bottom: -160px;
 }
 
 .add-task-button {
