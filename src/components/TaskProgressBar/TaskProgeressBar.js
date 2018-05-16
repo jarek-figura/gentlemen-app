@@ -6,6 +6,7 @@ class TaskProgressBar extends React.Component {
   render () {
     return(
       <div className="container">
+        {"Pozostao dni: "}
         <Line percent="50"
               strokeWidth="2"
               strokeColor="#bada55"
