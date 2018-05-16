@@ -36,9 +36,13 @@ class TaskList extends Component {
       )
     }
 
-    if (this.props.prioritySortMode === 1) {
+    if (this.props.prioritySortMode === '1') {
       tasks.sort(
         (a, b) => nameToValue(b.priority) - nameToValue(a.priority)
+      )
+    } else if (this.props.prioritySortMode === '2') {
+      tasks.sort(
+        (a, b) => nameToValue(a.priority) - nameToValue(b.priority)
       )
     }
 

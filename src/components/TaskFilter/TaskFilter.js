@@ -14,6 +14,7 @@ class TaskFilter extends Component {
     return (
       <div className="task-sorting">
         <div className="dueday-sorting">
+          {`Sortuj wg dat`}
           <button
             name="0"
             title="Bez sortowania"
@@ -35,6 +36,7 @@ class TaskFilter extends Component {
         </div>
 
         <div className="priority-sorting">
+          {`Sortuj wg priorytetów`}
           <button
             name="0"
             title="Bez sortowania"
