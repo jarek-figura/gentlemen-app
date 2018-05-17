@@ -1,20 +1,28 @@
 import React from 'react'
 import './TaskProgressBar.css'
 import {Line} from 'rc-progress'
+import {withTasks} from "../contexts/Tasks";
 
 class TaskProgressBar extends React.Component {
   render () {
      const progress = "3"
 
-    console.log(this.props.dueDate)
+    const taskDueDate = this.props.dueDate
+    console.log(taskDueDate)
 
-    const today = new Date()
+    //console.log(this.props.tasks)
+    //this.props.tasks
+    const taskMaxDate = Math.max.apply(Math, this.props.tasks.map(function(x){return x.dueDate}))
+
+    console.log(taskMaxDate)
+
+    const taskDueDateDifference = (taskDueDate / taskMaxDate) * 100
+
+    console.log(taskDueDateDifference)
 
     return(
-
       <div className="container">
-        {"Pozostao dni: "}
-        <Line percent={progress}
+        <Line percent={taskDueDateDifference}
               strokeWidth="2"
               strokeColor="#bada55"
               height="10"
@@ -26,4 +34,4 @@ class TaskProgressBar extends React.Component {
   }
 }
 
-export default TaskProgressBar;
+export default withTasks(TaskProgressBar);
