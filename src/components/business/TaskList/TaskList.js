@@ -58,30 +58,39 @@ class TaskList extends Component {
             <button onClick={this.props.signOut}>Wyloguj</button>
           </p> : ""
         }
-        { this.props.tasksBeforeFilter().length !== 0 &&
-          <span className='task-list'>
-            <h3>Zadania do zrobienia</h3>
-            <TaskSearch/>
-          </span>
-        }
         {
-          this.props.tasksBeforeFilter().length !== 0
-            ? // show TaskList and search
-              tasks.length === 0
-                ? <p className='no-result'>Brak wyników</p>
-                : <ul>
-                    {
-                      tasks.map(
-                        task => (
-                          <li key={task.id}>
-                            <TaskContent task={task}/>
-                          </li>
+          this.props.user !== null
+            ? <div>
+              {
+                this.props.tasksBeforeFilter().length !== 0 &&
+                <span className='task-list'>
+                    <h3>Zadania do zrobienia</h3>
+                    <TaskSearch/>
+                  </span>
+              }
+              {
+                this.props.tasksBeforeFilter().length !== 0
+                  ? // show TaskList and search
+                  tasks.length === 0
+                    ? <p className='no-result'>Brak wyników</p>
+                    : <ul>
+                      {
+                        tasks.map(
+                          task => (
+                            <li key={task.id}>
+                              <TaskContent task={task}/>
+                            </li>
+                          )
                         )
-                      )
-                    }
-                  </ul>
-            : //show banner
-              <div className='banner'>
+                      }
+                    </ul>
+                  : //show banner
+                  <div className='banner'>
+
+                  </div>
+              }
+            </div>
+            : <div className='banner'>
                 <h1>Witaj w aplikacji Taskmen</h1>
                 {
                   this.props.user === null ? (
@@ -98,4 +107,4 @@ class TaskList extends Component {
   }
 }
 
-export default withUser(withTasks(TaskList))
+export default withUser(withTasks(TaskList));
