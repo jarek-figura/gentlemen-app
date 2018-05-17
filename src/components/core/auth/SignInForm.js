@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withUser } from '../../contexts/User';
+import './SignForm.css';
 
 class SignInForm extends Component {
 
@@ -39,7 +40,7 @@ class SignInForm extends Component {
             placeholder="hasło"
             onChange={this.handleChange}
           />
-          <button>Zaloguj się</button>
+          <button className="sign-button">Zaloguj się</button>
         </form>
       </div>
     )

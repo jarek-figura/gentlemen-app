@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import './Tasks.css'
 import InnerTaskPopup from "../business/InnerTaskPopup/InnerTaskPopup";
+import firebase from 'firebase';
+import moment from 'moment';
 
 const TasksContext = React.createContext();
+
 export const TasksConsumer = TasksContext.Consumer;
 
 export class TasksProvider extends Component {
 
-  toggleTaskAttribute = attributeName => taskId => {
-    this.setState({
-      tasks: this.state.tasks.map(
-        task => task.id !== taskId ? task : {
-          ...task,
-          [attributeName]: !task[attributeName],
-        }
-      )
+  toggleTaskAttribute = attributeName => id => {
+    const taskRef = this.tasksRef.child(id);
+    taskRef.once('value', snapshot => {
+      const task = snapshot.val();
+      taskRef.update({
+        [attributeName]: !task[attributeName]
+      })
     })
   };
 
@@ -49,42 +51,26 @@ export class TasksProvider extends Component {
     updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
 
     addTask: (name, description, dueDate, priority) => {
-      this.setState(
-        ({ tasks }) => ({
-          tasks: tasks.concat({
-            id: tasks.length === 0 ? 1 : Math.max(...tasks.map(task => task.id)) + 1,
-            name: name,
-            description: description,
-            dueDate: dueDate,
-            priority: priority,
-            isDone: false
-          })
-        })
-      )
+      this.tasksRef.push({
+        name: name,
+        description: description,
+        dueDate: moment(dueDate).valueOf(),
+        priority: priority,
+        isDone: false
+      })
     },
 
     updateTask: (id, name, description, dueDate, priority) => {
-      this.setState({
-        tasks: this.state.tasks.map(
-          task => task.id !== id ? task : {
-            ...task,
-            name: name,
-            description: description,
-            dueDate: dueDate,
-            priority: priority
-          }
-        )
+      this.tasksRef.child(id).update({
+        name: name,
+        description: description,
+        dueDate: moment(dueDate).valueOf(),
+        priority: priority
       })
     },
 
-    removeTask: taskId => {
-      this.setState(function (oldState) {
-        return {
-          tasks: oldState.tasks.filter(function (task) {
-            return task.id !== taskId
-          })
-        }
-      })
+    removeTask: id => {
+      this.tasksRef.child(id).remove()
     },
 
     toggleTaskDone: this.toggleTaskAttribute('isDone'),
@@ -138,17 +124,32 @@ export class TasksProvider extends Component {
     )
   }
 
-  componentDidMount() {
-    const tasksAsTextInJSONFormat = localStorage.getItem('storedTasks');
-    const tasksFromLocalStorage = JSON.parse(tasksAsTextInJSONFormat);
+  handleSnapshot = snapshot => {
     this.setState({
-      tasks: tasksFromLocalStorage || []
+      tasks: Object.entries(snapshot.val() || {}).map(([id, other]) => ({ id, ...other}))
     })
+  };
+
+  componentDidMount() {
+    this.unsubscribe = firebase.auth().onAuthStateChanged(
+      user => {
+        if (user !== null) {
+          this.tasksRef = firebase.database().ref(`/tasks/${user.uid}`);
+          this.tasksRef.on('value', this.handleSnapshot)
+        } else {
+          this.tasksRef.off('value', this.handleSnapshot)
+        }
+      }
+    )
   }
 
-  componentDidUpdate() {
-    const tasks = this.state.tasks;
-    localStorage.setItem('storedTasks', JSON.stringify(tasks))
+  componentWillUnmount() {
+    if (this.unsubscribe) {
+      this.unsubscribe()
+    }
+    if (this.tasksRef) {
+      this.tasksRef.off('value', this.handleSnapshot)
+    }
   }
 }
 
