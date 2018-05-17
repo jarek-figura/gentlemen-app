@@ -23,3 +23,11 @@ button:hover {
 .clicked {
   background-color: deeppink;
 }
+
+@media all and (max-width: 414px) {
+  .done-sorting-text,
+  .dueday-sorting-text,
+  .priority-sorting-text {
+    display: none
+  }
+}

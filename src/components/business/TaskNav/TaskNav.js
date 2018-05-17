@@ -27,11 +27,9 @@ class TaskNav extends Component {
       <nav className={`nav-bottom ${this.state.hideNavMode}`}>
         <button
           className="clear-filters-button"
-          title="Wyczyść filtry"
+          title={`Wyczyść\nfiltry`}
           onClick={this.handleClearButton}
-        >
-          {`Wyczyść filtry`}
-        </button>
+        >{`Wyczyść\nfiltry`}</button>
 
         <button
           className="add-task-button"
@@ -43,9 +41,7 @@ class TaskNav extends Component {
           className="show-filters"
           title={filtersButtonName[counter]}
           onClick={this.handleClick}
-        >
-          {filtersButtonName[counter]}
-        </button>
+        >{filtersButtonName[counter]}</button>
 
         {/* filter by isDone & sort by dueDate & sort by priority */}
         <TaskFilter/>

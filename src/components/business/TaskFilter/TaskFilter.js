@@ -35,7 +35,7 @@ class TaskFilter extends Component {
     return (
       <div className="task-sorting">
         <div className="done-sorting">
-          {`Filtruj zrobione`}
+          <span className="done-sorting-text">Filtruj zrobione</span>
           {
             filters.map(
               ({ title, label }, index) => (
@@ -54,7 +54,7 @@ class TaskFilter extends Component {
         </div>
 
         <div className="dueday-sorting">
-          {`Sortuj wg dat`}
+          <span className="dueday-sorting-text">Sortuj wg date</span>
           {
             dueSorters.map(
               ({ title, label }, index) => (
@@ -73,7 +73,7 @@ class TaskFilter extends Component {
         </div>
 
         <div className="priority-sorting">
-          {`Sortuj wg priorytetów`}
+          <span className="priority-sorting-text">Sortuj wg priorytetów</span>
           {
             prioritySorters.map(
               ({ title, label }, index) => (
