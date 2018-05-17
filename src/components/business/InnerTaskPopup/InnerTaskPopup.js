@@ -30,7 +30,6 @@ class InnerTaskPopup extends Component {
     }
 
     if (this.props.buttonName === 'Dodaj') {
-      console.log(this.state.dueDate)
       this.props.addTask(
         this.state.name,
         this.state.description,

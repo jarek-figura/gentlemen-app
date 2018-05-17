@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Tasks.css'
 import InnerTaskPopup from "../business/InnerTaskPopup/InnerTaskPopup";
 import firebase from 'firebase';
+import moment from 'moment';
 
 const TasksContext = React.createContext();
 
@@ -53,7 +54,7 @@ export class TasksProvider extends Component {
       this.tasksRef.push({
         name: name,
         description: description,
-        dueDate: dueDate,
+        dueDate: moment(dueDate).valueOf(),
         priority: priority,
         isDone: false
       })
@@ -63,7 +64,7 @@ export class TasksProvider extends Component {
       this.tasksRef.child(id).update({
         name: name,
         description: description,
-        dueDate: dueDate,
+        dueDate: moment(dueDate).valueOf(),
         priority: priority
       })
     },

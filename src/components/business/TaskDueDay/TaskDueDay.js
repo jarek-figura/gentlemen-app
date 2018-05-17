@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './TaskDueDay.css';
+import moment from 'moment'
 
 class TaskDueDay extends Component {
   state = {
-    dueDate: this.props.dueDate
+    dueDate: moment(this.props.dueDate)
   };
 
   handleChange = date => {
-    console.log(date);
     this.props.handleDate(date);
     this.setState({
       dueDate: date
