@@ -1,0 +1,14 @@
+.wrn{
+    background-color: black;
+    color: #ff0003;
+    text-align: center;
+    font-size: 12px;
+    padding: 2px;
+    opacity: .8;
+    border-radius: 2px;
+}
+
+.container{
+    width: 90%;
+    height: 20px;
+}

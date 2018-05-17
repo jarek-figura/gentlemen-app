@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import './TaskContent.css';
 import {withTasks} from "../../contexts/Tasks";
+import TaskPriorityBar from "../../TaskProgressBar/TaskPriorityBar";
+
 
 class TaskContent extends Component {
   render() {
@@ -12,6 +14,7 @@ class TaskContent extends Component {
         <div className="titles">
           <strong>{task.name}</strong><br/>
           {moment(task.dueDate).format('DD-MM-YYYY')}
+          <TaskPriorityBar dueDate={task.dueDate} />
         </div>
 
         <div className="buttons">
