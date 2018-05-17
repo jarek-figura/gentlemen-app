@@ -5,30 +5,42 @@ import {withTasks} from "../contexts/Tasks";
 
 class TaskPriorityBar extends React.Component {
   render () {
-     const progress = "3"
-
     const taskDueDate = this.props.dueDate
     console.log(taskDueDate)
 
-    //console.log(this.props.tasks)
-    //this.props.tasks
     const taskMaxDate = Math.max.apply(Math, this.props.tasks.map(function(x){return x.dueDate}))
-
     console.log(taskMaxDate)
 
-    const taskDueDateDifference = (taskDueDate / taskMaxDate)
-
-    console.log(taskDueDateDifference)
-
-    //zrobić zmienna "Data dzisiejsza" i od niej bazuj
       const timestamp = Date.now()
+    console.log(timestamp);
 
-      console.log(timestamp);
+      const taskPriorityFactor = ((taskDueDate - timestamp) / (taskMaxDate - timestamp)) * 100
+      console.log(taskPriorityFactor)
+
+
+      const barColor = () => {
+
+        if(taskPriorityFactor < 0){
+         return "black"
+        }else if(taskPriorityFactor <= 10){
+          return "red"
+        }else if(taskPriorityFactor <= 25){
+          return "orange"
+        }else if(taskPriorityFactor <= 50){
+            return "yellow"
+        }else if(taskPriorityFactor <= 75){
+            return "#bada55"
+        }else if(taskPriorityFactor <= 100){
+            return "green"
+        }
+      }
+
+
     return(
       <div className="container">
-        <Line percent={taskDueDateDifference}
+        <Line percent={taskPriorityFactor}
               strokeWidth="2"
-              strokeColor="#bada55"
+              strokeColor={barColor()}
               height="10"
               width="100%"
               trailColor="white"
