@@ -34,19 +34,17 @@ export class TasksProvider extends Component {
     prioritySortMode: '0', // 0 - no sorting, 1 - ascending, 2 - descending
     searchPhrase: '',
 
-    clearFilters: () => {
-      this.setState({
-        isDoneSortMode: '0',
-        dueDateSortMode: '0',
+    clearFilters: () => { this.filterRef.set({
+        isDoneSortMode: '0', // 0 - no filtering, 1 - show done, 2 - show not done
+        dueDateSortMode: '0', // 0 - no sorting,  1 - ascending, 2 - descending
         prioritySortMode: '0'
-      })
-    },
+    }) },
 
-    sortByIsDone: status => { this.setState({ isDoneSortMode: status}) },
+    sortByIsDone: status => { this.filterRef.update({ isDoneSortMode: status }) },
 
-    sortByDueDate: status => { this.setState({ dueDateSortMode: status}) },
+    sortByDueDate: status => { this.filterRef.update({ dueDateSortMode: status }) },
 
-    sortByPriority: status => { this.setState({ prioritySortMode: status }) },
+    sortByPriority: status => { this.filterRef.update({ prioritySortMode: status }) },
 
     updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
 
@@ -130,14 +128,27 @@ export class TasksProvider extends Component {
     })
   };
 
+  handleFilterSnapshot = snapshot => {
+    this.setState(
+      snapshot.val()
+    )
+  };
+
   componentDidMount() {
     this.unsubscribe = firebase.auth().onAuthStateChanged(
       user => {
         if (user !== null) {
           this.tasksRef = firebase.database().ref(`/tasks/${user.uid}`);
-          this.tasksRef.on('value', this.handleSnapshot)
+          this.filterRef = firebase.database().ref(`/filters/${user.uid}`);
+          this.tasksRef.on('value', this.handleSnapshot);
+          this.filterRef.on('value', this.handleFilterSnapshot)
         } else {
-          if (this.tasksRef) this.tasksRef.off('value', this.handleSnapshot)
+          if (this.tasksRef) {
+            this.tasksRef.off('value', this.handleSnapshot);
+          }
+          if (this.filterRef) {
+            this.filterRef.off('value', this.handleFilterSnapshot)
+          }
         }
       }
     )
@@ -149,6 +160,9 @@ export class TasksProvider extends Component {
     }
     if (this.tasksRef) {
       this.tasksRef.off('value', this.handleSnapshot)
+    }
+    if (this.filterRef) {
+      this.filterRef.off('value', this.handleFilterSnapshot)
     }
   }
 }
