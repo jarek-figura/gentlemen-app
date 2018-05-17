@@ -5,16 +5,18 @@ import TaskFilter from '../../business/TaskFilter/TaskFilter';
 
 const navModeTable = ['hide', ''];
 const filtersButtonName = [`Pokaż\nfiltry`, `Ukryj\nfiltry`];
-let counter = 0;
+// let navIndex = 0;
 
 class TaskNav extends Component {
   state = {
-    hideNavMode: 'hide',
+    // hideNavMode: 'hide',
+    navIndex: 0
   };
 
   handleClick = () => {
     this.setState({
-      hideNavMode: navModeTable[counter = (counter + 1) %2]
+      navIndex: (this.state.navIndex + 1) %2,
+      // hideNavMode: navModeTable[this.state.navIndex = (this.state.navIndex + 1) %2]
     });
   };
 
@@ -24,7 +26,7 @@ class TaskNav extends Component {
 
   render () {
     return (
-      <nav className={`nav-bottom ${this.state.hideNavMode}`}>
+      <nav className={`nav-bottom ${navModeTable[this.state.navIndex]}`}>
         <button
           className="clear-filters-button"
           title={`Wyczyść\nfiltry`}
@@ -39,9 +41,9 @@ class TaskNav extends Component {
 
         <button
           className="show-filters"
-          title={filtersButtonName[counter]}
+          title={filtersButtonName[this.state.navIndex]}
           onClick={this.handleClick}
-        >{filtersButtonName[counter]}</button>
+        >{filtersButtonName[this.state.navIndex]}</button>
 
         {/* filter by isDone & sort by dueDate & sort by priority */}
         <TaskFilter/>
