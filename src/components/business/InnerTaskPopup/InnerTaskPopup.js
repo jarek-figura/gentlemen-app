@@ -3,11 +3,14 @@ import './InnerTaskPopup.css';
 import moment from 'moment';
 import TaskPriority from "../TaskPriority/TaskPriority";
 import TaskDueDay from "../TaskDueDay/TaskDueDay";
-import {withTasks} from "../contexts/Tasks";
+import {withTasks} from "../../contexts/Tasks";
 
 class InnerTaskPopup extends Component {
   state = {
     name: '',
+    description: '',
+    dueDate: moment(),
+    priority: 'medium',
     formError: null
   };
 
@@ -31,7 +34,7 @@ class InnerTaskPopup extends Component {
         this.state.name,
         this.state.description,
         this.state.dueDate,
-        this.state.priority || 'medium'
+        this.state.priority
       );
       this.props.toggleShowAddTaskPopup();
     } else if (this.props.buttonName === 'Zmień') {
@@ -40,7 +43,7 @@ class InnerTaskPopup extends Component {
         this.state.name,
         this.state.description,
         this.state.dueDate,
-        this.state.priority || 'medium'
+        this.state.priority
       );
       this.props.toggleShowEditTaskPopup(this.state.id);
     }
@@ -95,7 +98,7 @@ class InnerTaskPopup extends Component {
             rows="6"
             name="description"
             placeholder="Opis zadania"
-            value={this.state.description}
+            value={this.state.description || ''}
             onChange={this.handleChange}
           />
         </form><br/>

@@ -1,0 +1,33 @@
+.dueday-sorting {
+  margin-top: 10px;
+}
+
+.priority-sorting {
+  margin-top: 10px;
+}
+
+.done-sorting {
+  margin-top: 10px;
+}
+
+button {
+  width: 70px;
+  height: 36px;
+  margin: 0 5px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.clicked {
+  background-color: deeppink;
+}
+
+@media all and (max-width: 414px) {
+  .done-sorting-text,
+  .dueday-sorting-text,
+  .priority-sorting-text {
+    display: none
+  }
+}

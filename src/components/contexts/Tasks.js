@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import './Tasks.css'
-import InnerTaskPopup from "../InnerTaskPopup/InnerTaskPopup";
+import InnerTaskPopup from "../business/InnerTaskPopup/InnerTaskPopup";
+import firebase from 'firebase';
+import moment from 'moment';
 
 const TasksContext = React.createContext();
+
 export const TasksConsumer = TasksContext.Consumer;
 
 export class TasksProvider extends Component {
 
-  toggleTaskAttribute = attributeName => taskId => {
-    this.setState({
-      tasks: this.state.tasks.map(
-        task => task.id !== taskId ? task : {
-          ...task,
-          [attributeName]: !task[attributeName],
-        }
-      )
+  toggleTaskAttribute = attributeName => id => {
+    const taskRef = this.tasksRef.child(id);
+    taskRef.once('value', snapshot => {
+      const task = snapshot.val();
+      taskRef.update({
+        [attributeName]: !task[attributeName]
+      })
     })
   };
 
@@ -27,51 +29,48 @@ export class TasksProvider extends Component {
     isFormVisible: false,
     currentForm: null, // 'add', 'edit'
     currentEditTask: null,
-    showOnlyNotDoneEnabled: false,
-    showOnlyDoneEnabled: false,
-    dueDateSortMode: 0, // 0 - no sorting, 1 - ascending, 2 - descending
-    prioritySortMode: 0, // 0 - no sorting, 1 - from higher to lower
+    isDoneSortMode: '0', // 0 - no filtering, 1 - show done, 2 - show not done
+    dueDateSortMode: '0', // 0 - no sorting,  1 - ascending, 2 - descending
+    prioritySortMode: '0', // 0 - no sorting, 1 - ascending, 2 - descending
     searchPhrase: '',
+
+    clearFilters: () => {
+      this.setState({
+        isDoneSortMode: '0',
+        dueDateSortMode: '0',
+        prioritySortMode: '0'
+      })
+    },
+
+    sortByIsDone: status => { this.setState({ isDoneSortMode: status}) },
+
+    sortByDueDate: status => { this.setState({ dueDateSortMode: status}) },
+
+    sortByPriority: status => { this.setState({ prioritySortMode: status }) },
 
     updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
 
     addTask: (name, description, dueDate, priority) => {
-      this.setState(
-        ({ tasks }) => ({
-          tasks: tasks.concat({
-            id: tasks.length === 0 ? 1 : Math.max(...tasks.map(task => task.id)) + 1,
-            name: name,
-            description: description,
-            dueDate: dueDate,
-            priority: priority,
-            isDone: false
-          })
-        })
-      )
+      this.tasksRef.push({
+        name: name,
+        description: description,
+        dueDate: moment(dueDate).valueOf(),
+        priority: priority,
+        isDone: false
+      })
     },
 
     updateTask: (id, name, description, dueDate, priority) => {
-      this.setState({
-        tasks: this.state.tasks.map(
-          task => task.id !== id ? task : {
-            ...task,
-            name: name,
-            description: description,
-            dueDate: dueDate,
-            priority: priority
-          }
-        )
+      this.tasksRef.child(id).update({
+        name: name,
+        description: description,
+        dueDate: moment(dueDate).valueOf(),
+        priority: priority
       })
     },
 
-    removeTask: taskId => {
-      this.setState(function (oldState) {
-        return {
-          tasks: oldState.tasks.filter(function (task) {
-            return task.id !== taskId
-          })
-        }
-      })
+    removeTask: id => {
+      this.tasksRef.child(id).remove()
     },
 
     toggleTaskDone: this.toggleTaskAttribute('isDone'),
@@ -112,22 +111,6 @@ export class TasksProvider extends Component {
       return options[formType]()
     },
 
-    showOnlyDone : (status) => {
-      this.setState({showOnlyDoneEnabled: status})
-    },
-
-    showOnlyNotDone : (status) => {
-      this.setState({showOnlyNotDoneEnabled: status})
-    },
-
-    enableSortingByDueDate: () => {
-      this.setState(({ dueDateSortMode }) => ({ dueDateSortMode: (dueDateSortMode + 1) % 3 }))
-    },
-
-    enableSortingByPriority: () => {
-      this.setState(({ prioritySortMode }) => ({ prioritySortMode: (prioritySortMode + 1) % 2 }))
-    },
-
     tasksBeforeFilter: () => {
       return this.state.tasks;
     }
@@ -141,17 +124,32 @@ export class TasksProvider extends Component {
     )
   }
 
-  componentDidMount() {
-    const tasksAsTextInJSONFormat = localStorage.getItem('storedTasks');
-    const tasksFromLocalStorage = JSON.parse(tasksAsTextInJSONFormat);
+  handleSnapshot = snapshot => {
     this.setState({
-      tasks: tasksFromLocalStorage || []
+      tasks: Object.entries(snapshot.val() || {}).map(([id, other]) => ({ id, ...other}))
     })
+  };
+
+  componentDidMount() {
+    this.unsubscribe = firebase.auth().onAuthStateChanged(
+      user => {
+        if (user !== null) {
+          this.tasksRef = firebase.database().ref(`/tasks/${user.uid}`);
+          this.tasksRef.on('value', this.handleSnapshot)
+        } else {
+          if (this.tasksRef) this.tasksRef.off('value', this.handleSnapshot)
+        }
+      }
+    )
   }
 
-  componentDidUpdate() {
-    const tasks = this.state.tasks;
-    localStorage.setItem('storedTasks', JSON.stringify(tasks))
+  componentWillUnmount() {
+    if (this.unsubscribe) {
+      this.unsubscribe()
+    }
+    if (this.tasksRef) {
+      this.tasksRef.off('value', this.handleSnapshot)
+    }
   }
 }
 

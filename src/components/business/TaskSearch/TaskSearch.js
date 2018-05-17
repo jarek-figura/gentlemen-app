@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './TaskSearch.css'
-import {withTasks} from "../contexts/Tasks";
+import {withTasks} from "../../contexts/Tasks";
 
 class TaskSearch extends Component {
 
