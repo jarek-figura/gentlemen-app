@@ -7,13 +7,14 @@ import TaskProgressBar from '../TaskProgressBar/TaskProgeressBar'
 class TaskContent extends Component {
   render() {
     const task = this.props.task;
+    console.log(task)
     return (
       <div className={task.priority + ' ' + task.isDone + ' task'}>
 
         <div className="titles">
           <strong>{task.name}</strong><br/>
           {moment(task.dueDate).format('DD-MM-YYYY')}
-          <TaskProgressBar/>
+          <TaskProgressBar dueDate={task.dueDate}/>
         </div>
 
         <div className="buttons">
