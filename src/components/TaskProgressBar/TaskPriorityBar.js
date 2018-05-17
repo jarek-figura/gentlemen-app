@@ -3,7 +3,7 @@ import './TaskProgressBar.css'
 import {Line} from 'rc-progress'
 import {withTasks} from "../contexts/Tasks";
 
-class TaskProgressBar extends React.Component {
+class TaskPriorityBar extends React.Component {
   render () {
      const progress = "3"
 
@@ -21,7 +21,9 @@ class TaskProgressBar extends React.Component {
     console.log(taskDueDateDifference)
 
     //zrobić zmienna "Data dzisiejsza" i od niej bazuj
+      const timestamp = Date.now()
 
+      console.log(timestamp);
     return(
       <div className="container">
         <Line percent={taskDueDateDifference}
@@ -36,4 +38,4 @@ class TaskProgressBar extends React.Component {
   }
 }
 
-export default withTasks(TaskProgressBar);
+export default withTasks(TaskPriorityBar);
