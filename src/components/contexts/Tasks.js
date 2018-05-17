@@ -9,8 +9,8 @@ export const TasksConsumer = TasksContext.Consumer;
 
 export class TasksProvider extends Component {
 
-  toggleTaskAttribute = attributeName => taskId => {
-    const taskRef = this.tasksRef.child(taskId);
+  toggleTaskAttribute = attributeName => id => {
+    const taskRef = this.tasksRef.child(id);
     taskRef.once('value', snapshot => {
       const task = snapshot.val();
       taskRef.update({

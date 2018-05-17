@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import './TaskDueDay.css';
 
@@ -10,6 +9,7 @@ class TaskDueDay extends Component {
   };
 
   handleChange = date => {
+    console.log(date);
     this.props.handleDate(date);
     this.setState({
       dueDate: date
@@ -19,7 +19,7 @@ class TaskDueDay extends Component {
   render() {
     return (
       <DatePicker className='date-picker'
-        selected={moment(this.state.dueDate) || moment()}
+        selected={this.state.dueDate}
         onChange={this.handleChange}
         withPortal
         dateFormat="DD-MM-YYYY"
