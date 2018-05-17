@@ -37,14 +37,20 @@ class TaskPriorityBar extends React.Component {
 
 
     return(
-      <div className="container">
-        <Line percent={taskPriorityFactor}
-              strokeWidth="2"
-              strokeColor={barColor()}
-              height="10"
-              width="100%"
-              trailColor="white"
-              />
+      <div className="container">{
+          (taskPriorityFactor < 0 ?
+              <p className="wrn">zadanie przeterminowane</p>
+
+                  :
+
+          <Line percent={taskPriorityFactor}
+                strokeWidth="2"
+                strokeColor={barColor()}
+                height="10"
+                width="100%"
+                trailColor="white"
+          />
+          )}
       </div>
     )
   }
