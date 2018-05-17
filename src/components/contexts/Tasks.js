@@ -137,7 +137,7 @@ export class TasksProvider extends Component {
           this.tasksRef = firebase.database().ref(`/tasks/${user.uid}`);
           this.tasksRef.on('value', this.handleSnapshot)
         } else {
-          this.tasksRef.off('value', this.handleSnapshot)
+          if (this.tasksRef) this.tasksRef.off('value', this.handleSnapshot)
         }
       }
     )

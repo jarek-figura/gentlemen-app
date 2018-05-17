@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './TaskApp.css'
 import {withTasks} from "../../contexts/Tasks";
+import {withUser} from "../../contexts/User";
 import TaskList from "../TaskList/TaskList";
 import TaskNav from '../TaskNav/TaskNav';
 
@@ -12,8 +13,10 @@ class TaskApp extends Component {
           this.props.currentForm === null
             ? <div>
                 <TaskList/>
-                <TaskNav/>
-            </div>
+                  {
+                    this.props.user !== null ? <TaskNav/> : <div></div>
+                  }
+              </div>
             : this.props.displayForm(this.props.currentForm)
         }
       </div>
@@ -21,4 +24,4 @@ class TaskApp extends Component {
   }
 }
 
-export default withTasks(TaskApp);
+export default withUser(withTasks(TaskApp));
