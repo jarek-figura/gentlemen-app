@@ -16,9 +16,11 @@ class TaskProgressBar extends React.Component {
 
     console.log(taskMaxDate)
 
-    const taskDueDateDifference = (taskDueDate / taskMaxDate) * 100
+    const taskDueDateDifference = (taskDueDate / taskMaxDate)
 
     console.log(taskDueDateDifference)
+
+    //zrobić zmienna "Data dzisiejsza" i od niej bazuj
 
     return(
       <div className="container">
