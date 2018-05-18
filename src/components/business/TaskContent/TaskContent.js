@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import './TaskContent.css';
 import {withTasks} from "../../contexts/Tasks";
-import TaskPriorityBar from "../../TaskProgressBar/TaskPriorityBar";
+import TaskPriorityBar from "../TaskProgressBar/TaskPriorityBar";
 
 
 class TaskContent extends Component {
