@@ -20,6 +20,10 @@ button:hover {
   cursor: pointer;
 }
 
+.butt {
+  width: 95px;
+}
+
 .clicked {
   background-color: deeppink;
 }

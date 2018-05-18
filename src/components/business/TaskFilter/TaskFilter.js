@@ -34,6 +34,12 @@ class TaskFilter extends Component {
   render(){
     return (
       <div className="task-sorting">
+
+        <div className="">
+          <button className="butt my-day">Mój dzień</button>
+          <button className="butt my-week">Mój tydzień</button>
+        </div>
+
         <div className="done-sorting">
           <span className="done-sorting-text">Filtruj zrobione</span>
           {
