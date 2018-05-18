@@ -54,7 +54,8 @@ class TaskList extends Component {
     return (
       <div>
         {
-          <TaskPanelUser/>
+          this.props.user !== null ?
+          <TaskPanelUser/> : ""
         }
         {
           this.props.user !== null
