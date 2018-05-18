@@ -11,7 +11,7 @@
 }
 
 .hide {
-  bottom: -160px;
+  bottom: -120px;
   transition: 0.3s;
 }
 
@@ -23,12 +23,14 @@
 
 .show-filters {
   height: 36px;
+  width: 70px;
   float: right;
   margin-right: 10px;
 }
 
 .clear-filters-button {
   height: 36px;
+  width: 70px;
   float: left;
   margin-left: 10px;
 }

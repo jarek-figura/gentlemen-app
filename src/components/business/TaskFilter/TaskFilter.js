@@ -15,9 +15,9 @@ const dueSorters = [
 ];
 
 const prioritySorters = [
-  { title: 'Bez sortowania',  label: `Priorytet ${"\u21d4"}` },
-  { title: 'Sortuj rosnąco',  label: `Priorytet ${"\u21e7"}` },
-  { title: 'Sortuj malejąco', label: `Priorytet ${"\u21e9"}` }
+  { title: 'Bez sortowania',  label: `Prior ${"\u21d4"}` },
+  { title: 'Sortuj rosnąco',  label: `Prior ${"\u21e7"}` },
+  { title: 'Sortuj malejąco', label: `Prior ${"\u21e9"}` }
 ];
 
 class TaskFilter extends Component {
