@@ -23,6 +23,7 @@ class TaskContent extends Component {
             type="checkbox"
             checked={task.isDone}
             onChange={() => this.props.toggleTaskDone(task.id)}
+
           />
 
           <span>&nbsp;</span>
@@ -35,6 +36,8 @@ class TaskContent extends Component {
             title="Usuń zadanie"
             onClick={() => this.props.removeTask(task.id)}
           >&times;</button>
+
+
         </div>
       </div>
     )
