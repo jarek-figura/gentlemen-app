@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import './TaskPanelUser'
+import './TaskPanelUser.css'
 import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
 
-const navUserModeTable = ['hide', ''];
+const navUserModeTable = ['hideuser', ''];
 
 class TaskPanelUser extends Component {
 
@@ -25,12 +25,13 @@ class TaskPanelUser extends Component {
         <p>
           Użytkownik: {this.props.user.email}
           <button
-            className="show-userpanel"
+            className={"show-userpanel"}
             title={"Panel"}
             onClick={this.handleClick}
           >Panel</button>
           <button onClick={this.props.signOut}>Wyloguj</button>
         </p>
+        <div className={'photo'}>photo</div>
       </nav>
     )
   }
