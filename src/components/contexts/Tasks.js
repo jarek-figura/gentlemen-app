@@ -32,6 +32,8 @@ export class TasksProvider extends Component {
     isDoneSortMode: '0', // 0 - no filtering, 1 - show done, 2 - show not done
     dueDateSortMode: '0', // 0 - no sorting,  1 - ascending, 2 - descending
     prioritySortMode: '0', // 0 - no sorting, 1 - ascending, 2 - descending
+    showMyDayMode: '0',
+    showMyWeekMode: '0',
     searchPhrase: '',
 
     clearFilters: () => { this.filterRef.set({
@@ -45,6 +47,10 @@ export class TasksProvider extends Component {
     sortByDueDate: status => { this.filterRef.update({ dueDateSortMode: status }) },
 
     sortByPriority: status => { this.filterRef.update({ prioritySortMode: status }) },
+
+    showMyDay: status => {  },
+
+    showMyWeek: status => {  },
 
     updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
 

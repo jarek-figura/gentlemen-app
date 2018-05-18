@@ -7,13 +7,11 @@ const filters = [
   { title: 'Pokaż zrobione',    label: 'PZ' },
   { title: 'Pokaż niezrobione', label: 'PN' }
 ];
-
 const dueSorters = [
   { title: 'Bez sortowania',  label: `Data ${"\u21d4"}` },
   { title: 'Sortuj rosnąco',  label: `Data ${"\u21e7"}` },
   { title: 'Sortuj malejąco', label: `Data ${"\u21e9"}` }
 ];
-
 const prioritySorters = [
   { title: 'Bez sortowania',  label: `Prior ${"\u21d4"}` },
   { title: 'Sortuj rosnąco',  label: `Prior ${"\u21e7"}` },
@@ -30,14 +28,31 @@ class TaskFilter extends Component {
   handlePriorityClick = event => {
     this.props.sortByPriority(event.currentTarget.name)
   };
+  handleDayClick = event => {
+    this.props.showMyDay(event.currentTarget.name)
+  };
+  handleWeekClick = event => {
+    this.props.showMyWeek(event.currentTarget.name)
+  };
 
   render(){
     return (
       <div className="task-sorting">
 
         <div className="">
-          <button className="butt my-day">Mój dzień</button>
-          <button className="butt my-week">Mój tydzień</button>
+          <button
+            name="0"
+            className="butt my-day"
+            title="Mój dzień"
+            onClick={this.handleDayClick}
+          >Mój dzień</button>
+
+          <button
+            name="1"
+            className="butt my-week"
+            title="Mój tydzień"
+            onClick={this.handleWeekClick}
+          >Mój tydzień</button>
         </div>
 
         <div className="done-sorting">
