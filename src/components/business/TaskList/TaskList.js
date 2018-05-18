@@ -2,10 +2,8 @@ import React, {Component} from 'react'
 import './TaskList.css'
 import TaskContent from "../../business/TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
-import {nameToValue} from "../../_utils/priority";
 import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
-import moment from "moment/moment";
 import SignInForm from '../../core/auth/SignInForm';
 import SignUpForm from '../../core/auth/SignUpForm';
 import organizeTasks from "./organizeTasks";
