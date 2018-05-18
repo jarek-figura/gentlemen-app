@@ -8,6 +8,8 @@ import {withUser} from "../../contexts/User";
 import moment from "moment/moment";
 import SignInForm from '../../core/auth/SignInForm';
 import SignUpForm from '../../core/auth/SignUpForm';
+import TaskPanelUser from '../TaskPanelUser/TaskPanelUser'
+
 
 class TaskList extends Component {
   render() {
@@ -52,11 +54,7 @@ class TaskList extends Component {
     return (
       <div>
         {
-          this.props.user !== null ?
-          <p className="logged-in">
-            Użytkownik: {this.props.user.email}
-            <button onClick={this.props.signOut}>Wyloguj</button>
-          </p> : ""
+          <TaskPanelUser/>
         }
         {
           this.props.user !== null

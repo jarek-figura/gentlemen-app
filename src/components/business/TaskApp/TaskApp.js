@@ -4,6 +4,7 @@ import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
 import TaskList from "../TaskList/TaskList";
 import TaskNav from '../TaskNav/TaskNav';
+import TaskPanelUser from "../TaskPanelUser/TaskPanelUser";
 
 class TaskApp extends Component {
   render() {
@@ -11,8 +12,9 @@ class TaskApp extends Component {
       <div className="task-app">
         {
           this.props.currentForm === null
-            ? <div>
-                <TaskList/>
+            ?
+            <div>
+               <TaskList/>
                   {
                     this.props.user !== null ? <TaskNav/> : <div></div>
                   }
