@@ -12,8 +12,6 @@ class TaskContent extends Component {
     const today = new Date(Date.now());
     const timeDiff = taskDueDate.getTime() - today.getTime();
     const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-        console.log(diffDays)
-
     const whatToRender = () =>{
         if(diffDays <= -1 ){
               return <p className="wrn">Po terminie</p>

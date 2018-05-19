@@ -11,8 +11,6 @@ class TaskPriorityBar extends React.Component {
     const timestamp = Date.now()
     let taskPriorityFactor = ((taskDueDate - timestamp) / (taskMaxDate - timestamp)) * 100
 
-      console.log(taskPriorityFactor)
-
      const barColor = () => {
         if(taskPriorityFactor < 0){
          return "black"
