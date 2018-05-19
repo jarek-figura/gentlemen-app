@@ -36,8 +36,11 @@ li {
 .logged-in {
   position: fixed;
   top: 8px;
-  left:0;
+  left: 0;
   right: 0;
+  font-size: 16px;
+  width: 314px;
+  margin: 0 auto;
 }
 
 .logged-in > button {
