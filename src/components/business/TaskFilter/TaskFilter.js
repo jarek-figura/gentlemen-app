@@ -20,43 +20,49 @@ const prioritySorters = [
 
 class TaskFilter extends Component {
   handleIsDoneClick = event => {
-    this.props.sortByIsDone(event.currentTarget.name)
+    this.props.filterByIsDone(event.currentTarget.name)
   };
   handleDueDateClick = event => {
-    this.props.sortByDueDate(event.currentTarget.name)
+    this.props.filterByDueDate(event.currentTarget.name)
   };
   handlePriorityClick = event => {
-    this.props.sortByPriority(event.currentTarget.name)
+    this.props.filterByPriority(event.currentTarget.name)
   };
   handleDayClick = event => {
-    this.props.showMyDay(event.currentTarget.name)
+    let name = event.currentTarget.name;
+    name = (name === '0') ? '1' :'0';
+    this.props.showMyDay(name);
+    this.props.showMyWeek('0');
   };
   handleWeekClick = event => {
-    this.props.showMyWeek(event.currentTarget.name)
+    let name = event.currentTarget.name;
+    name = (name === '0') ? '1' :'0';
+    this.props.showMyWeek(name);
+    this.props.showMyDay('0');
   };
 
   render(){
     return (
       <div className="task-sorting">
 
-        <div className="">
+        <div className="day-week-filtering">
           <button
-            name="0"
-            className="butt my-day"
+            name={this.props.showMyDayMode}
+            className={`butt my-day ${this.props.showMyDayMode === '1' ? 'clicked' : ''}`}
             title="Mój dzień"
             onClick={this.handleDayClick}
           >Mój dzień</button>
 
           <button
-            name="1"
-            className="butt my-week"
+            name={this.props.showMyWeekMode}
+            className={`butt my-week ${this.props.showMyWeekMode === '1' ? 'clicked' : ''}`}
             title="Mój tydzień"
             onClick={this.handleWeekClick}
           >Mój tydzień</button>
         </div>
 
-        <div className="done-sorting">
-          <span className="done-sorting-text">Filtruj zrobione</span>
+        <div className="done-filtering">
+          <span className="done-filtering-text">Filtruj zrobione</span>
           {
             filters.map(
               ({ title, label }, index) => (
@@ -74,8 +80,8 @@ class TaskFilter extends Component {
           }
         </div>
 
-        <div className="dueday-sorting">
-          <span className="dueday-sorting-text">Sortuj wg date</span>
+        <div className="dueday-filtering">
+          <span className="dueday-filtering-text">Sortuj wg date</span>
           {
             dueSorters.map(
               ({ title, label }, index) => (

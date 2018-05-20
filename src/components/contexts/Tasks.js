@@ -32,25 +32,27 @@ export class TasksProvider extends Component {
     isDoneSortMode: '0', // 0 - no filtering, 1 - show done, 2 - show not done
     dueDateSortMode: '0', // 0 - no sorting,  1 - ascending, 2 - descending
     prioritySortMode: '0', // 0 - no sorting, 1 - ascending, 2 - descending
-    showMyDayMode: '0',
-    showMyWeekMode: '0',
+    showMyDayMode: '0', // 0 - no filtering, 1 - show today tasks
+    showMyWeekMode: '0', // 0 - no filtering, 1 - show next 7 days tasks
     searchPhrase: '',
 
     clearFilters: () => { this.filterRef.set({
-        isDoneSortMode: '0', // 0 - no filtering, 1 - show done, 2 - show not done
-        dueDateSortMode: '0', // 0 - no sorting,  1 - ascending, 2 - descending
-        prioritySortMode: '0'
+        isDoneSortMode: '0',
+        dueDateSortMode: '0',
+        prioritySortMode: '0',
+        showMyDayMode: '0',
+        showMyWeekMode: '0'
     }) },
 
-    sortByIsDone: status => { this.filterRef.update({ isDoneSortMode: status }) },
+    filterByIsDone: status => { this.filterRef.update({ isDoneSortMode: status }) },
 
-    sortByDueDate: status => { this.filterRef.update({ dueDateSortMode: status }) },
+    filterByDueDate: status => { this.filterRef.update({ dueDateSortMode: status }) },
 
-    sortByPriority: status => { this.filterRef.update({ prioritySortMode: status }) },
+    filterByPriority: status => { this.filterRef.update({ prioritySortMode: status }) },
 
-    showMyDay: status => {  },
+    showMyDay: status => { this.filterRef.update({ showMyDayMode: status }) },
 
-    showMyWeek: status => {  },
+    showMyWeek: status => { this.filterRef.update({ showMyWeekMode: status }) },
 
     updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
 

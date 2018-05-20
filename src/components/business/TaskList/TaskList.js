@@ -10,7 +10,8 @@ import organizeTasks from "./organizeTasks";
 
 class TaskList extends Component {
   render() {
-    const tasks = organizeTasks.apply(this)
+    const tasks = organizeTasks.apply(this);
+    // const tasks = organizeTasks(this.props);
 
     return (
       <div>
