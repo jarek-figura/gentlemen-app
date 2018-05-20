@@ -21,7 +21,7 @@ export default function organizeTasks() {
   ).filter(
     task => this.props.showMyWeekMode === '1'
       ? moment(task.dueDate).format('YYYY MM DD') >= moment().format('YYYY MM DD') &&
-          moment(task.dueDate).calendar() <= moment().add(1, 'week').calendar()
+          moment(task.dueDate).format('YYYY MM DD') <= moment().add(1, 'week').format('YYYY MM DD')
       : task
   );
 
