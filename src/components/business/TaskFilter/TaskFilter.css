@@ -1,4 +1,4 @@
-.dueday-sorting {
+.dueday-filtering {
   margin-top: 10px;
 }
 
@@ -6,18 +6,22 @@
   margin-top: 10px;
 }
 
-.done-sorting {
+.done-filtering {
   margin-top: 10px;
 }
 
 button {
-  width: 70px;
-  height: 36px;
+  width: 60px;
+  height: 24px;
   margin: 0 5px;
 }
 
 button:hover {
   cursor: pointer;
+}
+
+.butt {
+  width: 95px;
 }
 
 .clicked {
