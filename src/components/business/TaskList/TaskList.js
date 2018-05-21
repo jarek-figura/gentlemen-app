@@ -7,15 +7,20 @@ import {withUser} from "../../contexts/User";
 import SignInForm from '../../core/auth/SignInForm';
 import SignUpForm from '../../core/auth/SignUpForm';
 import TaskPanelUser from '../TaskPanelUser/TaskPanelUser'
+import Moment from 'react-moment'
 
 import organizeTasks from "./organizeTasks";
+
 
 class TaskList extends Component {
   render() {
     const tasks = organizeTasks.apply(this);
     // const tasks = organizeTasks(this.props);
 
-    return (
+    const dateToFormat = Date.now()
+
+
+          return (
       <div>
         {
           this.props.user !== null ?
@@ -25,7 +30,8 @@ class TaskList extends Component {
           this.props.user !== null
             ? <div>
               <div className="task-hero">
-                <h1>TASKMEN + data</h1>
+                <h1>TASKMEN</h1>
+                <Moment interval={5000}>{dateToFormat}</Moment>
               </div>
               {
                 this.props.tasksBeforeFilter().length !== 0 &&
