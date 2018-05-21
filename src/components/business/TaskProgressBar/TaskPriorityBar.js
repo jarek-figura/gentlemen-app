@@ -9,9 +9,9 @@ class TaskPriorityBar extends React.Component {
     const taskDueDate = this.props.dueDate
     const taskMaxDate = Math.max.apply(Math, this.props.tasks.map(function(x){return x.dueDate}))
     const timestamp = Date.now()
-    const taskPriorityFactor = ((taskDueDate - timestamp) / (taskMaxDate - timestamp)) * 100
+    let taskPriorityFactor = ((taskDueDate - timestamp) / (taskMaxDate - timestamp)) * 100
 
-    const barColor = () => {
+     const barColor = () => {
         if(taskPriorityFactor < 0){
          return "black"
         }else if(taskPriorityFactor <= 10){
@@ -29,19 +29,13 @@ class TaskPriorityBar extends React.Component {
 
     return(
       <div className="container">{
-          (taskPriorityFactor < 0 ?
-              <p className="wrn">zadanie przeterminowane</p>
-
-                  :
-
           <Line percent={taskPriorityFactor}
-                strokeWidth="2"
                 strokeColor={barColor()}
-                height="10"
+                height="8"
                 width="100%"
-                trailColor="white"
-          />
-          )}
+                trailColor="#CDCBCB"
+                />
+          }
       </div>
     )
   }

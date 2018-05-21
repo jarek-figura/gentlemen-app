@@ -9,6 +9,16 @@
 }
 
 .container{
-    width: 90%;
+    width: 80%;
     height: 20px;
+}
+
+.tskToday{
+    background-color: orange;
+    color: #182aff;
+    text-align: center;
+    font-size: 12px;
+    padding: 2px;
+    opacity: .8;
+    border-radius: 2px;
 }
