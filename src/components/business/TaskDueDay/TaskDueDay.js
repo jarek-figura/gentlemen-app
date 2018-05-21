@@ -18,12 +18,15 @@ class TaskDueDay extends Component {
 
   render() {
     return (
-      <DatePicker className='date-picker'
-        selected={this.state.dueDate}
-        onChange={this.handleChange}
-        withPortal
-        dateFormat="DD-MM-YYYY"
-      />
+      <div>
+        <p>Data zakończenia</p>
+        <DatePicker className='date-picker'
+          selected={this.state.dueDate}
+          onChange={this.handleChange}
+          withPortal
+          dateFormat="DD-MM-YYYY"
+        />
+      </div>
     )
   }
 }
