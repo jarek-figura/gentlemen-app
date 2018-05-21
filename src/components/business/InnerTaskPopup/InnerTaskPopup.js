@@ -87,7 +87,7 @@ class InnerTaskPopup extends Component {
         >&times;</button>
         <br/><br/>
 
-        <div className="cycle-with-label">
+        <div>
           <input className="cycle cycle-checkbox"
             title="Ustaw zadanie cykliczne"
             id="cycleCheckbox"
@@ -120,31 +120,36 @@ class InnerTaskPopup extends Component {
           />
         </form><br/>
 
-        {this.state.cycle === true} ?
-        {
-        <form>
-          <input className="cycle cycle-daily"
-            id="cycle-daily"
-            type="radio"
-            value="cycle"
-            // onChange={this.handleChecked}
-          />
-          <label htmlFor="cycle-daily">Codziennie</label>
-          <input className="cycle cycle-weekly"
-            id="cycle-weekly"
-            type="radio"
-            value="cycle"
-            // onChange={this.handleChecked}
-          />
-          <label htmlFor="cycle-weekly">Co tydzień</label>
-          <input className="cycle cycle-monthly"
-            id="cycle-monthly"
-            type="radio"
-            value="cycle"
-            // onChange={this.handleChecked}
-          />
-          <label htmlFor="cycle-monthly">Co miesiąc</label>
-        </form>} : {''}
+        {this.state.cycle === true ?
+          <form className="cycle-with-label">
+            <input className="cycle cycle-daily"
+              id="cycle-daily"
+              type="radio"
+              name="radio-cycle"
+              value="cycle-daily"
+              // onChange={this.handleChecked}
+            />
+            <label htmlFor="cycle-daily">Codziennie</label><br/>
+
+            <input className="cycle cycle-weekly"
+              id="cycle-weekly"
+              type="radio"
+              name="radio-cycle"
+              value="cycle-weekly"
+              // onChange={this.handleChecked}
+            />
+            <label htmlFor="cycle-weekly">Co tydzień</label><br/>
+
+            <input className="cycle cycle-monthly"
+              id="cycle-monthly"
+              type="radio"
+              name="radio-cycle"
+              value="cycle-monthly"
+              // onChange={this.handleChecked}
+            />
+            <label htmlFor="cycle-monthly">Co miesiąc</label><br/><br/>
+          </form> : ''
+        }
 
         <TaskDueDay
           dueDate={this.state.dueDate || moment()}
