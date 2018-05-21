@@ -55,6 +55,7 @@ class TaskContent extends Component {
 
 
         </div>
+
       </div>
     )
   }
