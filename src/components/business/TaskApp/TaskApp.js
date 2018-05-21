@@ -11,8 +11,9 @@ class TaskApp extends Component {
       <div className="task-app">
         {
           this.props.currentForm === null
-            ? <div>
-                <TaskList/>
+            ?
+            <div>
+               <TaskList/>
                   {
                     this.props.user !== null ? <TaskNav/> : <div></div>
                   }

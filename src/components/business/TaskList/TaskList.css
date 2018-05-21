@@ -22,7 +22,7 @@ li {
 .task-list {
   display: block;
   margin: 0 auto;
-  padding-top: 30px;
+  padding-top: 50px;
 }
 
 .task-list > h3 {
@@ -32,6 +32,7 @@ li {
 .no-result {
   text-align: center;
 }
+
 
 .logged-in {
   position: fixed;
