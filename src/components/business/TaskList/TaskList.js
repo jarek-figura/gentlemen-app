@@ -2,10 +2,8 @@ import React, {Component} from 'react'
 import './TaskList.css'
 import TaskContent from "../../business/TaskContent/TaskContent";
 import TaskSearch from "../TaskSearch/TaskSearch";
-import {nameToValue} from "../../_utils/priority";
 import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
-import moment from "moment/moment";
 import SignInForm from '../../core/auth/SignInForm';
 import SignUpForm from '../../core/auth/SignUpForm';
 import TaskPanelUser from '../TaskPanelUser/TaskPanelUser'
@@ -26,6 +24,9 @@ class TaskList extends Component {
         {
           this.props.user !== null
             ? <div>
+              <div className="task-hero">
+                <h1>TASKMEN + data</h1>
+              </div>
               {
                 this.props.tasksBeforeFilter().length !== 0 &&
                 <span className='task-list'>
