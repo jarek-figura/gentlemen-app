@@ -3,7 +3,7 @@ import './TaskPanelUser.css'
 import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
 
-const navUserModeTable = ['hideuser', ''];
+const navUserModeTable = [' hideuser', ''];
 
 class TaskPanelUser extends Component {
 
@@ -16,12 +16,12 @@ class TaskPanelUser extends Component {
     this.setState({
       navUserIndex: (this.state.navUserIndex + 1) %2,
       // hideNavMode: navModeTable[this.state.navIndex = (this.state.navIndex + 1) %2]
-    });
+          });
   };
 
   render() {
     return (
-      <nav className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
+      <nav className={`nav-panel${navUserModeTable[this.state.navUserIndex]}`}>
         <p>
           Użytkownik: {this.props.user.email}
           <button
