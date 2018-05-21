@@ -6,6 +6,7 @@ import {TasksProvider} from './components/contexts/Tasks';
 import {UserProvider} from "./components/contexts/User";
 import TaskApp from './components/business/TaskApp/TaskApp';
 import setupFirebase from './setupFirebase';
+import { ThemeProvider } from './components/contexts/Theme';
 
 setupFirebase();
 
@@ -18,7 +19,8 @@ ReactDOM.render(
   composeProviders(
     <TaskApp/>,
     UserProvider,
-    TasksProvider
+    TasksProvider,
+    ThemeProvider
   ),
   document.getElementById('root')
 );

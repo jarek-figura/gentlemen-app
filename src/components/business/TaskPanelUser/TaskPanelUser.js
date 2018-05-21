@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import './TaskPanelUser.css'
 import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
-import { withTheme } from '../../contexts/Theme';
+import { ThemeConsumer } from '../../contexts/Theme'
 
 
 const navUserModeTable = [' hideuser', ''];
@@ -25,9 +25,19 @@ class TaskPanelUser extends Component {
     return (
       <nav className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
         <h1>Task User Panel</h1>
-          <div style={this.props.theme}>
-              <p>testowy teks</p>
-          </div>
+
+          <ThemeConsumer>
+              {
+                  ({theme, toggle}) => (
+
+                      <div style={theme}>
+                          <p>testowy teks</p>
+                          <button onClick={toggle}>change theme</button>
+                      </div>
+
+                  )
+              }
+          </ThemeConsumer>
         <div className={'photo'}>photo</div>
         <p>
           Użytkownik: {this.props.user.email}
@@ -46,4 +56,4 @@ class TaskPanelUser extends Component {
 
 
 
-export default withUser(withTasks(withTheme(TaskPanelUser)));
+export default withUser(withTasks(TaskPanelUser));

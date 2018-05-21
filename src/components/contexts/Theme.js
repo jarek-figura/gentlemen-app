@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react'
 
 const themes = {
     light: {
-        backgroundColor: '#00dd61',
-        color: '#cc0f13'
+        backgroundColor: '#e8ee10',
+        color: '#000aee'
     },
     dark: {
-        backgroundColor: '#c6ee00',
-        color: '#ee0094'
+        backgroundColor: '#442d0a',
+        color: '#acee70'
     }
 }
+
 const ThemeContext = React.createContext(themes.light)
 
 export const ThemeConsumer = ThemeContext.Consumer
@@ -29,18 +30,4 @@ export class ThemeProvider extends Component {
             </ThemeContext.Provider>
         )
     }
-}
-
-    // This function takes a component...
-        export function withTheme(Component) {
-      // ...and returns another component...
-          return function ThemedComponent(props) {
-            // ... and renders the wrapped component with the context theme!
-                // Notice that we pass through any additional props as well
-                   return (
-                  <ThemeContext.Consumer>
-                       {({ theme, toggle }) => <Component {...props} theme={theme} toggleTheme={toggle} />}
-                      </ThemeContext.Consumer>
-                );
-          };
 }
