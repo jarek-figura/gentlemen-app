@@ -4,6 +4,7 @@ import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
 
 const navUserModeTable = [' hideuser', ''];
+const filtersButtonUserName = [`Panel`, `\u21e7`]
 
 class TaskPanelUser extends Component {
 
@@ -28,9 +29,9 @@ class TaskPanelUser extends Component {
           Użytkownik: {this.props.user.email}
           <button
             className={"show-userpanel"}
-            title={"Panel"}
+            title={filtersButtonUserName[this.state.navUserIndex]}
             onClick={this.handleClick}
-          >Panel</button>
+          >{filtersButtonUserName[this.state.navUserIndex]}</button>
           <button onClick={this.props.signOut}>Wyloguj</button>
         </p>
 
