@@ -6,7 +6,11 @@ import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
 import SignInForm from '../../core/auth/SignInForm';
 import SignUpForm from '../../core/auth/SignUpForm';
+
+import TaskPanelUser from '../TaskPanelUser/TaskPanelUser'
+
 import organizeTasks from "./organizeTasks";
+
 
 class TaskList extends Component {
   render() {
@@ -17,10 +21,7 @@ class TaskList extends Component {
       <div>
         {
           this.props.user !== null ?
-          <p className="logged-in">
-            Użytkownik: {this.props.user.email}
-            <button onClick={this.props.signOut}>Wyloguj</button>
-          </p> : ""
+          <TaskPanelUser/> : ""
         }
         {
           this.props.user !== null
