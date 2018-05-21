@@ -1,14 +1,18 @@
+@import "../../../index.css";
+
 .nav-panel {
     position: fixed;
     top: 0;
     width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: darkgrey;
+    background-color: darkgray;
     max-width: 600px;
     text-align: center;
     transition: 0.3s;
     z-index: 1;
+    border: 1px solid gray;
+    border-radius: 3px;
 }
 .hideuser {
     top: -250px;

@@ -70,7 +70,7 @@ class TaskFilter extends Component {
                   key={index}
                   name={index.toString()}
                   title={title}
-                  className={this.props.isDoneSortMode === index.toString() ? 'clicked' : ''}
+                  className={this.props.isDoneSortMode === index.toString() ? 'clicked' : 'smallFilterButton'}
                   onClick={this.handleIsDoneClick}
                 >
                   {label}
@@ -89,7 +89,7 @@ class TaskFilter extends Component {
                   key={index}
                   name={index.toString()}
                   title={title}
-                  className={this.props.dueDateSortMode === index.toString() ? 'clicked' : ''}
+                  className={this.props.dueDateSortMode === index.toString() ? 'clicked' : 'smallFilterButton'}
                   onClick={this.handleDueDateClick}
                 >
                   {label}
@@ -108,7 +108,7 @@ class TaskFilter extends Component {
                   key={index}
                   name={index.toString()}
                   title={title}
-                  className={this.props.prioritySortMode === index.toString() ? 'clicked' : ''}
+                  className={this.props.prioritySortMode === index.toString() ? 'clicked' : 'smallFilterButton'}
                   onClick={this.handlePriorityClick}
                 >
                   {label}

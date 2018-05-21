@@ -26,6 +26,15 @@ button:hover {
 
 .clicked {
   background-color: deeppink;
+  background: #ff1493;
+  background:    -webkit-linear-gradient(#ff63cd, #ff1493);
+  background:    linear-gradient(#ff63cd, #ff1493);
+  border-radius: 2px;
+  padding:       2px 5px;
+  color:          #fff;
+  display:       inline-block;
+  font:          normal 400 13px/1 "Calibri", sans-serif;
+  text-align:    center;
 }
 
 @media all and (max-width: 414px) {
