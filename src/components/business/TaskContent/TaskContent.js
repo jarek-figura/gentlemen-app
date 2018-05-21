@@ -8,13 +8,29 @@ import TaskPriorityBar from "../TaskProgressBar/TaskPriorityBar";
 class TaskContent extends Component {
   render() {
     const task = this.props.task;
+    const taskDueDate = new Date(task.dueDate);
+    const today = new Date(Date.now());
+    const timeDiff = taskDueDate.getTime() - today.getTime();
+    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    const whatToRender = () =>{
+        if(diffDays <= -1 ){
+              return <p className="wrn">Po terminie</p>
+          } else if ( diffDays === 0) {
+              return <p className="wrnToday">Na dzisiaj</p>
+          } else {
+              return <TaskPriorityBar dueDate={task.dueDate} />
+          }
+      }
+
     return (
       <div className={task.priority + ' ' + task.isDone + ' task'}>
 
         <div className="titles">
           <strong>{task.name}</strong><br/>
           {moment(task.dueDate).format('DD-MM-YYYY')}
-          <TaskPriorityBar dueDate={task.dueDate} />
+
+            {whatToRender()}
+
         </div>
 
         <div className="buttons">
@@ -23,6 +39,7 @@ class TaskContent extends Component {
             type="checkbox"
             checked={task.isDone}
             onChange={() => this.props.toggleTaskDone(task.id)}
+
           />
 
           <span>&nbsp;</span>
@@ -35,7 +52,10 @@ class TaskContent extends Component {
             title="Usuń zadanie"
             onClick={() => this.props.removeTask(task.id)}
           >&times;</button>
+
+
         </div>
+
       </div>
     )
   }
