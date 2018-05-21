@@ -23,33 +23,30 @@ class TaskPanelUser extends Component {
 
   render() {
     return (
-      <nav className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
-        <h1>Task User Panel</h1>
+        <ThemeConsumer>
+            {
+                ({theme, toggle}) => (
 
-          <ThemeConsumer>
-              {
-                  ({theme, toggle}) => (
-
-                      <div style={theme}>
-                          <p>testowy teks</p>
-                          <button onClick={toggle}>change theme</button>
-                      </div>
-
-                  )
-              }
-          </ThemeConsumer>
-        <div className={'photo'}>photo</div>
-        <p>
-          Użytkownik: {this.props.user.email}
-          <button
-            className={"show-userpanel"}
-            title={"Panel"}
-            onClick={this.handleClick}
-          >Panel</button>
-          <button className={"signOutButton"}onClick={this.props.signOut}>Wyloguj</button>
-        </p>
-
-      </nav>
+                    <div style={theme}>
+                       <nav className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
+                           <button onClick={toggle}>change theme</button>
+                           <h1>Task User Panel</h1>
+                           <div className={'photo'}>photo</div>
+                           <p>
+                                Użytkownik: {this.props.user.email}
+                                <button
+                                    className={"show-userpanel"}
+                                    title={"Panel"}
+                                    onClick={this.handleClick}
+                                >Panel
+                                </button>
+                                <button className={"signOutButton"} onClick={this.props.signOut}>Wyloguj</button>
+                            </p>
+                        </nav>
+                    </div>
+                )
+            }
+        </ThemeConsumer>
     )
   }
 }

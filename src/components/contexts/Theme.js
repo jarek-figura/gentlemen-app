@@ -3,13 +3,15 @@ import React, { Component } from 'react'
 const themes = {
     light: {
         backgroundColor: '#e8ee10',
-        color: '#000aee'
+        color: '#000aee',
+
     },
     dark: {
         backgroundColor: '#442d0a',
-        color: '#acee70'
+        color: '#acee70',
+
     }
-}
+};
 
 const ThemeContext = React.createContext(themes.light)
 
