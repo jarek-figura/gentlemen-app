@@ -15,7 +15,8 @@ moment.locale('pl')
 
 class TaskList extends Component {
   state = {
-    dateFormatted: moment().format('llll')
+    dateFormatted: moment().format('llll'),
+      isDay: true
 }
 tick = () => {
     this.setState({
@@ -24,10 +25,21 @@ tick = () => {
 }
 
 componentDidMount() {
-    setInterval(this.tick, 1000)
+    setInterval(this.tick, 1000);
+    const dataNow = new Date()
+   if (7 < dataNow.getHours() ) {
+       this.setState({
+           isDay: !this.state.isDay
+       })
+   } else {
+       this.setState({
+           isDay: this.state.isDay
+       })
+   }
 }
 
   render() {
+
     const tasks = organizeTasks.apply(this);
     // const tasks = organizeTasks(this.props);
     const date = this.state.dateFormatted
@@ -41,9 +53,11 @@ componentDidMount() {
         {
           this.props.user !== null
             ? <div>
-              <div className="task-hero">
+              <div className={this.state.isDay ?
+                  "task-day"
+                  : "task-night"}>
                 <h1>TASKMEN</h1>
-                <div className={"clock"}>{date}</div>
+                <div>{date}</div>
               </div>
               {
                 this.props.tasksBeforeFilter().length !== 0 &&
