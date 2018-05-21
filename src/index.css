@@ -2,13 +2,14 @@ body {
   margin: 0 auto;
   padding: 0;
   font-family: "Lato";
-  background-image: url("components/business/AppStyling/dust_scratches.png");
+  background-image: url("components/business/AppStyling/curls.png");
   max-width: 600px;
+  color: #ffffff;
 }
 
 
 .nav-panel{
-  color: gold;
+  color: #ffffff;
 }
 
 .show-userpanel,
@@ -28,13 +29,25 @@ body {
   text-shadow:   1px 1px #000000;
 }
 
-.done-checkbox{
+.done-checkbox, .edit-button{
   background:    #93c47d;
   background:    -webkit-linear-gradient(#93c47d, #38761d);
   background:    linear-gradient(#93c47d, #38761d);
-  border-radius: 5px;
-  padding:       8px 20px;
+  border-radius: 2px;
+  padding:       2px 5px;
   display:       inline-block;
+  color:         #ffffff;
+  font-size:     13px;
+}
+
+.delete-button{
+  background: #ff465e;
+  background:    -webkit-linear-gradient(#ff465e, #76161d);
+  background:    linear-gradient(#ff465e, #76161d);
+  border-radius: 2px;
+  padding:       2px 5px;
+  display:       inline-block;
+  color: #ffffff;
 }
 
 .my-day, .my-week, .smallFilterButton{

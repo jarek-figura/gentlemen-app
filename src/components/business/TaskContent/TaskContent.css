@@ -36,8 +36,8 @@
 }
 
 .wrnToday{
-  background-color: #ee006a;
-  color: #0fff00;
+  background-color: #ffcf00;
+  color: #000000;
   text-align: center;
   font-size: 12px;
   padding: 2px;
@@ -48,7 +48,7 @@
 
 .wrn{
   background-color: #000000;
-  color: #ff0003;
+  color: #ffcf00;
   text-align: center;
   font-size: 12px;
   padding: 2px;
