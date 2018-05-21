@@ -7,18 +7,30 @@ import {withUser} from "../../contexts/User";
 import SignInForm from '../../core/auth/SignInForm';
 import SignUpForm from '../../core/auth/SignUpForm';
 import TaskPanelUser from '../TaskPanelUser/TaskPanelUser'
-import Moment from 'react-moment'
+import moment from 'moment'
+import 'moment/locale/pl'
 
 import organizeTasks from "./organizeTasks";
-
+moment.locale('pl')
 
 class TaskList extends Component {
+  state = {
+    dateFormatted: moment().format('llll')
+}
+tick = () => {
+    this.setState({
+      dateFormatted: moment().format('llll')
+    })
+}
+
+componentDidMount() {
+    setInterval(this.tick, 1000)
+}
+
   render() {
     const tasks = organizeTasks.apply(this);
     // const tasks = organizeTasks(this.props);
-
-    const dateToFormat = Date.now()
-
+    const date = this.state.dateFormatted
 
           return (
       <div>
@@ -31,7 +43,7 @@ class TaskList extends Component {
             ? <div>
               <div className="task-hero">
                 <h1>TASKMEN</h1>
-                <Moment interval={5000}>{dateToFormat}</Moment>
+                <div className={"clock"}>{date}</div>
               </div>
               {
                 this.props.tasksBeforeFilter().length !== 0 &&
