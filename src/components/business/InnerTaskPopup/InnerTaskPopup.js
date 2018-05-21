@@ -91,7 +91,7 @@ class InnerTaskPopup extends Component {
             value={this.state.name}
             onChange={this.handleChange}
           />
-          <br/><br/>
+          <br/>
 
           <textarea
             className='task-area'
