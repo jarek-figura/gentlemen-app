@@ -1,7 +1,6 @@
 .nav-panel {
     position: fixed;
-    top: 0px;
-    height: 30px;
+    top: 0;
     width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -9,15 +8,14 @@
     max-width: 600px;
     text-align: center;
     transition: 0.3s;
+    z-index: 1;
 }
-
 .hideuser {
-    height: 200px;
-    top: 0px;
-    transition: 0.3s;
+    top: -250px;
+    z-index: 1;
 }
-
 .photo {
+    margin: 50px;
     height: 100px;
     width: 100px;
     background-color: red;

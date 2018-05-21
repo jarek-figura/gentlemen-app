@@ -21,7 +21,9 @@ class TaskPanelUser extends Component {
 
   render() {
     return (
-      <nav className={`nav-panel${navUserModeTable[this.state.navUserIndex]}`}>
+      <nav className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
+        <h1>Task User Panel</h1>
+        <div className={'photo'}>photo</div>
         <p>
           Użytkownik: {this.props.user.email}
           <button
@@ -31,7 +33,7 @@ class TaskPanelUser extends Component {
           >Panel</button>
           <button onClick={this.props.signOut}>Wyloguj</button>
         </p>
-        <div className={'photo'}>photo</div>
+
       </nav>
     )
   }
