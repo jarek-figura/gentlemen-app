@@ -7,9 +7,19 @@ body {
   color: #ffffff;
 }
 
-
+.banner{
+  background-color: darkgray;
+}
 .nav-panel{
   color: #ffffff;
+}
+
+.add-task{
+  background: #6b6c68;
+  background:    -webkit-linear-gradient(#3d85c6, #6b6c68);
+  background:    linear-gradient(#3d85c6, #6b6c68);
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 
 .show-userpanel,

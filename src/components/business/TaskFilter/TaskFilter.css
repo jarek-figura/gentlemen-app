@@ -26,7 +26,6 @@ button:hover {
 
 .clicked {
   background-color: deeppink;
-
   background: #ff1493;
   background:    -webkit-linear-gradient(#ff63cd, #ff1493);
   background:    linear-gradient(#ff63cd, #ff1493);
