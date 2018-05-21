@@ -1,7 +1,51 @@
 body {
   margin: 0 auto;
   padding: 0;
-  font-family: sans-serif;
-  background-color: azure;
+  font-family: "Lato";
+  background-image: url("components/business/AppStyling/dust_scratches.png");
   max-width: 600px;
+}
+
+
+.nav-panel{
+  color: gold;
+}
+
+.show-userpanel,
+.signOutButton,
+.clear-filters-button,
+.add-task-button,
+.show-filters{
+  background:    #3d85c6;
+  background:    -webkit-linear-gradient(#3d85c6, #073763);
+  background:    linear-gradient(#3d85c6, #073763);
+  border-radius: 3px;
+  padding:       2px 5px;
+  color:         #ffffff;
+  display:       inline-block;
+  font:          normal 400 13px/1 "Calibri", sans-serif;
+  text-align:    center;
+  text-shadow:   1px 1px #000000;
+}
+
+.done-checkbox{
+  background:    #93c47d;
+  background:    -webkit-linear-gradient(#93c47d, #38761d);
+  background:    linear-gradient(#93c47d, #38761d);
+  border-radius: 5px;
+  padding:       8px 20px;
+  display:       inline-block;
+}
+
+.my-day, .my-week, .smallFilterButton{
+  background:    #9fc5e8;
+  background:    -webkit-linear-gradient(#9fc5e8, #3d85c6);
+  background:    linear-gradient(#9fc5e8, #3d85c6);
+  border-radius: 2px;
+  padding:       2px 5px;
+  color:         #ffffff;
+  display:       inline-block;
+  font:          normal 400 13px/1 "Calibri", sans-serif;
+  text-align:    center;
+  text-shadow:   1px 1px #000000;
 }

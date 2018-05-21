@@ -31,7 +31,7 @@ class TaskPanelUser extends Component {
             title={"Panel"}
             onClick={this.handleClick}
           >Panel</button>
-          <button onClick={this.props.signOut}>Wyloguj</button>
+          <button className={"signOutButton"}onClick={this.props.signOut}>Wyloguj</button>
         </p>
 
       </nav>
