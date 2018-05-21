@@ -1,7 +1,74 @@
 body {
   margin: 0 auto;
   padding: 0;
-  font-family: sans-serif;
-  background-color: azure;
+  font-family: "Lato";
+  background-image: url("components/business/AppStyling/curls.png");
   max-width: 600px;
+  color: #ffffff;
+}
+
+.banner{
+  background-color: darkgray;
+}
+.nav-panel{
+  color: #ffffff;
+}
+
+.add-task{
+  background: #6b6c68;
+  background:    -webkit-linear-gradient(#3d85c6, #6b6c68);
+  background:    linear-gradient(#3d85c6, #6b6c68);
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.show-userpanel,
+.signOutButton,
+.clear-filters-button,
+.add-task-button,
+.show-filters{
+  background:    #3d85c6;
+  background:    -webkit-linear-gradient(#3d85c6, #073763);
+  background:    linear-gradient(#3d85c6, #073763);
+  border-radius: 3px;
+  padding:       2px 5px;
+  color:         #ffffff;
+  display:       inline-block;
+  font:          normal 400 13px/1 "Calibri", sans-serif;
+  text-align:    center;
+  text-shadow:   1px 1px #000000;
+}
+
+.done-checkbox, .edit-button{
+  background:    #93c47d;
+  background:    -webkit-linear-gradient(#93c47d, #38761d);
+  background:    linear-gradient(#93c47d, #38761d);
+  border-radius: 2px;
+  padding:       2px 5px;
+  display:       inline-block;
+  color:         #ffffff;
+  font-size:     13px;
+}
+
+.delete-button{
+  background: #ff465e;
+  background:    -webkit-linear-gradient(#ff465e, #76161d);
+  background:    linear-gradient(#ff465e, #76161d);
+  border-radius: 2px;
+  padding:       2px 5px;
+  display:       inline-block;
+  color: #ffffff;
+}
+
+.my-day, .my-week, .smallFilterButton{
+  background:    #9fc5e8;
+  background:    -webkit-linear-gradient(#9fc5e8, #3d85c6);
+  background:    linear-gradient(#9fc5e8, #3d85c6);
+  border-radius: 2px;
+  padding:       2px 5px;
+  color:         #ffffff;
+  display:       inline-block;
+  font:          normal 400 13px/1 "Calibri", sans-serif;
+  text-align:    center;
+  text-shadow:   1px 1px #000000;
 }

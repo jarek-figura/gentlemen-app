@@ -1,13 +1,19 @@
 .activeButtonMedium{
-  background-color: #FFE37B;
+  background:   #ff8400;
+  background:    -webkit-linear-gradient(#ffd14b, #ff8400);
+  background:    linear-gradient(#ffd14b, #ff8400);
 }
 
 .activeButtonLow{
-  background-color: #9FFF82;
+  background:   #00bb18;
+  background:    -webkit-linear-gradient(#45ff53, #00bb18);
+  background:    linear-gradient(#45ff53, #00bb18);
 }
 
 .activeButtonHigh{
-  background-color: #FF9595;
+  background:     #ff1493;
+  background:    -webkit-linear-gradient(#ff63cd, #ff1493);
+  background:    linear-gradient(#ff63cd, #ff1493);
 }
 
 .priority-button {
