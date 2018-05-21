@@ -36,3 +36,9 @@ p {
   height: 30px;
   width: 30px;
 }
+
+.cycle {
+  height: 24px;
+  width: 24px;
+  background-color: #eee;
+}

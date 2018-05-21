@@ -11,7 +11,8 @@ class InnerTaskPopup extends Component {
     description: '',
     dueDate: moment(),
     priority: 'medium',
-    formError: null
+    formError: null,
+    cycle: false
   };
 
   static getDerivedStateFromProps({ task }, prevState) {
@@ -72,6 +73,10 @@ class InnerTaskPopup extends Component {
     }
   };
 
+  handleChecked = () => {
+    this.setState({cycle: !this.state.cycle})
+  };
+
   render() {
     return (
       <div className='add-task'>
@@ -81,6 +86,18 @@ class InnerTaskPopup extends Component {
           onClick={this.handleCancel}
         >&times;</button>
         <br/><br/>
+
+        <div className="cycle-with-label">
+          <input className="cycle cycle-checkbox"
+            title="Ustaw zadanie cykliczne"
+            id="cycleCheckbox"
+            type="checkbox"
+            value="cycle"
+            // checked={this.state.cycle}
+            onChange={this.handleChecked}
+          />
+          <label htmlFor="cycleCheckbox">Ustaw zadanie cylkiczne</label>
+        </div>
 
         <form onSubmit={this.handleSubmit} id="form1">
           {this.state.formError && <p>{this.state.formError.message}</p>}
@@ -102,6 +119,32 @@ class InnerTaskPopup extends Component {
             onChange={this.handleChange}
           />
         </form><br/>
+
+        {this.state.cycle === true} ?
+        {
+        <form>
+          <input className="cycle cycle-daily"
+            id="cycle-daily"
+            type="radio"
+            value="cycle"
+            // onChange={this.handleChecked}
+          />
+          <label htmlFor="cycle-daily">Codziennie</label>
+          <input className="cycle cycle-weekly"
+            id="cycle-weekly"
+            type="radio"
+            value="cycle"
+            // onChange={this.handleChecked}
+          />
+          <label htmlFor="cycle-weekly">Co tydzień</label>
+          <input className="cycle cycle-monthly"
+            id="cycle-monthly"
+            type="radio"
+            value="cycle"
+            // onChange={this.handleChecked}
+          />
+          <label htmlFor="cycle-monthly">Co miesiąc</label>
+        </form>} : {''}
 
         <TaskDueDay
           dueDate={this.state.dueDate || moment()}
