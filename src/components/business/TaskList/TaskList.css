@@ -1,65 +1,71 @@
 ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 li {
-  margin: 5px 0;
+    margin: 5px 0;
 }
 
 .banner {
-  height: calc(100vh - 124px);
-  margin-top: 40px;
-  text-align: center;
-  background-color: #9FFF82;
+    height: calc(100vh - 124px);
+    margin-top: 40px;
+    text-align: center;
+    background-color: #9FFF82;
 }
 
 .banner > h1 {
-  padding-top: 30px;
+    padding-top: 30px;
 }
 
 .task-list {
-  display: block;
-  margin: 0 auto;
-  padding-top: 30px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 30px;
 }
 
 .task-list > h3 {
-  text-align: center;
+    text-align: center;
 }
 
 .no-result {
-  text-align: center;
+    text-align: center;
 }
 
 .logged-in {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  font-size: 16px;
-  width: 314px;
-  margin: 5px auto;
-  background-color: lightgrey;
-  z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+    width: 314px;
+    margin: 5px auto;
+    background-color: lightgrey;
+    z-index: 10;
 }
 
 .task-day {
-  position: relative;
-  top: 30px;
-  background-color: red;
-  height: 100px;
-  text-align: center;
+    position: relative;
+    padding: 20px;
+    top: 35px;
+    background-image: url("../../../img/day-pic.jpg");
+    background-size: cover;
+    height: 120px;
+    text-align: center;
 }
 
 .task-night {
-  position: relative;
-  top: 30px;
-  background-color: blue;
-  height: 100px;
-  text-align: center;
+    color: whitesmoke;
+    padding: 20px;
+    position: relative;
+    top: 35px;
+    background-image: url("../../../img/night-pic.jpg");
+    background-size: cover;
+    height: 120px;
+    text-align: center;
 }
+
 .logged-in > button {
-  height: 24px;
+    height: 24px;
 }

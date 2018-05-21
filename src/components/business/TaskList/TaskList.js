@@ -11,98 +11,100 @@ import moment from 'moment'
 import 'moment/locale/pl'
 
 import organizeTasks from "./organizeTasks";
+
 moment.locale('pl')
 
 class TaskList extends Component {
-  state = {
-    dateFormatted: moment().format('llll'),
-      isDay: true
-}
-tick = () => {
-    this.setState({
-      dateFormatted: moment().format('llll')
-    })
-}
+    state = {
+        dateFormatted: moment().format('llll'),
+        isDay: true
+    }
+    tick = () => {
+        this.setState({
+            dateFormatted: moment().format('llll')
+        })
+    }
 
-componentDidMount() {
-    setInterval(this.tick, 1000);
-    const dataNow = new Date()
-   if (7 < dataNow.getHours() ) {
-       this.setState({
-           isDay: !this.state.isDay
-       })
-   } else {
-       this.setState({
-           isDay: this.state.isDay
-       })
-   }
-}
+    componentDidMount() {
+        setInterval(this.tick, 1000);
 
-  render() {
-
-    const tasks = organizeTasks.apply(this);
-    // const tasks = organizeTasks(this.props);
-    const date = this.state.dateFormatted
-
-          return (
-      <div>
-        {
-          this.props.user !== null ?
-          <TaskPanelUser/> : ""
+        const dataNow = new Date()
+        if (7 < dataNow.getHours() && dataNow.getHours() < 22) {
+            this.setState({
+                isDay: this.state.isDay
+            })
+        } else {
+            this.setState({
+                isDay: !this.state.isDay
+            })
         }
-        {
-          this.props.user !== null
-            ? <div>
-              <div className={this.state.isDay ?
-                  "task-day"
-                  : "task-night"}>
-                <h1>TASKMEN</h1>
-                <div>{date}</div>
-              </div>
-              {
-                this.props.tasksBeforeFilter().length !== 0 &&
-                <span className='task-list'>
+    }
+
+    render() {
+
+        const tasks = organizeTasks.apply(this);
+        // const tasks = organizeTasks(this.props);
+        const date = this.state.dateFormatted
+
+        return (
+            <div>
+                {
+                    this.props.user !== null ?
+                        <TaskPanelUser/> : ""
+                }
+                {
+                    this.props.user !== null
+                        ? <div>
+                            <div className={this.state.isDay ?
+                                "task-day"
+                                : "task-night"}>
+                                <h1>TASKMEN</h1>
+                                <div>{date}</div>
+                            </div>
+                            {
+                                this.props.tasksBeforeFilter().length !== 0 &&
+                                <span className='task-list'>
                     <h3>Zadania do zrobienia</h3>
                     <TaskSearch/>
                   </span>
-              }
-              {
-                this.props.tasksBeforeFilter().length !== 0
-                  ? // show TaskList and search
-                  tasks.length === 0
-                    ? <p className='no-result'>Brak wyników</p>
-                    : <ul>
-                      {
-                        tasks.map(
-                          task => (
-                            <li key={task.id}>
-                              <TaskContent task={task}/>
-                            </li>
-                          )
-                        )
-                      }
-                    </ul>
-                  : //show banner
-                  <div className='banner'>
+                            }
+                            {
+                                this.props.tasksBeforeFilter().length !== 0
+                                    ? // show TaskList and search
+                                    tasks.length === 0
+                                        ? <p className='no-result'>Brak wyników</p>
+                                        : <ul>
+                                            {
+                                                tasks.map(
+                                                    task => (
+                                                        <li key={task.id}>
+                                                            <TaskContent task={task}/>
+                                                        </li>
+                                                    )
+                                                )
+                                            }
+                                        </ul>
+                                    : //show banner
+                                    <div className='banner'>
 
-                  </div>
-              }
-            </div>
-            : <div className='banner'>
-                <h1>Witaj w aplikacji Taskmen</h1>
-                {
-                  this.props.user === null ? (
-                    <div>
-                      <SignInForm/>
-                      <SignUpForm/>
-                    </div>
-                  ) : ''
+                                    </div>
+                            }
+                        </div>
+                        : <div className='banner'>
+                            <h1>Witaj w aplikacji Taskmen</h1>
+                            {
+                                this.props.user === null ? (
+                                    <div>
+                                        <SignInForm/>
+                                        <SignUpForm/>
+                                    </div>
+                                ) : ''
+                            }
+                        </div>
                 }
-              </div>
-        }
-      </div>
-    )
-  }
+            </div>
+        )
+    }
 }
 
 export default withUser(withTasks(TaskList));
