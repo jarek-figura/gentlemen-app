@@ -2,13 +2,13 @@ body {
   margin: 0 auto;
   padding: 0 0 13px 0;
   font-family: "Lato", sans-serif;
-  background-image: url('components/business/AppStyling/dust_scratches.png');
+  background-color: #F8F9FA;
   max-width: 600px;
   color: #000;
 }
 
 .banner{
-  background-color: darkgray;
+  background: #F8F9FA url(components/business/AppStyling/clipboard.png) center no-repeat;
 }
 .nav-panel{
   color: #ffffff;

@@ -3,30 +3,33 @@ import React, { Component } from 'react'
 const themes = {
     basic: {
         body: {
-          backgroundColor: "#D12B36",
+          backgroundColor: "#d62261",
+          fontFamily: 'Roboto, sans-serif',
           },
       bodyBottom: {
-        backgroundColor: "#d11221",
+          backgroundColor: "#d62261",
+          fontFamily: 'Roboto, sans-serif',
       },
-        taskListStyle: {
-        color: "#000",
+          taskListStyle: {
+          fontFamily: 'Roboto, sans-serif',
+          color: "#000",
       }
-
     },
     taskManPink: {
         body: {
           backgroundColor: '#0271d1',
-          color: '#000',
+          color: '#fff',
+          fontFamily: 'Roboto, sans-serif',
         },
         bodyBottom: {
-          backgroundColor: "#0271d1",
+          backgroundColor: "#0148d1",
           color: '#000',
+          fontFamily: 'Roboto, sans-serif',
       },
         taskListStyle: {
           color: "#000",
+          fontFamily: 'Roboto, sans-serif',
         }
-
-
     }
 };
 
