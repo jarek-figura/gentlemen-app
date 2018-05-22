@@ -27,8 +27,6 @@ class TaskPanelUser extends Component {
           {
             ({theme, toggle}) => (
                 <div style={theme.body} className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
-
-
                   <h1>Task User Panel</h1>
                   <button className="changeThemeBtn" onClick={toggle}>Zmień motyw</button>
                   <div className={'photo'}>photo</div>

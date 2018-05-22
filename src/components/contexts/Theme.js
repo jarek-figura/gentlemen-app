@@ -3,20 +3,22 @@ import React, { Component } from 'react'
 const themes = {
     basic: {
         body: {
-          backgroundColor: "#A9A9A9",
-          color: '#fff',
-        }
-
+          backgroundColor: "#D12B36",
+          },
+      bodyBottom: {
+        backgroundColor: "#d11221",
+      },
     },
     taskManPink: {
         body: {
-          backgroundColor: '#442d0a',
-          color: '#acee70',
+          backgroundColor: '#0271d1',
+          color: '#fff',
         },
       bodyBottom: {
-        backgroundColor: "#25a915",
-        color: '#cc02b3',
+        backgroundColor: "#0271d1",
+        color: '#fff',
       }
+
 
     }
 };

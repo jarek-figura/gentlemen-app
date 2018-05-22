@@ -3,7 +3,8 @@ import './InnerTaskPopup.css';
 import moment from 'moment';
 import TaskPriority from "../TaskPriority/TaskPriority";
 import TaskDueDay from "../TaskDueDay/TaskDueDay";
-import {withTasks} from "../../contexts/Tasks";
+import { withTasks } from "../../contexts/Tasks";
+import { ThemeConsumer } from '../../contexts/Theme'
 
 class InnerTaskPopup extends Component {
   state = {
@@ -74,7 +75,10 @@ class InnerTaskPopup extends Component {
 
   render() {
     return (
-      <div className='add-task'>
+      <ThemeConsumer>
+        {
+          ({theme}) => (
+      <div style={theme.body} className='addTask'>
         <button
           className='cancel-button'
           title='zaniechaj'
@@ -115,6 +119,9 @@ class InnerTaskPopup extends Component {
 
         <button className='add-task-button' form="form1">{this.props.buttonName}</button>
       </div>
+          )
+        }
+      </ThemeConsumer>
     )
   }
 }
