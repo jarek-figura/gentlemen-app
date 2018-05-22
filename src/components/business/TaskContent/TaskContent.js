@@ -37,21 +37,11 @@ class TaskContent extends Component {
     return (
       <div className={task.priority + ' ' + task.isDone + ' task'}>
 
-        <div className="checkbox">
-                   <input className='done-checkbox'
-                 title="Oznacz jako zrobione"
-                 type="checkbox"
-                 checked={task.isDone}
-                 onChange={() => this.props.toggleTaskDone(task.id)}
-          />
-
-        </div>
-
-        <div className="titles">
+              <div className="titles">
           <strong>{task.name}</strong>
           <button
                            className={"show-desc"}
-                           title={"show"}
+                           title={"Pokaż opis"}
                            onClick={this.handleClick}>
           <FontAwesomeIcon icon={faSearch}/></button><br/>
           {moment(task.dueDate).format('DD-MM-YYYY')}<br/>
@@ -66,11 +56,18 @@ class TaskContent extends Component {
 
         <div className="buttons">
 
+          <input className='done-checkbox'
+                 title="Oznacz jako zrobione"
+                 type="checkbox"
+                 checked={task.isDone}
+                 onChange={() => this.props.toggleTaskDone(task.id)}
+          />
+          <span>&nbsp;</span>
           <button className='edit-button'
+                  title='Edytuj'
                   onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
           ><FontAwesomeIcon icon={faEdit}/>
           </button>
-
           <span>&nbsp;</span>
           <button className='delete-button'
                   title="Usuń zadanie"

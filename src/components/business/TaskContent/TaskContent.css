@@ -1,95 +1,91 @@
-.medium{
-  background-color: rgba(255, 207, 0, 0.2);
+.medium {
+    background-color: rgba(255, 207, 0, 0.2);
 }
 
-.low{
-  background-color: rgba(67, 255, 0, 0.2);
+.low {
+    background-color: rgba(67, 255, 0, 0.2);
 }
 
-.high{
-  background-color: rgba(255, 0, 0, 0.2);
+.high {
+    background-color: rgba(255, 0, 0, 0.2);
 }
 
 .true {
-  color: #aaa;
+    color: #aaa;
 }
 
 .task {
-  margin: 0;
-  padding: 15px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
+    margin: 0;
+    padding: 15px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .titles {
-  width: 150px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
 p.description {
-  padding: 2px;
-  font-size: 1em;
-  width: 360px;
-  white-space: normal;
-  }
+    padding: 2px;
+    font-size: 1em;
+    width: 360px;
+    white-space: normal;
+}
 
 .buttons {
-  position: relative;
-  white-space: nowrap;
-}
-
-.checkbox {
     position: relative;
     white-space: nowrap;
 }
 
-.wrnToday{
-  background-color: #ee006a;
-  color: #0fff00;
-  text-align: center;
-  font-size: 12px;
-  padding: 2px;
-  opacity: .8;
-  border-radius: 2px;
-  width: 78%;
+.wrnToday {
+    background-color: #ee006a;
+    color: #0fff00;
+    text-align: center;
+    font-size: 12px;
+    padding: 2px;
+    opacity: .8;
+    border-radius: 2px;
+    width: 78%;
 }
 
-.wrn{
-  background-color: #000000;
-  color: #ff0003;
-  text-align: center;
-  font-size: 12px;
-  padding: 2px;
-  opacity: .8;
-  border-radius: 2px;
-  width: 78%;
+.wrn {
+    background-color: #000000;
+    color: #ff0003;
+    text-align: center;
+    font-size: 12px;
+    padding: 2px;
+    opacity: .8;
+    border-radius: 2px;
+    width: 78%;
 }
 
 .edit-button {
-  font-size: 1em;
-  height: 30px;
+    font-size: 1em;
+    height: 30px;
 }
 
 .delete-button {
-  font-size: 1em;
-  height: 30px;
-  width: 30px;
+    font-size: 1em;
+    height: 30px;
+    width: 30px;
 }
 
 .done-checkbox {
-  position: absolute;
-  margin: 0;
-  left: -30px;
-  height: 31px;
-  width: 31px;
-  background-color: #eee;
+    position: absolute;
+    margin: 0;
+    left: -30px;
+    height: 30px;
+    width: 30px;
+    background-color: #eee;
 }
 
 .done-checkbox:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .show-desc {
@@ -101,6 +97,7 @@ p.description {
     cursor: pointer;
     outline: inherit;
 }
+
 .delete-button {
     background: none;
     color: inherit;
@@ -122,17 +119,19 @@ p.description {
 }
 
 @media (min-width: 375px) {
-  .titles {
-    width: 210px;
-  }
+    .titles {
+        width: 210px;
+    }
 }
+
 @media (min-width: 414px) {
-  .titles {
-    width: 250px;
-  }
+    .titles {
+        width: 250px;
+    }
 }
+
 @media (min-width: 600px) {
-  .titles {
-    width: 420px;
-  }
+    .titles {
+        width: 420px;
+    }
 }

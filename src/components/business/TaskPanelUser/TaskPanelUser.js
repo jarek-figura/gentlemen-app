@@ -37,6 +37,7 @@ class TaskPanelUser extends Component {
           <span>{this.props.user.email}</span>
           <button
             className={"exit"}
+            title="Wyjdź"
             onClick={this.props.signOut}>
             <FontAwesomeIcon icon={faDoorOpen}/></button>
           </div>
