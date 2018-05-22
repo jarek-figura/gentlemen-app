@@ -21,19 +21,25 @@ class InnerTaskPopup extends Component {
 
 /*
   TASKI CYKLICZNE: ZAŁOŻENIA
-  # w bazie będzie trzymany jeden task
-  # task będzie posiadał dwie daty:
-    - datę cykliczności, np. co środę
-    - datę zakończenia cykliczności (nieobowiązkowe)
-  # na liście będzie pokazywany następny task, gdy poprzedni został zrobiony:
-    - gdy task się przeterminuje nic się nie zmienia na liście
-    - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
-  # taski zrobione zostają na liście i będą zapisane do bazy
-  # kasowanie taska cyklicznego, usunie wpis z bazy, taski zrobione zostają w bazie
-  # wyróżnienie graficzne dla taska cyklicznego
-  # taski cykliczne można edytować, edycja zapisze się do bazy i wszystkie taski pochodne
-    będą mieć tę samą informację (nawet wstecznie), z wyjątkiem tasków zrobionych,
-    bo te będą już zapisane pod innymi id
+      # w bazie będzie trzymany jeden task bazowy
+        - czy taski pochodne powinny zawierać referencję do taska bazowego?
+  OK  # task będzie posiadał dwie daty:
+  OK    - datę cykliczności, np. co środę
+  OK    - datę zakończenia cykliczności (nieobowiązkowe)
+      # na liście będzie pokazywany następny task, gdy poprzedni został zrobiony:
+        - gdy task się przeterminuje nic się nie zmienia na liście
+        - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
+      # taski zrobione zostają na liście i będą zapisane do bazy
+        - co się stanie, jeśli odznaczymy taska zrobionego?
+          -> czy ma zostać skasowany z bazy?
+          ->
+      # kasowanie taska cyklicznego, usunie wpis z bazy, taski zrobione zostają w bazie
+  OK  # wyróżnienie graficzne dla taska cyklicznego
+      # taski cykliczne można edytować, edycja zapisze się w bazie do taska bazowego i wszystkie taski pochodne
+        będą mieć tę samą informację (nawet wstecznie), z wyjątkiem tasków zrobionych,
+        bo te będą już zapisane pod innymi id
+
+      # CZY NA LIŚCIE TASKÓW POWINNO BYC WŁĄCZONE DOMYŚLNE SORTOWANIE PO DACIE (od najstarszej do najmłodszej)???
  */
 
   static getDerivedStateFromProps({ task }, prevState) {
