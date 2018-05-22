@@ -22,11 +22,11 @@ class InnerTaskPopup extends Component {
 /*
   TASKI CYKLICZNE: ZAŁOŻENIA
       # w bazie będzie trzymany jeden task bazowy
-        - czy taski pochodne powinny zawierać referencję do taska bazowego?
   OK  # task będzie posiadał dwie daty:
   OK    - datę cykliczności, np. co środę
   OK    - datę zakończenia cykliczności (nieobowiązkowe)
       # na liście będzie pokazywany następny task, gdy poprzedni został zrobiony:
+        - następny task jest zapisany do bazy, jako task bazowy
         - gdy task się przeterminuje nic się nie zmienia na liście
         - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
       # taski zrobione zostają na liście i będą zapisane do bazy
@@ -165,7 +165,14 @@ class InnerTaskPopup extends Component {
               checked={this.state.taskCycleMode === 'daily'}
               onChange={this.handleTaskCycleMode}
             />
-            <label htmlFor="cycle-daily">Codziennie</label><br/>
+            <label htmlFor="cycle-daily">Codziennie</label>
+            { this.state.taskCycleMode === 'daily' ?
+              <TaskCycleDate
+                cycleDate={this.state.cycleDate || moment()}
+                handleCycleDate={this.handleCycleDate}
+              /> : ''
+            }
+            <br/>
 
             <input className="cycle cycle-weekly"
               id="cycle-weekly"

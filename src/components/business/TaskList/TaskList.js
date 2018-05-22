@@ -61,10 +61,12 @@ class TaskList extends Component {
               {
                 this.props.user !== null
                   ? <div>
-                    <div className={this.state.isDay ? "hero task-day" : " hero task-night"}>
-                      <h1 className="hero-title">TASKMEN</h1>
-                      <div className="hero-data">{date}</div>
-                    </div>
+                    {
+                      <div className={this.state.isDay ? "hero task-day" : " hero task-night"}>
+                        <h1 className="hero-title">TASKMEN</h1>
+                        <div className="hero-data">{date}</div>
+                      </div>
+                    }
                     {
                       this.props.tasksBeforeFilter().length !== 0 &&
                       <span className='task-list'>

@@ -12,10 +12,20 @@ class TaskContent extends Component {
   state = {
     showDesc: false
   };
+
   handleClick = () => {
     this.setState({
       showDesc: !this.state.showDesc
     });
+  };
+
+  handleToggleTaskDone =(id) => {
+    this.props.toggleTaskDone(id);
+    /*
+      TODO: Dla taska cyklicznego `isCycleMode = true` dodać kolejnego do bazy za pomocą `addTask`
+      TODO: w zależności od `taskCycleMode` oraz `cycleDate` bez przekraczania `dueDate`.
+      TODO: Dane wziąć z aktualnego `task.id`. Czy w aktualnym tasku ustawić `isCycleMode = false`?
+    */
   };
 
   render() {
@@ -42,7 +52,7 @@ class TaskContent extends Component {
             title="Oznacz jako zrobione"
             type="checkbox"
             checked={task.isDone}
-            onChange={() => this.props.toggleTaskDone(task.id)}
+            onChange={() => this.handleToggleTaskDone(task.id)}
           />
         </div>
 
@@ -51,16 +61,15 @@ class TaskContent extends Component {
           <button
             className={"show-desc"}
             title={"Pokaż opis"}
-            onClick={this.handleClick}>
-            <FontAwesomeIcon icon={faSearch}/></button>
+            onClick={this.handleClick}
+          ><FontAwesomeIcon icon={faSearch}/></button>
           <br/>
+
           {moment(task.dueDate).format('DD-MM-YYYY')}<br/>
-          {this.state.showDesc ?
-            <p className="description">{task.description}</p>
-            : ''}
+
+          {this.state.showDesc ? <p className="description">{task.description}</p> : ''}
 
           {whatToRender()}
-
         </div>
 
         <div className="buttons">
