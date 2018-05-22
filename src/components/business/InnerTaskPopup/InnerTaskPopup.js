@@ -12,7 +12,8 @@ class InnerTaskPopup extends Component {
     dueDate: moment(),
     priority: 'medium',
     formError: null,
-    cycleTasksMode: false
+    isCycleMode: false,
+    taskCycleMode: 'daily' // 'daily', 'weekly', 'monthly'
   };
 
 /*
@@ -24,14 +25,12 @@ class InnerTaskPopup extends Component {
   # na liście będzie pokazywany następny task, gdy poprzedni został zrobiony:
     - gdy task się przeterminuje nic się nie zmienia na liście
     - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
-  # taski zrobione zostają na liście, opcje:
-    - generowane dynamicznie
-    - zapisane do bazy??? co z usuwaniem takich tasków
-  # kasowanie taska cyklicznego, opcje:
-    - skasowanie taska cyklicznego usunie wpis z bazy i wszelkie informacje przepadną
-    - do bazy zostaną zapisane dotychczas taski zrobione???
+  # taski zrobione zostają na liście i będą zapisane do bazy
+  # kasowanie taska cyklicznego, usunie wpis z bazy, taski zrobione zostają w bazie
   # wyróżnienie graficzne dla taska cyklicznego
-  # taski cykliczne można edytować, edycja zapisze się do bazy i wszystkie taski pochodne będą mieć tę samą informację (nawet wstecznie)
+  # taski cykliczne można edytować, edycja zapisze się do bazy i wszystkie taski pochodne
+    będą mieć tę samą informację (nawet wstecznie), z wyjątkiem tasków zrobionych,
+    bo te będą już zapisane pod innymi id
  */
 
   static getDerivedStateFromProps({ task }, prevState) {
@@ -54,7 +53,9 @@ class InnerTaskPopup extends Component {
         this.state.name,
         this.state.description,
         this.state.dueDate,
-        this.state.priority
+        this.state.priority,
+        this.state.isCycleMode,
+        this.state.taskCycleMode
       );
       this.props.toggleShowAddTaskPopup();
     } else if (this.props.buttonName === 'Zmień') {
@@ -63,7 +64,9 @@ class InnerTaskPopup extends Component {
         this.state.name,
         this.state.description,
         this.state.dueDate,
-        this.state.priority
+        this.state.priority,
+        this.state.isCycleMode,
+        this.state.taskCycleMode
       );
       this.props.toggleShowEditTaskPopup(this.state.id);
     }
@@ -92,9 +95,9 @@ class InnerTaskPopup extends Component {
     }
   };
 
-  handleChecked = () => {
-    this.setState({cycleTasksMode: !this.state.cycleTasksMode})
-  };
+  handleIsCycleMode = () => this.setState({isCycleMode: !this.state.isCycleMode});
+
+  handleTaskCycleMode = event => this.setState({taskCycleMode: event.target.value});
 
   render() {
     return (
@@ -112,8 +115,8 @@ class InnerTaskPopup extends Component {
             id="cycleCheckbox"
             type="checkbox"
             value="cycle"
-            // checked={this.state.cycle}
-            onChange={this.handleChecked}
+            checked={this.state.isCycleMode || false}
+            onChange={this.handleIsCycleMode}
           />
           <label htmlFor="cycleCheckbox">Ustaw zadanie cylkiczne</label>
         </div>
@@ -139,14 +142,15 @@ class InnerTaskPopup extends Component {
           />
         </form><br/>
 
-        {this.state.cycleTasksMode === true ?
+        {this.state.isCycleMode === true ?
           <form className="cycle-with-label">
             <input className="cycle cycle-daily"
               id="cycle-daily"
               type="radio"
               name="radio-cycle"
-              value="cycle-daily"
-              // onChange={this.handleChecked}
+              value="daily"
+              checked={this.state.taskCycleMode === 'daily'}
+              onChange={this.handleTaskCycleMode}
             />
             <label htmlFor="cycle-daily">Codziennie</label><br/>
 
@@ -154,8 +158,9 @@ class InnerTaskPopup extends Component {
               id="cycle-weekly"
               type="radio"
               name="radio-cycle"
-              value="cycle-weekly"
-              // onChange={this.handleChecked}
+              value="weekly"
+              checked={this.state.taskCycleMode === 'weekly'}
+              onChange={this.handleTaskCycleMode}
             />
             <label htmlFor="cycle-weekly">Co tydzień</label><br/>
 
@@ -163,8 +168,9 @@ class InnerTaskPopup extends Component {
               id="cycle-monthly"
               type="radio"
               name="radio-cycle"
-              value="cycle-monthly"
-              // onChange={this.handleChecked}
+              value="monthly"
+              checked={this.state.taskCycleMode === 'monthly'}
+              onChange={this.handleTaskCycleMode}
             />
             <label htmlFor="cycle-monthly">Co miesiąc</label><br/><br/>
           </form> : ''
