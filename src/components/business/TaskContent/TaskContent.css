@@ -1,16 +1,16 @@
-.medium{
+.medium {
   background-color: rgba(255, 207, 0, 0.5);
-  box-shadow: 0px 2px 5px 0px rgba(191,160,38,1);
+  box-shadow: 0 2px 5px 0 rgba(191, 160, 38, 1);
 }
 
-.low{
+.low {
   background-color: rgba(117, 255, 89, 0.3);
-  box-shadow: 0px 2px 5px 0px rgba(70,181,45,1);
+  box-shadow: 0 2px 5px 0 rgba(70, 181, 45, 1);
 }
 
-.high{
+.high {
   background-color: rgba(255, 0, 0, 0.7);
-  box-shadow: 0px 2px 5px 0px rgba(191,11,11,1);
+  box-shadow: 0 2px 5px 0 rgba(191, 11, 11, 1);
 }
 
 .true {
@@ -34,18 +34,18 @@
 }
 
 p.description {
-    padding: 5px;
-    font-size: 1em;
-    width: 360px;
-    white-space: normal;
-  }
+  padding: 5px;
+  font-size: 1em;
+  width: 360px;
+  white-space: normal;
+}
 
 .buttons {
   position: relative;
   white-space: nowrap;
 }
 
-.wrnToday{
+.wrnToday {
   background-color: #ffcf00;
   color: #000000;
   text-align: center;
@@ -56,7 +56,7 @@ p.description {
   width: 78%;
 }
 
-.wrn{
+.wrn {
   background-color: #000000;
   color: #ffcf00;
   text-align: center;
@@ -67,59 +67,41 @@ p.description {
   width: 78%;
 }
 
-
-
-
 .edit-button {
-    height: 30px;
-    width: 30px;
+  height: 30px;
+  width: 30px;
 }
 
 .delete-button {
-    height: 30px;
-    width: 30px;
+  height: 30px;
+  width: 30px;
 }
 
 .done-checkbox {
-    position: relative;
-    margin: 0;
-   height: 30px;
-    width: 30px;
-    background-color: #eee;
+  position: relative;
+  margin: 0;
+  height: 30px;
+  width: 30px;
+  background-color: #eee;
 }
 
 .done-checkbox:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.show-desc {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
+.show-desc, .delete-button, .edit-button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
-.delete-button {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-}
-
-.edit-button {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
+.cycled-mode {
+  border-left: 5px solid #d62261;
+  padding-left: 10px;
 }
 
 @media (min-width: 375px) {
@@ -140,24 +122,23 @@ p.description {
   }
 }
 
-
 @media (min-width: 319px) {
-    p.description {
-        width: 145px;
+  p.description {
+    width: 145px;
 
-    }
+  }
 }
 
 @media (min-width: 414px) {
-    p.description {
-        width: 230px;
+  p.description {
+    width: 230px;
 
-    }
+  }
 }
 
 @media (min-width: 600px) {
-    p.description {
-        width: 360px;
+  p.description {
+    width: 360px;
 
-    }
+  }
 }

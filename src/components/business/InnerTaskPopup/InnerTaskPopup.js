@@ -5,6 +5,7 @@ import TaskPriority from "../TaskPriority/TaskPriority";
 import TaskDueDay from "../TaskDueDay/TaskDueDay";
 import { withTasks } from "../../contexts/Tasks";
 import { ThemeConsumer } from '../../contexts/Theme'
+import TaskCycleDate from "../TaskCycleDate/TaskCycleDate";
 
 class InnerTaskPopup extends Component {
   state = {
@@ -14,24 +15,31 @@ class InnerTaskPopup extends Component {
     priority: 'medium',
     formError: null,
     isCycleMode: false,
-    taskCycleMode: 'daily' // 'daily', 'weekly', 'monthly'
+    taskCycleMode: 'daily', // 'daily', 'weekly', 'monthly'
+    cycleDate: moment()
   };
 
 /*
   TASKI CYKLICZNE: ZAŁOŻENIA
-  # w bazie będzie trzymany jeden task
-  # task będzie posiadał dwie daty:
-    - datę cykliczności, np. co środę
-    - datę zakończenia cykliczności (nieobowiązkowe)
-  # na liście będzie pokazywany następny task, gdy poprzedni został zrobiony:
-    - gdy task się przeterminuje nic się nie zmienia na liście
-    - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
-  # taski zrobione zostają na liście i będą zapisane do bazy
-  # kasowanie taska cyklicznego, usunie wpis z bazy, taski zrobione zostają w bazie
-  # wyróżnienie graficzne dla taska cyklicznego
-  # taski cykliczne można edytować, edycja zapisze się do bazy i wszystkie taski pochodne
-    będą mieć tę samą informację (nawet wstecznie), z wyjątkiem tasków zrobionych,
-    bo te będą już zapisane pod innymi id
+      # w bazie będzie trzymany jeden task bazowy
+  OK  # task będzie posiadał dwie daty:
+  OK    - datę cykliczności, np. co środę
+  OK    - datę zakończenia cykliczności (nieobowiązkowe)
+      # na liście będzie pokazywany następny task, gdy poprzedni został zrobiony:
+        - następny task jest zapisany do bazy, jako task bazowy
+        - gdy task się przeterminuje nic się nie zmienia na liście
+        - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
+      # taski zrobione zostają na liście i będą zapisane do bazy
+        - co się stanie, jeśli odznaczymy taska zrobionego?
+          -> czy ma zostać skasowany z bazy?
+          ->
+      # kasowanie taska cyklicznego, usunie wpis z bazy, taski zrobione zostają w bazie
+  OK  # wyróżnienie graficzne dla taska cyklicznego
+      # taski cykliczne można edytować, edycja zapisze się w bazie do taska bazowego i wszystkie taski pochodne
+        będą mieć tę samą informację (nawet wstecznie), z wyjątkiem tasków zrobionych,
+        bo te będą już zapisane pod innymi id
+
+      # CZY NA LIŚCIE TASKÓW POWINNO BYC WŁĄCZONE DOMYŚLNE SORTOWANIE PO DACIE (od najstarszej do najmłodszej)???
  */
 
   static getDerivedStateFromProps({ task }, prevState) {
@@ -56,7 +64,8 @@ class InnerTaskPopup extends Component {
         this.state.dueDate,
         this.state.priority,
         this.state.isCycleMode,
-        this.state.taskCycleMode
+        this.state.taskCycleMode,
+        this.state.cycleDate
       );
       this.props.toggleShowAddTaskPopup();
     } else if (this.props.buttonName === 'Zmień') {
@@ -67,7 +76,8 @@ class InnerTaskPopup extends Component {
         this.state.dueDate,
         this.state.priority,
         this.state.isCycleMode,
-        this.state.taskCycleMode
+        this.state.taskCycleMode,
+        this.state.cycleDate
       );
       this.props.toggleShowEditTaskPopup(this.state.id);
     }
@@ -80,13 +90,9 @@ class InnerTaskPopup extends Component {
     })
   };
 
-  handleDate = date => {
-    this.setState({dueDate: date});
-  };
+  handleDate = date => this.setState({ dueDate: date });
 
-  handlePriority = priority => {
-    this.setState({priority: priority})
-  };
+  handlePriority = priority => this.setState({ priority: priority });
 
   handleCancel = () => {
     if (this.props.buttonName === 'Dodaj') {
@@ -96,9 +102,11 @@ class InnerTaskPopup extends Component {
     }
   };
 
-  handleIsCycleMode = () => this.setState({isCycleMode: !this.state.isCycleMode});
+  handleCycleDate = date => this.setState({ cycleDate: date });
 
-  handleTaskCycleMode = event => this.setState({taskCycleMode: event.target.value});
+  handleIsCycleMode = () => this.setState({ isCycleMode: !this.state.isCycleMode });
+
+  handleTaskCycleMode = event => this.setState({ taskCycleMode: event.target.value });
 
   render() {
     return (
@@ -157,7 +165,14 @@ class InnerTaskPopup extends Component {
               checked={this.state.taskCycleMode === 'daily'}
               onChange={this.handleTaskCycleMode}
             />
-            <label htmlFor="cycle-daily">Codziennie</label><br/>
+            <label htmlFor="cycle-daily">Codziennie</label>
+            { this.state.taskCycleMode === 'daily' ?
+              <TaskCycleDate
+                cycleDate={this.state.cycleDate || moment()}
+                handleCycleDate={this.handleCycleDate}
+              /> : ''
+            }
+            <br/>
 
             <input className="cycle cycle-weekly"
               id="cycle-weekly"
@@ -167,7 +182,14 @@ class InnerTaskPopup extends Component {
               checked={this.state.taskCycleMode === 'weekly'}
               onChange={this.handleTaskCycleMode}
             />
-            <label htmlFor="cycle-weekly">Co tydzień</label><br/>
+            <label htmlFor="cycle-weekly">Co tydzień</label>
+            { this.state.taskCycleMode === 'weekly' ?
+              <TaskCycleDate
+                cycleDate={this.state.cycleDate || moment()}
+                handleCycleDate={this.handleCycleDate}
+              /> : ''
+            }
+            <br/>
 
             <input className="cycle cycle-monthly"
               id="cycle-monthly"
@@ -177,7 +199,14 @@ class InnerTaskPopup extends Component {
               checked={this.state.taskCycleMode === 'monthly'}
               onChange={this.handleTaskCycleMode}
             />
-            <label htmlFor="cycle-monthly">Co miesiąc</label><br/><br/>
+            <label htmlFor="cycle-monthly">Co miesiąc</label>
+            { this.state.taskCycleMode === 'monthly' ?
+              <TaskCycleDate
+                cycleDate={this.state.cycleDate || moment()}
+                handleCycleDate={this.handleCycleDate}
+              /> : ''
+            }
+            <br/><br/>
           </form> : ''
         }
 
