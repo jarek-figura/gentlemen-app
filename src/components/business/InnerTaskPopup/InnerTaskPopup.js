@@ -108,9 +108,10 @@ class InnerTaskPopup extends Component {
           <input
             className='task-title'
             name="name"
-            placeholder="Tytuł zadania"
+            placeholder="Tytuł zadania - max 40 znaków"
             value={this.state.name}
             onChange={this.handleChange}
+            maxLength="40"
           />
           <br/>
 
