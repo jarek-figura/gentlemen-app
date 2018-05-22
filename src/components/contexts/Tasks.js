@@ -44,34 +44,38 @@ export class TasksProvider extends Component {
         showMyWeekMode: '0'
     }) },
 
-    filterByIsDone: status => { this.filterRef.update({ isDoneSortMode: status }) },
+    filterByIsDone: status => this.filterRef.update({ isDoneSortMode: status }),
 
-    filterByDueDate: status => { this.filterRef.update({ dueDateSortMode: status }) },
+    filterByDueDate: status => this.filterRef.update({ dueDateSortMode: status }),
 
-    filterByPriority: status => { this.filterRef.update({ prioritySortMode: status }) },
+    filterByPriority: status => this.filterRef.update({ prioritySortMode: status }),
 
-    showMyDay: status => { this.filterRef.update({ showMyDayMode: status }) },
+    showMyDay: status => this.filterRef.update({ showMyDayMode: status }),
 
-    showMyWeek: status => { this.filterRef.update({ showMyWeekMode: status }) },
+    showMyWeek: status => this.filterRef.update({ showMyWeekMode: status }),
 
     updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
 
-    addTask: (name, description, dueDate, priority) => {
+    addTask: (name, description, dueDate, priority, isCycle, taskCycleMode) => {
       this.tasksRef.push({
         name: name,
         description: description,
         dueDate: moment(dueDate).valueOf(),
         priority: priority,
-        isDone: false
+        isDone: false,
+        isCycleMode: isCycle,
+        taskCycleMode: taskCycleMode
       })
     },
 
-    updateTask: (id, name, description, dueDate, priority) => {
+    updateTask: (id, name, description, dueDate, priority, isCycle, taskCycleMode) => {
       this.tasksRef.child(id).update({
         name: name,
         description: description,
         dueDate: moment(dueDate).valueOf(),
-        priority: priority
+        priority: priority,
+        isCycleMode: isCycle,
+        taskCycleMode: taskCycleMode
       })
     },
 
