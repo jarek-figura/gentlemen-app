@@ -5,9 +5,11 @@ import {withUser} from "../../contexts/User";
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faCog from '@fortawesome/fontawesome-free-solid/faCog'
 import faDoorOpen from "@fortawesome/fontawesome-free-solid/faDoorOpen";
+import faAngleDoubleUp from "@fortawesome/fontawesome-free-solid/faAngleDoubleUp";
 
 const navUserModeTable = [' hideuser', ''];
-const filtersButtonUserName = [<FontAwesomeIcon icon={faCog}/>, `\u21e7`]
+const filtersButtonUserName = [<FontAwesomeIcon icon={faCog}/>, <FontAwesomeIcon icon={faAngleDoubleUp}/>]
+const filtersTitle = ['Pokaż UserPanel', 'Zamknij UserPanel']
 
 class TaskPanelUser extends Component {
 
@@ -31,7 +33,7 @@ class TaskPanelUser extends Component {
         <div>
           <button
             className={"show-userpanel"}
-            title={filtersButtonUserName[this.state.navUserIndex]}
+            title={filtersTitle[this.state.navUserIndex]}
             onClick={this.handleClick}
           >{filtersButtonUserName[this.state.navUserIndex]}</button>
           <span>{this.props.user.email}</span>
