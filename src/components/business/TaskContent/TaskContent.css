@@ -24,12 +24,14 @@
 }
 
 .titles {
-  width: 160px;
+  width: 150px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 p.description {
+  padding: 2px;
+  font-size: 1em;
   width: 360px;
   white-space: normal;
   }
@@ -37,6 +39,11 @@ p.description {
 .buttons {
   position: relative;
   white-space: nowrap;
+}
+
+.checkbox {
+    position: relative;
+    white-space: nowrap;
 }
 
 .wrnToday{
@@ -61,9 +68,6 @@ p.description {
   width: 78%;
 }
 
-
-
-
 .edit-button {
   font-size: 1em;
   height: 30px;
@@ -86,6 +90,35 @@ p.description {
 
 .done-checkbox:hover {
   cursor: pointer;
+}
+
+.show-desc {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+.delete-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.edit-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }
 
 @media (min-width: 375px) {

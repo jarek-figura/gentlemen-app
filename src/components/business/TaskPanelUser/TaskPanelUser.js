@@ -2,9 +2,12 @@ import React, {Component} from 'react'
 import './TaskPanelUser.css'
 import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faCog from '@fortawesome/fontawesome-free-solid/faCog'
+import faDoorOpen from "@fortawesome/fontawesome-free-solid/faDoorOpen";
 
 const navUserModeTable = [' hideuser', ''];
-const filtersButtonUserName = [`Panel`, `\u21e7`]
+const filtersButtonUserName = [<FontAwesomeIcon icon={faCog}/>, `\u21e7`]
 
 class TaskPanelUser extends Component {
 
@@ -25,15 +28,18 @@ class TaskPanelUser extends Component {
       <nav className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
         <h1>Task User Panel</h1>
         <div className={'photo'}>photo</div>
-        <p>
-          Użytkownik: {this.props.user.email}
+        <div>
           <button
             className={"show-userpanel"}
             title={filtersButtonUserName[this.state.navUserIndex]}
             onClick={this.handleClick}
           >{filtersButtonUserName[this.state.navUserIndex]}</button>
-          <button onClick={this.props.signOut}>Wyloguj</button>
-        </p>
+          <span>{this.props.user.email}</span>
+          <button
+            className={"exit"}
+            onClick={this.props.signOut}>
+            <FontAwesomeIcon icon={faDoorOpen}/></button>
+          </div>
 
       </nav>
     )

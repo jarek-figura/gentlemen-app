@@ -45,25 +45,27 @@ li {
     z-index: 10;
 }
 
-.task-day {
+.hero {
     position: relative;
-    padding: 20px;
-    top: 35px;
-    background-image: url("../../../img/day-pic.jpg");
-    background-size: cover;
-    height: 120px;
+    top: 45px;
+    height: 80px;
     text-align: center;
+}
+ .hero-title {
+     font-size: 1.5em;
+     padding-top: 15px;
+     margin: 0;
+ }
+
+.task-day {
+    background-image: url("../../../img/day-pic.png");
+    background-size: unset;
 }
 
 .task-night {
-    color: whitesmoke;
-    padding: 20px;
-    position: relative;
-    top: 35px;
     background-image: url("../../../img/night-pic.jpg");
     background-size: cover;
-    height: 120px;
-    text-align: center;
+    color: whitesmoke;
 }
 
 .logged-in > button {
