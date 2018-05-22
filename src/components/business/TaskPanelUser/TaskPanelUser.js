@@ -6,6 +6,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faCog from '@fortawesome/fontawesome-free-solid/faCog'
 import faDoorOpen from "@fortawesome/fontawesome-free-solid/faDoorOpen";
 import faAngleDoubleUp from "@fortawesome/fontawesome-free-solid/faAngleDoubleUp";
+import { ThemeConsumer } from '../../contexts/Theme'
 
 const navUserModeTable = [' hideuser', ''];
 const filtersButtonUserName = [<FontAwesomeIcon icon={faCog}/>, <FontAwesomeIcon icon={faAngleDoubleUp}/>]

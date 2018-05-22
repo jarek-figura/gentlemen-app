@@ -7,12 +7,9 @@ import {withUser} from "../../contexts/User";
 import SignInForm from '../../core/auth/SignInForm';
 import SignUpForm from '../../core/auth/SignUpForm';
 import { ThemeConsumer } from '../../contexts/Theme'
-import organizeTasks from "./organizeTasks";
-
 import TaskPanelUser from '../TaskPanelUser/TaskPanelUser'
 import moment from 'moment'
 import 'moment/locale/pl'
-
 import organizeTasks from "./organizeTasks";
 
 moment.locale('pl')
