@@ -56,7 +56,7 @@ export class TasksProvider extends Component {
 
     updateSearchPhrase: searchPhrase => this.setState({ searchPhrase }),
 
-    addTask: (name, description, dueDate, priority, isCycle, taskCycleMode) => {
+    addTask: (name, description, dueDate, priority, isCycle, taskCycleMode, cycleDate) => {
       this.tasksRef.push({
         name: name,
         description: description,
@@ -64,18 +64,20 @@ export class TasksProvider extends Component {
         priority: priority,
         isDone: false,
         isCycleMode: isCycle,
-        taskCycleMode: taskCycleMode
+        taskCycleMode: taskCycleMode,
+        cycleDate: moment(cycleDate).valueOf()
       })
     },
 
-    updateTask: (id, name, description, dueDate, priority, isCycle, taskCycleMode) => {
+    updateTask: (id, name, description, dueDate, priority, isCycle, taskCycleMode, cycleDate) => {
       this.tasksRef.child(id).update({
         name: name,
         description: description,
         dueDate: moment(dueDate).valueOf(),
         priority: priority,
         isCycleMode: isCycle,
-        taskCycleMode: taskCycleMode
+        taskCycleMode: taskCycleMode,
+        cycleDate: moment(cycleDate).valueOf()
       })
     },
 

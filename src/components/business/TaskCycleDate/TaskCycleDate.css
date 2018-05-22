@@ -1,0 +1,20 @@
+.cycle-date {
+  display: inline-block;
+  font-size: 1rem;
+  text-align: center;
+  margin-left: 10px;
+  height: 15px;
+}
+
+.cycle-date-picker {
+  display: inline-block;
+  font-size: 1rem;
+  text-align: center;
+  margin-left: 10px;
+  height: 15px;
+  width: 90px;
+}
+
+.cycle-date-picker:hover {
+  cursor: pointer;
+}

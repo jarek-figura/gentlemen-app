@@ -5,6 +5,7 @@ import TaskPriority from "../TaskPriority/TaskPriority";
 import TaskDueDay from "../TaskDueDay/TaskDueDay";
 import { withTasks } from "../../contexts/Tasks";
 import { ThemeConsumer } from '../../contexts/Theme'
+import TaskCycleDate from "../TaskCycleDate/TaskCycleDate";
 
 class InnerTaskPopup extends Component {
   state = {
@@ -14,7 +15,8 @@ class InnerTaskPopup extends Component {
     priority: 'medium',
     formError: null,
     isCycleMode: false,
-    taskCycleMode: 'daily' // 'daily', 'weekly', 'monthly'
+    taskCycleMode: 'daily', // 'daily', 'weekly', 'monthly'
+    cycleDate: moment()
   };
 
 /*
@@ -56,7 +58,8 @@ class InnerTaskPopup extends Component {
         this.state.dueDate,
         this.state.priority,
         this.state.isCycleMode,
-        this.state.taskCycleMode
+        this.state.taskCycleMode,
+        this.state.cycleDate
       );
       this.props.toggleShowAddTaskPopup();
     } else if (this.props.buttonName === 'Zmień') {
@@ -67,7 +70,8 @@ class InnerTaskPopup extends Component {
         this.state.dueDate,
         this.state.priority,
         this.state.isCycleMode,
-        this.state.taskCycleMode
+        this.state.taskCycleMode,
+        this.state.cycleDate
       );
       this.props.toggleShowEditTaskPopup(this.state.id);
     }
@@ -80,13 +84,9 @@ class InnerTaskPopup extends Component {
     })
   };
 
-  handleDate = date => {
-    this.setState({dueDate: date});
-  };
+  handleDate = date => this.setState({ dueDate: date });
 
-  handlePriority = priority => {
-    this.setState({priority: priority})
-  };
+  handlePriority = priority => this.setState({ priority: priority });
 
   handleCancel = () => {
     if (this.props.buttonName === 'Dodaj') {
@@ -96,9 +96,11 @@ class InnerTaskPopup extends Component {
     }
   };
 
-  handleIsCycleMode = () => this.setState({isCycleMode: !this.state.isCycleMode});
+  handleCycleDate = date => this.setState({ cycleDate: date });
 
-  handleTaskCycleMode = event => this.setState({taskCycleMode: event.target.value});
+  handleIsCycleMode = () => this.setState({ isCycleMode: !this.state.isCycleMode });
+
+  handleTaskCycleMode = event => this.setState({ taskCycleMode: event.target.value });
 
   render() {
     return (
@@ -167,7 +169,14 @@ class InnerTaskPopup extends Component {
               checked={this.state.taskCycleMode === 'weekly'}
               onChange={this.handleTaskCycleMode}
             />
-            <label htmlFor="cycle-weekly">Co tydzień</label><br/>
+            <label htmlFor="cycle-weekly">Co tydzień</label>
+            { this.state.taskCycleMode === 'weekly' ?
+              <TaskCycleDate
+                cycleDate={this.state.cycleDate || moment()}
+                handleCycleDate={this.handleCycleDate}
+              /> : ''
+            }
+            <br/>
 
             <input className="cycle cycle-monthly"
               id="cycle-monthly"
@@ -177,7 +186,14 @@ class InnerTaskPopup extends Component {
               checked={this.state.taskCycleMode === 'monthly'}
               onChange={this.handleTaskCycleMode}
             />
-            <label htmlFor="cycle-monthly">Co miesiąc</label><br/><br/>
+            <label htmlFor="cycle-monthly">Co miesiąc</label>
+            { this.state.taskCycleMode === 'monthly' ?
+              <TaskCycleDate
+                cycleDate={this.state.cycleDate || moment()}
+                handleCycleDate={this.handleCycleDate}
+              /> : ''
+            }
+            <br/><br/>
           </form> : ''
         }
 
