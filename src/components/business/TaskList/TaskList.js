@@ -6,9 +6,8 @@ import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
 import SignInForm from '../../core/auth/SignInForm';
 import SignUpForm from '../../core/auth/SignUpForm';
-
+import { ThemeConsumer } from '../../contexts/Theme'
 import TaskPanelUser from '../TaskPanelUser/TaskPanelUser'
-
 import organizeTasks from "./organizeTasks";
 
 
@@ -18,7 +17,10 @@ class TaskList extends Component {
     // const tasks = organizeTasks(this.props);
 
     return (
-      <div>
+      <ThemeConsumer>
+        {
+          ({theme}) => (
+      <div style={theme.taskListStyle}>
         {
           this.props.user !== null ?
           <TaskPanelUser/> : ""
@@ -68,6 +70,9 @@ class TaskList extends Component {
               </div>
         }
       </div>
+          )
+        }
+      </ThemeConsumer>
     )
   }
 }

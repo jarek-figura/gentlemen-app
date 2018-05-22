@@ -8,16 +8,23 @@ const themes = {
       bodyBottom: {
         backgroundColor: "#d11221",
       },
+        taskListStyle: {
+        color: "#000",
+      }
+
     },
     taskManPink: {
         body: {
           backgroundColor: '#0271d1',
-          color: '#fff',
+          color: '#000',
         },
-      bodyBottom: {
-        backgroundColor: "#0271d1",
-        color: '#fff',
-      }
+        bodyBottom: {
+          backgroundColor: "#0271d1",
+          color: '#000',
+      },
+        taskListStyle: {
+          color: "#000",
+        }
 
 
     }
