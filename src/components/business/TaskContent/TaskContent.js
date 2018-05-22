@@ -11,7 +11,7 @@ import faEdit from '@fortawesome/fontawesome-free-solid/faEdit'
 class TaskContent extends Component {
   state = {
     showDesc: false
-  }
+  };
   handleClick = () => {
     this.setState({
       showDesc: !this.state.showDesc
@@ -32,32 +32,32 @@ class TaskContent extends Component {
       } else {
         return <TaskPriorityBar dueDate={task.dueDate}/>
       }
-    }
+    };
 
     return (
-      <div className={task.priority + ' ' + task.isDone + ' task'}>
+      <div className={task.priority + ' ' + task.isDone + ' ' + (task.isCycleMode ? 'cycled-mode' : '') + ' task'}>
 
         <div className="checkbox">
-                   <input className='done-checkbox'
-                 title="Oznacz jako zrobione"
-                 type="checkbox"
-                 checked={task.isDone}
-                 onChange={() => this.props.toggleTaskDone(task.id)}
+          <input className='done-checkbox'
+            title="Oznacz jako zrobione"
+            type="checkbox"
+            checked={task.isDone}
+            onChange={() => this.props.toggleTaskDone(task.id)}
           />
         </div>
 
         <div className="titles">
           <strong>{task.name}</strong>
           <button
-                           className={"show-desc"}
-                           title={"Pokaż opis"}
-                           onClick={this.handleClick}>
-          <FontAwesomeIcon icon={faSearch}/></button><br/>
+            className={"show-desc"}
+            title={"Pokaż opis"}
+            onClick={this.handleClick}>
+            <FontAwesomeIcon icon={faSearch}/></button>
+          <br/>
           {moment(task.dueDate).format('DD-MM-YYYY')}<br/>
           {this.state.showDesc ?
             <p className="description">{task.description}</p>
             : ''}
-
 
           {whatToRender()}
 
@@ -65,16 +65,15 @@ class TaskContent extends Component {
 
         <div className="buttons">
           <button className='edit-button'
-                  title='Edytuj'
-                  onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
+            title='Edytuj'
+            onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
           ><FontAwesomeIcon icon={faEdit}/>
           </button>
           <span>&nbsp;</span>
           <button className='delete-button'
-                  title="Usuń zadanie"
-                  onClick={() => this.props.removeTask(task.id)}
+            title="Usuń zadanie"
+            onClick={() => this.props.removeTask(task.id)}
           ><FontAwesomeIcon icon={faTrashAlt}/></button>
-
 
         </div>
 
