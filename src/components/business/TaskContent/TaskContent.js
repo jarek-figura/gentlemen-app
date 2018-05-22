@@ -37,7 +37,16 @@ class TaskContent extends Component {
     return (
       <div className={task.priority + ' ' + task.isDone + ' task'}>
 
-              <div className="titles">
+        <div className="checkbox">
+                   <input className='done-checkbox'
+                 title="Oznacz jako zrobione"
+                 type="checkbox"
+                 checked={task.isDone}
+                 onChange={() => this.props.toggleTaskDone(task.id)}
+          />
+        </div>
+
+        <div className="titles">
           <strong>{task.name}</strong>
           <button
                            className={"show-desc"}
@@ -55,14 +64,6 @@ class TaskContent extends Component {
         </div>
 
         <div className="buttons">
-
-          <input className='done-checkbox'
-                 title="Oznacz jako zrobione"
-                 type="checkbox"
-                 checked={task.isDone}
-                 onChange={() => this.props.toggleTaskDone(task.id)}
-          />
-          <span>&nbsp;</span>
           <button className='edit-button'
                   title='Edytuj'
                   onClick={() => this.props.toggleShowEditTaskPopup(task.id)}

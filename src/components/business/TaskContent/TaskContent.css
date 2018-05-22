@@ -65,21 +65,19 @@ p.description {
 }
 
 .edit-button {
-    font-size: 1em;
     height: 30px;
+    width: 30px;
 }
 
 .delete-button {
-    font-size: 1em;
     height: 30px;
     width: 30px;
 }
 
 .done-checkbox {
-    position: absolute;
+    position: relative;
     margin: 0;
-    left: -30px;
-    height: 30px;
+   height: 30px;
     width: 30px;
     background-color: #eee;
 }
