@@ -15,7 +15,7 @@ const themes = {
         },
       bodyBottom: {
         backgroundColor: "#25a915",
-        color: '#fff',
+        color: '#cc02b3',
       }
 
     }
