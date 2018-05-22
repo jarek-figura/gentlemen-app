@@ -12,8 +12,27 @@ class InnerTaskPopup extends Component {
     dueDate: moment(),
     priority: 'medium',
     formError: null,
-    cycle: false
+    cycleTasksMode: false
   };
+
+/*
+  TASKI CYKLICZNE: ZAŁOŻENIA
+  # w bazie będzie trzymany jeden task
+  # task będzie posiadał dwie daty:
+    - datę cykliczności, np. co środę
+    - datę zakończenia cykliczności (nieobowiązkowe)
+  # na liście będzie pokazywany następny task, gdy poprzedni został zrobiony:
+    - gdy task się przeterminuje nic się nie zmienia na liście
+    - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
+  # taski zrobione zostają na liście, opcje:
+    - generowane dynamicznie
+    - zapisane do bazy???
+  # wyróżnienie graficzne dla taska cyklicznego
+  # taski cykliczne można edytować, edycja zapisze się do bazy i wszystkie taski pochodne będą mieć tę samą informację (nawet wstecznie)
+  # kasowanie taska cyklicznego, opcje:
+    - skasowanie taska cyklicznego usunie wpis z bazy i wszelkie informacje przepadną
+    - do bazy zostaną zapisane dotychczas taski zrobione???
+ */
 
   static getDerivedStateFromProps({ task }, prevState) {
     return {
@@ -74,7 +93,7 @@ class InnerTaskPopup extends Component {
   };
 
   handleChecked = () => {
-    this.setState({cycle: !this.state.cycle})
+    this.setState({cycleTasksMode: !this.state.cycleTasksMode})
   };
 
   render() {
@@ -120,7 +139,7 @@ class InnerTaskPopup extends Component {
           />
         </form><br/>
 
-        {this.state.cycle === true ?
+        {this.state.cycleTasksMode === true ?
           <form className="cycle-with-label">
             <input className="cycle cycle-daily"
               id="cycle-daily"
