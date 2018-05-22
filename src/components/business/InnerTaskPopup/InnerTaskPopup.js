@@ -26,12 +26,12 @@ class InnerTaskPopup extends Component {
     - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
   # taski zrobione zostają na liście, opcje:
     - generowane dynamicznie
-    - zapisane do bazy???
-  # wyróżnienie graficzne dla taska cyklicznego
-  # taski cykliczne można edytować, edycja zapisze się do bazy i wszystkie taski pochodne będą mieć tę samą informację (nawet wstecznie)
+    - zapisane do bazy??? co z usuwaniem takich tasków
   # kasowanie taska cyklicznego, opcje:
     - skasowanie taska cyklicznego usunie wpis z bazy i wszelkie informacje przepadną
     - do bazy zostaną zapisane dotychczas taski zrobione???
+  # wyróżnienie graficzne dla taska cyklicznego
+  # taski cykliczne można edytować, edycja zapisze się do bazy i wszystkie taski pochodne będą mieć tę samą informację (nawet wstecznie)
  */
 
   static getDerivedStateFromProps({ task }, prevState) {
