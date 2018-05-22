@@ -43,7 +43,7 @@ state = {
                     >Show</button><br/>
                     {moment(task.dueDate).format('DD-MM-YYYY')}<br/>
                     {this.state.showDesc ?
-                      <div className="description">{task.description}</div>
+                      <p className="description">{task.description}</p>
                         : ''}
 
 

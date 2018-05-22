@@ -29,10 +29,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.description {
+p.description {
   width: 360px;
-  word-break: break-all;
-}
+  white-space: normal;
+  }
 
 .buttons {
   position: relative;
