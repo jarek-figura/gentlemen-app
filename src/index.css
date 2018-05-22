@@ -8,7 +8,7 @@ body {
 }
 
 .banner{
-  background: #F8F9FA url(components/business/AppStyling/clipboard.png) center no-repeat;
+  background: #F8F9FA url(components/business/AppStyling/clipboard.png) no-repeat fixed 50% 50%;
 }
 .nav-panel{
   color: #ffffff;
