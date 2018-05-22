@@ -17,7 +17,7 @@ p {
   text-align: left;
 }
 
-.add-task {
+.addTask {
   max-width: 600px;
   height: calc(100vh - 168px);
   text-align: center;
