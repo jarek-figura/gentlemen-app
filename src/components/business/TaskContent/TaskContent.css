@@ -31,11 +31,11 @@
 }
 
 p.description {
-    padding: 2px;
+    padding: 5px;
     font-size: 1em;
     width: 360px;
     white-space: normal;
-}
+  }
 
 .buttons {
     position: relative;
@@ -131,5 +131,27 @@ p.description {
 @media (min-width: 600px) {
     .titles {
         width: 420px;
+    }
+}
+
+
+@media (min-width: 319px) {
+    p.description {
+        width: 145px;
+
+    }
+}
+
+@media (min-width: 414px) {
+    p.description {
+        width: 230px;
+
+    }
+}
+
+@media (min-width: 600px) {
+    p.description {
+        width: 360px;
+
     }
 }
