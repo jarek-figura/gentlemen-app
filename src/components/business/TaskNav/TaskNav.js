@@ -30,7 +30,7 @@ class TaskNav extends Component {
       <ThemeConsumer>
         {
           ({theme}) => (
-      <div style={theme} className={`nav-bottom ${navModeTable[this.state.navIndex]}`}>
+      <div style={theme.bodyBottom} className={`nav-bottom ${navModeTable[this.state.navIndex]}`}>
         <button
           className="clear-filters-button"
           title={`Wyczyść\nfiltry`}

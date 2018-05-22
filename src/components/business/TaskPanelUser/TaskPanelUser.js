@@ -26,7 +26,7 @@ class TaskPanelUser extends Component {
         <ThemeConsumer>
           {
             ({theme, toggle}) => (
-                <div style={theme} className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
+                <div style={theme.body} className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
 
 
                   <h1>Task User Panel</h1>

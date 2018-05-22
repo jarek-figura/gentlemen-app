@@ -2,13 +2,21 @@ import React, { Component } from 'react'
 
 const themes = {
     basic: {
-        backgroundColor: "#A9A9A9",
-        color: '#fff',
+        body: {
+          backgroundColor: "#A9A9A9",
+          color: '#fff',
+        }
 
     },
     taskManPink: {
-        backgroundColor: '#442d0a',
-        color: '#acee70',
+        body: {
+          backgroundColor: '#442d0a',
+          color: '#acee70',
+        },
+      bodyBottom: {
+        backgroundColor: "#25a915",
+        color: '#fff',
+      }
 
     }
 };
@@ -19,9 +27,13 @@ export const ThemeConsumer = ThemeContext.Consumer
 
 export class ThemeProvider extends Component {
     state = {
+        themeName: 'basic',
+
         theme: themes.basic,
         toggle: () => this.setState(
-            ({ theme }) => ({ theme: theme === themes.basic ? themes.taskManPink : themes.basic })
+            ({ theme }) => ({
+              theme: theme === themes.basic ? themes.taskManPink : themes.basic,
+              })
         )
     }
 
