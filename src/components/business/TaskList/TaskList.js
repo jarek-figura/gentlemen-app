@@ -6,6 +6,9 @@ import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
 import SignInForm from '../../core/auth/SignInForm';
 import SignUpForm from '../../core/auth/SignUpForm';
+import { ThemeConsumer } from '../../contexts/Theme'
+import organizeTasks from "./organizeTasks";
+
 import TaskPanelUser from '../TaskPanelUser/TaskPanelUser'
 import moment from 'moment'
 import 'moment/locale/pl'
@@ -47,7 +50,10 @@ class TaskList extends Component {
         const date = this.state.dateFormatted
 
         return (
-            <div>
+          <ThemeConsumer>
+            {
+              ({theme}) => (
+                <div style={theme.taskListStyle}>
                 {
                     this.props.user !== null ?
                         <TaskPanelUser/> : ""
@@ -103,8 +109,11 @@ class TaskList extends Component {
                         </div>
                 }
             </div>
-        )
-    }
+              )
+        }
+      </ThemeConsumer>
+    )
+  }
 }
 
 export default withUser(withTasks(TaskList));

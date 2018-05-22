@@ -17,7 +17,7 @@ p {
   text-align: left;
 }
 
-.add-task {
+.addTask {
   max-width: 600px;
   height: calc(100vh - 168px);
   text-align: center;
@@ -35,4 +35,26 @@ p {
   font-size: 1em;
   height: 30px;
   width: 30px;
+}
+
+.cycle {
+  display: inline-block;
+  vertical-align: middle;
+  height: 24px;
+  width: 24px;
+  background-color: #eee;
+}
+
+.cycle-with-label {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  text-align: left;
+}
+
+label {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 24px;
+  margin-left: 10px;
 }

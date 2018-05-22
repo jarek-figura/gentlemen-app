@@ -27,8 +27,12 @@ class TaskPanelUser extends Component {
 
   render() {
     return (
-      <nav className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
+      <ThemeConsumer>
+        {
+          ({theme, toggle}) => (
+            <div style={theme.body} className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
         <h1>Task User Panel</h1>
+        <button className="changeThemeBtn" onClick={toggle}>Zmień motyw</button>
         <div className={'photo'}>photo</div>
         <div>
           <button
@@ -44,7 +48,10 @@ class TaskPanelUser extends Component {
             <FontAwesomeIcon icon={faDoorOpen}/></button>
           </div>
 
-      </nav>
+      </div>
+          )
+        }
+      </ThemeConsumer>
     )
   }
 }
