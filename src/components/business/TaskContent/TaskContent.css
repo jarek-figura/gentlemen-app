@@ -33,6 +33,13 @@
   text-overflow: ellipsis;
 }
 
+p.description {
+    padding: 5px;
+    font-size: 1em;
+    width: 360px;
+    white-space: normal;
+  }
+
 .buttons {
   position: relative;
   white-space: nowrap;
@@ -60,28 +67,59 @@
   width: 78%;
 }
 
+
+
+
 .edit-button {
-  font-size: 1em;
-  height: 30px;
+    height: 30px;
+    width: 30px;
 }
 
 .delete-button {
-  font-size: 1em;
-  height: 30px;
-  width: 30px;
+    height: 30px;
+    width: 30px;
 }
 
 .done-checkbox {
-  position: absolute;
-  margin: 0;
-  left: -30px;
-  height: 31px;
-  width: 31px;
-  background-color: #3d85c6;
+    position: relative;
+    margin: 0;
+   height: 30px;
+    width: 30px;
+    background-color: #eee;
 }
 
 .done-checkbox:hover {
-  cursor: pointer;
+    cursor: pointer;
+}
+
+.show-desc {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.delete-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.edit-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }
 
 @media (min-width: 375px) {
@@ -89,13 +127,37 @@
     width: 210px;
   }
 }
+
 @media (min-width: 414px) {
   .titles {
     width: 250px;
   }
 }
+
 @media (min-width: 600px) {
   .titles {
     width: 420px;
   }
+}
+
+
+@media (min-width: 319px) {
+    p.description {
+        width: 145px;
+
+    }
+}
+
+@media (min-width: 414px) {
+    p.description {
+        width: 230px;
+
+    }
+}
+
+@media (min-width: 600px) {
+    p.description {
+        width: 360px;
+
+    }
 }

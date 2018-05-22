@@ -45,6 +45,29 @@ li {
   z-index: 10;
 }
 
+.hero {
+    position: relative;
+    top: 45px;
+    height: 80px;
+    text-align: center;
+}
+ .hero-title {
+     font-size: 1.5em;
+     padding-top: 15px;
+     margin: 0;
+ }
+
+.task-day {
+    background-image: url("../../../img/day-pic.png");
+    background-size: unset;
+}
+
+.task-night {
+    background-image: url("../../../img/night-pic.jpg");
+    background-size: cover;
+    color: whitesmoke;
+}
+
 .logged-in > button {
   height: 24px;
 }
