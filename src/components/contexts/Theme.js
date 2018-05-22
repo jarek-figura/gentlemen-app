@@ -1,27 +1,27 @@
 import React, { Component } from 'react'
 
 const themes = {
-    light: {
-        backgroundColor: '#e8ee10',
-        color: '#000aee',
+    basic: {
+        backgroundColor: "#A9A9A9",
+        color: '#fff',
 
     },
-    dark: {
+    taskManPink: {
         backgroundColor: '#442d0a',
         color: '#acee70',
 
     }
 };
 
-const ThemeContext = React.createContext(themes.light)
+const ThemeContext = React.createContext(themes.basic)
 
 export const ThemeConsumer = ThemeContext.Consumer
 
 export class ThemeProvider extends Component {
     state = {
-        theme: themes.light,
+        theme: themes.basic,
         toggle: () => this.setState(
-            ({ theme }) => ({ theme: theme === themes.light ? themes.dark : themes.light })
+            ({ theme }) => ({ theme: theme === themes.basic ? themes.taskManPink : themes.basic })
         )
     }
 

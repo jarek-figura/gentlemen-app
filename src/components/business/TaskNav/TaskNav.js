@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './TaskNav.css'
 import {withTasks} from "../../contexts/Tasks";
 import TaskFilter from '../../business/TaskFilter/TaskFilter';
+import { ThemeConsumer } from '../../contexts/Theme'
 
 const navModeTable = ['hide', ''];
 const filtersButtonName = [`Pokaż\nfiltry`, `Ukryj\nfiltry`];
@@ -26,7 +27,10 @@ class TaskNav extends Component {
 
   render () {
     return (
-      <nav className={`nav-bottom ${navModeTable[this.state.navIndex]}`}>
+      <ThemeConsumer>
+        {
+          ({theme}) => (
+      <div style={theme} className={`nav-bottom ${navModeTable[this.state.navIndex]}`}>
         <button
           className="clear-filters-button"
           title={`Wyczyść\nfiltry`}
@@ -47,7 +51,10 @@ class TaskNav extends Component {
 
         {/* filter by isDone & sort by dueDate & sort by priority */}
         <TaskFilter/>
-      </nav>
+      </div>
+          )
+        }
+      </ThemeConsumer>
     )
   }
 }
