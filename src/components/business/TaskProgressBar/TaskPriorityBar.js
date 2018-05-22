@@ -15,7 +15,7 @@ class TaskPriorityBar extends React.Component {
         if(taskPriorityFactor < 0){
          return "black"
         }else if(taskPriorityFactor <= 10){
-          return "red"
+          return "#ce0000"
         }else if(taskPriorityFactor <= 25){
           return "orange"
         }else if(taskPriorityFactor <= 50){
@@ -33,7 +33,7 @@ class TaskPriorityBar extends React.Component {
                 strokeColor={barColor()}
                 height="8"
                 width="100%"
-                trailColor="#CDCBCB"
+                trailColor="#F8F9FA"
                 />
           }
       </div>
