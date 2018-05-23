@@ -25,18 +25,17 @@ class InnerTaskPopup extends Component {
     OK  # task będzie posiadał dwie daty:
     OK    - datę cykliczności, np. co środę, mniejszą od daty zakończenia
     OK    - datę zakończenia cykliczności (nieobowiązkowe)
-        # taski zrobione zostają na liście i w bazie
-        # na liście będzie pokazywany następny task, gdy poprzedni został zrobiony:
-          - następny task jest zapisany do bazy, jako task bazowy
-          - gdy task się przeterminuje nic się nie zmienia na liście
-          - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
-        # kasowanie taska cyklicznego, usunie wpis z bazy taska bazowego, taski zrobione zostają w bazie
+    OK  # taski zrobione zostają na liście i w bazie
+    OK  # na liście będzie pokazywany następny task, gdy poprzedni został zrobiony:
+    OK    - następny task jest zapisany do bazy, jako task bazowy
+    OK    - gdy task się przeterminuje nic się nie zmienia na liście
+    ==    - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
+    OK  # kasowanie taska cyklicznego, usunie wpis z bazy taska bazowego, taski zrobione zostają w bazie
     OK  # wyróżnienie graficzne dla taska cyklicznego
-        # taski cykliczne można edytować, edycja zapisze się w bazie do taska bazowego i wszystkie taski pochodne
-          będą mieć tę samą informację (nawet wstecznie), z wyjątkiem tasków zrobionych,
-          bo te będą już zapisane pod innymi id
+    OK  # taski cykliczne można edytować, edycja zapisze się w bazie do taska bazowego i wszystkie taski pochodne
+    OK    będą mieć tę samą informację, bo te będą już zapisane pod innymi id
 
-        # CZY NA LIŚCIE TASKÓW POWINNO BYĆ WŁĄCZONE DOMYŚLNE SORTOWANIE PO DACIE (od najstarszej do najmłodszej)???
+        # TASKI POWINNy BYĆ DOMYŚLNIE SORTOWANIE PO DACIE ***UTWORZENIA*** (od najstarszej do najmłodszej)???
    */
 
   static getDerivedStateFromProps({task}, prevState) {

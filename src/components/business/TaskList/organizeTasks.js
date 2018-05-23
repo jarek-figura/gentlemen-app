@@ -1,6 +1,8 @@
 import moment from "moment/moment";
 import {nameToValue} from "../../_utils/priority";
 
+// TODO: dla taska cyklicznego sortować po `cycleDate`
+
 export default function organizeTasks() {
   const tasks = this.props.tasks.filter(
     task => this.props.isDoneSortMode === '1'
