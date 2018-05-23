@@ -18,6 +18,8 @@ class TaskCycleDate extends Component {
     return (
       <div className='cycle-date'>
         <DatePicker className='cycle-date-picker'
+          minDate={moment()}
+          maxDate={moment(this.props.dueDate)}
           selected={this.state.cycleDate}
           onChange={this.handleChange}
           withPortal

@@ -21,6 +21,7 @@ class TaskDueDay extends Component {
       <div>
         <p>Data zakończenia</p>
         <DatePicker className='date-picker'
+          minDate={moment()}
           selected={this.state.dueDate}
           onChange={this.handleChange}
           withPortal
