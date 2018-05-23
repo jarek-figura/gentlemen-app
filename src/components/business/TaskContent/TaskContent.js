@@ -68,6 +68,12 @@ class TaskContent extends Component {
       }
     };
 
+    const translate = {
+      'daily': 'Codziennie do ',
+      'weekly': 'Co tydzień do ',
+      'monthly': 'Co miesiąc do '
+    };
+
     return (
       <div className={task.priority + ' ' + task.isDone + ' ' + (task.isCycleMode ? 'cycled-mode' : '') + ' task'}>
 
@@ -89,6 +95,11 @@ class TaskContent extends Component {
           ><FontAwesomeIcon icon={faSearch}/></button>
           <br/>
 
+          {
+            task.isCycleMode
+              ? translate[task.taskCycleMode]
+              : ''
+          }
           {moment(task.dueDate).format('DD-MM-YYYY')}<br/>
 
           {this.state.showDesc ? <p className="description">{task.description}</p> : ''}
