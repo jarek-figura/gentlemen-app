@@ -2,7 +2,7 @@ body {
   margin: 0 auto;
   padding: 0 0 13px 0;
   font-family: "Lato", sans-serif;
-  background-color: #F8F9FA;
+  /*background-color: #F8F9FA;*/
   max-width: 600px;
   color: #000;
 }
@@ -12,6 +12,14 @@ body {
 }
 .nav-panel{
   color: #ffffff;
+}
+
+.nazwaKlasy{
+  background-image: url(components/business/AppStyling/curls.png);
+}
+
+.nazwaKlasy2{
+  background-image: url(components/business/AppStyling/dust_scratches.png);
 }
 
 .add-task{
