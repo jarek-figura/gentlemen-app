@@ -63,7 +63,7 @@ li {
 }
 
 .task-night {
-    background-image: url("../../../img/night-pic.jpg");
+    background-image: url("../../../img/night-pic.png");
     background-size: cover;
     color: whitesmoke;
 }
