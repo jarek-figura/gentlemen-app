@@ -13,34 +13,41 @@ class TaskContent extends Component {
     showDesc: false
   };
 
-  handleClick = () => {
-    this.setState({
-      showDesc: !this.state.showDesc
-    });
-  };
+  handleClick = () => this.setState({ showDesc: !this.state.showDesc });
 
   handleToggleTaskDone =(id) => {
     this.props.toggleTaskDone(id);
-    /*
-      TODO: Dla taska cyklicznego `isCycleMode = true` dodać kolejnego do bazy za pomocą `addTask`
-      TODO: w zależności od `taskCycleMode` oraz `cycleDate` bez przekraczania `dueDate`.
-      TODO: Dane wziąć z aktualnego `task.id`. Czy w aktualnym tasku ustawić `isCycleMode = false`?
-    */
+    // TODO 2: Usunąć obowiązek `dueDate` dla taska cyklicznego
+
     const task = this.props.task;
-    // const momentCycleDate = moment(task.cycleDate).format('DD-MM-YYYY');
-    // const momentDueDate = moment(task.dueDate).format('DD-MM-YYYY');
+    let cycleDate = moment();
+    let momentPlusCycle = moment();
 
-
-    if (task.isCycleMode) {
+    if (task.isCycleMode && task.dueDate && !task.isDone) {
       switch(task.taskCycleMode) {
         case 'daily' :
+          momentPlusCycle = moment(task.cycleDate).add(1, 'days');
           break;
         case 'weekly' :
+          momentPlusCycle = moment(task.cycleDate).add(1, 'week');
           break;
         case 'monthly' :
+          momentPlusCycle = moment(task.cycleDate).add(1, 'month');
           break;
         default:
           break;
+      }
+      if (!momentPlusCycle.isAfter(moment(task.dueDate))) {
+        cycleDate = momentPlusCycle;
+        this.props.addTask(
+          task.name,
+          task.description,
+          task.dueDate,
+          task.priority,
+          task.isCycleMode,
+          task.taskCycleMode,
+          cycleDate
+        );
       }
     }
   };
