@@ -26,6 +26,23 @@ class TaskContent extends Component {
       TODO: w zależności od `taskCycleMode` oraz `cycleDate` bez przekraczania `dueDate`.
       TODO: Dane wziąć z aktualnego `task.id`. Czy w aktualnym tasku ustawić `isCycleMode = false`?
     */
+    const task = this.props.task;
+    // const momentCycleDate = moment(task.cycleDate).format('DD-MM-YYYY');
+    // const momentDueDate = moment(task.dueDate).format('DD-MM-YYYY');
+
+
+    if (task.isCycleMode) {
+      switch(task.taskCycleMode) {
+        case 'daily' :
+          break;
+        case 'weekly' :
+          break;
+        case 'monthly' :
+          break;
+        default:
+          break;
+      }
+    }
   };
 
   render() {
