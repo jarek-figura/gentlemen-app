@@ -155,6 +155,11 @@ class InnerTaskPopup extends Component {
               </form>
               <br/>
 
+              <TaskDueDay
+                dueDate={this.state.dueDate}
+                handleDate={this.handleDate}
+              /><br/>
+
               {this.state.isCycleMode === true ?
                 <form className="cycle-with-label">
                   <input className="cycle cycle-daily"
@@ -212,11 +217,6 @@ class InnerTaskPopup extends Component {
                   <br/><br/>
                 </form> : ''
               }
-
-              <TaskDueDay
-                dueDate={this.state.dueDate}
-                handleDate={this.handleDate}
-              /><br/>
 
               <TaskPriority
                 priority={this.state.priority}
