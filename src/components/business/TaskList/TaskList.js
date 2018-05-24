@@ -91,7 +91,7 @@ class TaskList extends Component {
                             }
                           </ul>
                         : //show banner
-                        <div className='banner'> </div>
+                        <div className='banner'></div>
                     }
                   </div>
                   : <div className='banner'>

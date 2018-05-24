@@ -8,18 +8,19 @@ body {
 }
 
 .banner{
-  background: #F8F9FA url(components/business/AppStyling/clipboard.png) no-repeat fixed 50% 50%;
+  background: url(components/business/AppStyling/clipboard.png) no-repeat fixed 50% 50%;
 }
+
 .nav-panel{
   color: #ffffff;
 }
 
 .nazwaKlasy{
-  background-image: url(components/business/AppStyling/curls.png);
+  background-image: url(components/business/AppStyling/F8F9FA.png);
 }
 
 .nazwaKlasy2{
-  background-image: url(components/business/AppStyling/dust_scratches.png);
+  background-image: url(components/business/AppStyling/what-the-hex.png);
 }
 
 .add-task{
