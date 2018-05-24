@@ -2,16 +2,25 @@ body {
   margin: 0 auto;
   padding: 0 0 13px 0;
   font-family: "Lato", sans-serif;
-  background-color: #F8F9FA;
+  /*background-color: #F8F9FA;*/
   max-width: 600px;
   color: #000;
 }
 
 .banner{
-  background: #F8F9FA url(components/business/AppStyling/clipboard.png) no-repeat fixed 50% 50%;
+  background: url(components/business/AppStyling/clipboard.png) no-repeat fixed 50% 50%;
 }
+
 .nav-panel{
   color: #ffffff;
+}
+
+.nazwaKlasy{
+  background-image: url(components/business/AppStyling/F8F9FA.png);
+}
+
+.nazwaKlasy2{
+  background-image: url(components/business/AppStyling/what-the-hex.png);
 }
 
 .add-task{

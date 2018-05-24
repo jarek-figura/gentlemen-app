@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 const themes = {
     basic: {
-        body: {
+      body: {
           backgroundColor: "#d62261",
           fontFamily: 'Roboto, sans-serif',
           },
@@ -13,7 +13,9 @@ const themes = {
           taskListStyle: {
           fontFamily: 'Roboto, sans-serif',
           color: "#000",
-      }
+      },
+      bodyClass: "nazwaKlasy"
+
     },
     taskManPink: {
         body: {
@@ -29,7 +31,8 @@ const themes = {
         taskListStyle: {
           color: "#000",
           fontFamily: 'Roboto, sans-serif',
-        }
+        },
+      bodyClass: "nazwaKlasy2"
     }
 };
 
