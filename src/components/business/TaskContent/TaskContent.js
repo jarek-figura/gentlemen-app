@@ -27,24 +27,31 @@ class TaskContent extends Component {
 
     const task = this.props.task;
     let cycleDate = moment();
-    let momentPlusCycle = moment();
 
     if (task.isCycleMode && task.dueDate && !task.isDone) {
       switch(task.taskCycleMode) {
         case 'daily' :
-          momentPlusCycle = moment.max(moment(task.cycleDate), moment());
+          cycleDate = moment.max(moment(task.cycleDate), moment());
           break;
         case 'weekly' :
-          momentPlusCycle = moment(task.cycleDate).add(1, 'week');
+          // TODO: ustalić aktualne `cycleDate` dla taska starszego niż 1 tydzień
+          // zmiana w trybie tygodniowym
+
+          const momentCycle = moment().valueOf();
+          console.log(Math.ceil((momentCycle - task.cycleDate) / 1000 / 3600 / 24));
+          cycleDate = moment().diff(moment(task.cycleDate), 'days') % 7;
+          cycleDate = moment().add(7 - cycleDate, 'days');
+          console.log(cycleDate.format('DD-MM-YYYY'));
           break;
         case 'monthly' :
-          momentPlusCycle = moment(task.cycleDate).add(1, 'month');
+          // TODO: ustalić aktualne `cycleDate` dla taska starszego niż 1 miesiąc
+          // zmiana w trybie miesięcznym
+          cycleDate = moment(task.cycleDate).add(1, 'month');
           break;
         default:
           break;
       }
-      if (!momentPlusCycle.isAfter(moment(task.dueDate), 'day')) {
-        cycleDate = momentPlusCycle;
+      if (!cycleDate.isAfter(moment(task.dueDate), 'day')) {
         this.props.addTask(
           task.name,
           task.description,
