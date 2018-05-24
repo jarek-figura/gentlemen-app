@@ -6,6 +6,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faCog from '@fortawesome/fontawesome-free-solid/faCog'
 import faDoorOpen from "@fortawesome/fontawesome-free-solid/faDoorOpen";
 import faAngleDoubleUp from "@fortawesome/fontawesome-free-solid/faAngleDoubleUp";
+import faPaintBrush from "@fortawesome/fontawesome-free-solid/faPaintBrush";
 import { ThemeConsumer } from '../../contexts/Theme'
 
 const navUserModeTable = [' hideuser', ''];
@@ -34,9 +35,8 @@ class TaskPanelUser extends Component {
             document.body.classList=theme.bodyClass
             return (
               <div style={theme.body} className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
-                <h1>Task User Panel</h1>
-                <button className="changeThemeBtn" onClick={toggle}>Zmień motyw</button>
-                <div className={'photo'}>photo</div>
+                <h1>Ustawienia</h1>
+                <button className="changeThemeBtn" onClick={toggle}>Zmień motyw    <FontAwesomeIcon icon={faPaintBrush}/></button>
                 <div>
                   <button
                     className={"show-userpanel"}
