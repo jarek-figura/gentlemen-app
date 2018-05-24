@@ -26,21 +26,25 @@ class TaskContent extends Component {
     // TODO: Usunąć obowiązek `dueDate` dla taska cyklicznego
 
     const task = this.props.task;
-    let cycleDate = moment();
+    let momentDate = moment().startOf('day');
+    let cycleDate = moment(task.cycleDate).startOf('day');
 
     if (task.isCycleMode && task.dueDate && !task.isDone) {
       switch(task.taskCycleMode) {
         case 'daily' :
-          cycleDate = moment.max(moment(task.cycleDate), moment());
+          cycleDate = moment.max(cycleDate, momentDate);
           break;
         case 'weekly' :
-          cycleDate = Math.ceil((moment().valueOf() - task.cycleDate) / 1000 / 3600 / 24) % 7;
+          cycleDate = moment(momentDate).diff(cycleDate, 'days') % 7;
           cycleDate = moment().add(7 - cycleDate, 'days');
           break;
         case 'monthly' :
           // TODO: ustalić aktualne `cycleDate` dla taska starszego niż 1 miesiąc
           // zmiana w trybie miesięcznym
-          cycleDate = moment(task.cycleDate).add(1, 'month');
+
+          console.log(cycleDate = moment(momentDate).diff(cycleDate, 'days'));
+
+          cycleDate = moment(cycleDate).add(1, 'month');
           break;
         default:
           break;
