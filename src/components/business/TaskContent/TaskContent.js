@@ -8,6 +8,12 @@ import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
 import faEdit from '@fortawesome/fontawesome-free-solid/faEdit'
 
+const translate = {
+  'daily': 'Codziennie do ',
+  'weekly': 'Co tydzień do ',
+  'monthly': 'Co miesiąc do '
+};
+
 class TaskContent extends Component {
   state = {
     showDesc: false
@@ -17,7 +23,7 @@ class TaskContent extends Component {
 
   handleToggleTaskDone =(id) => {
     this.props.toggleTaskDone(id);
-    // TODO 2: Usunąć obowiązek `dueDate` dla taska cyklicznego
+    // TODO: Usunąć obowiązek `dueDate` dla taska cyklicznego
 
     const task = this.props.task;
     let cycleDate = moment();
@@ -37,7 +43,7 @@ class TaskContent extends Component {
         default:
           break;
       }
-      if (!momentPlusCycle.isAfter(moment(task.dueDate))) {
+      if (!momentPlusCycle.isAfter(moment(task.dueDate), 'day')) {
         cycleDate = momentPlusCycle;
         this.props.addTask(
           task.name,
@@ -54,6 +60,10 @@ class TaskContent extends Component {
 
   render() {
     const task = this.props.task;
+
+    // TODO: dla tasków cyklicznych porównywać `cycleDate` zamiast `dueDate`
+    // TODO: porównywanie numeryczne chyba nie działa dobrze
+
     const taskDueDate = new Date(task.dueDate);
     const today = new Date(Date.now());
     const timeDiff = taskDueDate.getTime() - today.getTime();
@@ -66,12 +76,6 @@ class TaskContent extends Component {
       } else {
         return <TaskPriorityBar dueDate={task.dueDate}/>
       }
-    };
-
-    const translate = {
-      'daily': 'Codziennie do ',
-      'weekly': 'Co tydzień do ',
-      'monthly': 'Co miesiąc do '
     };
 
     return (
