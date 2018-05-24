@@ -65,6 +65,9 @@ class TaskList extends Component {
                       <div className={this.state.isDay ? "hero task-day" : " hero task-night"}>
                         <h1 className="hero-title">TASKMEN</h1>
                         <div className="hero-data">{date}</div>
+                        <br />
+                        <br />
+                        <div className="taskLoading">{this.props.isLoading && 'Trwa ładowanie....'}</div>
                       </div>
                     }
                     {
