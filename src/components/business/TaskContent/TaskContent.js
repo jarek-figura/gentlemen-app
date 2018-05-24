@@ -34,14 +34,8 @@ class TaskContent extends Component {
           cycleDate = moment.max(moment(task.cycleDate), moment());
           break;
         case 'weekly' :
-          // TODO: ustalić aktualne `cycleDate` dla taska starszego niż 1 tydzień
-          // zmiana w trybie tygodniowym
-
-          const momentCycle = moment().valueOf();
-          console.log(Math.ceil((momentCycle - task.cycleDate) / 1000 / 3600 / 24));
-          cycleDate = moment().diff(moment(task.cycleDate), 'days') % 7;
+          cycleDate = Math.ceil((moment().valueOf() - task.cycleDate) / 1000 / 3600 / 24) % 7;
           cycleDate = moment().add(7 - cycleDate, 'days');
-          console.log(cycleDate.format('DD-MM-YYYY'));
           break;
         case 'monthly' :
           // TODO: ustalić aktualne `cycleDate` dla taska starszego niż 1 miesiąc
