@@ -11,17 +11,10 @@
     text-align: center;
     transition: 0.3s;
     z-index: 1;
-    border-radius: 3px;
 }
 .hideuser {
-    top: -300px;
+    top: -177px;
     z-index: 1;
-}
-.photo {
-    margin: 50px;
-    height: 100px;
-    width: 100px;
-    background-color: red;
 }
 
 .exit {
@@ -49,4 +42,9 @@
 
 .icons {
     float: right;
+}
+
+.changeThemeBtn {
+    margin-top: 25px;
+    margin-bottom: 50px;
 }
