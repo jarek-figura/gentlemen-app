@@ -93,11 +93,6 @@ class TaskContent extends Component {
 
         <div className="titles">
           <strong>{task.name}</strong>
-          <button
-            className={"show-desc"}
-            title={"Pokaż opis"}
-            onClick={this.handleClick}
-          ><FontAwesomeIcon icon={faSearch}/></button>
           <br/>
 
           {
@@ -113,6 +108,11 @@ class TaskContent extends Component {
         </div>
 
         <div className="buttons">
+          <button
+            className={"show-desc"}
+            title={"Pokaż opis"}
+            onClick={this.handleClick}
+          ><FontAwesomeIcon icon={faSearch}/></button>
           <button className='edit-button'
             title='Edytuj'
             onClick={() => this.props.toggleShowEditTaskPopup(task.id)}

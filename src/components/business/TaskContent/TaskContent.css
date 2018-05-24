@@ -77,9 +77,14 @@ p.description {
   width: 30px;
 }
 
+.show-desc {
+  height: 30px;
+  width: 30px;
+}
+
 .done-checkbox {
   position: relative;
-  margin: 0;
+  margin-right: 15px;
   height: 30px;
   width: 30px;
   background-color: #eee;
