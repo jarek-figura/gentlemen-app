@@ -24,6 +24,7 @@ export class TasksProvider extends Component {
 
   state = {
     tasks: [],
+    isLoading: false,
     isFormVisible: false,
     currentForm: null, // 'add', 'edit'
     currentEditTask: null,
@@ -128,6 +129,7 @@ export class TasksProvider extends Component {
 
   handleSnapshot = snapshot => {
     this.setState({
+      isLoading: false,
       tasks: Object.entries(snapshot.val() || {}).map(([id, other]) => ({ id, ...other}))
     })
   };
@@ -138,6 +140,7 @@ export class TasksProvider extends Component {
     this.unsubscribe = firebase.auth().onAuthStateChanged(
       user => {
         if (user !== null) {
+          this.setState({ isLoading: true })
           this.tasksRef = firebase.database().ref(`/tasks/${user.uid}`);
           this.filterRef = firebase.database().ref(`/filters/${user.uid}`);
           this.tasksRef.on('value', this.handleSnapshot);

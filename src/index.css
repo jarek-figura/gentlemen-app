@@ -76,3 +76,7 @@ body {
   border-width: 0;
 }
 
+
+.taskLoading{
+  font-size: 20px;
+}
