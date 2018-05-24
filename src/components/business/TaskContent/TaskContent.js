@@ -8,45 +8,63 @@ import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
 import faEdit from '@fortawesome/fontawesome-free-solid/faEdit'
 
+const translate = {
+  'daily': 'Codziennie do ',
+  'weekly': 'Co tydzień do ',
+  'monthly': 'Co miesiąc do '
+};
+
 class TaskContent extends Component {
   state = {
     showDesc: false
   };
 
-  handleClick = () => {
-    this.setState({
-      showDesc: !this.state.showDesc
-    });
-  };
+  handleClick = () => this.setState({ showDesc: !this.state.showDesc });
 
   handleToggleTaskDone =(id) => {
     this.props.toggleTaskDone(id);
-    /*
-      TODO: Dla taska cyklicznego `isCycleMode = true` dodać kolejnego do bazy za pomocą `addTask`
-      TODO: w zależności od `taskCycleMode` oraz `cycleDate` bez przekraczania `dueDate`.
-      TODO: Dane wziąć z aktualnego `task.id`. Czy w aktualnym tasku ustawić `isCycleMode = false`?
-    */
+    // TODO: Usunąć obowiązek `dueDate` dla taska cyklicznego
+
     const task = this.props.task;
-    // const momentCycleDate = moment(task.cycleDate).format('DD-MM-YYYY');
-    // const momentDueDate = moment(task.dueDate).format('DD-MM-YYYY');
+    let cycleDate = moment();
 
-
-    if (task.isCycleMode) {
+    if (task.isCycleMode && task.dueDate && !task.isDone) {
       switch(task.taskCycleMode) {
         case 'daily' :
+          cycleDate = moment.max(moment(task.cycleDate), moment());
           break;
         case 'weekly' :
+          cycleDate = Math.ceil((moment().valueOf() - task.cycleDate) / 1000 / 3600 / 24) % 7;
+          cycleDate = moment().add(7 - cycleDate, 'days');
           break;
         case 'monthly' :
+          // TODO: ustalić aktualne `cycleDate` dla taska starszego niż 1 miesiąc
+          // zmiana w trybie miesięcznym
+          cycleDate = moment(task.cycleDate).add(1, 'month');
           break;
         default:
           break;
+      }
+      if (!cycleDate.isAfter(moment(task.dueDate), 'day')) {
+        this.props.addTask(
+          task.name,
+          task.description,
+          task.dueDate,
+          task.priority,
+          task.isCycleMode,
+          task.taskCycleMode,
+          cycleDate
+        );
       }
     }
   };
 
   render() {
     const task = this.props.task;
+
+    // TODO: dla tasków cyklicznych porównywać `cycleDate` zamiast `dueDate`
+    // TODO: porównywanie numeryczne chyba nie działa dobrze
+
     const taskDueDate = new Date(task.dueDate);
     const today = new Date(Date.now());
     const timeDiff = taskDueDate.getTime() - today.getTime();
@@ -82,6 +100,11 @@ class TaskContent extends Component {
           ><FontAwesomeIcon icon={faSearch}/></button>
           <br/>
 
+          {
+            task.isCycleMode
+              ? translate[task.taskCycleMode]
+              : ''
+          }
           {moment(task.dueDate).format('DD-MM-YYYY')}<br/>
 
           {this.state.showDesc ? <p className="description">{task.description}</p> : ''}

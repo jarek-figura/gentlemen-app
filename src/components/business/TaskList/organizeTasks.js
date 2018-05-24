@@ -1,6 +1,8 @@
 import moment from "moment/moment";
 import {nameToValue} from "../../_utils/priority";
 
+// TODO: dla taska cyklicznego sortować po `cycleDate`
+
 export default function organizeTasks() {
   const tasks = this.props.tasks.filter(
     task => this.props.isDoneSortMode === '1'
@@ -16,12 +18,12 @@ export default function organizeTasks() {
     )
   ).filter(
     task => this.props.showMyDayMode === '1'
-      ? moment(task.dueDate).format('YYYY MM DD') === moment().format('YYYY MM DD')
+      ? moment(task.dueDate).isSame(moment(), 'day')
       : task
   ).filter(
     task => this.props.showMyWeekMode === '1'
-      ? moment(task.dueDate).format('YYYY MM DD') >= moment().format('YYYY MM DD') &&
-          moment(task.dueDate).format('YYYY MM DD') <= moment().add(1, 'week').format('YYYY MM DD')
+      ? moment(task.dueDate).isSameOrAfter(moment(), 'day') &&
+          moment(task.dueDate).isSameOrBefore(moment().add(1, 'week'), 'day')
       : task
   );
 
