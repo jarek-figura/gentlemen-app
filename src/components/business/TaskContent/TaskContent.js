@@ -42,7 +42,7 @@ class TaskContent extends Component {
           // TODO: ustalić aktualne `cycleDate` dla taska starszego niż 1 miesiąc
           // zmiana w trybie miesięcznym
 
-          console.log(cycleDate = moment(momentDate).diff(cycleDate, 'days'));
+          // console.log(cycleDate = moment(momentDate).diff(cycleDate, 'days'));
 
           cycleDate = moment(cycleDate).add(1, 'month');
           break;
@@ -69,10 +69,21 @@ class TaskContent extends Component {
     // TODO: dla tasków cyklicznych porównywać `cycleDate` zamiast `dueDate`
     // TODO: porównywanie numeryczne chyba nie działa dobrze
 
-    const taskDueDate = new Date(task.dueDate);
-    const today = new Date(Date.now());
-    const timeDiff = taskDueDate.getTime() - today.getTime();
-    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    // const taskDueDate = new Date(task.dueDate);
+    // const today = new Date(Date.now());
+    // const timeDiff = taskDueDate.getTime() - today.getTime();
+    // let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+    let momentDate = moment().startOf('day');
+    let cycleDate = moment(task.cycleDate).startOf('day');
+
+    if (task.isCycleMode && task.dueDate && !task.isDone) {
+      cycleDate = moment(task.dueDate).startOf('day');
+    }
+
+    let diffDays = moment(cycleDate).diff(momentDate, 'days');
+    console.log(diffDays,task.dueDate);
+
     const whatToRender = () => {
       if (diffDays <= -1) {
         return <p className="wrn">Po terminie</p>
