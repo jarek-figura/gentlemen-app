@@ -23,9 +23,21 @@ export class UserProvider extends Component {
   };
 
   componentDidMount() {
+    const userData = localStorage.getItem('user')
+    if (userData) {
+      this.setState({
+        user: JSON.parse(userData)
+      })
+    }
     this.unsubscribe = firebase.auth().onAuthStateChanged(
-      user => this.setState({ user: user })
-    )
+      user => {
+        this.setState({ user: user })
+        localStorage.setItem('user', JSON.stringify(user))
+        if(!user){
+          localStorage.removeItem("user");
+        };
+      }
+    );
   }
 
   componentWillUnmount() {

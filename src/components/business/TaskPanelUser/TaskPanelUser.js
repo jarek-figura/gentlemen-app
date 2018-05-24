@@ -6,6 +6,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faCog from '@fortawesome/fontawesome-free-solid/faCog'
 import faDoorOpen from "@fortawesome/fontawesome-free-solid/faDoorOpen";
 import faAngleDoubleUp from "@fortawesome/fontawesome-free-solid/faAngleDoubleUp";
+import faPaintBrush from "@fortawesome/fontawesome-free-solid/faPaintBrush";
 import { ThemeConsumer } from '../../contexts/Theme'
 
 const navUserModeTable = [' hideuser', ''];
@@ -30,27 +31,29 @@ class TaskPanelUser extends Component {
     return (
       <ThemeConsumer>
         {
-          ({theme, toggle}) => (
-            <div style={theme.body} className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
-        <h1>Task User Panel</h1>
-        <button className="changeThemeBtn" onClick={toggle}>Zmień motyw</button>
-        <div className={'photo'}>photo</div>
-        <div>
-          <button
-            className={"show-userpanel"}
-            title={filtersTitle[this.state.navUserIndex]}
-            onClick={this.handleClick}
-          >{filtersButtonUserName[this.state.navUserIndex]}</button>
-          <span>{this.props.user.email}</span>
-          <button
-            className={"exit"}
-            title="Wyjdź"
-            onClick={this.props.signOut}>
-            <FontAwesomeIcon icon={faDoorOpen}/></button>
-          </div>
+          ({theme, toggle}) =>{
+            document.body.classList=theme.bodyClass
+            return (
+              <div style={theme.body} className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
+                <h1>Ustawienia</h1>
+                <button className="changeThemeBtn" onClick={toggle}>Zmień motyw    <FontAwesomeIcon icon={faPaintBrush}/></button>
+                <div>
+                  <button
+                    className={"show-userpanel"}
+                    title={filtersTitle[this.state.navUserIndex]}
+                    onClick={this.handleClick}
+                  >{filtersButtonUserName[this.state.navUserIndex]}</button>
+                  <span>{this.props.user.email}</span>
+                  <button
+                    className={"exit"}
+                    title="Wyjdź"
+                    onClick={this.props.signOut}>
+                    <FontAwesomeIcon icon={faDoorOpen}/></button>
+                </div>
 
-      </div>
-          )
+              </div>
+            )
+          }
         }
       </ThemeConsumer>
     )

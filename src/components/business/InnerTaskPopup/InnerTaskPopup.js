@@ -16,7 +16,7 @@ class InnerTaskPopup extends Component {
     formError: null,
     isCycleMode: false,
     taskCycleMode: 'daily', // 'daily', 'weekly', 'monthly'
-    cycleDate: moment()
+    cycleDate: moment(),
   };
 
   /*
@@ -86,6 +86,8 @@ class InnerTaskPopup extends Component {
       [event.target.name]: event.target.value,
       formError: null
     })
+
+
   };
 
   handleDate = date => this.setState({dueDate: date});
