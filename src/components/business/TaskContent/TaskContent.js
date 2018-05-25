@@ -26,21 +26,23 @@ class TaskContent extends Component {
     // TODO: Usunąć obowiązek `dueDate` dla taska cyklicznego
 
     const task = this.props.task;
-    let cycleDate = moment();
+    let momentDate = moment().startOf('day');
+    let cycleDate = moment(task.cycleDate).startOf('day');
 
     if (task.isCycleMode && task.dueDate && !task.isDone) {
       switch(task.taskCycleMode) {
         case 'daily' :
-          cycleDate = moment.max(moment(task.cycleDate), moment());
+          cycleDate = moment.max(cycleDate, momentDate);
           break;
         case 'weekly' :
-          cycleDate = Math.ceil((moment().valueOf() - task.cycleDate) / 1000 / 3600 / 24) % 7;
+          cycleDate = moment(momentDate).diff(cycleDate, 'days') % 7;
           cycleDate = moment().add(7 - cycleDate, 'days');
           break;
         case 'monthly' :
           // TODO: ustalić aktualne `cycleDate` dla taska starszego niż 1 miesiąc
           // zmiana w trybie miesięcznym
-          cycleDate = moment(task.cycleDate).add(1, 'month');
+
+          cycleDate = moment(cycleDate).add(1, 'month');
           break;
         default:
           break;
@@ -62,20 +64,28 @@ class TaskContent extends Component {
   render() {
     const task = this.props.task;
 
-    // TODO: dla tasków cyklicznych porównywać `cycleDate` zamiast `dueDate`
-    // TODO: porównywanie numeryczne chyba nie działa dobrze
+    // const taskDueDate = new Date(task.dueDate);
+    // const today = new Date(Date.now());
+    // const timeDiff = taskDueDate.getTime() - today.getTime();
+    // let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-    const taskDueDate = new Date(task.dueDate);
-    const today = new Date(Date.now());
-    const timeDiff = taskDueDate.getTime() - today.getTime();
-    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    let momentDate = moment().startOf('day');
+    let dueDate = moment(task.dueDate).startOf('day');
+    let cycleDate = moment(task.cycleDate).startOf('day');
+
+    if (task.isCycleMode && task.dueDate) {
+      dueDate = cycleDate;
+    }
+
+    let diffDays = moment(dueDate).diff(momentDate, 'days');
+
     const whatToRender = () => {
       if (diffDays <= -1) {
         return <p className="wrn">Po terminie</p>
       } else if (diffDays === 0) {
         return <p className="wrnToday">Na dzisiaj</p>
       } else {
-        return <TaskPriorityBar dueDate={task.dueDate}/>
+        return <TaskPriorityBar dueDate={dueDate}/>
       }
     };
 

@@ -5,7 +5,7 @@ import {withTasks} from "../../contexts/Tasks";
 
 class TaskPriorityBar extends React.Component {
   render () {
-
+    // TODO: dla tasków cyklicznych porównywać `cycleDate` zamiast `dueDate`
     const taskDueDate = this.props.dueDate
     const taskMaxDate = Math.max.apply(Math, this.props.tasks.map(function(x){return x.dueDate}))
     const timestamp = Date.now()
