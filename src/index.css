@@ -1,10 +1,13 @@
 body {
-  margin: 0 auto 30px;
+  margin: 0 auto 38px;
   padding: 0 0 13px 0;
   font-family: "Lato", sans-serif;
   /*background-color: #F8F9FA;*/
   max-width: 600px;
   color: #000;
+}
+button:focus{
+  outline: 0;
 }
 
 .banner{
@@ -34,7 +37,8 @@ body {
 .signOutButton,
 .clear-filters-button,
 .add-task-button,
-.show-filters{
+.show-filters,
+.sign-button{
   background:    #1481BA;
   background:    -webkit-linear-gradient(#1481BA, #073763);
   background:    linear-gradient(#1481BA, #073763);
@@ -44,7 +48,7 @@ body {
   font:          normal 400 13px/1 "Calibri", sans-serif;
   text-align:    center;
   text-shadow:   1px 1px #000000;
-  border-width:  0;
+  border: none;
 }
 
 .my-day, .my-week, .smallFilterButton{
@@ -58,7 +62,7 @@ body {
   font:          normal 400 13px/1 "Calibri", sans-serif;
   text-align:    center;
   text-shadow:   1px 1px #000000;
-  border-width: 0;
+  border: none;
 }
 
 .changeThemeBtn{
@@ -73,7 +77,7 @@ body {
   text-align:    center;
   text-shadow:   1px 1px #000000;
   width:         130px;
-  border-width: 0;
+  border: none;
 }
 
 
