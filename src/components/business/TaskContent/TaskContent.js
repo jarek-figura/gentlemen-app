@@ -42,8 +42,6 @@ class TaskContent extends Component {
           // TODO: ustalić aktualne `cycleDate` dla taska starszego niż 1 miesiąc
           // zmiana w trybie miesięcznym
 
-          // console.log(cycleDate = moment(momentDate).diff(cycleDate, 'days'));
-
           cycleDate = moment(cycleDate).add(1, 'month');
           break;
         default:

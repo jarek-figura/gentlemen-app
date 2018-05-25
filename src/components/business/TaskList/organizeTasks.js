@@ -16,14 +16,21 @@ export default function organizeTasks() {
     task => task.name.toLowerCase().includes(
       this.props.searchPhrase.toLowerCase()
     )
+  ).map(
+    task => this.props.showMyWeekMode === '1' || this.props.showMyDayMode === '1' ? ({
+      ...task,
+      dueDate: task.isCycleMode ? task.cycleDate : task.dueDate
+    }) : task
   ).filter(
     task => this.props.showMyDayMode === '1'
       ? moment(task.dueDate).isSame(moment(), 'day')
       : task
   ).filter(
     task => this.props.showMyWeekMode === '1'
-      ? moment(task.dueDate).isSameOrAfter(moment(), 'day') &&
+      ? (
+          moment(task.dueDate).isSameOrAfter(moment(), 'day') &&
           moment(task.dueDate).isSameOrBefore(moment().add(1, 'week'), 'day')
+        )
       : task
   );
 
