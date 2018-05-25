@@ -4,5 +4,9 @@
 .search-input {
   font-size: 1em;
   height: 24px;
+  width: 300px;
+}
+
+::-webkit-input-placeholder {
   text-align: center;
 }

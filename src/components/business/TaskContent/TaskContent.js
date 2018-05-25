@@ -4,7 +4,7 @@ import './TaskContent.css';
 import {withTasks} from "../../contexts/Tasks";
 import TaskPriorityBar from "../TaskProgressBar/TaskPriorityBar";
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
+import faEllipsisH from '@fortawesome/fontawesome-free-solid/faEllipsisH'
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
 import faEdit from '@fortawesome/fontawesome-free-solid/faEdit'
 
@@ -112,7 +112,7 @@ class TaskContent extends Component {
             className={"show-desc"}
             title={"Pokaż opis"}
             onClick={this.handleClick}
-          ><FontAwesomeIcon icon={faSearch}/></button>
+          ><FontAwesomeIcon icon={faEllipsisH}/></button>
           <button className='edit-button'
             title='Edytuj'
             onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
