@@ -34,9 +34,7 @@ class InnerTaskPopup extends Component {
     OK  # wyróżnienie graficzne dla taska cyklicznego
     OK  # taski cykliczne można edytować, edycja zapisze się w bazie do taska bazowego i wszystkie taski pochodne
     OK    będą mieć tę samą informację, bo te będą już zapisane pod innymi id
-
-        # TASKI POWINNy BYĆ DOMYŚLNIE SORTOWANIE PO DACIE ***UTWORZENIA*** (od najstarszej do najmłodszej)???
-   */
+  */
 
   static getDerivedStateFromProps({task}, prevState) {
     return {
