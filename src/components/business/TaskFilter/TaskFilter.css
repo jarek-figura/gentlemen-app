@@ -35,6 +35,7 @@ button:hover {
   display:       inline-block;
   font:          normal 400 13px/1 "Calibri", sans-serif;
   text-align:    center;
+  border:         none;
 }
 
 @media all and (max-width: 414px) {
