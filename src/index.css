@@ -48,7 +48,7 @@ button:focus{
   font:          normal 400 13px/1 "Calibri", sans-serif;
   text-align:    center;
   text-shadow:   1px 1px #000000;
-  border: none;
+  border:        none;
 }
 
 .my-day, .my-week, .smallFilterButton{
