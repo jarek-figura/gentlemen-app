@@ -66,23 +66,20 @@ class TaskContent extends Component {
   render() {
     const task = this.props.task;
 
-    // TODO: dla tasków cyklicznych porównywać `cycleDate` zamiast `dueDate`
-    // TODO: porównywanie numeryczne chyba nie działa dobrze
-
     // const taskDueDate = new Date(task.dueDate);
     // const today = new Date(Date.now());
     // const timeDiff = taskDueDate.getTime() - today.getTime();
     // let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
     let momentDate = moment().startOf('day');
+    let dueDate = moment(task.dueDate).startOf('day');
     let cycleDate = moment(task.cycleDate).startOf('day');
 
-    if (task.isCycleMode && task.dueDate && !task.isDone) {
-      cycleDate = moment(task.dueDate).startOf('day');
+    if (task.isCycleMode && task.dueDate) {
+      dueDate = cycleDate;
     }
 
-    let diffDays = moment(cycleDate).diff(momentDate, 'days');
-    console.log(diffDays,task.dueDate);
+    let diffDays = moment(dueDate).diff(momentDate, 'days');
 
     const whatToRender = () => {
       if (diffDays <= -1) {
@@ -90,7 +87,7 @@ class TaskContent extends Component {
       } else if (diffDays === 0) {
         return <p className="wrnToday">Na dzisiaj</p>
       } else {
-        return <TaskPriorityBar dueDate={task.dueDate}/>
+        return <TaskPriorityBar dueDate={dueDate}/>
       }
     };
 
