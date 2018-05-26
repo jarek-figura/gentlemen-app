@@ -39,15 +39,14 @@ class TaskContent extends Component {
           cycleDate = moment().add(7 - cycleDate, 'days');
           break;
         case 'monthly' :
-          // TODO: ustalić aktualne `cycleDate` dla taska starszego niż 1 miesiąc
-          // `cycleDate` - który dzień miesiąca
-          // `moment` - który dzień miesiąca
-          // dla `cycleDate` < `moment` zrobić: następny miesiąc
-          // dla `cycleDate` >= `moment` zrobić: ok
-
-          console.log(moment.duration().asMonths());
-
-          cycleDate = moment(cycleDate).add(1, 'month');
+          const cycleDateLocal = moment(cycleDate).date();
+          const momentDateLocal = moment().date();
+          const momentYearLocal = moment().year();
+          const momentMonthLocal = moment().month();
+          cycleDate = moment().year(momentYearLocal).month(momentMonthLocal).date(cycleDateLocal);
+          if (cycleDateLocal < momentDateLocal) {
+            cycleDate = moment(cycleDate).add(1, 'month');
+          }
           break;
         default:
           break;
