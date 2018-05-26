@@ -90,7 +90,7 @@ class TaskContent extends Component {
       } else if (diffDays === 0) {
         return <p className="wrnToday">Na dzisiaj</p>
       } else {
-        return <TaskPriorityBar dueDate={dueDate}/>
+        return <TaskPriorityBar taskDueDate={dueDate}/>
       }
     };
 
