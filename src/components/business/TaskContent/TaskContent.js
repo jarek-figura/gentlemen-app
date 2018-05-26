@@ -39,10 +39,14 @@ class TaskContent extends Component {
           cycleDate = moment().add(7 - cycleDate, 'days');
           break;
         case 'monthly' :
-          // TODO: ustalić aktualne `cycleDate` dla taska starszego niż 1 miesiąc
-          // zmiana w trybie miesięcznym
-
-          cycleDate = moment(cycleDate).add(1, 'month');
+          const cycleDateLocal = moment(cycleDate).date();
+          const momentDateLocal = moment().date();
+          const momentYearLocal = moment().year();
+          const momentMonthLocal = moment().month();
+          cycleDate = moment().year(momentYearLocal).month(momentMonthLocal).date(cycleDateLocal);
+          if (cycleDateLocal < momentDateLocal) {
+            cycleDate = moment(cycleDate).add(1, 'month');
+          }
           break;
         default:
           break;
@@ -85,7 +89,7 @@ class TaskContent extends Component {
       } else if (diffDays === 0) {
         return <p className="wrnToday">Na dzisiaj</p>
       } else {
-        return <TaskPriorityBar dueDate={dueDate}/>
+        return <TaskPriorityBar taskDueDate={dueDate}/>
       }
     };
 
