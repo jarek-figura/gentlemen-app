@@ -29,11 +29,10 @@ class InnerTaskPopup extends Component {
     OK  # na liście będzie pokazywany następny task, gdy poprzedni został zrobiony:
     OK    - następny task jest zapisany do bazy, jako task bazowy
     OK    - gdy task się przeterminuje nic się nie zmienia na liście
-    ==    - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
+    OK    - gdy zrobimy taska przeterminowanego, nowy pokaże się od daty aktualnej
     OK  # kasowanie taska cyklicznego, usunie wpis z bazy taska bazowego, taski zrobione zostają w bazie
     OK  # wyróżnienie graficzne dla taska cyklicznego
-    OK  # taski cykliczne można edytować, edycja zapisze się w bazie do taska bazowego i wszystkie taski pochodne
-    OK    będą mieć tę samą informację, bo te będą już zapisane pod innymi id
+    OK  # taski cykliczne można edytować
   */
 
   static getDerivedStateFromProps({task}, prevState) {
