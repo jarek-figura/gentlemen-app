@@ -33,7 +33,7 @@ button:hover {
   padding:       2px 5px;
   color:          #fff;
   display:       inline-block;
-  font:          normal 400 13px/1 "Calibri", sans-serif;
+  /*font:          normal 400 13px/1 "Calibri", sans-serif;*/
   text-align:    center;
   border:         none;
 }

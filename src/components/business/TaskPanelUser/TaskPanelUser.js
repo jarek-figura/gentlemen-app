@@ -1,56 +1,53 @@
-import React, {Component} from 'react'
-import './TaskPanelUser.css'
+import React, {Component} from 'react';
+import './TaskPanelUser.css';
 import {withTasks} from "../../contexts/Tasks";
 import {withUser} from "../../contexts/User";
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faCog from '@fortawesome/fontawesome-free-solid/faCog'
-import faDoorOpen from "@fortawesome/fontawesome-free-solid/faDoorOpen";
-import faAngleDoubleUp from "@fortawesome/fontawesome-free-solid/faAngleDoubleUp";
-import faPaintBrush from "@fortawesome/fontawesome-free-solid/faPaintBrush";
-import { ThemeConsumer } from '../../contexts/Theme'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import {faCog, faAngleDoubleUp, faPaintBrush, faSignOutAlt} from '@fortawesome/fontawesome-free-solid';
+import {ThemeConsumer} from '../../contexts/Theme';
 
 const navUserModeTable = [' hideuser', ''];
-const filtersButtonUserName = [<FontAwesomeIcon icon={faCog}/>, <FontAwesomeIcon icon={faAngleDoubleUp}/>]
-const filtersTitle = ['Pokaż UserPanel', 'Zamknij UserPanel']
+const filtersButtonUserName = [<FontAwesomeIcon icon={faCog}/>, <FontAwesomeIcon icon={faAngleDoubleUp}/>];
+const filtersTitle = ['Pokaż UserPanel', 'Zamknij UserPanel'];
 
 class TaskPanelUser extends Component {
 
   state = {
-    // hideNavMode: 'hide',
     navUserIndex: 0
   };
 
-    handleClick = () => {
+  handleClick = () => {
     this.setState({
-      navUserIndex: (this.state.navUserIndex + 1) %2,
-      // hideNavMode: navModeTable[this.state.navIndex = (this.state.navIndex + 1) %2]
-          });
+      navUserIndex: (this.state.navUserIndex + 1) % 2,
+    });
   };
 
   render() {
     return (
       <ThemeConsumer>
         {
-          ({theme, toggle}) =>{
-            document.body.classList=theme.bodyClass
+          ({theme, toggle}) => {
+            document.body.classList = theme.bodyClass;
             return (
               <div style={theme.body} className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
                 <h1>Ustawienia</h1>
-                <button className="changeThemeBtn" onClick={toggle}>Zmień motyw    <FontAwesomeIcon icon={faPaintBrush}/></button>
+                <button
+                  className="changeThemeBtn"
+                  onClick={toggle}
+                >Zmień motyw&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faPaintBrush}/></button>
                 <div>
                   <button
-                    className={"show-userpanel"}
+                    className="show-userpanel"
                     title={filtersTitle[this.state.navUserIndex]}
                     onClick={this.handleClick}
                   >{filtersButtonUserName[this.state.navUserIndex]}</button>
                   <span>{this.props.user.email}</span>
                   <button
-                    className={"exit"}
+                    className="exit"
                     title="Wyjdź"
                     onClick={this.props.signOut}>
-                    <FontAwesomeIcon icon={faDoorOpen}/></button>
+                    <FontAwesomeIcon icon={faSignOutAlt}/></button>
                 </div>
-
               </div>
             )
           }
@@ -59,7 +56,5 @@ class TaskPanelUser extends Component {
     )
   }
 }
-
-
 
 export default withUser(withTasks(TaskPanelUser));

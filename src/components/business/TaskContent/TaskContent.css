@@ -5,13 +5,13 @@
 
 .low {
   background-color: rgba(117, 255, 89, 0.3);
-  box-shadow: 0 2px 5px 0 rgba(175, 175, 175, 1)
-;}
+  box-shadow: 0 2px 5px 0 rgba(175, 175, 175, 1);
+}
 
 .high {
   background-color: rgba(255, 0, 0, 0.7);
-  box-shadow: 0 2px 5px 0 rgba(175, 175, 175, 1)
-;}
+  box-shadow: 0 2px 5px 0 rgba(175, 175, 175, 1);
+}
 
 .true {
   color: #aaa;
@@ -40,11 +40,6 @@ p.description {
   white-space: normal;
 }
 
-.buttons {
-  position: relative;
-  white-space: nowrap;
-}
-
 .wrnToday {
   background-color: #ffcf00;
   color: #000000;
@@ -57,7 +52,7 @@ p.description {
 }
 
 .wrn {
-  background-color: #000000;
+  background-color: #333;
   color: #ffcf00;
   text-align: center;
   font-size: 12px;
@@ -67,41 +62,38 @@ p.description {
   width: 78%;
 }
 
-.edit-button {
-  height: 30px;
-  width: 30px;
+.buttons {
+  position: relative;
+  white-space: nowrap;
 }
 
-.delete-button {
-  height: 30px;
-  width: 30px;
+.edit-button, .delete-button, .desc-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  width: 2.5rem;
+  margin: 0;
+  color: #444;
+  transition: 0.3s;
 }
-
-.show-desc {
-  height: 30px;
-  width: 30px;
+.edit-button:hover, .delete-button:hover, .desc-button:hover {
+  color: #000;
+  transition: 0.3s;
 }
 
 .done-checkbox {
   position: relative;
-  margin-right: 15px;
-  height: 30px;
-  width: 30px;
-  background-color: #eee;
-}
-
-.done-checkbox:hover {
-  cursor: pointer;
-}
-
-.show-desc, .delete-button, .edit-button {
+  margin-right: 1rem;
+  font-size: 2rem;
+  width: 2.5rem;
   background: none;
-  color: inherit;
   border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
+  color: #444;
+  transition: 0.3s;
+}
+.done-checkbox:hover {
+  color: #000;
+  transition: 0.3s;
 }
 
 .cycled-mode {
@@ -119,31 +111,22 @@ p.description {
   .titles {
     width: 250px;
   }
+  p.description {
+    width: 230px;
+  }
 }
 
 @media (min-width: 600px) {
   .titles {
     width: 420px;
   }
-}
-
-@media (min-width: 319px) {
-  p.description {
-    width: 145px;
-
-  }
-}
-
-@media (min-width: 414px) {
-  p.description {
-    width: 230px;
-
-  }
-}
-
-@media (min-width: 600px) {
   p.description {
     width: 360px;
+  }
+}
 
+@media (min-width: 320px) {
+  p.description {
+    width: 145px;
   }
 }

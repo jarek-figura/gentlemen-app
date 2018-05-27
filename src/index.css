@@ -1,8 +1,9 @@
 body {
   margin: 0 auto 38px;
   padding: 0 0 13px 0;
-  font-family: "Lato", sans-serif;
+  /*font-family: "Lato", sans-serif;*/
   /*background-color: #F8F9FA;*/
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   max-width: 600px;
   color: #000;
 }
@@ -45,7 +46,7 @@ button:focus{
   padding:       2px 5px;
   color:         #ffffff;
   display:       inline-block;
-  font:          normal 400 13px/1 "Calibri", sans-serif;
+  /*font:          normal 400 13px/1 "Calibri", sans-serif;*/
   text-align:    center;
   text-shadow:   1px 1px #000000;
   border:        none;
@@ -79,7 +80,6 @@ button:focus{
   width:         130px;
   border: none;
 }
-
 
 .taskLoading{
   font-size: 20px;

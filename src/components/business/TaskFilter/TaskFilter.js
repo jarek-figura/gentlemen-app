@@ -81,7 +81,7 @@ class TaskFilter extends Component {
         </div>
 
         <div className="dueday-filtering">
-          <span className="dueday-filtering-text">Sortuj wg date</span>
+          <span className="dueday-filtering-text">Sortuj wg daty</span>
           {
             dueSorters.map(
               ({ title, label }, index) => (

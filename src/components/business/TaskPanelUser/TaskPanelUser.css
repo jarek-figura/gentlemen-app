@@ -1,50 +1,59 @@
 @import "../../../index.css";
 
 .nav-panel {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: darkgrey;
-    max-width: 600px;
-    text-align: center;
-    transition: 0.3s;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-bottom: 10px;
+  background-color: darkgrey;
+  max-width: 600px;
+  text-align: center;
+  transition: 0.3s;
+  z-index: 1;
 }
+
 .hideuser {
-    top: -177px;
-    z-index: 1;
+  top: -115px;
+  z-index: 1;
 }
 
 .exit {
-    float: right;
-    margin: 0;
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
+  float: right;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
 }
+
 .show-userpanel {
-    float: left;
-    margin: 0;
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
+  float: left;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+}
+
+.exit, .show-userpanel {
+  font-size: 1.2rem;
+}
+
+.exit:hover, .show-userpanel:hover {
+  color: black;
+  transition: 0.3s;
 }
 
 .icons {
-    float: right;
+  float: right;
 }
 
 .changeThemeBtn {
-    margin-top: 25px;
-    margin-bottom: 50px;
+  margin-bottom: 1.4rem;
+}
+
+h1 {
+  font-weight: normal;
 }
