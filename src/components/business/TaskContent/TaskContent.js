@@ -30,7 +30,15 @@ class TaskContent extends Component {
     if (task.isCycleMode && task.dueDate && !task.isDone) {
       switch(task.taskCycleMode) {
         case 'daily' :
-          cycleDate = moment.max(cycleDate, momentDate);
+          if (cycleDate < moment(task.dueDate).startOf('day')) {
+            if (cycleDate < momentDate) {
+              cycleDate = moment.max(cycleDate, momentDate);
+            } else {
+              cycleDate = moment(cycleDate).add(1, 'days');
+            }
+          } else {
+            return;
+          }
           break;
         case 'weekly' :
           cycleDate = moment(momentDate).diff(cycleDate, 'days') % 7;
