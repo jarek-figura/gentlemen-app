@@ -7,3 +7,7 @@
 .date-picker:hover {
   cursor: pointer;
 }
+
+.date-picker-header {
+  color: #fff;
+}
