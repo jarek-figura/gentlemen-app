@@ -26,12 +26,13 @@ class TaskContent extends Component {
     const task = this.props.task;
     let momentDate = moment().startOf('day');
     let cycleDate = moment(task.cycleDate).startOf('day');
+    const dueDate = moment(task.dueDate).startOf('day');
 
     if (task.isCycleMode && task.dueDate && !task.isDone) {
       switch(task.taskCycleMode) {
         case 'daily' :
-          if (cycleDate < moment(task.dueDate).startOf('day')) {
-            if (cycleDate < momentDate) {
+          if (moment(cycleDate).isBefore(dueDate, 'day')) {
+            if (moment(cycleDate).isBefore(momentDate, 'day')) {
               cycleDate = moment.max(cycleDate, momentDate);
             } else {
               cycleDate = moment(cycleDate).add(1, 'days');
@@ -41,17 +42,39 @@ class TaskContent extends Component {
           }
           break;
         case 'weekly' :
-          cycleDate = moment(momentDate).diff(cycleDate, 'days') % 7;
-          cycleDate = moment().add(7 - cycleDate, 'days');
+          if (moment(cycleDate).isBefore(dueDate, 'day')) {
+            if (moment(cycleDate).isBefore(momentDate, 'day')) {
+              cycleDate = moment(momentDate).diff(cycleDate, 'days') % 7;
+              cycleDate = moment().add(7 - cycleDate, 'days');
+            } else {
+              cycleDate = moment(cycleDate).add(1, 'weeks');
+            }
+            if (moment(cycleDate).isAfter(dueDate, 'day')) {
+              return;
+            }
+          } else {
+            return;
+          }
           break;
         case 'monthly' :
-          const cycleDateLocal = moment(cycleDate).date();
-          const momentDateLocal = moment().date();
-          const momentYearLocal = moment().year();
-          const momentMonthLocal = moment().month();
-          cycleDate = moment().year(momentYearLocal).month(momentMonthLocal).date(cycleDateLocal);
-          if (cycleDateLocal < momentDateLocal) {
-            cycleDate = moment(cycleDate).add(1, 'month');
+          if (moment(cycleDate).isBefore(dueDate, 'day')) {
+            if (moment(cycleDate).isBefore(momentDate, 'month')) {
+              const momentYearLocal = moment().year();
+              const momentMonthLocal = moment().month();
+              const momentDayLocal = moment().day();
+              const cycleDateLocal = moment(cycleDate).date();
+              cycleDate = moment().year(momentYearLocal).month(momentMonthLocal).date(cycleDateLocal);
+              if (cycleDateLocal < momentDayLocal) {
+                cycleDate = moment(cycleDate).add(1, 'months');
+              }
+            } else {
+              cycleDate = moment(cycleDate).add(1, 'months');
+            }
+            if (moment(cycleDate).isAfter(dueDate, 'day')) {
+              return;
+            }
+          } else {
+            return;
           }
           break;
         default:
