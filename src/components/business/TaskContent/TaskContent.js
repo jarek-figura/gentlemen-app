@@ -45,13 +45,20 @@ class TaskContent extends Component {
           cycleDate = moment().add(7 - cycleDate, 'days');
           break;
         case 'monthly' :
-          const cycleDateLocal = moment(cycleDate).date();
-          const momentDateLocal = moment().date();
-          const momentYearLocal = moment().year();
-          const momentMonthLocal = moment().month();
-          cycleDate = moment().year(momentYearLocal).month(momentMonthLocal).date(cycleDateLocal);
-          if (cycleDateLocal < momentDateLocal) {
-            cycleDate = moment(cycleDate).add(1, 'month');
+          if (cycleDate < moment(task.dueDate).startOf('day')) {
+            const cycleDateLocal = moment(cycleDate).date();
+            const momentDateLocal = moment().date();
+            const momentYearLocal = moment().year();
+            const momentMonthLocal = moment().month();
+            cycleDate = moment().year(momentYearLocal).month(momentMonthLocal).date(cycleDateLocal);
+            if (cycleDateLocal <= momentDateLocal) {
+              cycleDate = moment(cycleDate).add(1, 'months');
+              console.log(moment(cycleDate).format('DD-MM-YYYY'));
+            } else {
+              // TODO: naprawić cykl miesięczny
+            }
+          } else {
+            return;
           }
           break;
         default:
