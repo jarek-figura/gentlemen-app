@@ -50,6 +50,7 @@ p.description {
   opacity: .8;
   border-radius: 2px;
   width: 78%;
+  height: 16px;
 }
 
 .wrn {
@@ -61,6 +62,11 @@ p.description {
   opacity: .8;
   border-radius: 2px;
   width: 78%;
+  height: 16px;
+}
+
+.progress-bar {
+  height: 20px;
 }
 
 .buttons {
