@@ -46,7 +46,7 @@ button:focus{
   padding:       2px 5px;
   color:         #ffffff;
   display:       inline-block;
-  font:          normal 400 13px/1 "Calibri", sans-serif;
+  /*font:          normal 400 13px/1 "Calibri", sans-serif;*/
   text-align:    center;
   text-shadow:   1px 1px #000000;
   border:        none;
@@ -80,7 +80,6 @@ button:focus{
   width:         130px;
   border: none;
 }
-
 
 .taskLoading{
   font-size: 20px;

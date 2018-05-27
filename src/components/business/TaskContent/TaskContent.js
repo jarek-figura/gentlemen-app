@@ -3,10 +3,8 @@ import moment from 'moment';
 import './TaskContent.css';
 import {withTasks} from "../../contexts/Tasks";
 import TaskPriorityBar from "../TaskProgressBar/TaskPriorityBar";
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faEllipsisH from '@fortawesome/fontawesome-free-solid/faEllipsisH'
-import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt'
-import faEdit from '@fortawesome/fontawesome-free-solid/faEdit'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import {faInfo, faTrashAlt, faEdit, faCircle, faCheckCircle} from '@fortawesome/fontawesome-free-solid';
 
 const translate = {
   'daily': 'Codziennie do ',
@@ -97,12 +95,10 @@ class TaskContent extends Component {
       <div className={task.priority + ' ' + task.isDone + ' ' + (task.isCycleMode ? 'cycled-mode' : '') + ' task'}>
 
         <div className="checkbox">
-          <input className='done-checkbox'
-            title="Oznacz jako zrobione"
-            type="checkbox"
-            checked={task.isDone}
-            onChange={() => this.handleToggleTaskDone(task.id)}
-          />
+          <button className={`done-checkbox ${task.isDone}`}
+            title='Oznacz jako zrobione'
+            onClick={() => this.handleToggleTaskDone(task.id)}
+          >{task.isDone ? <FontAwesomeIcon icon={faCheckCircle}/> : <FontAwesomeIcon icon={faCircle}/>}</button>
         </div>
 
         <div className="titles">
@@ -121,25 +117,22 @@ class TaskContent extends Component {
           {whatToRender()}
         </div>
 
-        <div className="buttons">
-          <button
-            className={"show-desc"}
-            title={"Pokaż opis"}
+        <div className='buttons'>
+          <button className='desc-button'
+            title='Pokaż opis'
             onClick={this.handleClick}
-          ><FontAwesomeIcon icon={faEllipsisH}/></button>
+          ><FontAwesomeIcon icon={faInfo}/></button>
+
           <button className='edit-button'
             title='Edytuj'
             onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
-          ><FontAwesomeIcon icon={faEdit}/>
-          </button>
-          <span>&nbsp;</span>
+          ><FontAwesomeIcon icon={faEdit}/></button>
+
           <button className='delete-button'
-            title="Usuń zadanie"
+            title='Usuń zadanie'
             onClick={() => this.props.removeTask(task.id)}
           ><FontAwesomeIcon icon={faTrashAlt}/></button>
-
         </div>
-
       </div>
     )
   }

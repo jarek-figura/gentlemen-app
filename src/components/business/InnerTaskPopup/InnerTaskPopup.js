@@ -6,6 +6,8 @@ import TaskDueDay from "../TaskDueDay/TaskDueDay";
 import {withTasks} from "../../contexts/Tasks";
 import {ThemeConsumer} from '../../contexts/Theme'
 import TaskCycleDate from "../TaskCycleDate/TaskCycleDate";
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import {faWindowClose} from '@fortawesome/fontawesome-free-solid';
 
 class InnerTaskPopup extends Component {
   state = {
@@ -115,7 +117,7 @@ class InnerTaskPopup extends Component {
                 className='cancel-button'
                 title='zaniechaj'
                 onClick={this.handleCancel}
-              >&times;</button>
+              ><FontAwesomeIcon icon={faWindowClose}/></button>
               <br/><br/>
 
               <div>
