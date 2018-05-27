@@ -97,11 +97,6 @@ class TaskContent extends Component {
   render() {
     const task = this.props.task;
 
-    // const taskDueDate = new Date(task.dueDate);
-    // const today = new Date(Date.now());
-    // const timeDiff = taskDueDate.getTime() - today.getTime();
-    // let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
     let momentDate = moment().startOf('day');
     let dueDate = moment(task.dueDate).startOf('day');
     let cycleDate = moment(task.cycleDate).startOf('day');
@@ -123,7 +118,7 @@ class TaskContent extends Component {
     };
 
     return (
-      <div className={task.priority + ' ' + task.isDone + ' ' + (task.isCycleMode ? 'cycled-mode' : '') + ' task'}>
+      <div className={`${task.priority} ` + (task.isCycleMode ? 'cycled-mode' : '') + ` ${task.isDone} task`}>
 
         <div className="checkbox">
           <button className={`done-checkbox ${task.isDone}`}
@@ -137,7 +132,7 @@ class TaskContent extends Component {
           {task.isCycleMode ? translate[task.taskCycleMode] : ''}
           {moment(task.dueDate).format('DD-MM-YYYY')}<br/>
           {this.state.showDesc ? <p className="description">{task.description}</p> : ''}
-          {whatToRender()}
+          {task.isDone ? <p className="progress-bar"></p> : whatToRender()}
         </div>
 
         <div className='buttons'>

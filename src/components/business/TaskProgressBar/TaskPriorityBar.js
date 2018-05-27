@@ -5,7 +5,7 @@ import {withTasks} from "../../contexts/Tasks";
 
 class TaskPriorityBar extends React.Component {
   render() {
-    // const taskIsDone = this.props.taskIsDone;
+    const taskIsDone = this.props.taskIsDone;
     const taskDueDate = this.props.taskDueDate;
     const taskMaxDate = Math.max.apply(Math, this.props.tasks.map(
       x => x.isCycleMode ? x.cycleDate : x.dueDate
@@ -14,6 +14,9 @@ class TaskPriorityBar extends React.Component {
     let taskPriorityFactor = ((taskDueDate - timestamp) / (taskMaxDate - timestamp)) * 100;
 
     const barColor = () => {
+      if (taskIsDone) {
+        return "#bbb";
+      }
       if (taskPriorityFactor < 0) {
         return "black"
       } else if (taskPriorityFactor <= 10) {
@@ -35,7 +38,7 @@ class TaskPriorityBar extends React.Component {
               strokeColor={barColor()}
               height="8"
               width="100%"
-              trailColor="#F8F9FA"
+              trailColor="#f8f9fa"
         />
       }
       </div>
