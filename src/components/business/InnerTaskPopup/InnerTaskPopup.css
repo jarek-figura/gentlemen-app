@@ -19,7 +19,7 @@ p {
 
 .addTask {
   max-width: 600px;
-  height: 600px;
+  height: 646px;
   text-align: center;
   padding: 10px 0 20px 0;
   margin-top: 20px;
@@ -34,6 +34,8 @@ p {
   background: none;
   border: none;
   font-size: 2.5rem;
+  width: 2.9rem;
+  height: 2.9rem;
   color: #fff;
 }
 
@@ -41,7 +43,8 @@ p {
   background: none;
   border: none;
   font-size: 1.8rem;
-  width: 2rem;
+  width: 2.2rem;
+  height: 2.2rem;
   margin: 0;
   color: #fff;
   transition: 0.3s;
@@ -49,12 +52,14 @@ p {
 
 .cycle-text {
   color: white;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .cycle-with-label {
   display: block;
   margin: 0 auto;
-  width: 240px;
+  width: 244px;
   text-align: left;
 }
 

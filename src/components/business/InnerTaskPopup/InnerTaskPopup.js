@@ -86,8 +86,6 @@ class InnerTaskPopup extends Component {
       [event.target.name]: event.target.value,
       formError: null
     })
-
-
   };
 
   handleDate = date => this.setState({dueDate: date});
@@ -107,8 +105,8 @@ class InnerTaskPopup extends Component {
   handleIsCycleMode = () => this.setState({isCycleMode: !this.state.isCycleMode});
 
   handleTaskCycleMode = event => {
-    console.log(event.target.name);
-    this.setState({taskCycleMode: event.target.name});
+    event.preventDefault();
+    this.setState({taskCycleMode: event.currentTarget.name});
   };
 
   render() {
@@ -166,7 +164,7 @@ class InnerTaskPopup extends Component {
               /><br/>
 
               {this.state.isCycleMode === true ?
-                <div className="cycle-with-label">
+                <form className="cycle-with-label">
                   <button
                     className="cycle cycle-daily"
                     title="Codziennie"
@@ -225,7 +223,7 @@ class InnerTaskPopup extends Component {
                     /> : ''
                   }
                   <br/><br/>
-                </div> : ''
+                </form> : ''
               }
 
               <TaskPriority
