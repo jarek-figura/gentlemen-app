@@ -19,7 +19,7 @@ class TaskDueDay extends Component {
   render() {
     return (
       <div>
-        <p>Data zakończenia</p>
+        <p className='date-picker-header'>Data zakończenia</p>
         <DatePicker className='date-picker'
           minDate={moment()}
           selected={this.state.dueDate}

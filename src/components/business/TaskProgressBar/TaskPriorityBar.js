@@ -8,7 +8,7 @@ class TaskPriorityBar extends React.Component {
     const taskIsDone = this.props.taskIsDone;
     const taskDueDate = this.props.taskDueDate;
     const taskMaxDate = Math.max.apply(Math, this.props.tasks.map(
-      x => x.isCycleMode ? x.cycleDate : x.dueDate
+      task => task.isCycleMode ? task.cycleDate : task.dueDate
     ));
     const timestamp = Date.now();
     let taskPriorityFactor = ((taskDueDate - timestamp) / (taskMaxDate - timestamp)) * 100;

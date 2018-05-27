@@ -8,6 +8,7 @@ import {ThemeConsumer} from '../../contexts/Theme'
 import TaskCycleDate from "../TaskCycleDate/TaskCycleDate";
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import {faWindowClose} from '@fortawesome/fontawesome-free-solid';
+import {faSquare, faCheckSquare, faCircle, faDotCircle} from '@fortawesome/fontawesome-free-regular';
 
 class InnerTaskPopup extends Component {
   state = {
@@ -85,8 +86,6 @@ class InnerTaskPopup extends Component {
       [event.target.name]: event.target.value,
       formError: null
     })
-
-
   };
 
   handleDate = date => this.setState({dueDate: date});
@@ -105,7 +104,10 @@ class InnerTaskPopup extends Component {
 
   handleIsCycleMode = () => this.setState({isCycleMode: !this.state.isCycleMode});
 
-  handleTaskCycleMode = event => this.setState({taskCycleMode: event.target.value});
+  handleTaskCycleMode = event => {
+    event.preventDefault();
+    this.setState({taskCycleMode: event.currentTarget.name});
+  };
 
   render() {
     return (
@@ -121,15 +123,16 @@ class InnerTaskPopup extends Component {
               <br/><br/>
 
               <div>
-                <input className="cycle cycle-checkbox"
-                  title="Ustaw zadanie cykliczne"
-                  id="cycleCheckbox"
-                  type="checkbox"
-                  value="cycle"
-                  checked={this.state.isCycleMode}
-                  onChange={this.handleIsCycleMode}
-                />
-                <label htmlFor="cycleCheckbox">Ustaw zadanie cylkiczne</label>
+                <button
+                  className='cycle cycle-checkbox'
+                  title='Ustaw zadanie cykliczne'
+                  onClick={this.handleIsCycleMode}
+                >{this.state.isCycleMode ?
+                   <FontAwesomeIcon icon={faCheckSquare}/> :
+                   <FontAwesomeIcon icon={faSquare}/>
+                 }
+                </button>
+                <label className='cycle-text'>Ustaw zadanie cylkiczne</label>
               </div>
 
               <form onSubmit={this.handleSubmit} id="form1">
@@ -162,33 +165,36 @@ class InnerTaskPopup extends Component {
 
               {this.state.isCycleMode === true ?
                 <form className="cycle-with-label">
-                  <input className="cycle cycle-daily"
-                    id="cycle-daily"
-                    type="radio"
-                    name="radio-cycle"
-                    value="daily"
-                    checked={this.state.taskCycleMode === 'daily'}
-                    onChange={this.handleTaskCycleMode}
-                  />
-                  <label htmlFor="cycle-daily">Codziennie</label>
+                  <button
+                    className="cycle cycle-daily"
+                    title="Codziennie"
+                    name="daily"
+                    onClick={this.handleTaskCycleMode}
+                  >{this.state.taskCycleMode === 'daily' ?
+                     <FontAwesomeIcon icon={faDotCircle}/> :
+                     <FontAwesomeIcon icon={faCircle}/>
+                   }
+                  </button>
+                  <label className="cycle-text">Codziennie</label>
                   {this.state.taskCycleMode === 'daily' ?
                     <TaskCycleDate
                       dueDate={this.state.dueDate}
                       cycleDate={this.state.cycleDate}
                       handleCycleDate={this.handleCycleDate}
                     /> : ''
-                  }
-                  <br/>
+                  }<br/>
 
-                  <input className="cycle cycle-weekly"
-                    id="cycle-weekly"
-                    type="radio"
-                    name="radio-cycle"
-                    value="weekly"
-                    checked={this.state.taskCycleMode === 'weekly'}
-                    onChange={this.handleTaskCycleMode}
-                  />
-                  <label htmlFor="cycle-weekly">Co tydzień</label>
+                  <button
+                    className="cycle cycle-weekly"
+                    title="Co tydzień"
+                    name="weekly"
+                    onClick={this.handleTaskCycleMode}
+                  >{this.state.taskCycleMode === 'weekly' ?
+                    <FontAwesomeIcon icon={faDotCircle}/> :
+                    <FontAwesomeIcon icon={faCircle}/>
+                  }
+                  </button>
+                  <label className="cycle-text">Co tydzień</label>
                   {this.state.taskCycleMode === 'weekly' ?
                     <TaskCycleDate
                       dueDate={this.state.dueDate}
@@ -198,15 +204,17 @@ class InnerTaskPopup extends Component {
                   }
                   <br/>
 
-                  <input className="cycle cycle-monthly"
-                    id="cycle-monthly"
-                    type="radio"
-                    name="radio-cycle"
-                    value="monthly"
-                    checked={this.state.taskCycleMode === 'monthly'}
-                    onChange={this.handleTaskCycleMode}
-                  />
-                  <label htmlFor="cycle-monthly">Co miesiąc</label>
+                  <button
+                    className="cycle cycle-monthly"
+                    title="Co miesiąc"
+                    name="monthly"
+                    onClick={this.handleTaskCycleMode}
+                  >{this.state.taskCycleMode === 'monthly' ?
+                    <FontAwesomeIcon icon={faDotCircle}/> :
+                    <FontAwesomeIcon icon={faCircle}/>
+                  }
+                  </button>
+                  <label className="cycle-text">Co miesiąc</label>
                   {this.state.taskCycleMode === 'monthly' ?
                     <TaskCycleDate
                       dueDate={this.state.dueDate}

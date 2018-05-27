@@ -3,8 +3,10 @@ import moment from 'moment';
 import './TaskContent.css';
 import {withTasks} from "../../contexts/Tasks";
 import TaskPriorityBar from "../TaskProgressBar/TaskPriorityBar";
+
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import {faInfo, faTrashAlt, faEdit, faCircle, faCheckCircle} from '@fortawesome/fontawesome-free-solid';
+import {faInfo, faTrashAlt, faEdit} from '@fortawesome/fontawesome-free-solid';
+import {faCircle, faCheckCircle} from '@fortawesome/fontawesome-free-regular';
 
 const translate = {
   'daily': 'Codziennie do ',
