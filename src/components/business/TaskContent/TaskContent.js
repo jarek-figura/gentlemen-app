@@ -114,11 +114,11 @@ class TaskContent extends Component {
 
     const whatToRender = () => {
       if (diffDays <= -1) {
-        return <p className="wrn">Po terminie</p>
+        return <p className={`wrn ${task.isDone}`}>Po terminie</p>
       } else if (diffDays === 0) {
-        return <p className="wrnToday">Na dzisiaj</p>
+        return <p className={`wrnToday ${task.isDone}`}>Na dzisiaj</p>
       } else {
-        return <TaskPriorityBar taskDueDate={dueDate}/>
+        return <TaskPriorityBar taskDueDate={dueDate} taskIsDone={task.isDone}/>
       }
     };
 
@@ -133,33 +133,25 @@ class TaskContent extends Component {
         </div>
 
         <div className="titles">
-          <strong>{task.name}</strong>
-          <br/>
-
-          {
-            task.isCycleMode
-              ? translate[task.taskCycleMode]
-              : ''
-          }
+          <strong>{task.name}</strong><br/>
+          {task.isCycleMode ? translate[task.taskCycleMode] : ''}
           {moment(task.dueDate).format('DD-MM-YYYY')}<br/>
-
           {this.state.showDesc ? <p className="description">{task.description}</p> : ''}
-
           {whatToRender()}
         </div>
 
         <div className='buttons'>
-          <button className='desc-button'
+          <button className={`desc-button ${task.isDone}`}
             title='Pokaż opis'
             onClick={this.handleClick}
           ><FontAwesomeIcon icon={faInfo}/></button>
 
-          <button className='edit-button'
+          <button className={`edit-button ${task.isDone}`}
             title='Edytuj'
             onClick={() => this.props.toggleShowEditTaskPopup(task.id)}
           ><FontAwesomeIcon icon={faEdit}/></button>
 
-          <button className='delete-button'
+          <button className={`delete-button ${task.isDone}`}
             title='Usuń zadanie'
             onClick={() => this.props.removeTask(task.id)}
           ><FontAwesomeIcon icon={faTrashAlt}/></button>

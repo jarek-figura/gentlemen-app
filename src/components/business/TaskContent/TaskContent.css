@@ -14,7 +14,8 @@
 }
 
 .true {
-  color: #aaa;
+  color: #aaa !important;
+  background-color: #eee !important;
 }
 
 .task {

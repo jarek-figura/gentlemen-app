@@ -5,6 +5,7 @@ import {withTasks} from "../../contexts/Tasks";
 
 class TaskPriorityBar extends React.Component {
   render() {
+    // const taskIsDone = this.props.taskIsDone;
     const taskDueDate = this.props.taskDueDate;
     const taskMaxDate = Math.max.apply(Math, this.props.tasks.map(
       x => x.isCycleMode ? x.cycleDate : x.dueDate
