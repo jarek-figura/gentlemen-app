@@ -5,7 +5,7 @@ import {withTasks} from "../../contexts/Tasks";
 import TaskPriorityBar from "../TaskProgressBar/TaskPriorityBar";
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import {faInfo, faTrashAlt, faEdit} from '@fortawesome/fontawesome-free-solid';
+import {faStream, faTrashAlt, faEdit} from '@fortawesome/fontawesome-free-solid';
 import {faCircle, faCheckCircle} from '@fortawesome/fontawesome-free-regular';
 
 const translate = {
@@ -141,7 +141,7 @@ class TaskContent extends Component {
           <button className={`desc-button ${task.isDone}`}
             title='Pokaż opis'
             onClick={this.handleClick}
-          ><FontAwesomeIcon icon={faInfo}/></button>
+          ><FontAwesomeIcon icon={faStream}/></button>
 
           <button className={`edit-button ${task.isDone}`}
             title='Edytuj'

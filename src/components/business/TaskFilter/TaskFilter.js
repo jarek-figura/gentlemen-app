@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import './TaskFilter.css'
 import {withTasks} from "../../contexts/Tasks";
 
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import {faStream, faTrashAlt, faEdit} from '@fortawesome/fontawesome-free-solid';
+import {faCircle, faCheckCircle} from '@fortawesome/fontawesome-free-regular';
+
 const filters = [
   { title: 'Pokaż wszystkie',   label: 'PW' },
   { title: 'Pokaż zrobione',    label: 'PZ' },
