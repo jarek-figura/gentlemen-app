@@ -88,9 +88,15 @@ p.description {
   transition: 0.3s;
 }
 
+.delete-button {
+  margin-left: 20px;
+  margin-right: -5px;
+}
+
 .done-checkbox {
   position: relative;
   margin-right: 1rem;
+  margin-left: 0;
   font-size: 1.5rem;
   width: 1.8rem;
   height: 1.8rem;
