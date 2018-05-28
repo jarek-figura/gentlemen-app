@@ -1,5 +1,6 @@
 import React from 'react';
 import './TaskProgressBar.css';
+import moment from 'moment';
 import {Line} from 'rc-progress';
 import {withTasks} from "../../contexts/Tasks";
 
@@ -10,8 +11,8 @@ class TaskPriorityBar extends React.Component {
     const taskMaxDate = Math.max.apply(Math, this.props.tasks.map(
       task => task.isCycleMode ? task.cycleDate : task.dueDate
     ));
-    const timestamp = Date.now();
-    let taskPriorityFactor = ((taskDueDate - timestamp) / (taskMaxDate - timestamp)) * 100;
+    const timestamp = moment().startOf('day');
+    const taskPriorityFactor = moment(taskDueDate).diff(timestamp, 'days') / moment(taskMaxDate).diff(timestamp, 'days') * 100;
 
     const barColor = () => {
       if (taskIsDone) {
