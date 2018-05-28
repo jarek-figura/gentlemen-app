@@ -4,6 +4,7 @@ input {
   height: 40px;
   width:  300px;
   border: 1px solid black;
+  font-size: 1.2rem;
 }
 
 .sign-button {
