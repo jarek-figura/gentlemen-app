@@ -6,21 +6,19 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import {faCalendarAlt, faSort, faCaretUp, faCaretDown, faExclamation} from '@fortawesome/fontawesome-free-solid';
 import {faTimesCircle, faCheckCircle, faCircle} from '@fortawesome/fontawesome-free-regular';
 
-
-
 const filters = [
-  { title: 'Pokaż wszystkie',   label: <FontAwesomeIcon size='lg' icon={faCircle}/> },
+  { title: 'Pokaż wszystkie',  label: <FontAwesomeIcon size='lg' icon={faCircle}/> },
   { title: 'Pokaż zrobione',   label: <FontAwesomeIcon size='lg' icon={faCheckCircle}/> },
-  { title: 'Pokaż niezrobione', label: <FontAwesomeIcon size='lg' icon={faTimesCircle}/> }
+  { title: 'Pokaż niezrobione',label: <FontAwesomeIcon size='lg' icon={faTimesCircle}/> }
 ];
 
 const dueSorters = [
-  { title: 'Bez sortowania',  label: <FontAwesomeIcon size='lg' transform={{rotate:90}} icon={faSort}/>},
+  { title: 'Bez sortowania',  label: <FontAwesomeIcon size='lg' icon={faSort} transform={{rotate:90}}/>},
   { title: 'Sortuj rosnąco',  label: <FontAwesomeIcon size='lg' icon={faCaretUp}/>},
   { title: 'Sortuj malejąco', label: <FontAwesomeIcon size='lg' icon={faCaretDown}/>}
 ];
 const prioritySorters = [
-  { title: 'Bez sortowania',  label: <FontAwesomeIcon size='lg' transform={{rotate:90}} icon={faSort}/>},
+  { title: 'Bez sortowania',  label: <FontAwesomeIcon size='lg' icon={faSort} transform={{rotate:90}}/>},
   { title: 'Sortuj rosnąco',  label: <FontAwesomeIcon size='lg' icon={faCaretUp}/> },
   { title: 'Sortuj malejąco', label: <FontAwesomeIcon size='lg' icon={faCaretDown}/> }
 ];
@@ -68,61 +66,63 @@ class TaskFilter extends Component {
           >Mój tydzień&nbsp;&nbsp;<FontAwesomeIcon size='lg' icon={faCalendarAlt}/></button>
         </div>
 
-        <div className="done-filtering">
-          <span className="filtering-text">Filtruj zrobione</span>
-          {
-            filters.map(
-              ({ title, label }, index) => (
-                <button
-                  key={index}
-                  name={index.toString()}
-                  title={title}
-                  className={this.props.isDoneSortMode === index.toString() ? 'clicked' : 'smallFilterButton'}
-                  onClick={this.handleIsDoneClick}
-                >
-                  {label}
-                </button>
+        <div className="filter-section">
+          <div className="done-filtering">
+            <span className="filtering-text">Filtruj zrobione</span>
+            {
+              filters.map(
+                ({ title, label }, index) => (
+                  <button
+                    key={index}
+                    name={index.toString()}
+                    title={title}
+                    className={`filter-button ${this.props.isDoneSortMode === index.toString() ? 'clicked' : 'smallFilterButton'}`}
+                    onClick={this.handleIsDoneClick}
+                  >
+                    {label}
+                  </button>
+                )
               )
-            )
-          }
-        </div>
+            }
+          </div>
 
-        <div className="dueday-filtering">
-          <span className="filtering-text">Sortuj wg daty</span>
-          {
-            dueSorters.map(
-              ({ title, label }, index) => (
-                <button
-                  key={index}
-                  name={index.toString()}
-                  title={title}
-                  className={this.props.dueDateSortMode === index.toString() ? 'clicked' : 'smallFilterButton'}
-                  onClick={this.handleDueDateClick}
-                >
-                  <FontAwesomeIcon size='lg' icon={faCalendarAlt}/>&nbsp;&nbsp;{label}
-                </button>
+          <div className="dueday-filtering">
+            <span className="filtering-text">Sortuj wg daty</span>
+            {
+              dueSorters.map(
+                ({ title, label }, index) => (
+                  <button
+                    key={index}
+                    name={index.toString()}
+                    title={title}
+                    className={`filter-button ${this.props.dueDateSortMode === index.toString() ? 'clicked' : 'smallFilterButton'}`}
+                    onClick={this.handleDueDateClick}
+                  >
+                    <FontAwesomeIcon size='lg' icon={faCalendarAlt}/>&nbsp;&nbsp;{label}
+                  </button>
+                )
               )
-            )
-          }
-        </div>
+            }
+          </div>
 
-        <div className="priority-sorting">
-          <span className="filtering-text">Sortuj wg priorytetów</span>
-          {
-            prioritySorters.map(
-              ({ title, label }, index) => (
-                <button
-                  key={index}
-                  name={index.toString()}
-                  title={title}
-                  className={this.props.prioritySortMode === index.toString() ? 'clicked' : 'smallFilterButton'}
-                  onClick={this.handlePriorityClick}
-                >
-                  <FontAwesomeIcon size='lg' icon={faExclamation}/>&nbsp;&nbsp;{label}
-                </button>
+          <div className="priority-sorting">
+            <span className="filtering-text">Sortuj wg priorytetów</span>
+            {
+              prioritySorters.map(
+                ({ title, label }, index) => (
+                  <button
+                    key={index}
+                    name={index.toString()}
+                    title={title}
+                    className={`filter-button ${this.props.prioritySortMode === index.toString() ? 'clicked' : 'smallFilterButton'}`}
+                    onClick={this.handlePriorityClick}
+                  >
+                    <FontAwesomeIcon size='lg' icon={faExclamation}/>&nbsp;&nbsp;{label}
+                  </button>
+                )
               )
-            )
-          }
+            }
+          </div>
         </div>
       </div>
     )
