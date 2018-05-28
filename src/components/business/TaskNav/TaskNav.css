@@ -11,7 +11,7 @@
 }
 
 .hide {
-  bottom: -150px;
+  bottom: -154px;
   transition: 0.3s;
 }
 
@@ -23,14 +23,20 @@
 
 .show-filters {
   height: 36px;
-  width: 70px;
+  width: 68px;
   float: right;
   margin-right: 10px;
 }
 
 .clear-filters-button {
   height: 36px;
-  width: 70px;
+  width: 68px;
   float: left;
   margin-left: 10px;
 }
+
+.plus {
+  font-size: 1.6em;
+  margin: 0;
+  }
+
