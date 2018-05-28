@@ -30,7 +30,7 @@ class TaskPanelUser extends Component {
             document.body.classList = theme.bodyClass;
             return (
               <div style={theme.body} className={`nav-panel ${navUserModeTable[this.state.navUserIndex]}`}>
-                <h1>Ustawienia</h1>
+                <h2>Ustawienia</h2>
                 <button
                   className="changeThemeBtn"
                   onClick={toggle}
@@ -41,7 +41,7 @@ class TaskPanelUser extends Component {
                     title={filtersTitle[this.state.navUserIndex]}
                     onClick={this.handleClick}
                   >{filtersButtonUserName[this.state.navUserIndex]}</button>
-                  <span>{this.props.user.email}</span>
+                  <span className="email">{this.props.user.email}</span>
                   <button
                     className="exit"
                     title="Wyjdź"
