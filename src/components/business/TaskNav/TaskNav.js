@@ -4,12 +4,9 @@ import {withTasks} from "../../contexts/Tasks";
 import TaskFilter from '../../business/TaskFilter/TaskFilter';
 import {ThemeConsumer} from '../../contexts/Theme';
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import {faPlus} from '@fortawesome/fontawesome-free-solid';
-
 
 const navModeTable = ['hide', ''];
-const filtersButtonName = [`Pokaż\nfiltry`, `Ukryj\nfiltry`];
+const filtersButtonName = [`Pokaż\nfiltry`,`Ukryj\nfiltry`];
 
 class TaskNav extends Component {
   state = {
@@ -42,7 +39,7 @@ class TaskNav extends Component {
                 className="add-task-button"
                 title="Dodaj zadanie"
                 onClick={this.props.toggleShowAddTaskPopup}
-              ><strong>{`Dodaj zadanie `}<FontAwesomeIcon className='plus' icon={faPlus}/></strong></button>
+              ><strong>Dodaj zadanie</strong></button>
 
               <button
                 className="show-filters"

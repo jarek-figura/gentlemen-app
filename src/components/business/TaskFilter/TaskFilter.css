@@ -2,6 +2,10 @@
   margin-top: 10px;
 }
 
+.filtering-text {
+  color: white;
+}
+
 .priority-sorting {
   margin-top: 10px;
 }
@@ -11,7 +15,7 @@
 }
 
 button {
-  width: 60px;
+  width: 52px;
   height: 24px;
   margin: 0 5px;
 }
@@ -21,21 +25,34 @@ button:hover {
 }
 
 .butt {
-  width: 95px;
+  font-size: 0.9rem;
+  width: 110px;
+  height: 30px;
+  background: none;
+  border: 1px solid white;
+  border-radius: 5px;
 }
 
 .clicked {
-  background-color: deeppink;
-  background: #ff1493;
-  background:    -webkit-linear-gradient(#ff63cd, #ff1493);
-  background:    linear-gradient(#ff63cd, #ff1493);
-  border-radius: 2px;
+  background: white;
+  border: 1px solid white;
   padding:       2px 5px;
-  color:          #fff;
+  color:         #d62261;
   display:       inline-block;
   /*font:          normal 400 13px/1 "Calibri", sans-serif;*/
   text-align:    center;
-  border:         none;
+  border-radius: 5px;
+
+}
+
+.smallFilterButton {
+  background: none;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.calendar-arrow {
+  rotation: 90deg;
 }
 
 @media all and (max-width: 414px) {

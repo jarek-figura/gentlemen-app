@@ -13,7 +13,7 @@
 }
 
 .hideuser {
-  top: -115px;
+  top: -126px;
   z-index: 1;
 }
 
@@ -35,6 +35,10 @@
   color: inherit;
   border: none;
   font: inherit;
+}
+
+.change-button {
+  font-size: 1rem;
 }
 
 .exit, .show-userpanel {

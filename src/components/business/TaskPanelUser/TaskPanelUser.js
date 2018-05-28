@@ -34,7 +34,7 @@ class TaskPanelUser extends Component {
                 <button
                   className="changeThemeBtn"
                   onClick={toggle}
-                >Zmień motyw&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faPaintBrush}/></button>
+                ><strong className='change-button'>Zmień motyw&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faPaintBrush}/></strong></button>
                 <div>
                   <button
                     className="show-userpanel"
