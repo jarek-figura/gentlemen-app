@@ -11,26 +11,26 @@
 }
 
 .hide {
-  bottom: -154px;
+  bottom: -149px;
   transition: 0.3s;
 }
 
 .add-task-button {
-  margin: 0 auto 20px auto;
+  margin: 0 auto 16px auto;
   width: 150px;
   height: 36px;
 }
 
 .show-filters {
   height: 36px;
-  width: 68px;
+  width: 64px;
   float: right;
   margin-right: 10px;
 }
 
 .clear-filters-button {
   height: 36px;
-  width: 68px;
+  width: 64px;
   float: left;
   margin-left: 10px;
 }
@@ -38,5 +38,4 @@
 .plus {
   font-size: 1.6em;
   margin: 0;
-  }
-
+}

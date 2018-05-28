@@ -1,21 +1,21 @@
-.dueday-filtering {
+.dueday-filtering, .done-filtering, .priority-sorting {
   margin-top: 10px;
+  float: right;
 }
 
 .filtering-text {
   color: white;
+  margin-right: 5px;
 }
 
-.priority-sorting {
-  margin-top: 10px;
-}
-
-.done-filtering {
-  margin-top: 10px;
+.filter-section {
+  width: 380px;
+  margin: 0 auto;
+  padding-right: 30px;
 }
 
 button {
-  width: 52px;
+  width: 60px;
   height: 24px;
   margin: 0 5px;
 }
@@ -26,7 +26,7 @@ button:hover {
 
 .butt {
   font-size: 0.9rem;
-  width: 110px;
+  width: 116px;
   height: 30px;
   background: none;
   border: 1px solid white;
@@ -36,13 +36,11 @@ button:hover {
 .clicked {
   background: white;
   border: 1px solid white;
-  padding:       2px 5px;
-  color:         #d62261;
-  display:       inline-block;
-  /*font:          normal 400 13px/1 "Calibri", sans-serif;*/
-  text-align:    center;
+  padding: 2px 5px;
+  color: #d62261;
+  display: inline-block;
+  text-align: center;
   border-radius: 5px;
-
 }
 
 .smallFilterButton {
@@ -51,14 +49,22 @@ button:hover {
   border-radius: 5px;
 }
 
-.calendar-arrow {
-  rotation: 90deg;
+.filter-button {
+  margin: 0 5px;
 }
 
 @media all and (max-width: 414px) {
-  .done-sorting-text,
-  .dueday-sorting-text,
-  .priority-sorting-text {
+  .filtering-text {
     display: none
+  }
+  .filter-button {
+    margin: 0 10px;
+  }
+  .filter-section {
+    padding: 0;
+    width: 300px;
+  }
+  .dueday-filtering, .done-filtering, .priority-sorting {
+    float: none;
   }
 }
