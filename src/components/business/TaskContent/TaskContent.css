@@ -115,9 +115,15 @@ p.description {
   padding-left: 10px;
 }
 
+@media (min-width: 320px) {
+  p.description {
+    width: 130px;
+  }
+}
+
 @media (min-width: 375px) {
   .titles {
-    width: 210px;
+    width: 190px;
   }
 }
 
@@ -126,7 +132,7 @@ p.description {
     width: 250px;
   }
   p.description {
-    width: 230px;
+    width: 215px;
   }
   .edit-button, .delete-button, .desc-button {
     font-size: 1.5rem;
@@ -149,9 +155,4 @@ p.description {
   }
 }
 
-@media (min-width: 320px) {
-  p.description {
-    width: 145px;
-  }
-}
 
