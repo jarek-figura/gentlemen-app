@@ -4,7 +4,6 @@ import {withTasks} from "../../contexts/Tasks";
 import TaskFilter from '../../business/TaskFilter/TaskFilter';
 import {ThemeConsumer} from '../../contexts/Theme';
 
-
 const navModeTable = ['hide', ''];
 const filtersButtonName = [`Pokaż\nfiltry`,`Ukryj\nfiltry`];
 
@@ -24,12 +23,21 @@ class TaskNav extends Component {
   };
 
   render() {
+    let disabled = true;
+    if (this.props.isDoneSortMode !== '0' ||
+      this.props.dueDateSortMode !== '0' ||
+      this.props.prioritySortMode !== '0' ||
+      this.props.showMyDayMode !== '0' ||
+      this.props.showMyWeekMode !== '0') {
+      disabled = false;
+    }
     return (
       <ThemeConsumer>
         {
           ({theme}) => (
             <div style={theme.bodyBottom} className={`nav-bottom ${navModeTable[this.state.navIndex]}`}>
               <button
+                disabled={disabled}
                 className="clear-filters-button"
                 title={`Wyczyść\nfiltry`}
                 onClick={this.handleClearButton}

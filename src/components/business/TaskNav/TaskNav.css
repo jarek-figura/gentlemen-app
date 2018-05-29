@@ -38,6 +38,12 @@
   border-radius: 2px;
 }
 
+button.clear-filters-button:disabled {
+  background-color: #6b6c68 !important;
+  color: #B9B9B9 !important;
+  cursor: not-allowed;
+}
+
 .plus {
   font-size: 1.6em;
   margin: 0;
