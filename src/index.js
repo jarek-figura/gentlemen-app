@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 import {TasksProvider} from './components/contexts/Tasks';
 import {UserProvider} from "./components/contexts/User";
 import TaskApp from './components/business/TaskApp/TaskApp';
@@ -25,4 +25,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-registerServiceWorker();
+// registerServiceWorker();
