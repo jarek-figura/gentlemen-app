@@ -98,7 +98,7 @@ class TaskList extends Component {
                     }
                   </div>
                   : <div className='banner'>
-                    <h1>Witaj w aplikacji Taskmen</h1>
+                    <h1>Taskmen</h1>
                     {
                       this.props.user === null ? (
                         <div>
