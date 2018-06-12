@@ -26,7 +26,7 @@ class SignUpForm extends Component {
   render() {
     return (
       <div>
-        <h2>Zakładanie konta</h2>
+        <h2 className="signup-text">Zakładanie konta</h2>
         {this.state.error && <p>{this.state.error.message}</p>}
         <form onSubmit={this.handleSubmit}>
           <input
