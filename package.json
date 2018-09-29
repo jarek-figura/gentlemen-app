@@ -1,5 +1,6 @@
 {
-  "name": "jfdd9-gentlemen-app",
+  "homepage": "https://jarek-figura.github.io/gentlemen-app",
+  "name": "gentlemen-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
