@@ -8,7 +8,7 @@ import {ThemeConsumer} from '../../contexts/Theme';
 
 const navUserModeTable = [' hideuser', ''];
 const filtersButtonUserName = [<FontAwesomeIcon icon={faCog}/>, <FontAwesomeIcon icon={faAngleDoubleUp}/>];
-const filtersTitle = ['Pokaż UserPanel', 'Zamknij UserPanel'];
+const filtersTitle = ['Pokaż Panel Użytkownika', 'Schowaj Panel Użytkownika'];
 
 class TaskPanelUser extends Component {
 
@@ -44,7 +44,7 @@ class TaskPanelUser extends Component {
                   <span className="email">{this.props.user.email}</span>
                   <button
                     className="exit"
-                    title="Wyjdź"
+                    title="Wyloguj się"
                     onClick={this.props.signOut}>
                     <FontAwesomeIcon icon={faSignOutAlt}/></button>
                 </div>
