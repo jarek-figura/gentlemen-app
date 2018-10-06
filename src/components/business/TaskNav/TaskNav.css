@@ -19,7 +19,7 @@
   margin: 0 auto 16px auto;
   width: 150px;
   height: 36px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .show-filters {
@@ -27,7 +27,7 @@
   width: 64px;
   float: right;
   margin-right: 10px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .clear-filters-button {
@@ -35,7 +35,7 @@
   width: 64px;
   float: left;
   margin-left: 10px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 button.clear-filters-button:disabled {

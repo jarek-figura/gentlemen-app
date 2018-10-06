@@ -8,7 +8,7 @@ import {ThemeConsumer} from '../../contexts/Theme';
 
 const navUserModeTable = [' hideuser', ''];
 const filtersButtonUserName = [<FontAwesomeIcon icon={faCog}/>, <FontAwesomeIcon icon={faAngleDoubleUp}/>];
-const filtersTitle = ['Pokaż Panel Użytkownika', 'Ukryj Panel Użytkownika'];
+const filtersTitle = ['Pokaż panel użytkownika', 'Ukryj panel użytkownika'];
 
 class TaskPanelUser extends Component {
 

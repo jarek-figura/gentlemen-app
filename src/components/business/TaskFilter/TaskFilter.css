@@ -29,24 +29,24 @@ button:hover {
   width: 116px;
   height: 30px;
   background: none;
-  border: 1px solid white;
-  border-radius: 5px;
+  border: 2px solid white;
+  border-radius: 3px;
 }
 
 .clicked {
   background: white;
-  border: 1px solid white;
+  border: 2px solid white;
   padding: 2px 5px;
   color: #d62261;
   display: inline-block;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .smallFilterButton {
   background: none;
-  border: 1px solid white;
-  border-radius: 5px;
+  border: 2px solid white;
+  border-radius: 3px;
 }
 
 .filter-button {

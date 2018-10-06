@@ -1,11 +1,11 @@
 .wrn{
-    background-color: black;
-    color: #ff0003;
+    background-color: rgb(214, 34, 97);
+    color: white;
     text-align: center;
     font-size: 12px;
     padding: 2px;
     opacity: .8;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .container{
@@ -20,5 +20,5 @@
     font-size: 12px;
     padding: 2px;
     opacity: .8;
-    border-radius: 2px;
+    border-radius: 4px;
 }

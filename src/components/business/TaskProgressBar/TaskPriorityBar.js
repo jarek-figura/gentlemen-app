@@ -19,17 +19,17 @@ class TaskPriorityBar extends React.Component {
         return "#bbb";
       }
       if (taskPriorityFactor < 0) {
-        return "black"
+        return "black";
       } else if (taskPriorityFactor <= 10) {
-        return "#ce0000"
+        return "#ce0000";
       } else if (taskPriorityFactor <= 25) {
-        return "orange"
+        return "orange";
       } else if (taskPriorityFactor <= 50) {
-        return "yellow"
+        return "yellow";
       } else if (taskPriorityFactor <= 75) {
-        return "#bada55"
+        return "#bada55";
       } else if (taskPriorityFactor <= 100) {
-        return "green"
+        return "green";
       }
     };
 
